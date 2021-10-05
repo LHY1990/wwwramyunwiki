@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 디비의 _방식의 컬럼명을 자바의 카멜방식으로 매핑시켜주는 아이 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+
+	
+
+	<!-- 여기에 필요한 별칭들을 적는다 이건 mybatisMapper.xml에서 패러미터타입이나 리설트 타입으로 쓴다. -->
+	<typeAliases>
+		<typeAlias alias="member" type="wiki.ramyun.www.member.MemberVO" />
+	</typeAliases>
+
+	<!-- 여기까진 잘됌 안돼면 여기 아래 지울것 -->
+	<mappers>
+		<mapper resource="../config/mybatisMapper.xml" />
+	</mappers>
+
+</configuration>

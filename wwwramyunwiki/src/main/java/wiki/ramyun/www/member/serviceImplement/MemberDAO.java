@@ -1,0 +1,56 @@
+package wiki.ramyun.www.member.serviceImplement;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
+import wiki.ramyun.www.member.MemberVO;
+import wiki.ramyun.www.member.mapper.MemberMapper;
+import wiki.ramyun.www.member.memberService.MemberService;
+
+@Component
+public class MemberDAO {
+
+	@Autowired
+	MemberMapper mapper;
+	
+	//어노테이션 기반으로 작업하기로 해서 얘는 잠재움
+	//@Autowired
+	//@Qualifier("sqlSessionTemplate")
+	//private SqlSessionTemplate mybatis;
+
+	public void insertMember(MemberVO vo) {
+		System.out.println("dao 접근");
+		mapper.insertMember(vo);
+
+	}
+
+	public void updateMember(MemberVO vo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void deleteMember(MemberVO vo) {
+		// TODO Auto-generated method stub
+		mapper.deleteMeber(vo.getMemberNumber());
+	}
+
+	public MemberVO getMember(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+
+	}
+
+	public List<MemberVO> getMemberList(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+
+	}
+
+}
