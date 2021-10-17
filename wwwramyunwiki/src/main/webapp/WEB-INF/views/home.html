@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/css/login.css">
+    <link rel="stylesheet" href="../../resources/css/home.css">
 
-    <script type="text/javascript" src="../../resources/javascript/login.js"></script>
+    <script type="text/javascript" src="../../resources/javascript/home.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <title>라면위키:로그인 -라면위키</title>
+    <title>라면위키:대문 -라면위키</title>
 
 </head>
 <body>
@@ -52,6 +52,7 @@
                 </div>
                 
             </div>
+            
 
             <div class="search_box">
                 <div id="inner_search_box">
@@ -66,8 +67,7 @@
                     <div id="member_icon" onclick="popup()">
     
                         <!-- 회원정보 아이콘 -->
-                            <!-- <i class="fas fa-user-alt"></i> -->
-                            <i class="far fa-user"></i>
+                            <i class="fas fa-user-alt"></i>
                         
                         
                     </div>
@@ -75,7 +75,7 @@
                     <!-- 팝업창 로그인 시작 -->
                     <div id="login_popup">
                         <div style="height: 10%; width: 80%; margin-left: 10%; margin-top: 10px;">
-                            로그인
+                            <a href="./login.html" style="color: black;">로그인</a>
                         </div>
                         <div style="height: 10%; width: 80%; margin-left: 10%;">
                             설정
@@ -122,45 +122,97 @@
                 <!-- 모든컨텐츠는 여기서 시작해서 -->
                     <div id="information_tab">
                         <div id="section">
-                            라면위키 : 로그인
+                            라면위키 : 대문
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
-                                <div class="sections_link"></div>
-                                <div class="sections_link"></div>
-                                <div class="sections_link"></div>
+                                <div class="sections_link">역사</div>
+                                <div class="sections_link">추천수</div>
+                                <div class="sections_link">편집</div>
                                 
                             </div>
                             
                         </div>
-   
+                        <div id="edited_time">
+                            최근 수정 시각 : 2021년 10월 10일 12시 30분 12초
+                        </div>
                         <div style="height: 100px;">
 
                         </div>
                         
                         <div id="sorting_category">
-                            분류 : LOG IN
+                            분류 : HOME
                         </div>
-                        <!-- 로그인 시작 -->
+                        
 
-                        <div id="login_div">
+                        <div id="alert_info">
+                            <div class="alert_section">
+                                <div class="alert_left_section">
+                                    <!-- 환영합니다. -->
+                                    <i class="fas fa-hand-holding-heart"></i>
+                                </div>
+                                <div class="alert_right_section">
+                                    
+                                    <br>
+                                    <strong style="font-size: larger;">라면위키에 오신것을 환영합니다!</strong><br>
+                                    본 서비스가 무엇인지 궁금하다면, <a href="introduction.html">소개</a>를 읽어주세요.
+                                    
+                                </div>
+                            </div>
+                            <div class="alert_section">
+                                <div class="alert_left_section">
+                                    <!-- 처음오셨다면? -->
+                                    <i class="fas fa-question-circle"></i>
+
+
+                                </div>
+                                <div class="alert_right_section">
+                                    <br>
+                                    <strong style="font-size: larger;">작성방법</strong><br>
+                                    작성방법이 궁금하다면 <a href="howto.html">여기</a>를 클릭해주세요
+                                </div>
+                            </div>
+                            <div class="alert_section">
+                                <div class="alert_left_section">
+                                    <!-- 작성 방법 -->
+                                    <i class="far fa-file-alt"></i>
+                                </div>
+                                <div class="alert_right_section">
+                                    <br>
+                                    <strong style="font-size: larger;">다같이 만들어봐요 </strong><br>
+                                    라면위키에 오신것을 진심으로 환영합니다. 지켜야할 규칙들은 <a href="rules.html">여기</a>에서 확인 해 주세요.
+                                </div>
+                            </div>
+                            <div class="alert_section">
+                                <div class="alert_left_section">
+                                    <!-- 역사 -->
+                                    <i class="fas fa-history"></i>
+                                    
+                                </div>
+                                <div class="alert_right_section">
+                                    <br>
+                                    <strong style="font-size: larger;">오늘 내가 먹는 라면은 어떻게 시작되었나?</strong><br>
+                                    간식으로도 식사로도 늘 우리곁에 있는 라면. <a href="history.html">어디서</a> 시작되었는가
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="width: 100%; height: 40px;">
+
+                        </div>
+                        <div id="statistics">
+                            <div id="inner_statistics">
+                                
+                                <h2 style="margin: 0%;">라면백과</h2>
+                                <div style="height: 10px;"></div>
+                                <div style="margin: 0%;">다같이 만들어가는 대한민국 라면 백과사전<br>
+                                    00000종의 라면과 기여자 0000명이 함께합니다.</div>
+                            </div>
                             
-                            <form action="./home">
-                                <div style="margin-top : 50px;"></div>
-                                <div id="type_id">아이디</div>
-                                <input id="type_id" type="text"><br><br>
-                                <div id="type_password">비밀번호</div>
-                                <input id="type_password" type="password">
-                                <div id="finding_id_password">아이디/비밀번호 찾기</div><br>
-                                <div id="join_member"><a href="./rules.html">회원가입</a></div>
-                                <div id="member_login" ><input type="submit" value="로그인" id="member_login" style="background-color: rgb(113, 113, 223, 0.3);"></div>
-
-                            </form>
-
-
+                            
                         </div>
-                        <!-- 로그인끝 -->
-                        <div style="width: 100%; height: 5px;">
+
+                        <div style="width: 100%; height: 20px;">
 
                         </div>
 
@@ -194,7 +246,8 @@
                 </div>
                 <div id="todays_random" class="dotted">
                     <div id="random_list">
-                        오늘의 라면
+                        <a href="./ramyun.html">오늘의 라면</a><br>
+                        <a href="./userinfo.html">내 정보</a>
                     </div>
                 </div>
                 

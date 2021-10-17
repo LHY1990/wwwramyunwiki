@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,30 +28,30 @@
             <div class="inner_top_pannel_link" id="title">
                 <!-- 대표 이름 -->
                 <div>
-                    <a href="./home.html" >라면위키</a> 
+                    <a href="./home" >라면위키</a> 
                 </div>
                    
             </div>
             <div class="inner_top_pannel_link" >
                 <div class="tab_linking">
-                    <a href="./recentupdating.html">최근변경</a>
+                    <a href="./recentupdating">최근변경</a>
                 </div>
             </div>
             <div class="inner_top_pannel_link">
                 <div class="tab_linking">
-                    <a href="./nutrient.html">영양성분</a>
-                </div>
-                
-            </div>
-            <div class="inner_top_pannel_link">
-                <div class="tab_linking">
-                    <a href="./factory.html">제조공장</a>
+                    <a href="./nutrient">영양성분</a>
                 </div>
                 
             </div>
             <div class="inner_top_pannel_link">
                 <div class="tab_linking">
-                    <a href="./tag.html">태그검색</a>
+                    <a href="./factory">제조공장</a>
+                </div>
+                
+            </div>
+            <div class="inner_top_pannel_link">
+                <div class="tab_linking">
+                    <a href="./tag">태그검색</a>
                 </div>
                 
             </div>
@@ -145,14 +148,14 @@
 
                         <div id="login_div">
                             
-                            <form action="./home">
+                            <form action="./home" method="post">
                                 <div style="margin-top : 50px;"></div>
                                 <div id="type_id">아이디</div>
-                                <input id="type_id" type="text"><br><br>
+                                <input id="type_id" type="text" name="memberId"><br><br>
                                 <div id="type_password">비밀번호</div>
-                                <input id="type_password" type="password">
+                                <input id="type_password" type="password" name="memberPassword">
                                 <div id="finding_id_password">아이디/비밀번호 찾기</div><br>
-                                <div id="join_member"><a href="./rules.html">회원가입</a></div>
+                                <div id="join_member"><a href="./rules">회원가입</a></div>
                                 <div id="member_login" ><input type="submit" value="로그인" id="member_login" style="background-color: rgb(113, 113, 223, 0.3);"></div>
 
                             </form>

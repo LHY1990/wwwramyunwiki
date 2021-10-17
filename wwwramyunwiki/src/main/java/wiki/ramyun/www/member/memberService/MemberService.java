@@ -36,4 +36,26 @@ public class MemberService {
 		dao.deleteMember(vo);
 		*/
 	}
+
+	public boolean checkMember(MemberVO vo) {
+		// 로그인 정보로 들어온 아이디와 패스워드로 회원인지 확인
+		boolean result=false;
+		
+		System.out.println("내부확인"+vo.getMemberId()+" "+vo.getMemberPassword());
+		result=dao.memberValidationCheck(vo.getMemberId(), vo.getMemberPassword());
+		
+		
+		
+		if(result) {
+			System.out.println(vo.getMemberId()+"는 회원입니다.");
+		}else {
+			System.out.println(vo.getMemberId()+"는 회원이 아닙니다.");
+		}
+		
+		
+		
+		
+		return result;
+		
+	}
 }

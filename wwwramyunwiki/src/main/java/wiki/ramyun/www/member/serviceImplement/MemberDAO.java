@@ -20,10 +20,23 @@ public class MemberDAO {
 	@Autowired
 	MemberMapper mapper;
 	
-	//어노테이션 기반으로 작업하기로 해서 얘는 잠재움
-	//@Autowired
-	//@Qualifier("sqlSessionTemplate")
-	//private SqlSessionTemplate mybatis;
+
+	public boolean memberValidationCheck(String memberId, String memberPassword) {
+		int memberCount=0;
+		boolean result=false;
+		
+		memberCount=mapper.validateMember(memberId, memberPassword);
+		
+		if(memberCount==1) {
+			//나온게 한명이면 정상
+			result=true;
+		}else if(memberCount==0) {
+			result=false;
+		}
+		
+		return result;
+		
+	}
 
 	public void insertMember(MemberVO vo) {
 		System.out.println("dao 접근");

@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import wiki.ramyun.www.member.MemberVO;
 
@@ -16,4 +17,7 @@ public interface MemberMapper {
 	
 	@Delete("delete from member where member_number =${memberNumber}")
 	public void deleteMeber(@Param("memberNumber") int memberNumber);
+
+	@Select("select count(*) from member where member_id=\"${memberId}\" and member_password=\"${memberPassword}\"")
+	public int validateMember(@Param("memberId")String memberId,@Param("memberPassword") String memberPassword);
 }
