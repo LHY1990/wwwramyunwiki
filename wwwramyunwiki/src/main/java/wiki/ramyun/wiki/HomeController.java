@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
@@ -15,6 +16,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -82,14 +84,6 @@ public class HomeController {
 	public String rulesGet() {
 		return "rules";
 	}
-	@GetMapping("join")
-	public String joinGet() {
-		return "join";
-	}
-	@PostMapping("join")
-	public String joinPost() {
-		return "join";
-	}
 	
 	
 	
@@ -108,21 +102,49 @@ public class HomeController {
 		return loginMav;
 	}
 	
-	
-	/*
-	@PostMapping("member/join")
-	public String join(ModelAndView model, HttpServletRequest request, MemberVO vo, String passwordCheck, String email) {
-//		여기서 막힘 이거를 순서를 잘 정해야할듯
-		//값이 넘어올때 변수이름이랑 같아야 값이 넘어온다. dto에 있으면 같은걸로 되는듯
-		System.out.println("아이디"+vo.getMemberId());
-		System.out.println("비밀번호"+vo.getMemberPassword());
-		System.out.println("패스워드 체크"+passwordCheck);
-		System.out.println("이메일"+vo.getMemberEmail());
-
+	@GetMapping("join")
+	public String join(ModelAndView mav) {
+		System.out.println("갯으로 받음");
 		
-		return "home";
+		
+		
+		
+		return "join";
 		
 	}
-	*/
+	
+	@PostMapping("join")
+	public ModelAndView joinFirst(MemberVO vo,ModelAndView mav, String memberEmailCode) {
+		
+		
+		
+		
+		if(memberEmailCode.equals("")) {		
+			//인증코드가 없는 상태로 넘어온 경우
+
+			memberService.sendMailCode(vo);
+
+			System.out.println(vo.getMemberId()+" "+vo.getMemberEmail()+" "+vo.getMemberPassword()+" "+memberEmailCode);
+		}
+		if(memberEmailCode!=null) {
+			//인증코드가 있는 상태로 넘어온경우
+			System.out.println("");
+		}
+		
+		mav.setViewName("join");
+		mav.addObject("memberId",vo.getMemberId());
+		mav.addObject("memberPassword",vo.getMemberPassword());
+		mav.addObject("memberEmail",vo.getMemberEmail());
+		
+		if(memberEmailCode.equals("123123")) {
+			
+			mav.setViewName("home");
+			//가입 환영 페이지 만들고 데이터 베이스에 등록하자
+		}
+		
+		return mav;
+	}
+	
+	
 	
 }
