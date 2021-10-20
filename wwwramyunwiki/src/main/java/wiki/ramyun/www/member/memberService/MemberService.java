@@ -27,17 +27,17 @@ public class MemberService {
 	
 	
 	
-	public void inserMemberToDB() {
+	public void inserMemberToDB(MemberVO joinVO) {
 		System.out.println("서비스 시작");
 		
 		
 		MemberVO vo = new MemberVO();
 		
-		vo.setMemberNumber(4);
-		vo.setMemberId("4영훈");
-		vo.setMemberPassword("4비밀번호1");
+		vo.setMemberNumber(0);
+		vo.setMemberId(joinVO.getMemberId());
+		vo.setMemberPassword(joinVO.getMemberPassword());
 		vo.setJoinDate(LocalDateTime.now());
-		vo.setNickname("4닉넴2");
+		vo.setNickname(joinVO.getMemberId());
 		dao.insertMember(vo);
 		
 		
@@ -70,11 +70,14 @@ public class MemberService {
 		
 	}
 	
-	public void sendMailCode(MemberVO vo) {
+	public void sendMailCode(MemberVO vo, String mailCodeInput) {
 		String setfrom = "ramyunwiki@gmail.com";
 		String tomail=vo.getMemberEmail();
 		String title ="라면위키 회원가입 인증 메일입니다.";
-		String content ="안녕하세요 라면위키를 찾아주셔서 감사합니다."+System.getProperty("line.separator")+"인증번호는 다음과 같습니다."+System.getProperty("line.separator")+"123123";
+		String mailCode = mailCodeInput;
+				
+		
+		String content ="안녕하세요 라면위키를 찾아주셔서 감사합니다."+System.getProperty("line.separator")+"인증번호는 다음과 같습니다."+System.getProperty("line.separator")+mailCode;
 		
 		
 		
@@ -92,5 +95,19 @@ public class MemberService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public boolean isUnique(MemberVO vo) {
+		int isUnique= dao.isUniqueMember(vo);
+		
+		
+		if(isUnique==0) {
+			return true;
+		}
+		
+		return false;
+		
+		
+		
 	}
 }

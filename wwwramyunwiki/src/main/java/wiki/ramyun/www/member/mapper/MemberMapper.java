@@ -20,4 +20,7 @@ public interface MemberMapper {
 
 	@Select("select count(*) from member where member_id=\"${memberId}\" and member_password=\"${memberPassword}\"")
 	public int validateMember(@Param("memberId")String memberId,@Param("memberPassword") String memberPassword);
+	
+	@Select("select count(*) from member where member_id=\"${memberId}\"")
+	public int isUniqueMember(@Param("memberId")String memberId);
 }

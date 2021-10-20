@@ -19,7 +19,7 @@
 </head>
 
 <script>
-
+	
 
 </script>
  
@@ -47,16 +47,26 @@
                     <button id="send_mail" type="submit" onclick="sendingMailCode()" >인증번호 보내기</button>
                     
                     <br>
-                    
-                    <div id="codenumber_check">
-                        인증번호 확인<br>
-                        <input type="text" name="memberEmailCode" style="margin-top: 10px;"><br>
-                        <input id="joinSubmit" type="submit" value="가입하기">
-                    </div>
+                    <c:if test="${memberId!=null}">
+	                    <div id="codenumber_check">
+	                        인증번호 확인<br>
+	                        <input type="text" name="memberEmailCode" style="margin-top: 10px;"><br>
+	                        <input id="joinSubmit" type="submit" value="가입하기">
+	                    </div>
+                    </c:if>
                 </div>
                 
 
             </form>
+            <c:if test="${memberAlert eq 'error'}">
+            		<script type="text/javascript">alert('중복된 아이디입니다.');</script>
+            </c:if>
+            <c:if test="${memberAlert eq 'codeSended'}">
+            		<script type="text/javascript">alert('메일로 인증번호가 전송되었습니다.');</script>
+            </c:if>
+            <c:if test="${memberAlert eq 'codeIsNotSame'}">
+            		<script type="text/javascript">alert('인증번호가 다릅니다.');</script>
+            </c:if>
         </div>
     </div>
 

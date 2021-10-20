@@ -66,4 +66,10 @@ public class MemberDAO {
 
 	}
 
+	public int isUniqueMember(MemberVO vo) {
+		
+		
+		return mapper.isUniqueMember(vo.getMemberId());
+	}
+
 }
