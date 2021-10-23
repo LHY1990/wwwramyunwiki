@@ -59,11 +59,18 @@
                     <div id="random_icon" >
                         <i class="fas fa-random"></i>
                     </div>
-                    <textarea id="search_box_textarea"  name="searchBoxInput" id="" cols="20" rows="1" placeholder="Search"></textarea>
-                    <div id="search_icon" >
+                    <form action="./findramyun.do" method="post" style="font-family: FontAwesome;">
+                        <input id="search_box_textarea"  name="searchBoxInput" id="" cols="20" rows="1" placeholder="Search">
+                        <div id="search_icon" >
+                            
+                                <input type="submit" class="fas fa-search" value="&#xf002" style="height: 100%;width: 100%;">
+                                <!-- <i class="fas fa-search"></i> -->
 
-                        <i class="fas fa-search"></i>
-                    </div>
+                        
+                            
+                        </div>
+                    </form>
+                    
                     <div id="member_icon" onclick="popup()">
     
                         <!-- 회원정보 아이콘 -->

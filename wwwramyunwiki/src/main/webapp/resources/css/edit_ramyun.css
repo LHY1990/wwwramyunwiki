@@ -364,6 +364,10 @@ a{
 
 #user_made_section{
     width: 100%;
+    height: 300px;
+    overflow-y: hidden;
+    word-wrap: break-word;
+    
     height: auto;
 }
 

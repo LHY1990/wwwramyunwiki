@@ -16,6 +16,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Controller;
@@ -27,9 +28,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import wiki.ramyun.wiki.ramyun.RamyunVO;
 import wiki.ramyun.www.member.MemberVO;
 import wiki.ramyun.www.member.memberService.MemberService;
 import wiki.ramyun.www.member.serviceImplement.MemberDAO;
+import wiki.ramyun.www.ramyun.ramyunService.RamyunService;
 
 /**
  * Handles requests for the application home page.
@@ -43,7 +46,12 @@ public class HomeController {
 	
 	
 	@Autowired
+	@Qualifier("memberService")
 	private MemberService memberService;
+	
+	@Autowired
+	@Qualifier("ramyunService")
+	private RamyunService ramyunService;
 	
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
 	@GetMapping("home")
@@ -181,6 +189,62 @@ public class HomeController {
 		return mav;
 	}
 	
+	//검색 값 받아오기. 일단 신라면으로 테스트
+	@PostMapping("findramyun.do")
+	public ModelAndView getSearchKeyword(ModelAndView mav, String searchBoxInput) {
+		//앞뒤 공백을 없앰
+		searchBoxInput=searchBoxInput.trim();
+		
+		System.out.println(searchBoxInput);
+		
+		try {
+			RamyunVO vo=ramyunService.getRamyunData(searchBoxInput);
+			mav.addObject("ramyun", vo);
+			mav.setViewName("ramyun");
+		} catch (Exception e) {
+			e.printStackTrace();
+			mav.addObject("message", searchBoxInput);
+			mav.setViewName("notfounding");
+			//여기에 찾을수없다는 jsp를 만들자 에러구문도
+			
+		}
+		
+		return mav;
+	}
+	@GetMapping("editramyun.do")
+	public ModelAndView getEditRamyun(ModelAndView mav,String name) {
+		try {
+			RamyunVO vo=ramyunService.getRamyunData(name);
+			mav.addObject("ramyun", vo);
+			mav.setViewName("editramyun");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return mav;
+		
+		
+	}
+	@PostMapping("edit.do")
+	public ModelAndView afterRamyunEdited(ModelAndView mav, RamyunVO vo) {
+		
+		ramyunService.updateRamyunFromDB(vo);
+		
+		mav.setViewName("home");
+		return mav;
+	}
+	
+//	@GetMapping("ramyun")
+//	public ModelAndView getRamyun(ModelAndView mav) {
+//		mav.setViewName("갯으로 들어옴 ramyun");
+//		return mav;
+//	}
+//	@GetMapping("ramyun")
+//	public ModelAndView postRamyun(ModelAndView mav) {
+//		mav.setViewName("포스트로 들어옴 ramyun");
+//		return mav;
+//	}
 	
 	
 }

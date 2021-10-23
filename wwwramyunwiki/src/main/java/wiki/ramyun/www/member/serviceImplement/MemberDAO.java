@@ -18,6 +18,7 @@ import wiki.ramyun.www.member.memberService.MemberService;
 public class MemberDAO {
 
 	@Autowired
+	@Qualifier("memberMapper")
 	MemberMapper mapper;
 	
 

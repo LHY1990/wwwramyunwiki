@@ -1,3 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,103 +17,7 @@
 
 </head>
 <body>
-    <!-- 상단 패널 시작 -->
-    <div class="top_pannel" id="header">
-        
-        
-        <div class="top_pannel_link" >
-            <div class="inner_top_pannel_link" id="logo_icon">
-                <!-- 대표아이콘 -->
-                <i class="fas fa-book"></i>
-            </div>
-            <div class="inner_top_pannel_link" id="title">
-                <!-- 대표 이름 -->
-                <div>
-                    <a href="./home.html" >라면위키</a> 
-                </div>
-                   
-            </div>
-            <div class="inner_top_pannel_link" >
-                <div class="tab_linking">
-                    <a href="./recentupdating.html">최근변경</a>
-                </div>
-            </div>
-            <div class="inner_top_pannel_link">
-                <div class="tab_linking">
-                    <a href="./nutrient.html">영양성분</a>
-                </div>
-                
-            </div>
-            <div class="inner_top_pannel_link">
-                <div class="tab_linking">
-                    <a href="./factory.html">제조공장</a>
-                </div>
-                
-            </div>
-            <div class="inner_top_pannel_link">
-                <div class="tab_linking">
-                    <a href="./tag.html">태그검색</a>
-                </div>
-                
-            </div>
-
-            <div class="search_box">
-                <div id="inner_search_box">
-                    <div id="random_icon" >
-                        <i class="fas fa-random"></i>
-                    </div>
-                    <textarea id="search_box_textarea"  name="searchBoxInput" id="" cols="20" rows="1" placeholder="Search"></textarea>
-                    <div id="search_icon" >
-
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div id="member_icon" onclick="popup()">
-    
-                        <!-- 회원정보 아이콘 -->
-                            <i class="fas fa-user-alt"></i>
-                        
-                        
-                    </div>
-
-                    <!-- 팝업창 로그인 시작 -->
-                    <div id="login_popup">
-                        <div style="height: 10%; width: 80%; margin-left: 10%; margin-top: 10px;">
-                            <a href="./login.html" style="color: black;">로그인</a>
-                        </div>
-                        <div style="height: 10%; width: 80%; margin-left: 10%;">
-                            설정
-                        </div>
-                        <!-- 분할 -->
-                        <div style="width: 84%;margin-left: 7%; outline: rgb(89, 63, 114, 0.5) dotted 1px;"></div>
-                        <div style="height: 10%; width: 80%; margin-left: 10%; margin-top: 10px;">
-                            내가 기여한 라면
-                        </div>
-                        
-                        <div style="height: 10%; width: 80%; margin-left: 10%; text-align: right;">
-                            0000 개
-                        </div>
-                        <!-- 분할 -->
-                        <div style="width: 84%; margin-left: 7%;outline: rgb(89, 63, 114, 0.5) dotted 1px;"></div>
-                        <div style="height: 10%; width: 80%; margin-left: 10%; margin-top: 10px;">
-                            받은 추천 수
-                        </div>
-                        <div style="height: 10%; width: 80%; margin-left: 10%; text-align: right;">
-                            0000 개
-                        </div>
-                    </div>
-                    <!-- 팝업창 로그인 끝 -->
-
-                </div>
-                
-            </div>
-            
-               
-
-        </div>
-    </div>
-
- 
-    <!-- 상단 패널 끝 -->
+    <%@ include file="./header.jsp" %>
     
 
     <!-- 홈 프레임 시작(컨텐츠 프레임 + 우측프레임) -->
@@ -121,7 +29,7 @@
                 <!-- 모든컨텐츠는 여기서 시작해서 -->
                     <div id="information_tab">
                         <div id="section">
-                            라면위키 : 라면이름 편집
+                            라면위키 : ${ramyun.brandNameKor} 편집
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
@@ -132,14 +40,14 @@
                             
                         </div>
                         <div id="edited_time">
-                            최근 수정 시각 : 2021년 10월 10일 12시 30분 12초
+                            최근 수정 시각 : ${ramyun.updatedDate}
                         </div>
                         <div style="height: 100px;">
 
                         </div>
                         
                         <div id="sorting_category">
-                            분류 : 라면 수정 | '라면이름여기에 넣기'
+                            분류 : 라면 수정 | '${ramyun.brandNameKor}'
                         </div>
                         
                     </div>
@@ -147,34 +55,35 @@
                     <div style="width: 100%; height: 40px;">
 
                     </div>
-                    <!--/////////////// 본문편집 이 여기서 부터 시작된다 //////////////////-->
-                    <form action="./ramyun.html" method="post" onsubmit="return false">
+                    <!--/////////////// 본문편집 이 여기서 부터 시작된다 //////////////////onsubmit="return false"-->
+                    <form action="./edit.do" method="post" >
                         <div id="ramyun_info_div">
                             <div id="summary_infomation">
                                 <!-- 이름 사진 회사가 들어가는 왼쪽 칸 -->
                                 <div id="ramyun_picture_div">
                                     <div id="brand_name_kr">
-                                        <div style="width: 100%;height: 60%; line-height: 200%; font-size: 25px;">brand_name_kor</div>
+                                        <div style="width: 100%;height: 60%; line-height: 200%; font-size: 25px;">${ramyun.brandNameKor}</div>
+                                        <input type="text" name="brandNameKor" value="${ramyun.brandNameKor}" style="display: none;">
                                         <div style="width: 100%;height: 40%; line-height: 100%;">
-                                            <input type="text" placeholder="영문 브랜드 명">
+                                            <input type="text" placeholder="영문 브랜드 명" name="brandNameEng" value="${ramyun.brandNameEng}">
                                         </div>
     
                                     </div>
                                     <div id="image">
                                         image
                                     </div>
-                                    <div >
+                                    <div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">제조원</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 농심" name="corporateName"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 농심" name="corporateName" value="${ramyun.corporateName}"></div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">출시일</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 1996년 6월" name="developedDate"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 1996년 6월" name="developedDate" value="${ramyun.developedDate}"></div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">식품유형</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 유탕면" name="foodCategory"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 유탕면" name="foodCategory" value="${ramyun.foodCategory}"></div>
                                         </div>
                                     </div>
 
@@ -189,57 +98,57 @@
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">총 중량</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 140 g" name="weight"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 140(g)" name="weight" value="${ramyun.weight}" ></div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">열량</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 610 kcal" name="calolie"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 610(kcal)" name="calorie" value="${ramyun.calorie}"></div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">스코빌 수치</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 500 SHU" name="scoville_unit"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 500(SHU)" name="scovilleUnit" value="${ramyun.scovilleUnit}"></div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">유통기한</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 12개월" name="expiration_date"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 12개월" name="expirationDate" value="${ramyun.expirationDate}"></div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key" style="width: 100%;">영양성분표</div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">나트륨</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 1,100mg 55%" name="natrium"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 1,100mg 55%" name="natrium" value="${ramyun.natrium}"></div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">탄수화물</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 96g 30%" name="carbohyderate"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 96g 30%" name="carbohydrate" value="${ramyun.carbohydrate}"></div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">당류</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 7g 7%" name="sugars"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 7g 7%" name="sugars" value="${ramyun.sugars}"></div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">지방</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 20g 37%" name="fat"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 20g 37%" name="fat" value="${ramyun.fat}"></div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">트랜스지방</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 0g" name="transfat"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 0g" name="transfat" value="${ramyun.transfat}"></div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">포화지방</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 8g 53%" name="saturatedfat"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 8g 53%" name="saturatedfat" value="${ramyun.saturatedfat}"></div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">콜레스테롤</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 5 mg 미만" name="cholesterol"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 5 mg 미만" name="cholesterol" value="${ramyun.cholesterol}"></div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">단백질</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 11g 20%" name="protein"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 11g 20%" name="protein" value="${ramyun.protein}"></div>
                                         </div>
                                         <div class="ramyun_info_div">
                                             <div class="ramyun_info_key">칼슘</div>
-                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 162mg 23%" name="calcium"></div>
+                                            <div class="ramyun_info_value"><input type="text" placeholder="ex) 162mg 23%" name="calcium" value="${ramyun.calcium}"></div>
                                         </div>
                                         
                                         </div>
@@ -259,7 +168,7 @@
                                     </div>
                                     <div class="horizon_value">
                                         <!-- 여기에 원재료명 리스트가 들어간다. -->
-                                        <textarea name="material_list" class="textareaFix" placeholder="ex) 면/소맥분(밀 미국산, 호주산), 감자전분(독일산), 팜유(말레이시아 산), 변성전분 ..." ></textarea>
+                                        <input type="text" name="materialList" class="textareaFix" placeholder="ex) 면/소맥분(밀 미국산, 호주산), 감자전분(독일산), 팜유(말레이시아 산), 변성전분 ..." value="${ramyun.materialList}"> 
                                     </div>
                                 </div>
                                 <div id="related_list" class="class_value_cover">
@@ -268,7 +177,7 @@
                                     </div>
                                     <div class="horizon_value">
                                         <!-- 연관된 라면을 적는다. -->
-                                        <textarea name="related_ramyun" class="textareaFix" placeholder="ex) 자매품을 적어주세요" ></textarea>
+                                        <input type="text" name="relatedRamyun" class="textareaFix" placeholder="ex) 자매품을 적어주세요" value="${ramyun.relatedRamyun}">
                                     </div>
                                 </div>
                                 <div id="recipe_list" class="class_value_cover">
@@ -277,7 +186,7 @@
                                     </div>
                                     <div class="horizon_value" >
                                         <!-- 레서피를 넣는다. -->
-                                        <textarea name="recipe" class="textareaFix" placeholder="ex) 조리 방법을 적어주세요" ></textarea>
+                                        <input type="text" name="recipe" class="textareaFix" placeholder="ex) 조리 방법을 적어주세요" value="${ramyun.recipe}">
                                     </div>
                                     
                                 </div>
@@ -288,7 +197,7 @@
                                     </div>
                                     <div class="horizon_value" >
                                         <!-- 갯수별 물량을 적는다.. -->
-                                        <textarea name="water_capacity_by_number" class="textareaFix" placeholder="ex) 갯수별 물 양을 적어주세요" ></textarea>
+                                        <input type="text" name="waterCapacityByNumber" class="textareaFix" placeholder="ex) 갯수별 물 양을 적어주세요" value="${ramyun.waterCapacityByNumber}" >
                                     </div>
                                     
                                 </div>
@@ -297,16 +206,16 @@
                                 <!-- 여기서 부터 가로 표 시작 -->
                                 <div id="horizon_double_section">
                                     <div class="horizon_double_key">바코드</div>
-                                    <div class="horizon_double_value"><input type="text" placeholder="ex) 8 801043 015226" name="barcode"></div>
+                                    <div class="horizon_double_value"><input type="text" placeholder="ex) 8 801043 015226" name="barcode" value="${ramyun.barcode}"></div>
                                     <div class="horizon_double_key">품목보고번호</div>
-                                    <div class="horizon_double_value"><input type="text" placeholder="ex) 19760342001163" name="item_report_number"></div>
+                                    <div class="horizon_double_value"><input type="text" placeholder="ex) 19760342001163" name="itemReportNumber" value="${ramyun.itemReportNumber}"></div>
                                 </div>
                                 
                                 <div id="horizon_double_section">
                                     <div class="horizon_double_key">면 모양</div>
-                                    <div class="horizon_double_value"><input type="text" placeholder="ex) 원형" name="noodle_shape"></div>
+                                    <div class="horizon_double_value"><input type="text" placeholder="ex) 원형" name="noodleShape" value="${ramyun.noodleShape}"></div>
                                     <div class="horizon_double_key">단종시기</div>
-                                    <div class="horizon_double_value"><input type="text" placeholder="ex) 현재생산중( 또는 단종됌)" name="discontinuance"></div>
+                                    <div class="horizon_double_value"><input type="text" placeholder="ex) 현재생산중( 또는 단종됌)" name="discontinuance" value="${ramyun.discontinuance}"></div>
                                 </div>
                                 <!-- 여기서 가로 표 끝 -->
                                 <!--세로위치 하나 추가  -->
@@ -316,14 +225,14 @@
                                     </div>
                                     <div class="horizon_value" >
                                         <!-- 스프구성을 적는다 -->
-                                        <input type="text" placeholder="ex) 가루형 스프 1개, 건더기 스프 1개, 올리브유" name="soup_composition">
+                                        <input type="text" placeholder="ex) 가루형 스프 1개, 건더기 스프 1개, 올리브유" name="soupComposition" value="${ramyun.soupComposition}">
                                     </div>
                                     <div class="horizon_key" style="height: 30px;">
                                         스프 위치
                                     </div>
                                     <div class="horizon_value" >
                                         <!-- 스프위치를 적는다.. -->
-                                        <input type="text" placeholder="ex) 면 위쪽(로고쪽) 또는 면 아래쪽(뒷면)" name="soup_position">
+                                        <input type="text" placeholder="ex) 면 위쪽(로고쪽) 또는 면 아래쪽(뒷면)" name="soupPosition" value="${ramyun.soupPosition}">
                                     </div>
                                     
                                 </div>
@@ -334,7 +243,7 @@
                             <div id="user_made_section" style="margin-top: 10px;">
                                 내용작성<br>
                                 <!-- 여기에 작성된 글이 들어가면 끝난다. -->
-                                <textarea name="user_edited_contents" id="user_edited_contents"></textarea>
+                                <input type="text" name="userEditedContents" id="userEditedContents" value="${ramyun.userEditedContents}">
                             </div>
 
                             <!-- 서브밋 버튼이다. -->
@@ -389,23 +298,7 @@
         
     </div>
 
-    <div id="footer">
-        <div id="footer_contents">
-            <br>
-            <br>
-            모든 라면위키의 저작물은 <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/kr/">CC BY-NC-SA 2.0</a>  규칙에 따라 이용 할 수 있습니다. 
-            저작권이 표기된 이미지 및 문서, 링크등은 제외됩니다. <br>
-            또한 각 문서의 저작권은 작성자에게 있으며, 모든 작성자는 기여한 부분의 저작권을 갖습니다. <br><br>
-    
-             라면위키는 백과 사전이 아니며 과학적이지 않거나 편향적이거나 잘못된 설명이 있을 수 있습니다. <br>
-            라면위키 서비스는 한국의 모든 라면을 좋아하는 사람들에게 각각의 지식을 공유하기 위해 제작되었습니다. <br>
-            이용하는 모든 사용자에게 즐거운 시간이 되길 바랍니다.
-            <br><br><br>
-            <div style="text-align: left; font-size: 9px;">라면위키는 비상업적인 목적으로 운영됩니다.</div>
-        </div>
-        
-
-    </div>
+    <%@ include file="./footer.jsp" %>
     
 
     
