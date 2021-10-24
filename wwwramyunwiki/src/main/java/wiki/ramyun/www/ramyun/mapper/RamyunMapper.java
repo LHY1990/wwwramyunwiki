@@ -47,8 +47,15 @@ public interface RamyunMapper {
 			@Param("transfat") String transfat, @Param("saturatedfat") String saturatedfat, @Param("cholesterol") String cholesterol, @Param("protein") String protein,
 			@Param("calcium") String calcium, @Param("image") String image, @Param("userEditedContents") String userEditedContents, @Param("brandNameKor") String brandNameKor);
 
-	
+	//검색창에서 라면이름 검색할때
 	@Select("select * from ramyun where brand_name_kor = \"${searchBoxInput}\"")
 	public RamyunVO selectRamyunFromDB(@Param("searchBoxInput")String searchBoxInput);
+
+	//메인페이지 우측 탭에서 리스트 가져올때 10개 가져옴
+	@Select("select brand_name_kor, updated_date from ramyun order by updated_date desc limit 10")
+	public List<RamyunVO> getRecentsUpdateList();
+
+	@Select("select brand_name_kor, updated_date, user_edited_contents from ramyun order by updated_date desc limit 28")
+	public List<RamyunVO> getRecentsUpdateListWhole();
 
 }

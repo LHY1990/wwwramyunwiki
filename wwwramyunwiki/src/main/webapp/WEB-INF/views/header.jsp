@@ -20,24 +20,24 @@
         </div>
         <div class="inner_top_pannel_link" >
             <div class="tab_linking">
-                <a href="./recentupdating.html" style="color: white;">최근변경</a>
+                <a href="./recentupdating" style="color: white;">최근변경</a>
             </div>
         </div>
         <div class="inner_top_pannel_link">
             <div class="tab_linking">
-                <a href="./nutrient.html" style="color: white;">영양성분</a>
-            </div>
-            
-        </div>
-        <div class="inner_top_pannel_link">
-            <div class="tab_linking">
-                <a href="./factory.html" style="color: white;">제조공장</a>
+                <a href="./nutrient" style="color: white;">영양성분</a>
             </div>
             
         </div>
         <div class="inner_top_pannel_link">
             <div class="tab_linking">
-                <a href="./tag.html" style="color: white;">태그검색</a>
+                <a href="./factory" style="color: white;">제조공장</a>
+            </div>
+            
+        </div>
+        <div class="inner_top_pannel_link">
+            <div class="tab_linking">
+                <a href="./tag" style="color: white;">태그검색</a>
             </div>
             
         </div>

@@ -335,7 +335,7 @@ a{
 }
 #update_list{
     height: 60px;
-    width: 280px;
+    width: 100%;
     /* 280 600 임 기본면적이 */
     font-family: "Pretendard-Regular";
     text-align: center;

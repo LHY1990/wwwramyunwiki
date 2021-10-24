@@ -1,6 +1,7 @@
 package wiki.ramyun.www.ramyun.serviceImplement;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -64,7 +65,7 @@ public class RamyunDAO {
 	}
 
 
-	public RamyunVO selectRamyun(String searchBoxInput)throws Exception {
+	public RamyunVO selectRamyun(String searchBoxInput){
 		RamyunVO vo=null;
 		try {
 			vo=mapper.selectRamyunFromDB(searchBoxInput);
@@ -75,5 +76,17 @@ public class RamyunDAO {
 		return vo;
 		
 		
+	}
+
+
+	public List<RamyunVO> getRecentsUpdateList() {
+		List<RamyunVO> list=mapper.getRecentsUpdateList();
+		return list;
+	}
+
+
+	public List<RamyunVO> getRecentsUpdateListWhole() {
+		List<RamyunVO> list=mapper.getRecentsUpdateListWhole();
+		return list;
 	}
 }

@@ -70,7 +70,7 @@
                                     
                                 </div>
                                 <div id="image">
-                                    ${ramyun.image}
+                                    <img src="${ramyun.image}" alt="라면 이미지" style="width: 100%; height: 100%;">
                                 </div>
                                 <div >
                                     <div class="ramyun_info_div">
@@ -163,7 +163,7 @@
                         <div id="additional_info">
                                 <!-- 여기까지가 늘어나는 가변성 리스트 시작 -->
                             <div  class="class_value_cover">
-                                <div class="horizon_key" style="height: 30px;">
+                                <div class="horizon_key"  style="height: 30px;">
                                     원재료명
                                 </div>
                                 <div class="horizon_value">

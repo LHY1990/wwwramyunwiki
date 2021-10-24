@@ -385,9 +385,10 @@ a{
 input{width: 97%;height: 88%;text-align: center; outline: none;}
 .textareaFix{
     width: 99%; 
-    height: 40px;
+    height: 60px;
     resize: none;
     overflow-y:scroll ;
+    
 }
 
 #user_edited_contents{

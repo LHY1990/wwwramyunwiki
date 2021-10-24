@@ -310,6 +310,7 @@ a{
     float: left;
     width: 75%;
     height: 100%;
+    
 }
 
 #additional_info{
@@ -365,6 +366,7 @@ a{
     width: 100%;
     height: auto;
     text-align: left;
+    word-break: break-all;
 }
 
 

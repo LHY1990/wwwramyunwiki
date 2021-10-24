@@ -6,7 +6,17 @@
 <div class="right_info_tab">
     <div id="recent_update_list" class="dotted">
         <div id="update_list">
-            최근 업데이트 
+            <br>
+            <p style="text-align: center; margin: 0px; padding: 0px;">최근 업데이트</p> 
+            <c:forEach var="aRamyun" items="${ramyunList}" >
+                <div style="width: 100%;height: 0px; outline: 1px dotted rgba(0, 0, 0, 0.123);margin-top:10px;   text-overflow: ellipsis;"></div>
+
+                <p style=" text-align: left;  display: table-cell;vertical-align: middle; padding-top: 3px;padding-bottom: 3px; padding-left: 10px">  
+                <a href="./findramyun.do?name=${aRamyun.brandNameKor}" style="text-decoration: none">${aRamyun.brandNameKor}</a><br> 
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${aRamyun.updatedDate}
+                
+                </p>
+            </c:forEach>
         </div>
         
     </div>

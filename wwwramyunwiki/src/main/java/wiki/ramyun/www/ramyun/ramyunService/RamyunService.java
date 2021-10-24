@@ -1,5 +1,7 @@
 package wiki.ramyun.www.ramyun.ramyunService;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,10 +30,20 @@ public class RamyunService {
 		dao.updateRamyun(vo);
 	}
 
-	public RamyunVO getRamyunData(String searchBoxInput)throws Exception {
+	public RamyunVO getRamyunData(String searchBoxInput){
 		RamyunVO vo=dao.selectRamyun(searchBoxInput);
 		
 		return vo;
 		
+	}
+
+	public List<RamyunVO> getRecentsUpdateListFromDB() {
+		
+		return dao.getRecentsUpdateList();
+	}
+
+	public List<RamyunVO> getRecentsUpdateListFromDBWhole() {
+		// TODO Auto-generated method stub
+		return dao.getRecentsUpdateListWhole();
 	}
 }

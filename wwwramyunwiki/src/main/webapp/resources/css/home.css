@@ -357,10 +357,10 @@ a{
     width: 280px;
     /* 280 600 임 기본면적이 */
     font-family: "Pretendard-Regular";
-    text-align: center;
+    text-align: left;
     /* 아래 두개는 같이 써야하네 */
-    display: table-cell;
-    vertical-align: middle;
+    /* display: table-cell;
+    vertical-align: middle; */
     
 }
 
