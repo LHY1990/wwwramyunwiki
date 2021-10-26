@@ -2,21 +2,19 @@
 
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/css/recentupdating.css">
+    <link rel="stylesheet" href="../../resources/css/nutrient.css">
     <link rel="stylesheet" href="../../resources/css/sidetab.css">
 
     <script type="text/javascript" src="../../resources/javascript/home.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <title>라면위키:최근변경 -라면위키</title>
+    <title>라면위키:영양성분 -라면위키</title>
 
 </head>
 <body>
@@ -32,13 +30,13 @@
                 <!-- 모든컨텐츠는 여기서 시작해서 -->
                     <div id="information_tab">
                         <div id="section">
-                            라면위키 : 최근 변경
+                            라면위키 : 영양 성분
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
                                 <div class="sections_link">역사</div>
                                 <div class="sections_link">추천수</div>
-                                <div class="sections_link">편집</div>
+                                <div class="sections_link"><a href="./editingredient.do?findname=${ingredient.name}" ></a>편집</div>
                                 
                             </div>
                             
@@ -51,36 +49,39 @@
                         </div>
                         
                         <div id="sorting_category">
-                            분류 : 최근 변경
+                            분류 : 영양 성분
                         </div>
                         
 
 
-                        <div style="width: 100%; height: 10px;">
+                        <div style="width: 100%; height: 40px;">
 
                         </div>
-                        
+                        <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
+                        <div id="ingredient_info">
+                            <div id="ingredient_items">
+                            &nbsp; 원재료명 : <br>
+                            &nbsp; 분류 : <br>
                             
-                            <c:forEach var="aRamyun" items="${ramyunListWhole}" >
-                                
-
-                                <!-- <p style=" text-align: left;  display: table-cell;vertical-align: middle; padding-top: 3px;padding-bottom: 3px; padding-left: 10px">   -->
-                                <div style="width: 20%;height: 100%; float: left; text-align: left; text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><a href="./findramyun.do?name=${aRamyun.brandNameKor}" style="text-decoration: none">${aRamyun.brandNameKor}</a></div>
-                                <div style="width: 20%;height: 100%; float: left; text-align: left; text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">${aRamyun.updatedDate}</div>
-                                <div style="width: 60%;height: 100%; float: left; text-align: left; text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">${aRamyun.userEditedContents}</div>
-                                <div style="width: 100%;height: 0px; outline: 1px dotted rgba(0, 0, 0, 0.123); float: right;"></div>
-                                
-                                <!-- </p> -->
-                            </c:forEach>
+                            </div>
                             
                             
-                        
-
+                            
+                            
+                        </div>
+                        <div id="ingredient_information">
+                            <br>
+                            &nbsp; 설명  <br>
+                        </div>
+                        <div id="user_description">
+                            여기에 내용이 들어간다
+                        </div>
+                        <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
                         <div style="width: 100%; height: 20px;">
 
                         </div>
 
-                        
+                        <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
 
 
                         
@@ -88,6 +89,7 @@
                         
                         
                     </div>
+                       
 
 
                 <!-- 여기서 끝나야한다 -->

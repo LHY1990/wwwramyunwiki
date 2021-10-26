@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import wiki.ramyun.wiki.ramyun.RamyunVO;
+import wiki.ramyun.www.ramyun.RamyunVO;
 import wiki.ramyun.www.ramyun.mapper.RamyunMapper;
 
 @Component

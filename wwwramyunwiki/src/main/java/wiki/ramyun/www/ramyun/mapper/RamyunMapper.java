@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import wiki.ramyun.wiki.ramyun.RamyunVO;
+import wiki.ramyun.www.ramyun.RamyunVO;
 
 @Mapper
 public interface RamyunMapper {

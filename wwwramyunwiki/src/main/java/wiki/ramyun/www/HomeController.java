@@ -1,4 +1,4 @@
-package wiki.ramyun.wiki;
+package wiki.ramyun.www;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,10 +32,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import wiki.ramyun.wiki.ramyun.RamyunVO;
+import wiki.ramyun.www.ingredient.IngredientVO;
 import wiki.ramyun.www.member.MemberVO;
 import wiki.ramyun.www.member.memberService.MemberService;
 import wiki.ramyun.www.member.serviceImplement.MemberDAO;
+import wiki.ramyun.www.ramyun.RamyunVO;
 import wiki.ramyun.www.ramyun.ramyunService.RamyunService;
 
 /**
@@ -58,6 +59,9 @@ public class HomeController {
 	@Autowired
 	@Qualifier("ramyunService")
 	private RamyunService ramyunService;
+	
+	
+	
 	
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
 	@GetMapping("home")
@@ -230,7 +234,10 @@ public class HomeController {
 			//여기에 찾을수없다는 jsp를 만들자 에러구문도
 			
 		}
-		
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
 		return mav;
 	}
 	
@@ -260,6 +267,11 @@ public class HomeController {
 			
 		}
 		
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
+		
 		return mav;
 	}
 	@GetMapping("editramyun.do")
@@ -273,7 +285,10 @@ public class HomeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
 		
 		return mav;
 		
@@ -281,37 +296,50 @@ public class HomeController {
 	}
 	@PostMapping("edit.do")
 	public ModelAndView afterRamyunEdited(ModelAndView mav, RamyunVO vo,@RequestParam("uploadedimage") MultipartFile uploadedimage, HttpServletRequest request) {
-		//실제 파일위치
 		
-		String originalFileName= uploadedimage.getOriginalFilename();                          //업로드된 파일이미지의 이름
-		String originalFiletype= originalFileName.substring(originalFileName.lastIndexOf("."));//업로드된 파일이미지의 확장자
-		System.out.println(originalFileName);
-		System.out.println(originalFiletype);
-	
-		//저장경로 이거 작동하는데 실제서버용
-		String savePath = request.getSession().getServletContext().getRealPath("/")+"resources\\images";
-		//슬래시가 역슬래시로 변경되야해서
-		savePath.replace("\\", "/");
-		//아래는 이미지 경로 변경
-		vo.setImage(savePath+"\\"+vo.getbrandNameKor()+originalFiletype);
-		//vo.setImage(savePath);
 		
-		file=new File(savePath,vo.getbrandNameKor()+originalFiletype); 
-		System.out.println(file.getAbsolutePath());
-		if(!file.exists()) {
-			file.mkdirs();
+		if(!uploadedimage.isEmpty()) {
+			System.out.println("~~~~업로드된파일이있음~~~~~");
+			String originalFileName= uploadedimage.getOriginalFilename();                          //업로드된 파일이미지의 이름
+			String originalFiletype= originalFileName.substring(originalFileName.lastIndexOf("."));//업로드된 파일이미지의 확장자
+			System.out.println(originalFileName);
+			System.out.println(originalFiletype);
+		
+			//저장경로 이거 작동하는데 실제서버용
+			String savePath = request.getSession().getServletContext().getRealPath("/")+"resources\\images";
+			//슬래시가 역슬래시로 변경되야해서
+			savePath.replace("\\", "/");
+			//아래는 이미지 경로 변경
+			vo.setImage(savePath+"\\"+vo.getbrandNameKor()+originalFiletype);
+			//vo.setImage(savePath);
 			
+			file=new File(savePath,vo.getbrandNameKor()+originalFiletype); 
+			System.out.println(file.getAbsolutePath());
+			if(!file.exists()) {
+				file.mkdirs();
+				
+				
+			}else {
+				System.out.println("파일위치 이미있음");
+			}
 			
+			try {
+				uploadedimage.transferTo(file);
+			} catch (IllegalStateException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else {
-			System.out.println("파일위치 이미있음");
+			System.out.println("~~~~업로드된파일이없음~~~~~");
 		}
 		
-		try {
-			uploadedimage.transferTo(file);
-		} catch (IllegalStateException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
+		
 		
 		
 		
@@ -347,6 +375,22 @@ public class HomeController {
 		return mav;
 	}
 	
-
+	@GetMapping("nutrient")
+	public ModelAndView getNutrient(ModelAndView mav) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
+		mav.setViewName("nutrient");
+		
+		return mav;
+	}
+	
+	@GetMapping("editingredient.do")
+	public ModelAndView editIngredient(IngredientVO ingredient, String findname, ModelAndView mav) {//얘만 findname을 인자로 받는다. 변수명이 겹쳐서
+		작업은 여기서 부터 시작하고 시작하면 태그검색부터 만들것
+		
+		return mav;
+	}
 	
 }

@@ -1,7 +1,9 @@
-package wiki.ramyun.wiki.ramyun;
+package wiki.ramyun.www.ramyun;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class RamyunVO {
 	private String brandNameKor;          //라면 브랜드 명

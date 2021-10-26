@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import wiki.ramyun.wiki.ramyun.RamyunVO;
+import wiki.ramyun.www.ramyun.RamyunVO;
 import wiki.ramyun.www.ramyun.serviceImplement.RamyunDAO;
 
 @Service

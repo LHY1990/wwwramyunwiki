@@ -21,7 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="wiki.ramyun.wiki" />
+	<context:component-scan base-package="wiki.ramyun.www" />
 	
 	
 	

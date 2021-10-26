@@ -1,5 +1,5 @@
 /* 전체 레이아웃 파악용 */
-*{outline-color: brown;outline-style: dotted; outline-width: 1px;}
+/* *{outline-color: brown;outline-style: dotted; outline-width: 1px;} */
 .dotted{
     outline-color: rgb(76, 68, 87);outline-style: dotted; outline-width: 1px;
     
@@ -245,20 +245,16 @@ a{
 
 #ingredient_info{
     width: 100%;
-    height: 340px;
+    height: 40px;
     text-align: left;
 }
 #ingredient_items{
     float: left;
     height: 100%;
-    width: 500px;
+    width: 100%;
 
 }
-#ingredient_picture{
-    float: left;
-    height: 100%;
-    width: 340px;
-}
+
 #ingredient_information{
     width: 100%;
     text-align: left;
@@ -349,54 +345,7 @@ a{
 
 
 /* 우측 탭 컨트롤 */
-
-.right_info_tab{
-
-    margin-top: 10px;
-    float: right;
-    width: 280px;
-    height: 1500px;
-    
-}
-
-#recent_update_list{
-    
-    text-align: left;
-    width: 100%;
-    height: 600px;
-    background-color: rgb(247, 247, 247);
-}
-#update_list{
-    height: 60px;
-    width: 280px;
-    /* 280 600 임 기본면적이 */
-    font-family: "Pretendard-Regular";
-    text-align: center;
-    /* 아래 두개는 같이 써야하네 */
-    display: table-cell;
-    vertical-align: middle;
-    
-}
-
-#empty_space{
-    width: 100%;
-    height: 100px;
-}
-#todays_random{
-    width: 100%;
-    height: 300px;
-    background-color: rgb(247, 247, 247);
-}
-#random_list{
-    height: 60px;
-    width: 280px;
-    /* 280 600 임 기본면적이 */
-    font-family: "Pretendard-Regular";
-    text-align: center;
-    /* 아래 두개는 같이 써야하네 */
-    display: table-cell;
-    vertical-align: middle;
-}
+/* sidetab.css 사용 */
 /* 우측 탭 컨트롤 끝 */
 
 

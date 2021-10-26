@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/ramyun.css">
+    <link rel="stylesheet" href="../../resources/css/sidetab.css">
 
     <script type="text/javascript" src="../../resources/javascript/home.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -271,24 +272,7 @@
                 
             </div>   
             <!-- 우측 탭 시작 -->
-            <div class="right_info_tab">
-                <div id="recent_update_list" class="dotted">
-                    <div id="update_list">
-                        최근 업데이트 
-                    </div>
-                    
-                </div>
-                <div id="empty_space">
-
-                </div>
-                <div id="todays_random" class="dotted">
-                    <div id="random_list">
-                        오늘의 라면
-                    </div>
-                </div>
-                
-                
-            </div> 
+            <%@ include file="./sidetab.jsp" %> 
             <!-- 우측 탭 끝 -->
         </div>
         
