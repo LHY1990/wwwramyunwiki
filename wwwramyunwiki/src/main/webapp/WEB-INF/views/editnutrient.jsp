@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE html>
@@ -78,7 +78,7 @@
                                 
                             </div>
                             <div id="ingredient_information" style="margin-top: 10px;">
-                                설명  <br>
+                                
                             </div>
                             <div id="user_description">
                                 <textarea name="description" id="description" style="width: 99%; height: 1200px; resize: none;overflow-y: scroll;">${ingredient.description}</textarea>

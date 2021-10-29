@@ -33,12 +33,16 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import wiki.ramyun.www.ingredient.IngredientVO;
-import wiki.ramyun.www.ingredient.ingredientService.IngredientService;
+import wiki.ramyun.www.ingredient.service.IngredientService;
+import wiki.ramyun.www.manufactory.ManufactoryVO;
+import wiki.ramyun.www.manufactory.service.ManufactoryService;
 import wiki.ramyun.www.member.MemberVO;
-import wiki.ramyun.www.member.memberService.MemberService;
-import wiki.ramyun.www.member.serviceImplement.MemberDAO;
+import wiki.ramyun.www.member.dao.MemberDAO;
+import wiki.ramyun.www.member.service.MemberService;
 import wiki.ramyun.www.ramyun.RamyunVO;
-import wiki.ramyun.www.ramyun.ramyunService.RamyunService;
+import wiki.ramyun.www.ramyun.service.RamyunService;
+import wiki.ramyun.www.search.SearchVO;
+import wiki.ramyun.www.search.service.SearchService;
 
 /**
  * Handles requests for the application home page.
@@ -65,7 +69,13 @@ public class HomeController {
 	@Qualifier("ingredientService")
 	private IngredientService ingredientService;
 	
+	@Autowired
+	@Qualifier("manufactoryService")
+	private ManufactoryService manufactoryService;
 	
+	@Autowired
+	@Qualifier("searchService")
+	private SearchService searchService;
 	
 	
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -415,4 +425,19 @@ public class HomeController {
 		return mav;
 	}
 	
+	@GetMapping("manufactory")
+	public ModelAndView getManufactory(ModelAndView mav) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
+		ManufactoryVO vo=manufactoryService.getRecentOne();
+		
+		
+		mav.addObject("manufactory", vo);
+		
+		System.out.println("제조공장 접근중");
+		mav.setViewName("manufactory");
+		return mav;
+	}
 }

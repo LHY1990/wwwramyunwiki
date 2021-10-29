@@ -1,0 +1,486 @@
+/* 전체 레이아웃 파악용 */
+/* *{outline-color: brown;outline-style: dotted; outline-width: 1px;} */
+.dotted{
+    outline-color: rgb(76, 68, 87);outline-style: dotted; outline-width: 1px;
+    
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+/* 몸통 색 */
+body{
+    margin: 0px; 
+    background-color: rgb(235, 241, 241);
+}
+/* 패널 하이퍼링크 효과 조정 */
+.top_pannel_link a{
+    text-decoration:none ;    
+}
+.top_pannel_link a:visited{
+    color: white;
+}
+.alert_section a{
+    text-decoration:none ; 
+    
+}
+
+/* 탑 패널 컨트롤 시작 */
+.top_pannel{
+    height: 50px;
+    width: 100%; 
+    background-color: rgb(89, 63, 114); 
+    /* background-color: rgb(190, 107, 30); */
+    position: fixed; 
+    
+    text-align: center;
+    font-family: "HSGaeulSenggak20";
+    color: white;
+    
+
+            
+}
+.top_pannel_link{
+    
+    /* margin-top: 2px; */
+    height: 98%;
+    width: 1180px;
+    font-size: 16px;
+    display: inline-block;
+    text-align: center;
+    align-items: center;
+    
+    
+    
+}
+.inner_top_pannel_link{
+    
+    
+    height: 100%;
+    float: left;
+    
+    font-size: 15px;
+    vertical-align: middle;
+
+    margin-left: 10px;    
+}
+.tab_linking{
+    margin-top: 15px;
+}
+
+
+#logo_icon{
+    font-size: 30px;
+    margin-top: 8px;
+}
+#title{
+    margin-top: 5px;
+    font-size: 30px;
+    font-family: "ONE-Mobile-POP";
+    
+}
+
+
+/* 탑 패널 컨트롤끝 */
+
+
+
+/* 서치박스 제어 */
+
+.search_box{
+    width: 330px;
+    height: 100%;
+    float: right;
+    
+}
+#inner_search_box{
+    margin-top: 9px;
+    height: 80%s;
+    
+}
+
+
+
+#random_icon{
+    margin-top: 5px;
+    margin-right: 3px;
+    height: 20px;
+    width: 20px;
+    float: left;
+}
+#search_box_textarea{
+    height: 100%;
+    width: 230px;
+    float: left;
+    resize: none;
+    text-align: left;
+    font-size: 15px;
+    font-family: "Cafe24Ssurround";
+    
+    
+}
+#search_icon{
+    margin-left: 4px;
+    margin-top: 3px;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    float: left;
+
+}
+#member_icon{
+    margin-left: 15px;
+    float: left;
+    font-size: 24px;
+    margin-top: 0px;
+    height: 100%;
+}
+
+/* 팝업 로그인 */
+#login_popup{
+    display: none;
+    width: 150px;
+    height: 230px;
+    background-color: rgb(247, 247, 247);;
+    border: rgb(89, 63, 114) dotted 1px;
+    float: right;
+    color: black;
+    /* z-index: 4; */
+    text-align: left;
+    font-size: 14px;
+    font-family: "Pretendard-Regular";
+}
+
+
+/* 팝업 로그인  끝*/
+
+
+
+/* 서치박스 제어 끝 */
+
+
+
+
+/* 바디 컨트롤 */
+
+.home_frame{
+    
+    text-align: center;
+    
+}
+a{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.inner_frame{
+    margin-top: 50px;
+    display: inline-block;
+    height: 1300px; 
+    width: 1180px;
+    
+}
+.contents_frame{
+    float: left;
+    width: 880px;
+    height: 100%;
+    background-color: rgb(247, 247, 247);
+}
+#contents_margin{
+    width: 850px;
+    height: 99%;
+    margin:15px ;
+}
+
+#information_tab{
+    width: 100%;
+    height: 38px;
+    
+}
+
+
+#section{
+    font-size: 30px;
+    font-family: "SBAggroB";
+    float: left;
+    /* @Override */
+    text-align: left;
+    height: 100%;
+}
+#section_linkings{
+    width: 100%;
+    height: 100%;
+    
+    
+}
+#section_linkings_frame{
+    width: 60%;
+    height: 80%;
+    float: right;
+    
+}
+.sections_link{
+    width: 70px;
+    height: 95%;
+
+    text-align: center;
+    font-size: 14px;
+    float: right;
+    
+    border: 1px dotted rgb(122, 103, 129);
+    line-height: 200%;
+    vertical-align: center;
+}
+#edited_time{
+    font-size: 13px;
+    text-align: right;
+}
+#sorting_category{
+    height: 22px;
+    border: 1px dotted rgb(122, 103, 129);
+    border-radius: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
+    text-align: left;
+    font-size: 11px;
+    line-height: 200%;
+}
+
+/* 여기가 공장정보시작/////////////////////////////// */
+#manufactory_info{
+    width: 100%;
+    height: 150px;
+    text-align: left;
+}
+#manufactory_items{
+    float: left;
+    height: 100%;
+    width: 100%;
+
+}
+
+#manufactory_information{
+    width: 100%;
+    height: auto;
+    text-align: left;
+}
+#manufactory_description{
+    width: 100%;
+    height: 400px;
+    text-align: left;
+    margin-top: 20px;
+    word-break: break-all;
+    background-color: rgba(214, 214, 214, 0.12);
+    
+}
+#manufactory_map{
+    width: 100%;
+    height: 400px;
+    background-color: rgba(182, 162, 162, 0.12);
+}
+
+
+
+
+
+
+
+/* 공장 정보 끝 /////////////////////////////////////////*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#alert_info{
+    width: 845px;
+    height: 326px;
+
+    margin-top: 30px;
+    border-radius: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+
+    outline: solid 2px rgb(122, 103, 129);
+
+
+}
+
+.alert_section{
+    height: 80px;
+    width: 100%;
+    margin-top: 2px;
+    outline: dotted 1px rgb(89, 63, 114); ;
+}
+.alert_left_section{
+    width: 15%;
+    height: 100%;
+    float: left;
+    color : white;
+    background-color: rgb(89, 63, 114); 
+    font-size: 50px;
+    line-height: 150%;
+
+    /* 아래 두개는 같이 써야하네 */
+    /* display: table-cell; */
+    /* vertical-align: middle; */
+}
+.alert_right_section{
+    width: 83%;
+    height: 100%;
+    float: right;
+    color : black;
+    font-size: 14px;
+    text-align: left;
+    vertical-align: middle;
+    
+}
+#statistics{
+    width: 846px;
+    height: 126px;
+    border-radius: 4px;
+    border: solid 2px rgb(122, 103, 129);
+    text-align: left;
+}
+#inner_statistics{
+    width: 95%;
+    height: 70%;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+#links{
+    width: 846px;
+    height: 126px;
+    border-radius: 4px;
+    border: dotted 2px rgb(122, 103, 129,0.5 );
+    text-align: left;
+}
+#links a:visited{
+    text-decoration:none ;   
+}
+
+
+/* 바디 컨트롤 끝 */
+
+
+/* 우측 탭 컨트롤 */
+
+.right_info_tab{
+
+    margin-top: 10px;
+    float: right;
+    width: 280px;
+    height: 1500px;
+    
+}
+
+#recent_update_list{
+    
+    text-align: left;
+    width: 100%;
+    height: 600px;
+    background-color: rgb(247, 247, 247);
+}
+#update_list{
+    height: 60px;
+    width: 280px;
+    /* 280 600 임 기본면적이 */
+    font-family: "Pretendard-Regular";
+    text-align: center;
+    /* 아래 두개는 같이 써야하네 */
+    display: table-cell;
+    vertical-align: middle;
+    
+}
+
+#empty_space{
+    width: 100%;
+    height: 100px;
+}
+#todays_random{
+    width: 100%;
+    height: 300px;
+    background-color: rgb(247, 247, 247);
+}
+#random_list{
+    height: 60px;
+    width: 280px;
+    /* 280 600 임 기본면적이 */
+    font-family: "Pretendard-Regular";
+    text-align: center;
+    /* 아래 두개는 같이 써야하네 */
+    display: table-cell;
+    vertical-align: middle;
+}
+/* 우측 탭 컨트롤 끝 */
+
+
+/* 풋터 */
+#footer{
+    height: 300px;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+    margin-top: -10px;
+    text-align: center;
+    
+}
+#footer_contents{
+    height: 250px;
+    width: 1180px;
+    text-align: left;
+    font-size: 12px;
+    display: inline-block;
+}
+
+
+
+/* 폰트 */
+@font-face {
+    font-family: 'ONE-Mobile-POP';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'HSGaeulSenggak20';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSGaeulSenggak20.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SBAggroB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+/* 폰트 끝 */

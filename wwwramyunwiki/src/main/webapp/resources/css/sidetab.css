@@ -1,4 +1,22 @@
 /* 우측 탭 컨트롤 */
+#no_a_deco:link{
+    text-decoration: none;
+    color: black;
+}
+#no_a_deco:visited{
+    text-decoration: none;
+    color: black;
+}
+#no_a_deco:active{
+    text-decoration: none;
+    color: black;
+}
+#no_a_deco:hover{
+    text-decoration: none;
+    color: rgb(170, 74, 10);
+}
+/* 위는 모든 하이퍼링크 css를 무효화함 */
+
 
 .right_info_tab{
 

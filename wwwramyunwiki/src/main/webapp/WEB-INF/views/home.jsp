@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE html>
@@ -43,7 +43,9 @@
                             
                         </div>
                         <div id="edited_time">
-                            최근 수정 시각 : 2021년 10월 10일 12시 30분 12초
+                        		<c:set var="now" value="<%=new java.util.Date()%>" />
+							<c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy" /></c:set> 
+                            최근 접속 시각 : <fmt:formatDate value="${now}" pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" />
                         </div>
                         <div style="height: 100px;">
 

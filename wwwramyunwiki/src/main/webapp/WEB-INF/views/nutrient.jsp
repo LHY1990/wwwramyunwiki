@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE html>
@@ -43,14 +43,17 @@
                             
                         </div>
                         <div id="edited_time">
-                            최근 수정 시각 : ${ingredient.updatedDate}
+                       		최근 수정 시각 : 
+                        		<fmt:parseDate value="${ingredient.updatedDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both"/>
+	                			<fmt:formatDate pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" value="${parsedDateTime}"/>
+                            
                         </div>
                         <div style="height: 100px;">
 
                         </div>
                         
                         <div id="sorting_category">
-                            분류 : 영양 성분 | ${ingredient.name}
+                            분류 : 영양 성분 | ${ingredient.name} (최근 업데이트)
                         </div>
                         
 
@@ -71,7 +74,7 @@
                             
                         </div>
                         <div id="ingredient_information" style="margin-top: 10px;">
-                            설명  <br>
+                            
                         </div>
                         <div id="user_description" >
                             ${ingredient.description}

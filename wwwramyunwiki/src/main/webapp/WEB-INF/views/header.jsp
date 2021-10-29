@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <!-- 상단 패널 시작 -->
@@ -31,7 +31,7 @@
         </div>
         <div class="inner_top_pannel_link">
             <div class="tab_linking">
-                <a href="./factory" style="color: white;">제조공장</a>
+                <a href="./manufactory" style="color: white;">제조공장</a>
             </div>
             
         </div>

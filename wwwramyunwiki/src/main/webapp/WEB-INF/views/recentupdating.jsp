@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 
@@ -44,7 +44,10 @@
                             
                         </div>
                         <div id="edited_time">
-                            최근 수정 시각 : 2021년 10월 10일 12시 30분 12초
+                        		<c:set var="now" value="<%=new java.util.Date()%>" />
+							<c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy" /></c:set> 
+                            최근 접속 시각 : <fmt:formatDate value="${now}" pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" />
+                            
                         </div>
                         <div style="height: 100px;">
 
@@ -66,7 +69,11 @@
 
                                 <!-- <p style=" text-align: left;  display: table-cell;vertical-align: middle; padding-top: 3px;padding-bottom: 3px; padding-left: 10px">   -->
                                 <div style="width: 20%;height: 100%; float: left; text-align: left; text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><a href="./findramyun.do?name=${aRamyun.brandNameKor}" style="text-decoration: none">${aRamyun.brandNameKor}</a></div>
-                                <div style="width: 20%;height: 100%; float: left; text-align: left; text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">${aRamyun.updatedDate}</div>
+                                <div style="width: 20%;height: 100%; float: left; text-align: left; text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+                                    <fmt:parseDate value="${aRamyun.updatedDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both"/>
+	              				   <fmt:formatDate pattern="yyyy.MM.dd HH:mm:ss" value="${parsedDateTime}"/>
+                                
+                                </div>
                                 <div style="width: 60%;height: 100%; float: left; text-align: left; text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">${aRamyun.userEditedContents}</div>
                                 <div style="width: 100%;height: 0px; outline: 1px dotted rgba(0, 0, 0, 0.123); float: right;"></div>
                                 

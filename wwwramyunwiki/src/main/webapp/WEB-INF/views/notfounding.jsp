@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE html>
@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/home.css">
+    <link rel="stylesheet" href="../../resources/css/sidetab.css">
 
     <script type="text/javascript" src="../../resources/javascript/home.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -55,7 +56,7 @@
                         
 
                         <div id="alert_info">
-                            입력한 검색어 ${message}에 해당하는 정보가 없습니다.
+                            입력한 검색어 "${message}"에 해당하는 정보가 없습니다.
                             
 
                         </div>
