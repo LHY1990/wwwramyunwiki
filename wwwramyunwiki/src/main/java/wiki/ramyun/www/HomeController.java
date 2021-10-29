@@ -33,6 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import wiki.ramyun.www.ingredient.IngredientVO;
+import wiki.ramyun.www.ingredient.ingredientService.IngredientService;
 import wiki.ramyun.www.member.MemberVO;
 import wiki.ramyun.www.member.memberService.MemberService;
 import wiki.ramyun.www.member.serviceImplement.MemberDAO;
@@ -60,6 +61,10 @@ public class HomeController {
 	@Qualifier("ramyunService")
 	private RamyunService ramyunService;
 	
+	@Autowired
+	@Qualifier("ingredientService")
+	private IngredientService ingredientService;
+	
 	
 	
 	
@@ -69,10 +74,6 @@ public class HomeController {
 		//logger.info("Welcome home! The client locale is {}.", locale);
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
 
-		//리스트 잘 넘어오나 테스트
-		for(RamyunVO vo : ramyunRecentUpdatedList) {
-			System.out.println(vo.getbrandNameKor()+" "+vo.getUpdatedDate());
-		}//테스트끝
 		
 		model.addAttribute("ramyunList", ramyunRecentUpdatedList);
 		
@@ -366,9 +367,7 @@ public class HomeController {
 		//일단 라면만 다 뿌리자 28개
 		List<RamyunVO> ramyunUpdatedList = ramyunService.getRecentsUpdateListFromDBWhole();
 		mav.addObject("ramyunListWhole", ramyunUpdatedList);
-		for(RamyunVO vo : ramyunUpdatedList) {
-			System.out.println(vo.getbrandNameEng());
-		}
+		
 		
 		
 		mav.setViewName("recentupdating");
@@ -381,15 +380,38 @@ public class HomeController {
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
 		mav.addObject("ramyunList", ramyunRecentUpdatedList);
 		//여기까지가 우측탭 정보
+		
+		IngredientVO ingredient;
+		
+		//임의로 한개의 영양정보를 가져온다.ingredient는 데이터베이스 이름,nutrient는 페이지이름
+		ingredient=ingredientService.getRecentOne();
+		mav.addObject("ingredient", ingredient);
 		mav.setViewName("nutrient");
+		
 		
 		return mav;
 	}
 	
 	@GetMapping("editingredient.do")
 	public ModelAndView editIngredient(IngredientVO ingredient, String findname, ModelAndView mav) {//얘만 findname을 인자로 받는다. 변수명이 겹쳐서
-		작업은 여기서 부터 시작하고 시작하면 태그검색부터 만들것
+		//이건 10개만 가져와서 오른쪽에 뿌리는것
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
 		
+		//아래는 편집탭으로 넘어가면서 같은 이름으로 가져오기
+		ingredient=ingredientService.selectIngredientByName(findname);
+		mav.addObject("ingredient", ingredient);
+		mav.setViewName("editnutrient");
+		return mav;
+	}
+	@PostMapping("editingredient.do")
+	public ModelAndView afterEditIngredient(IngredientVO vo, ModelAndView mav) {
+		//성분 수정뒤에 이 컨트롤러로 온다.
+		
+		ingredientService.updateIngredient(vo);
+		mav.addObject("ingredient",ingredientService.selectIngredientByName(vo.getName()));
+		mav.setViewName("nutrient");
 		return mav;
 	}
 	

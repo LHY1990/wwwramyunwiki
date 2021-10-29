@@ -8,9 +8,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="../../resources/css/sidetab.css">
     <link rel="stylesheet" href="../../resources/css/nutrient.css">
+    <link rel="stylesheet" href="../../resources/css/sidetab.css">
 
     <script type="text/javascript" src="../../resources/javascript/home.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -20,6 +19,7 @@
 </head>
 <body>
     <%@ include file="./header.jsp" %>
+    <!-- 상단패널 -->
     
 
     <!-- 홈 프레임 시작(컨텐츠 프레임 + 우측프레임) -->
@@ -37,7 +37,7 @@
                             <div id="section_linkings_frame">
                                 <div class="sections_link">역사</div>
                                 <div class="sections_link">추천수</div>
-                                <div class="sections_link"><a href="./editingredient.do?findname=${ingredient.name}" >편집</a></div>
+                                <div class="sections_link">편집</div>
                                 
                             </div>
                             
@@ -59,31 +59,42 @@
 
                         </div>
                         <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
-                        <div id="ingredient_info">
-                            <div id="ingredient_items">
-                            원재료명 : ${ingredient.name}<br>
-                            분류 : ${ingredient.type}<br>
-                            
+                        <form action="./editingredient.do" method="post"  >
+                            <div id="ingredient_info">
+                                <div id="ingredient_items">
+                                원재료명 : ${ingredient.name}<br>
+                                분류 : 
+                                <input type="text" name="name" value="${ingredient.name}" style="display: none;">
+                                <select name="type">
+                                    <option value="${ingredient.type}">${ingredient.type}</option>
+                                    <option value="동물성">동물성</option>
+                                    <option value="식물성">식물성</option>
+                                    <option value="조절제">조절제</option>
+                                </select><br>
+                                </div>
+                                
+                                
+                                
+                                
+                            </div>
+                            <div id="ingredient_information" style="margin-top: 10px;">
+                                설명  <br>
+                            </div>
+                            <div id="user_description">
+                                <textarea name="description" id="description" style="width: 99%; height: 1200px; resize: none;overflow-y: scroll;">${ingredient.description}</textarea>
+                                
                             </div>
                             
+                            <div style="width: 100%; height: 20px;">
+
+                            </div>
+                            <div style="width: 99%; height: 30px;">
+                                <input type="submit" value="등록" style="width: 100%;height: 100%;">
+                            </div>
                             
-                            
-                            
-                        </div>
-                        <div id="ingredient_information" style="margin-top: 10px;">
-                            설명  <br>
-                        </div>
-                        <div id="user_description" >
-                            ${ingredient.description}
-                        </div>
+                            <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
+                        </form>
                         <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
-                        <div style="width: 100%; height: 20px;">
-
-                        </div>
-
-                        <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
-
-
                         
                         
                         
@@ -99,16 +110,14 @@
                 
             </div>   
             <!-- 우측 탭 시작 -->
-            <%@ include file="./sidetab.jsp" %>
+            <%@ include file="./sidetab.jsp" %> 
             <!-- 우측 탭 끝 -->
         </div>
         
         
     </div>
 
-    <!-- 푸터시작 -->
     <%@ include file="./footer.jsp" %>
-    <!-- 푸터끝 -->
     
 
     
