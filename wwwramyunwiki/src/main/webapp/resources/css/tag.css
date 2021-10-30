@@ -369,8 +369,8 @@ a{
     font-family: "Pretendard-Regular";
     text-align: center;
     /* 아래 두개는 같이 써야하네 */
-    display: table-cell;
-    vertical-align: middle;
+    /* display: table-cell;
+    vertical-align: middle; */
     
 }
 #update_list{
@@ -389,6 +389,7 @@ a{
     width: 30%;
     margin-left: 3%;
     height: 100%;
+    float: left;
     display: inline-block;
     background-color: rgba(194, 194, 194, 0.12);
     text-align: left;

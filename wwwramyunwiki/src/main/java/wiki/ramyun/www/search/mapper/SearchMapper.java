@@ -15,7 +15,9 @@ public interface SearchMapper {
 			+ "(select brand_name_kor, updated_date from ramyun orber) "
 			+ "union "
 			+ "(select name, updated_date from ingredient) "
-			+ "order by updated_date desc;")
+			+ "union "
+			+ "(select name, name from search) "
+			+ "order by name")
 	public List<SearchVO> searchRecentUpdated();
 	
 	

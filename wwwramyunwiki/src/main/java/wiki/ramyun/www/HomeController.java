@@ -440,4 +440,17 @@ public class HomeController {
 		mav.setViewName("manufactory");
 		return mav;
 	}
+	@GetMapping("tag")
+	public ModelAndView getTag(ModelAndView mav) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
+		List<SearchVO> voList=searchService.searchRecentUpdated();
+		System.out.println("태그접근중");
+		mav.addObject("searchList", voList);
+		mav.setViewName("tag");
+		return mav;
+	}
+	
 }

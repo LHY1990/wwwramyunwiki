@@ -4,10 +4,14 @@ function popup(){
     }else{
         $('#login_popup').css('display','none');
     }
+
+
+
     
 }
 window.addEventListener('DOMContentLoaded', function(){
     //이거 제대로 작동함
+    
 })
 
 
