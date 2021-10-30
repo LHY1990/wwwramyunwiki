@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
-<%request.setCharacterEncoding("UTF-8");%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,13 +50,18 @@
                         </div>
                         
                         <div id="sorting_category">
-                            ${message} : 아직 없는 라면 
+                            ${message} : 아직 없는 검색어
                             
                         </div>
                         
 
-                        <div id="alert_info">
-                            입력한 검색어 "${message}"에 해당하는 정보가 없습니다.
+                        <div id="alert_info" style="height: auto;word-break:keep-all;">
+                            입력한 검색어 "${message}"에 해당하는 정보가 없습니다. <br>
+                            권장 검색어 : <br><br>
+                            
+                            <c:forEach var="searchname" items="${similarList}" end="300">
+                                ${searchname}&nbsp;&nbsp;
+                            </c:forEach>
                             
 
                         </div>

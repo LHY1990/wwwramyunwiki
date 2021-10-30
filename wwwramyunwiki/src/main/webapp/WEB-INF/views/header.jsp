@@ -37,7 +37,7 @@
         </div>
         <div class="inner_top_pannel_link">
             <div class="tab_linking">
-                <a href="./tag" style="color: white;">태그검색</a>
+                <a href="./tag?page=1" style="color: white;">태그검색</a>
             </div>
             
         </div>

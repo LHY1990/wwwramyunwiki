@@ -19,4 +19,9 @@ public class ManufactoryDAO {
 		// TODO Auto-generated method stub
 		return mapper.selectRecentOne();
 	}
+
+	public ManufactoryVO selectByName(String name) {
+		// TODO Auto-generated method stub
+		return mapper.selectByName(name);
+	}
 }

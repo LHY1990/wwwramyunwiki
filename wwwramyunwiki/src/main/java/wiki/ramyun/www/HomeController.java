@@ -223,6 +223,11 @@ public class HomeController {
 	//검색 값 받아오기. 일단 신라면으로 테스트
 	@GetMapping("findramyun.do")
 	public ModelAndView getSearchKeyword(ModelAndView mav, String name) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
+		
 		//앞뒤 공백을 없앰
 		name=name.trim();
 		
@@ -230,60 +235,97 @@ public class HomeController {
 		
 		try {
 			RamyunVO vo=ramyunService.getRamyunData(name);
-			mav.addObject("ramyun", vo);
-			mav.setViewName("ramyun");
-			if(vo==null) {
-				throw new Exception();
+			if(vo!=null) {
+				//만약에 널이 아니면 라면을 반환
+				mav.addObject("ramyun", vo);
+				mav.setViewName("ramyun");
+				return mav;
 			}
-			
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
-			mav.addObject("message", name);
-			mav.setViewName("notfounding");
-			//여기에 찾을수없다는 jsp를 만들자 에러구문도
-			
 		}
-		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
+		try {
+			IngredientVO ingredient=ingredientService.selectIngredientByName(name);
+
+			if(ingredient!=null) {
+				mav.addObject("ingredient", ingredient);
+				mav.setViewName("nutrient");
+				return mav;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			ManufactoryVO factory=manufactoryService.selectFactoryByName(name);
+			if(factory!=null) {
+				mav.addObject("factory", factory);
+				mav.setViewName("manufactory");
+				return mav;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//정말아무것도 없다면 다음처럼된다. 비슷한 검색어를 권해보자
+		List<String> similarList=searchService.getSimilars(name);
+		mav.addObject("similarList", similarList);
+		mav.addObject("message", name);
+		mav.setViewName("notfounding");
 		return mav;
 	}
 	
 	
 	@PostMapping("findramyun.do")
 	public ModelAndView postSearchKeyword(ModelAndView mav, String searchBoxInput) {
-		//앞뒤 공백을 없앰
-		searchBoxInput=searchBoxInput.trim();
-		
-		System.out.println(searchBoxInput);
-		
-		try {
-			RamyunVO vo=ramyunService.getRamyunData(searchBoxInput);
-			mav.addObject("ramyun", vo);
-			mav.setViewName("ramyun");
-			if(vo==null) {
-				throw new Exception();
-			}
-			
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			mav.addObject("message", searchBoxInput);
-			mav.setViewName("notfounding");
-			//여기에 찾을수없다는 jsp를 만들자 에러구문도
-			
-		}
-		
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
-		
-		return mav;
+				ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+				mav.addObject("ramyunList", ramyunRecentUpdatedList);
+				//여기까지가 우측탭 정보
+				
+				//앞뒤 공백을 없앰
+				String name=searchBoxInput.trim();
+				
+				System.out.println(name);
+				
+				try {
+					RamyunVO vo=ramyunService.getRamyunData(name);
+					if(vo!=null) {
+						//만약에 널이 아니면 라면을 반환
+						mav.addObject("ramyun", vo);
+						mav.setViewName("ramyun");
+						return mav;
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				try {
+					IngredientVO ingredient=ingredientService.selectIngredientByName(name);
+
+					if(ingredient!=null) {
+						mav.addObject("ingredient", ingredient);
+						mav.setViewName("nutrient");
+						return mav;
+					}
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+				try {
+					ManufactoryVO factory=manufactoryService.selectFactoryByName(name);
+					if(factory!=null) {
+						mav.addObject("factory", factory);
+						mav.setViewName("manufactory");
+						return mav;
+					}
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				//정말아무것도 없다면 다음처럼된다. 비슷한 검색어를 권해보자
+				List<String> similarList=searchService.getSimilars(name);
+				mav.addObject("similarList", similarList);
+				mav.addObject("message", name);
+				mav.setViewName("notfounding");
+				return mav;
 	}
 	@GetMapping("editramyun.do")
 	public ModelAndView getEditRamyun(ModelAndView mav,String name) {
@@ -441,14 +483,37 @@ public class HomeController {
 		return mav;
 	}
 	@GetMapping("tag")
-	public ModelAndView getTag(ModelAndView mav) {
+	public ModelAndView getTag(ModelAndView mav, int page) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
 		mav.addObject("ramyunList", ramyunRecentUpdatedList);
 		//여기까지가 우측탭 정보
-		List<SearchVO> voList=searchService.searchRecentUpdated();
+		System.out.println("페이지넘버"+page);
+		
+		//이건 기존방법
+		//List<SearchVO> voList=searchService.searchRecentUpdated();
+		
+		//페이지 넘버를 받아서 해당 vo를 가져온다.
+		List<SearchVO> voList=searchService.searchTagPage(page);
 		System.out.println("태그접근중");
+		//해당페이지에 몇개의 페이지 링크가 필요한지 구한다.
+		int totalPageCount= searchService.getTotalPageCount();
+		
+		//페이지의 프리뷰와 넥스트가 필요한지 본다.
+		boolean hasPrev=searchService.hasPrev(page);
+		boolean hasNext=searchService.hasNext(page);
+		int currentPageRange=((page-1)/10)*10;	
+		//위는 프레임 레인지를 정한다.
+		
+		
+		
+		mav.addObject("totalPageCount",totalPageCount);
+		System.out.println(totalPageCount);
 		mav.addObject("searchList", voList);
+		//프리뷰 버튼 넣을지 말지 정함
+		mav.addObject("currentPageRange", currentPageRange);
+		mav.addObject("hasPrev", hasPrev);
+		mav.addObject("hasNext", hasNext);
 		mav.setViewName("tag");
 		return mav;
 	}

@@ -16,4 +16,9 @@ public class ManufactoryService {
 		// 최근 업데이트 분 가져오기
 		return dao.selectRecentOne();
 	}
+
+	public ManufactoryVO selectFactoryByName(String name) {
+		// 이름으로 하나 선택하기
+		return dao.selectByName(name);
+	}
 }

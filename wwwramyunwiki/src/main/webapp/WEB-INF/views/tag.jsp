@@ -57,11 +57,19 @@
                         
                         </div>
                         <br>
+                        <!-- 페이지 지정 시작 [1][2]...-->
                         <div id="sorting_tag_div" >
-                            <div id="sorting_tag_abc">가나다</div>
-                            <div id="sorting_tag_brand">브랜드 순</div>
+                            <c:if test="${hasPrev}"><a href="./tag?page=${currentPageRange-9}">[이전]</a></c:if>
+                            <c:forEach var="iter" begin="${currentPageRange+1}" end="${currentPageRange+10}">
+                                
+                            <c:if test="${iter<=totalPageCount}">
+                                [<a href="./tag?page=${iter}">${iter}</a>]
+                            </c:if>
+
+                            </c:forEach>
+                            <c:if test="${hasNext}"><a href="./tag?page=${currentPageRange+11}">[다음]</a></c:if>
                         </div>
-                        
+                        <!-- 페이지 지정 끝 -->
                         
                         
 

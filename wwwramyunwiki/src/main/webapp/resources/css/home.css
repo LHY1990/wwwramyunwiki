@@ -306,6 +306,10 @@ a{
     vertical-align: middle;
     
 }
+.alert_right_section:link{
+    text-decoration: none;
+    color: black;
+}
 #statistics{
     width: 846px;
     height: 126px;

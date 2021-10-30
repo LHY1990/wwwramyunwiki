@@ -6,7 +6,9 @@
 }
 a:visited{text-decoration: none;}
 a:link{text-decoration: none;}
-    
+.sections_link:link{
+    color: black;
+}
 
 /* 몸통 색 */
 body{

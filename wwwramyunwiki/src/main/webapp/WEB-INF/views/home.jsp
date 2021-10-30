@@ -43,7 +43,7 @@
                             
                         </div>
                         <div id="edited_time">
-                        		<c:set var="now" value="<%=new java.util.Date()%>" />
+                            <c:set var="now" value="<%=new java.util.Date()%>" />
 							<c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy" /></c:set> 
                             최근 접속 시각 : <fmt:formatDate value="${now}" pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" />
                         </div>
