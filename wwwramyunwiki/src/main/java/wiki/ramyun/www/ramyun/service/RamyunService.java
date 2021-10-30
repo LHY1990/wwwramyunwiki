@@ -46,4 +46,9 @@ public class RamyunService {
 		// TODO Auto-generated method stub
 		return dao.getRecentsUpdateListWhole();
 	}
+
+	public int getRamyunCount() {
+		// TODO Auto-generated method stub
+		return dao.getRamyunCount();
+	}
 }

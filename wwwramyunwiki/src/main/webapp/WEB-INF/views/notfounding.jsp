@@ -56,8 +56,8 @@
                         
 
                         <div id="alert_info" style="height: auto;word-break:keep-all;">
-                            입력한 검색어 "${message}"에 해당하는 정보가 없습니다. <br>
-                            권장 검색어 : <br><br>
+                            입력한 검색어 "${message}"에 해당하는 정보가 없습니다. <br><br>
+                            ~~권장 검색어~~  <br><br>
                             
                             <c:forEach var="searchname" items="${similarList}" end="300">
                                 ${searchname}&nbsp;&nbsp;

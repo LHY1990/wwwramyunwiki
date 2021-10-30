@@ -110,4 +110,9 @@ public class MemberService {
 		
 		
 	}
+
+	public int getMemberCount() {
+		// 총 회원수를 가져온다
+		return dao.getMemberCount();
+	}
 }

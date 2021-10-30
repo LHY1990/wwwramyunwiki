@@ -23,4 +23,7 @@ public interface MemberMapper {
 	
 	@Select("select count(*) from member where member_id=\"${memberId}\"")
 	public int isUniqueMember(@Param("memberId")String memberId);
+
+	@Select("select count(member_id) from member")
+	public int getMemberCount();
 }

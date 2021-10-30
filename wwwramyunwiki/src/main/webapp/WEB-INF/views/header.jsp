@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <!-- 상단 패널 시작 -->
-<div class="top_pannel" id="header">
+<div class="top_pannel" id="header" >
         
         
     <div class="top_pannel_link" >

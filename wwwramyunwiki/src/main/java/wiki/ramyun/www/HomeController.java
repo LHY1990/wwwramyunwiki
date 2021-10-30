@@ -81,10 +81,15 @@ public class HomeController {
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
 	@GetMapping("home")
 	public String home(Locale locale, Model model) {
-		//logger.info("Welcome home! The client locale is {}.", locale);
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-
+		//옆에 추가분 올라가는것
+		//몇개의 라면 몇명의 회원인지 찾는것
+		int ramyunCount=ramyunService.getRamyunCount();
+		int memberCount=memberService.getMemberCount();
 		
+		
+		model.addAttribute("ramyunCount", ramyunCount);
+		model.addAttribute("memberCount", memberCount);
 		model.addAttribute("ramyunList", ramyunRecentUpdatedList);
 		
 		System.out.println("홈에접근중");

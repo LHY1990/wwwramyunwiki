@@ -9,6 +9,12 @@ a:link{text-decoration: none;}
 .sections_link:link{
     color: black;
 }
+.sections_link:visited{
+    color: black;
+}
+.sections_link:hover{
+    color: rgb(102, 27, 27);
+}
 
 /* 몸통 색 */
 body{
@@ -261,23 +267,30 @@ a{
     margin-top: 130px;
     width: 100%;
     overflow-y: hidden;
+    overflow-x: hidden;
     height: auto;
 }
 
 #summary_infomation{
     width: 100%;
     height: 600px;
+    margin-left: 3px;
+    margin-top: 1px;
+    outline-color: black 1px soild;
 }
 #ramyun_picture_div{
     float: left;
     width: 49%;
     height: 100%;
+    outline: 1px dotted rgba(0, 0, 0, 1)
 }
 #ramyun_summary_info{
     float: left;
     margin-left: 2%;
-    width: 49%;
+    width: 48%;
     height: 100%;
+    outline: 1px dotted rgba(0, 0, 0, 1)
+    
 }
 
 /*//////////////////////////// */
@@ -305,14 +318,17 @@ a{
     float: left;
     width: 25%;
     height: 100%;
-    color: white;
-    background-color: rgba(59, 59, 59, 0.822);
+    color: black;
+    /* 아웃라이너색 */
+    background-color: rgba(192, 192, 192, 0.2);
+    outline: 1px solid rgba(97, 73, 11, 0.1);
+    font-weight: bold;
 }
 .ramyun_info_value{
     float: left;
     width: 75%;
     height: 100%;
-    
+    outline: 1px solid rgba(177, 133, 21, 0.1);
 }
 
 #additional_info{
@@ -325,20 +341,24 @@ a{
 .class_value_cover{
     width: 100%;
     overflow-y: hidden;
+    margin-top: 5px;
 }
 
 .horizon_key{
     width: 100%;
-    
+    font-size: 15px;
     line-height: 180%;
     color: white;
-    background-color: rgba(59, 59, 59, 0.822);
+    background-color: rgba(0, 24, 48, 0.8);
+    
 }
 
 
 .horizon_value{
     width: 100%;
+    font-size: 13px;
     overflow-y: hidden;
+    outline:1px dotted  rgba(0, 24, 48, 0.8);
     
 }
 
@@ -355,7 +375,7 @@ a{
     width: 15%;
     height: 30px;
     float: left;
-    background-color: rgba(59, 59, 59, 0.822);;
+    background-color: rgba(0, 24, 48, 0.8);
 }
 .horizon_double_value{
     width: 35%;
@@ -369,6 +389,7 @@ a{
     height: auto;
     text-align: left;
     word-break: break-all;
+    font-size: 14px;
 }
 
 

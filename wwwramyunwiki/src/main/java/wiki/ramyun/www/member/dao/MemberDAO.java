@@ -73,4 +73,9 @@ public class MemberDAO {
 		return mapper.isUniqueMember(vo.getMemberId());
 	}
 
+	public int getMemberCount() {
+		// 가입한 멤버수를 가져온다.
+		return mapper.getMemberCount();
+	}
+
 }

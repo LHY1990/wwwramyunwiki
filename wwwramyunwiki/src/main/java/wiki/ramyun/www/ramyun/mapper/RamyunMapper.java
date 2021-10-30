@@ -58,4 +58,7 @@ public interface RamyunMapper {
 	@Select("select brand_name_kor, updated_date, user_edited_contents from ramyun order by updated_date desc limit 28")
 	public List<RamyunVO> getRecentsUpdateListWhole();
 
+	@Select("select count(brand_name_kor) from ramyun")
+	public int getRamyunCount();
+
 }

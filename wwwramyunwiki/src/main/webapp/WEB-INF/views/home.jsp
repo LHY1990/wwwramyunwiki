@@ -118,7 +118,7 @@
                                 <h2 style="margin: 0%;">라면백과</h2>
                                 <div style="height: 10px;"></div>
                                 <div style="margin: 0%;">다같이 만들어가는 대한민국 라면 백과사전<br>
-                                    00000종의 라면과 기여자 0000명이 함께합니다.</div>
+                                    ${ramyunCount} 종의 라면과 기여자 ${memberCount} 명이 함께합니다.</div>
                             </div>
                             
                             

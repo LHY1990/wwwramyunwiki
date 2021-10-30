@@ -89,4 +89,10 @@ public class RamyunDAO {
 		List<RamyunVO> list=mapper.getRecentsUpdateListWhole();
 		return list;
 	}
+
+
+	public int getRamyunCount() {
+		// TODO Auto-generated method stub
+		return mapper.getRamyunCount();
+	}
 }
