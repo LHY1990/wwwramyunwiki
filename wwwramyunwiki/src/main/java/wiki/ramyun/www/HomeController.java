@@ -92,14 +92,11 @@ public class HomeController {
 		model.addAttribute("memberCount", memberCount);
 		model.addAttribute("ramyunList", ramyunRecentUpdatedList);
 		
-		System.out.println("홈에접근중");
 		
 		return "home";
 	}
 	@PostMapping("home")
 	public String home(MemberVO vo, HttpSession session) {
-		System.out.println(vo.getMemberId());
-		System.out.println(vo.getMemberPassword());
 		
 		
 		boolean loginOK=memberService.checkMember(vo);
@@ -137,7 +134,6 @@ public class HomeController {
 	
 	@GetMapping("login")
 	public String login() {
-		System.out.println("로그인에 접근중");
 		
 		
 		return "login";
@@ -152,7 +148,6 @@ public class HomeController {
 	
 	@GetMapping("join")
 	public String join(ModelAndView mav) {
-		System.out.println("갯으로 받음");
 		
 		
 		mailCode = String.valueOf((int)(Math.random()*1000000));
@@ -290,7 +285,6 @@ public class HomeController {
 				//앞뒤 공백을 없앰
 				String name=searchBoxInput.trim();
 				
-				System.out.println(name);
 				
 				try {
 					RamyunVO vo=ramyunService.getRamyunData(name);
@@ -483,7 +477,6 @@ public class HomeController {
 		
 		mav.addObject("manufactory", vo);
 		
-		System.out.println("제조공장 접근중");
 		mav.setViewName("manufactory");
 		return mav;
 	}
@@ -493,14 +486,12 @@ public class HomeController {
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
 		mav.addObject("ramyunList", ramyunRecentUpdatedList);
 		//여기까지가 우측탭 정보
-		System.out.println("페이지넘버"+page);
 		
 		//이건 기존방법
 		//List<SearchVO> voList=searchService.searchRecentUpdated();
 		
 		//페이지 넘버를 받아서 해당 vo를 가져온다.
 		List<SearchVO> voList=searchService.searchTagPage(page);
-		System.out.println("태그접근중");
 		//해당페이지에 몇개의 페이지 링크가 필요한지 구한다.
 		int totalPageCount= searchService.getTotalPageCount();
 		
@@ -513,7 +504,6 @@ public class HomeController {
 		
 		
 		mav.addObject("totalPageCount",totalPageCount);
-		System.out.println(totalPageCount);
 		mav.addObject("searchList", voList);
 		//프리뷰 버튼 넣을지 말지 정함
 		mav.addObject("currentPageRange", currentPageRange);
@@ -521,6 +511,13 @@ public class HomeController {
 		mav.addObject("hasNext", hasNext);
 		mav.setViewName("tag");
 		return mav;
+	}
+	
+	@PostMapping("searchintime.do")
+	public List<String> searchInTime(HttpServletRequest request){
+		System.out.println(request.getParameter("msg"));
+		
+		return null;
 	}
 	
 }

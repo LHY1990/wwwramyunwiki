@@ -334,7 +334,19 @@ a{
     text-decoration:none ;   
 }
 
-
+/* not found 에서 링크로 받을때 */
+#notFoundToSearch:link{
+    text-decoration: none;
+    color: black;
+}
+#notFoundToSearch:hover{
+    text-decoration: none;
+    color: rgb(75, 30, 30);
+}
+#notFoundToSearch:visited{
+    text-decoration: none;
+    color: black;
+}
 /* 바디 컨트롤 끝 */
 
 

@@ -28,6 +28,23 @@ body{
     text-decoration:none ; 
     
 }
+/* 태그 하이퍼링크 정리 */
+#tagToSearch:link{
+    text-decoration: none;
+    color: black;
+}
+#tagToSearch:hover{
+    text-decoration: none;
+    color: rgb(75, 30, 30);
+}
+#tagToSearch:visited{
+    text-decoration: none;
+    color: black;
+}
+#tagToSearch{
+    line-height: 100%;
+}
+
 
 /* 탑 패널 컨트롤 시작 */
 .top_pannel{
@@ -372,6 +389,7 @@ a{
 }
 #tag_update_list{
     height: 1000px;
+    /* height: 940px; */
     width: 850px;
     font-family: "Pretendard-Regular";
     text-align: center;
@@ -397,6 +415,7 @@ a{
     margin-left: 3%;
     height: 100%;
     float: left;
+    line-height: 20px;
     display: inline-block;
     background-color: rgba(194, 194, 194, 0.12);
     text-align: left;
