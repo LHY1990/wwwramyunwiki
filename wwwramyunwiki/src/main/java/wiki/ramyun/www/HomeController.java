@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.text.DateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -230,6 +233,7 @@ public class HomeController {
 		
 		//앞뒤 공백을 없앰
 		name=name.trim();
+		name=name.replace(" ","");
 		
 		System.out.println(name);
 		
@@ -283,7 +287,9 @@ public class HomeController {
 				//여기까지가 우측탭 정보
 				
 				//앞뒤 공백을 없앰
-				String name=searchBoxInput.trim();
+				searchBoxInput=searchBoxInput.trim();
+				searchBoxInput=searchBoxInput.replace(" ", "");
+				String name=searchBoxInput;
 				
 				
 				try {
@@ -513,11 +519,28 @@ public class HomeController {
 		return mav;
 	}
 	
+	//리스폰스 바디로 받아 비동기로 처리
 	@PostMapping("searchintime.do")
-	public List<String> searchInTime(HttpServletRequest request){
-		System.out.println(request.getParameter("msg"));
+	public @ResponseBody Object searchInTime(HttpServletRequest request){
+//		System.out.println(request.getParameter("msg"));//잘들어 오나 확인
+		List<String> searchList=new ArrayList<String>();
+		String noSpaceString=request.getParameter("msg").replace(" ","");
 		
-		return null;
+		searchList=searchService.searchInTime(noSpaceString);
+
+		//아래는 실시간으로 출력해보기
+		if(noSpaceString.equals("")) {
+			List<String> noValues=new ArrayList<String>();
+			noValues.add("");
+			noValues.add("");
+			noValues.add("");
+			noValues.add("");
+			noValues.add("");
+			return noValues;
+		}
+		return searchList;
+		
+		
 	}
 	
 }

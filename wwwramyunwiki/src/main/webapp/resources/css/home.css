@@ -120,6 +120,24 @@ body{
     
     
 }
+#recommand{
+    position: absolute; 
+    margin-left: 24px;
+    margin-top: 25px; 
+    height: 120px; 
+    width: 236px;
+    text-align: left; 
+    background-color: rgb(255, 255, 255); 
+    color: black;
+    display: none;
+}
+.autos{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
 #search_icon{
     /* margin-left: 4px;
     margin-top: 3px; */

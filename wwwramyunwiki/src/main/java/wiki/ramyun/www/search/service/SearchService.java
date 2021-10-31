@@ -13,6 +13,8 @@ import wiki.ramyun.www.search.mapper.SearchMapper;
 @Service
 public class SearchService {
 	
+	
+	
 	@Autowired
 	@Qualifier("searchMapper")
 	SearchMapper mapper;
@@ -39,6 +41,29 @@ public class SearchService {
 		
 		
 		return searchList;
+	}
+	public List<String> searchInTime(String searchKeyword) {
+		//사용전 비운다.
+		List<String> stringList=new ArrayList<String>();
+		
+		
+		
+		
+		
+		//입력한 글자로 시작하는 경우엔 startwith를 아니면 contains를 쓴다.
+		List<SearchVO> searchList= mapper.searchUpdated();
+		//가나다포함
+//		List<SearchVO> searchList= mapper.searchUpdated();
+		for(SearchVO vo : searchList) {
+			if(vo.getName().startsWith(searchKeyword)) {
+				stringList.add(vo.getName());
+				
+			}
+		}
+		
+		
+		
+		return stringList;
 	}
 
 	public int getTotalPageCount() {

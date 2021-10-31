@@ -49,7 +49,16 @@
                     <i class="fas fa-random"></i>
                 </div>
                 <form action="./findramyun.do" method="post" style="font-family: FontAwesome;">
-                    <input id="search_box_textarea"  name="searchBoxInput" placeholder="Search" >
+                    <!-- 입력창 -->
+                    <div id="recommand" style="color: black;">
+                        <p id="auto0" class="autos"></p>
+                        <p id="auto1" class="autos"></p>
+                        <p id="auto2" class="autos"></p>
+                        <p id="auto3" class="autos"></p>
+                        <p id="auto4" class="autos"></p>
+                        
+                    </div>
+                    <input id="search_box_textarea" name="searchBoxInput" placeholder="Search" autocomplete="off">
                     
                     
                 </form>
@@ -150,6 +159,26 @@
 
     </div>
 </div>
-
+<style>
+    /* 이건 그냥 로컬로 구현함 */
+    #recommand{
+    position: absolute; 
+    margin-left: 24px;
+    margin-top: 25px; 
+    height: 110px; 
+    width: 236px;
+    text-align: left; 
+    background-color: rgb(255, 255, 255); 
+    color: black;
+    display: none;
+    }
+    .autos{
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
 
 <!-- 상단 패널 끝 -->

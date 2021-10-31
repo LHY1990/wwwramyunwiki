@@ -20,6 +20,14 @@ public interface SearchMapper {
 			+ "(select name, name from search) "
 			+ "order by name")
 	public List<SearchVO> searchRecentUpdated();
+	
+	@Select("(select factory_name as name, updated_date as updated_date from manufactory) "
+			+ "union "
+			+ "(select brand_name_kor, updated_date from ramyun orber) "
+			+ "union "
+			+ "(select name, updated_date from ingredient) "
+			+ "order by name")
+	public List<SearchVO> searchUpdated();
 
 	
 	
