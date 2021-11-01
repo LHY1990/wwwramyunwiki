@@ -50,16 +50,27 @@
                 </div>
                 <form action="./findramyun.do" method="post" style="font-family: FontAwesome;">
                     <!-- 입력창 -->
-                    <div id="recommand" style="color: black;">
+                    <!-- <div id="recommand" style="color: black;">
                         <p id="auto0" class="autos"></p>
                         <p id="auto1" class="autos"></p>
                         <p id="auto2" class="autos"></p>
                         <p id="auto3" class="autos"></p>
                         <p id="auto4" class="autos"></p>
                         
-                    </div>
-                    <input id="search_box_textarea" name="searchBoxInput" placeholder="Search" autocomplete="off">
+                    </div> -->
                     
+                    
+
+
+                    <input id="search_box_textarea" list="search_list_auto" name="searchBoxInput" placeholder="Search" autocomplete="off">
+                    <!-- 입력창 -->
+                    <datalist id="search_list_auto">
+                        <option id="auto0"></option>
+                        <option id="auto1"></option>
+                        <option id="auto2" ></option>
+                        <option id="auto3" ></option>
+                        <option id="auto4" ></option>
+                    </datalist>
                     
                 </form>
                 

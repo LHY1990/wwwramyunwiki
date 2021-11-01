@@ -486,6 +486,18 @@ public class HomeController {
 		mav.setViewName("manufactory");
 		return mav;
 	}
+	@GetMapping("editmanufactory.do")
+	public ModelAndView getEditManufactory(ModelAndView mav,String findname) {
+		System.out.println(findname);
+		mav.setViewName("editmanufactory");
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
 	@GetMapping("tag")
 	public ModelAndView getTag(ModelAndView mav, int page) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것
