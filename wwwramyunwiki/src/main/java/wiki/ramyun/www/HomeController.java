@@ -262,7 +262,7 @@ public class HomeController {
 		try {
 			ManufactoryVO factory=manufactoryService.selectFactoryByName(name);
 			if(factory!=null) {
-				mav.addObject("factory", factory);
+				mav.addObject("manufactory", factory);
 				mav.setViewName("manufactory");
 				return mav;
 			}
@@ -488,7 +488,13 @@ public class HomeController {
 	}
 	@GetMapping("editmanufactory.do")
 	public ModelAndView getEditManufactory(ModelAndView mav,String findname) {
-		System.out.println(findname);
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
+		ManufactoryVO vo=manufactoryService.selectFactoryByName(findname);
+		
+		mav.addObject("manufactory", vo);
 		mav.setViewName("editmanufactory");
 		return mav;
 	}

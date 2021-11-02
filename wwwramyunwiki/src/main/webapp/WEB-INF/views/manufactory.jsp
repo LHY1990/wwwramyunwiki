@@ -31,7 +31,7 @@
                 <!-- 모든컨텐츠는 여기서 시작해서 -->
                     <div id="information_tab">
                         <div id="section">
-                            라면위키 : 제조 공장
+                            라면위키 : ${manufactory.factoryName}
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
