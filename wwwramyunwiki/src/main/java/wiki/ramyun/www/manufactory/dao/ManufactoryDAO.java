@@ -24,4 +24,17 @@ public class ManufactoryDAO {
 		// TODO Auto-generated method stub
 		return mapper.selectByName(name);
 	}
+
+	public void updateManufactory(ManufactoryVO vo) {
+		// TODO Auto-generated method stub
+		System.out.println("dao까지옴");
+		System.out.println(vo.getDescription());
+		System.out.println(vo.getAdress());
+		System.out.println(vo.getCorporateName());
+		System.out.println(vo.getIdentifyLetter());
+		System.out.println(vo.getItemReportNumber());
+		System.out.println(vo.getFactoryName());
+		
+		mapper.updateManufactory(vo.getCorporateName(), vo.getAdress(), vo.getIdentifyLetter(),vo.getItemReportNumber(), vo.getDescription(), vo.getFactoryName());
+	}
 }

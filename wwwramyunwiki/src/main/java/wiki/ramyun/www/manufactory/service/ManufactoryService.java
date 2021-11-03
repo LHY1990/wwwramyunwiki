@@ -21,4 +21,10 @@ public class ManufactoryService {
 		// 이름으로 하나 선택하기
 		return dao.selectByName(name);
 	}
+
+	public void updateManufactory(ManufactoryVO vo) {
+		// 업데이트한다. 
+		dao.updateManufactory(vo);
+		
+	}
 }

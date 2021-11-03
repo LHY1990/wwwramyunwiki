@@ -471,14 +471,18 @@ public class HomeController {
 		mav.setViewName("nutrient");
 		return mav;
 	}
-	
+//	랜덤으로 하나뿌림
 	@GetMapping("manufactory")
-	public ModelAndView getManufactory(ModelAndView mav) {
+	public ModelAndView getManufactory(ModelAndView mav,ManufactoryVO vo) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
 		mav.addObject("ramyunList", ramyunRecentUpdatedList);
 		//여기까지가 우측탭 정보
-		ManufactoryVO vo=manufactoryService.getRecentOne();
+		
+		vo=manufactoryService.getRecentOne();
+		
+		
+		
 		
 		
 		mav.addObject("manufactory", vo);
@@ -486,6 +490,44 @@ public class HomeController {
 		mav.setViewName("manufactory");
 		return mav;
 	}
+	
+	
+	
+	//	공장 작성후 post로 보내면 여기서 받는다.
+	@PostMapping("updatemanufactory.do")
+	public ModelAndView updateManufactory(ModelAndView mav, ManufactoryVO vo) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
+		
+		System.out.println(vo.getDescription());
+		System.out.println(vo.getAdress());
+		System.out.println(vo.getCorporateName());
+		System.out.println(vo.getIdentifyLetter());
+		System.out.println(vo.getItemReportNumber());
+		System.out.println(vo.getDescription());
+		
+//		받은 vo이름으로 업데이트
+		manufactoryService.updateManufactory(vo);
+		
+		vo=manufactoryService.selectFactoryByName(vo.getFactoryName());
+		
+		mav.addObject("manufactory", vo);
+		
+		//일단 홈으로 보냄
+		mav.setViewName("home");
+
+		
+		
+		
+		return mav;
+	}
+	
+	
+	
+	
+	
 	@GetMapping("editmanufactory.do")
 	public ModelAndView getEditManufactory(ModelAndView mav,String findname) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯

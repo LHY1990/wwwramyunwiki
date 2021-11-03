@@ -1,12 +1,14 @@
 /* 전체 레이아웃 파악용 */
-/* *{outline-color: rgba(165, 42, 42, 0.274);outline-style: dotted; outline-width: 1px;} */
-
+/* *{outline-color: brown;outline-style: dotted; outline-width: 1px;} */
 .dotted{
     outline-color: rgb(76, 68, 87);outline-style: dotted; outline-width: 1px;
     
 }
-a:visited{text-decoration: none;}
-a:link{text-decoration: none;}
+a{
+    text-decoration: none;
+    color: black;
+}
+
 
 
 /* 몸통 색 */
@@ -168,7 +170,6 @@ body{
     
     text-align: center;
     
-    
 }
 a{
     text-align: center;
@@ -178,26 +179,19 @@ a{
 .inner_frame{
     margin-top: 50px;
     display: inline-block;
-    /* 전체 높이 조절 */
-    /* height: 3300px;  */
-
-    overflow-y: visible;
+    height: 1300px; 
     width: 1180px;
-    
     
 }
 .contents_frame{
     float: left;
     width: 880px;
-    /* height: 100%; */
-    height: auto;
-    overflow-y: hidden;
+    height: 100%;
     background-color: rgb(247, 247, 247);
 }
 #contents_margin{
     width: 850px;
-    height: auto;
-    overflow-y: hidden;
+    height: 99%;
     margin:15px ;
 }
 
@@ -217,14 +211,13 @@ a{
     height: 100%;
 }
 #section_linkings{
-    width: 80%;
+    width: 100%;
     height: 100%;
-    float: right;
     
     
 }
 #section_linkings_frame{
-    width: 40%;
+    width: 60%;
     height: 80%;
     float: right;
     
@@ -255,195 +248,40 @@ a{
     font-size: 11px;
     line-height: 200%;
 }
-/* 여기서 부터 라면탭 css 시작////////////////////////////////////////////////////*/
-#ramyun_info_div{
-    margin-top: 130px;
-    width: 100%;
-    overflow-y: hidden;
-    height: auto;
-    overflow-y: hidden;
-}
-
-#summary_infomation{
-    width: 100%;
-    height: 600px;
-}
-#ramyun_picture_div{
-    float: left;
-    width: 49%;
-    height: 100%;
-}
-#ramyun_summary_info{
-    float: left;
-    margin-left: 2%;
-    width: 49%;
-    height: 100%;
-}
-
-/*//////////////////////////// */
-
-#brand_name_kr{
-    width: 100%;
-    height: 80px;
-    font-size: 20px;
-    background-color: rgba(222, 184, 135, 0.082);
-}
-#image{
-    width: 100%;
-    height: 400px;
-    background-color: rgba(100, 148, 237, 0.075);
-}
-
-.ramyun_info_div{
-    text-align: center;
-    width: 100%;
-    height: 40px;
-    font-size: 15px;
-    line-height: 220%;
-}
-.ramyun_info_key{
-    float: left;
-    width: 25%;
-    height: 100%;
-    color: white;
-    background-color: rgba(59, 59, 59, 0.822);
-}
-.ramyun_info_value{
-    float: left;
-    width: 75%;
-    height: 100%;
-}
-
-#additional_info{
-    margin-top: 5px;
-    width: 100%;
-    overflow-y: hidden;
-    
-
-}
-.class_value_cover{
-    width: 100%;
-    overflow-y: hidden;
-}
-
-.horizon_key{
-    width: 100%;
-    
-    line-height: 180%;
-    color: white;
-    background-color: rgba(59, 59, 59, 0.822);
-}
-
-
-.horizon_value{
-    width: 100%;
-    overflow-y: hidden;
-    
-}
-
-#horizon_double_section{
-    
-    
-    overflow-y: hidden;
-    width: 100%;
-    float: left;
-}
-.horizon_double_key{
-    line-height: 190%;
-    color: white;
-    width: 15%;
-    height: 30px;
-    float: left;
-    background-color: rgba(59, 59, 59, 0.822);;
-}
-.horizon_double_value{
-    width: 35%;
-    height: 30px;
-    float: left;
-}
-
-#user_made_section{
-    width: 100%;
-    height: 300px;
-    overflow-y: hidden;
-    word-wrap: break-word;
-    
-    height: auto;
-}
-
-
-
-
-
-
-
-/* 라면 탭 css 끝남 /////////////////////////////////////////////////////////////////*/
-
-
-
-/* 라면수정 css는 여기에 **************************************************************/
-input{width: 97%;height: 88%;text-align: center; outline: none;}
-.textareaFix{
-    width: 99%; 
-    height: 60px;
-    resize: none;
-    overflow-y:scroll ;
-    
-}
-
-#user_edited_contents{
-   width: 99%; 
-   height: 1000px; 
-   resize: none;
-   overflow-y: scroll;
-}
-
-/* 라면수정 css는 여기서 끝 ***********************************************************/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* 여기가 공장정보시작/////////////////////////////// */
 #manufactory_info{
     width: 100%;
-    height: 1000px;
-}
-
-#manufactory_infomations{
+    height: 150px;
     text-align: left;
-    margin-left: 10px;
-    width: 80%;
 }
-
-
-#manufactroy_map{
+#manufactory_items{
+    float: left;
+    height: 100%;
     width: 100%;
-    height: 500px;
-    background-color: rgb(202, 231, 255);
+
 }
 
-
-
-
-
-
-
+#manufactory_information{
+    width: 840px;
+    height: 800px;
+    text-align: left;
+}
+#manufactory_description{
+    width: 840px;
+    height: 800px;
+    text-align: left;
+    margin-top: 20px;
+    word-break: break-all;
+    background-color: rgba(214, 214, 214, 0.12);
+    resize: none;
+    overflow-y: scroll;
+}
+#manufactory_map{
+    width: 100%;
+    height: 400px;
+    background-color: rgba(182, 162, 162, 0.12);
+}
 
 
 

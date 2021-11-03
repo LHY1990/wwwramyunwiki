@@ -61,15 +61,16 @@
 
                         </div>
                         <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
-                        <form action="updatemanufactory" method="post"></form>
+                        <form action="updatemanufactory.do" method="post">
                             <div id="manufactory_info">
                                 
                                 <div id="manufactory_items">
-                                회사명 : ${manufactory.corporateName}<br><br>
-                                주소 : <input type="text" maxlength="100"  placeholder="ex)" name="transfat" value="${manufactory.adress}" style="width: 500px;"><br>
-                                공장이름 : <input type="text" maxlength="40"  placeholder="ex)" name="transfat" value="${manufactory.factoryName}" style="width: 500px;"><br>
-                                공장 식별 문자 : <input type="text" maxlength="30"  placeholder="ex)" name="transfat" value="${manufactory.identifyLetter}" style="width: 500px;"><br>
-                                관련 품목 보고 번호 : <input type="text" maxlength="20"  placeholder="ex)" name="transfat" value="${manufactory.itemReportNumber}" style="width: 500px;"><br>
+                                <input type="text" name="factoryName" style="display: none;" value="${manufactory.factoryName}">
+                                공장이름 : ${manufactory.factoryName}<br>
+                                회사명 : <input type="text" maxlength="100"  placeholder="ex)" name="corporateName" value="${manufactory.corporateName}" style="width: 110px;"><br>
+                                주소 : <input type="text" maxlength="100"  placeholder="ex)" name="adress" value="${manufactory.adress}" style="width: 790px;"><br>
+                                공장 식별 문자 : <input type="text" maxlength="30"  placeholder="ex)" name="identifyLetter" value="${manufactory.identifyLetter}" style="width: 715px;"><br>
+                                관련 품목 보고 번호 : <input type="text" maxlength="20"  placeholder="ex)" name="itemReportNumber" value="${manufactory.itemReportNumber}" style="width: 678px;"><br>
                                 
                                 </div>
                                 
@@ -77,32 +78,24 @@
                                 
                                 
                             </div>
-                            <div id="manufactory_map">
-
+                            
+                            <div  style="margin-top: 10px;">
+                               
                             </div>
-                            <div id="manufactory_information" style="margin-top: 10px;">
-                                ${manufactory.description}
-                            </div>
-                            <div id="manufactory_description" >
-                                
+                            <div id="manufactory_information" >
+                                내용작성
+                                <!-- 여기에 작성된 글이 들어가면 끝난다. -->
+                                <textarea name="description" id="manufactory_description" >${manufactory.description}</textarea>
                             </div>
                             <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
-                            <div style="width: 100%; height: 20px;">
+                            <div style="width: 100%; height: 5px;">
 
                             </div>
+                            <input type="submit" style="width: 850px;height: 30px;color: white;background-color: rgba(0, 0, 0, 0.3);" value="수정 하기"></input>
 
-                            <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
+                            
 
-                            <!-- 임시복붙-->
-                            <div id="user_made_section" style="margin-top: 10px;">
-                                내용작성<br>
-                                <!-- 여기에 작성된 글이 들어가면 끝난다. -->
-                                <textarea name="userEditedContents" id="user_edited_contents" >${ramyun.userEditedContents}</textarea>
-                            </div>
-
-                            <!-- 서브밋 버튼이다. -->
-                            <input type="submit" name="${ramyun.brandNameKor}" style="width: 100%;height: 30px;margin-top: 20px;color: white;background-color: rgba(0, 0, 0, 0.3);" value="수정 하기"></input>
-                            <!-- 임시복붙 -->
+                            
                         
                         
                         </form>

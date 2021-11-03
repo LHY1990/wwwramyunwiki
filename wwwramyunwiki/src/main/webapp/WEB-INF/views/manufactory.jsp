@@ -30,7 +30,7 @@
                 <div id="contents_margin">
                 <!-- 모든컨텐츠는 여기서 시작해서 -->
                     <div id="information_tab">
-                        <div id="section">
+                        <div id="section" style="float: left;">
                             라면위키 : ${manufactory.factoryName}
                         </div>
                         <div id="section_linkings">
@@ -42,7 +42,7 @@
                             </div>
                             
                         </div>
-                        <div id="edited_time">
+                        <div id="edited_time" >
                        		최근 수정 시각 : 
                         		<fmt:parseDate value="${manufactory.updatedDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both"/>
 	                			<fmt:formatDate pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" value="${parsedDateTime}"/>
@@ -64,9 +64,9 @@
                         <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
                         <div id="manufactory_info">
                             <div id="manufactory_items">
-                            회사명 : ${manufactory.corporateName}<br><br>
-                            주소 : ${manufactory.adress}<br>
                             공장이름 : ${manufactory.factoryName}<br>
+                            회사명 : ${manufactory.corporateName}<br>
+                            주소 : ${manufactory.adress}<br>
                             공장 식별 문자 : ${manufactory.identifyLetter}<br>
                             관련 품목 보고 번호 : ${manufactory.itemReportNumber}<br>
                             
@@ -76,15 +76,10 @@
                             
                             
                         </div>
-                        <div id="manufactory_map">
-
-                        </div>
-                        <div id="manufactory_information" style="margin-top: 10px;">
+                        <div id="manufactory_description" style="margin-top: 10px;">
                             ${manufactory.description}
                         </div>
-                        <div id="manufactory_description" >
-                            
-                        </div>
+                        
                         <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
                         <div style="width: 100%; height: 20px;">
 
