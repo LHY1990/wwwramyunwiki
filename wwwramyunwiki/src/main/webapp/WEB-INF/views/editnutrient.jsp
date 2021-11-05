@@ -37,7 +37,7 @@
                             <div id="section_linkings_frame">
                                 <div class="sections_link">역사</div>
                                 <div class="sections_link">추천수</div>
-                                <div class="sections_link">편집</div>
+                                
                                 
                             </div>
                             
@@ -64,7 +64,7 @@
                             <div id="ingredient_items">
                             원재료명 : ${ingredient.name}<br>
                             분류 : 
-                            <input type="text" name="name" value="${ingredient.name}" style="display: none;">
+                            <input type="text" maxlength="40" name="name" value="${ingredient.name}" style="display: none;">
                             <select name="type">
                                 <option value="${ingredient.type}">${ingredient.type}</option>
                                 <option value="동물성">동물성</option>

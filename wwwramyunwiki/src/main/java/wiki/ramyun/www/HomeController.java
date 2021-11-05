@@ -136,17 +136,26 @@ public class HomeController {
 	
 	
 	@GetMapping("login")
-	public String login() {
+	public ModelAndView login(ModelAndView mav) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
 		
 		
-		return "login";
+		mav.setViewName("login");
+		return mav;
 	}
 	@PostMapping("login")
-	public ModelAndView login(ModelAndView loginMav, MemberVO vo) {
+	public ModelAndView login(ModelAndView mav, MemberVO vo) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
 		memberService.checkMember(vo);
 		
 		
-		return loginMav;
+		return mav;
 	}
 	
 	@GetMapping("join")

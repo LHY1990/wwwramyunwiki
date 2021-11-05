@@ -1,4 +1,7 @@
 *{border: rgb(226, 214, 214) none 1px;}
+a{
+    text-decoration: none;
+}
 .layoutOut{ position: absolute;
     text-align: center;
     width: 100%;

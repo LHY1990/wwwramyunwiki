@@ -321,8 +321,11 @@ a{
     color : black;
     font-size: 14px;
     text-align: left;
-    vertical-align: middle;
     
+    
+}
+.alert_right_section>a{
+    vertical-align: unset;
 }
 .alert_right_section:link{
     text-decoration: none;

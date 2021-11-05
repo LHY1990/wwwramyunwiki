@@ -59,9 +59,7 @@
                         
                     </div>
                     
-                    <div style="width: 100%; height: 40px;">
-
-                    </div>
+                    <div style="width: 100%; height: 40px;"></div>
                     <!--/////////////// 본문이 여기서 부터 시작된다 //////////////////-->
                     <div id="ramyun_info_div">
                         <div id="summary_infomation">

@@ -186,7 +186,7 @@ a{
 .contents_frame{
     float: left;
     width: 880px;
-    height: 100%;
+    /* height: 100%; */
     background-color: rgb(247, 247, 247);
 }
 #contents_margin{
@@ -269,7 +269,7 @@ a{
 }
 #manufactory_description{
     width: 840px;
-    height: 800px;
+    /* height: 1200px; */
     text-align: left;
     margin-top: 20px;
     word-break: break-all;
