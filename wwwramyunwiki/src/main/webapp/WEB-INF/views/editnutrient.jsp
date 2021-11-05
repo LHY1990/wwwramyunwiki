@@ -81,7 +81,7 @@
                                 
                             </div>
                             <div id="user_description">
-                                <textarea name="description" id="description" style="width: 99%; height: 1200px; resize: none;overflow-y: scroll;">${ingredient.description}</textarea>
+                                <textarea name="description" maxlength="4000" id="description" style="width: 99%; height: 1200px; resize: none;overflow-y: scroll;">${ingredient.description}</textarea>
                                 
                             </div>
                             

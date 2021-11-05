@@ -35,9 +35,9 @@
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
-                                <div class="sections_link">역사</div>
-                                <div class="sections_link">추천수</div>
-                                <div class="sections_link">편집</div>
+                                <div class="sections_link" style="color: grey;">역사</div>
+                                <div class="sections_link" style="color: grey;">추천수</div>
+                                <div class="sections_link" style="color: grey;">편집</div>
                                 
                             </div>
                             

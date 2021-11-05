@@ -64,9 +64,9 @@
                         <form action="./regist.do" method="post"  >
                             <div id="regist_info">
                                 <div id="regist_items">
-                                등록명 : <input type="text" name="registname" maxlength="40" style="height: 24px;">
+                                등록명 : <input type="text" name="register" maxlength="39" style="height: 24px; margin-right: 30px;">
                                 구분 : 
-                                <select name="type" style="height: 24px; margin-left: 30px;">
+                                <select name="type" style="height: 24px; ">
                                     <option value="ramyun">라면</option>
                                     <option value="ingredient">원재료명</option>
                                     <option value="manufactory">공장정보</option>

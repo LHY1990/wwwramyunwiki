@@ -28,6 +28,15 @@ public class IngredientService {
 		dao.updateIngredient(vo);
 		
 	}
+
+	public String insertIngredientToDB(String register) {
+		// 값이 중복이면 넣지않고 중복이 아니면 넣는다.
+		if(dao.isUnique(register)){
+			dao.insertIngredient(register);
+			return "success";
+		}
+		return "fail";
+	}
 	
 	
 }

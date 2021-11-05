@@ -95,4 +95,20 @@ public class RamyunDAO {
 		// TODO Auto-generated method stub
 		return mapper.getRamyunCount();
 	}
+
+
+	public boolean isUnique(String newRamyunName) {
+		// 중복 등록을 막기위해 기존 디비에 연결할수있나확인
+		int count=0;
+		count=mapper.countOf(newRamyunName);
+		if(count==0) {
+			return true;
+		}else if(count==1){
+			return false;
+		}else {
+			System.out.println("0도 아니고 1도 아니다 에러찾기");
+			return false;
+		}
+		
+	}
 }

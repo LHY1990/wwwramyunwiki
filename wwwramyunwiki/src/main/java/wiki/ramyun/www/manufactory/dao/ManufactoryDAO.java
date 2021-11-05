@@ -37,4 +37,24 @@ public class ManufactoryDAO {
 		
 		mapper.updateManufactory(vo.getCorporateName(), vo.getAdress(), vo.getIdentifyLetter(),vo.getItemReportNumber(), vo.getDescription(), vo.getFactoryName());
 	}
+
+	public boolean isUnique(String register) {
+		// 중복 등록을 막는다.
+		int count=0;
+		count=mapper.countOf(register);
+		if(count==0) {
+			return true;
+		}else if(count==1){
+			return false;
+		}else {
+			System.out.println("0도 아니고 1도 아니다 에러찾기");
+			return false;
+		}
+	}
+
+	public void insertManufactory(String register) {
+		// 등록하기
+		mapper.insertManufactory(register);
+		
+	}
 }

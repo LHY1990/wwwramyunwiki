@@ -1,5 +1,6 @@
 package wiki.ramyun.www.ingredient.mapper;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -20,4 +21,13 @@ public interface IngredientMapper {
 
 	@Select("select name, type, description, updated_date from ingredient where name=#{name}")
 	public IngredientVO selectIngredientByName(@Param("name")String name);
+
+	@Select("select count(*) from ingredient where name=#{register}")
+	public int countOf(@Param("register")String register);
+
+
+	@Insert("insert into ingredient(name) values(#{register})")
+	public void insertIngredient(@Param("register")String register);
+	
+	
 }

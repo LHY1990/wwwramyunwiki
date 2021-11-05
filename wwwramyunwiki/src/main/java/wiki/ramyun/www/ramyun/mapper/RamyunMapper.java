@@ -61,4 +61,7 @@ public interface RamyunMapper {
 	@Select("select count(brand_name_kor) from ramyun")
 	public int getRamyunCount();
 
+	@Select("select count(*) from ramyun where brand_name_kor=#{newRamyunName}")
+	public int countOf(@Param("newRamyunName")String newRamyunName);
+
 }

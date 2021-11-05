@@ -27,4 +27,13 @@ public class ManufactoryService {
 		dao.updateManufactory(vo);
 		
 	}
+
+	public String insertManufactoryToDB(String register) {
+		// 중복체크 후 넣는다.
+		if(dao.isUnique(register)){
+			dao.insertManufactory(register);
+			return "success";
+		}
+		return "fail";
+	}
 }

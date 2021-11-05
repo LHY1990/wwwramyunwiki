@@ -38,7 +38,7 @@
                             <div id="section_linkings_frame">
                                 <div class="sections_link">역사</div>
                                 <div class="sections_link">추천수</div>
-                                <div class="sections_link"><a href="./editramyun.do?name=${ramyun.brandNameKor}" >편집</a></div>
+                                <div class="sections_link"><a href="./editramyun.do?name=${ramyun.brandNameKor}" style="vertical-align: unset; color:black">편집</a></div>
                                 
                             </div>
                             

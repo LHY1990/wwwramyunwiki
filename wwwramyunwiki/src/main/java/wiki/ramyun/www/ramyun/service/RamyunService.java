@@ -18,11 +18,16 @@ public class RamyunService {
 	
 	
 	//회원등급 5등급 이상일때 가능하다
-	public void insertRamyunToDB(String newRamyunName) {
+	public String insertRamyunToDB(String newRamyunName) {
 		
 		//새라면을 만든다.기존 라면에 중복이 있는지 확인하자
+		if(dao.isUnique(newRamyunName)){
+			dao.insertRamyun(newRamyunName);
+			return "success";
+		}
+		return "fail";
 		
-		dao.insertRamyun(newRamyunName);
+		
 	}
 	
 	//기본적인 회원이 라면 정보를 업데이트 하는경우

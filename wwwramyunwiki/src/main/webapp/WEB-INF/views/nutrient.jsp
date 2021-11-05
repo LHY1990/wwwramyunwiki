@@ -37,7 +37,7 @@
                             <div id="section_linkings_frame">
                                 <div class="sections_link">역사</div>
                                 <div class="sections_link">추천수</div>
-                                <div class="sections_link"><a href="./editingredient.do?findname=${ingredient.name}" >편집</a></div>
+                                <div class="sections_link"><a href="./editingredient.do?findname=${ingredient.name}" style="vertical-align: unset;" >편집</a></div>
                                 
                             </div>
                             
@@ -56,42 +56,35 @@
                             분류 : 영양 성분 | ${ingredient.name} (최근 업데이트)
                         </div>
                         
+                    </div>
 
-
-                        <div style="width: 100%; height: 40px;">
-
+                    <div style="width: 100%; height: 40px;"></div>
+                    <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
+                    <div id="ingredient_info">
+                        <div id="ingredient_items">
+                        원재료명 : ${ingredient.name}<br>
+                        분류 : ${ingredient.type}<br>
                         </div>
-                        <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
-                        <div id="ingredient_info">
-                            <div id="ingredient_items">
-                            원재료명 : ${ingredient.name}<br>
-                            분류 : ${ingredient.type}<br>
-                            
-                            </div>
-                            
-                            
-                            
-                            
-                        </div>
-                        <div id="ingredient_information" style="margin-top: 10px;">
-                            
-                        </div>
-                        <div id="user_description" >
-                            ${ingredient.description}
-                        </div>
-                        <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
-                        <div style="width: 100%; height: 20px;">
-
-                        </div>
-
-                        <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
-
-
-                        
-                        
-                        
+                    </div>
+                    <div id="ingredient_information" style="margin-top: 10px;">
                         
                     </div>
+                    <div id="user_description" >
+                        ${ingredient.description}
+                    </div>
+                    <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
+                    <div style="width: 100%; height: 70px;">
+
+                    </div>
+
+                    <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
+
+
+                        
+                        
+                        
+                        
+                    
                        
 
 

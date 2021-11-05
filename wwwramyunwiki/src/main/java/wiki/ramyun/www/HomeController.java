@@ -287,6 +287,41 @@ public class HomeController {
 		mav.setViewName("registration");
 		return mav;
 	}
+	@PostMapping("regist.do")
+	public ModelAndView registNew(ModelAndView mav, String register, String type) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
+		
+		//빈공간을 없앤다.		
+		register=register.trim();
+		register=register.replace(" ","");		
+		//검색어 처분
+		
+		System.out.println(register+" "+type);
+		if(type.equals("ramyun")) {
+			System.out.println("라면등록중");
+			String outPrint=ramyunService.insertRamyunToDB(register);
+			System.out.println(outPrint);
+			
+		}else if(type.equals("ingredient")) {
+			System.out.println("원재료명등록중");
+			String outPrint=ingredientService.insertIngredientToDB(register);
+			System.out.println(outPrint);
+		}else if(type.equals("manufactory")) {
+			System.out.println("공장정보등록");
+			String outPrint=manufactoryService.insertManufactoryToDB(register);
+			System.out.println(outPrint);
+		}
+		
+		
+		
+		
+		mav.setViewName("home");
+		return mav;
+	}
+	
 	
 	
 	
@@ -294,59 +329,62 @@ public class HomeController {
 	@PostMapping("findramyun.do")
 	public ModelAndView postSearchKeyword(ModelAndView mav, String searchBoxInput) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-				ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-				mav.addObject("ramyunList", ramyunRecentUpdatedList);
-				//여기까지가 우측탭 정보
-				
-				//앞뒤 공백을 없앰
-				searchBoxInput=searchBoxInput.trim();
-				searchBoxInput=searchBoxInput.replace(" ", "");
-				String name=searchBoxInput;
-				
-				
-				try {
-					RamyunVO vo=ramyunService.getRamyunData(name);
-					if(vo!=null) {
-						//만약에 널이 아니면 라면을 반환
-						mav.addObject("ramyun", vo);
-						mav.setViewName("ramyun");
-						return mav;
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				try {
-					IngredientVO ingredient=ingredientService.selectIngredientByName(name);
-
-					if(ingredient!=null) {
-						mav.addObject("ingredient", ingredient);
-						mav.setViewName("nutrient");
-						return mav;
-					}
-				}catch (Exception e) {
-					e.printStackTrace();
-				}
-				try {
-					ManufactoryVO factory=manufactoryService.selectFactoryByName(name);
-					if(factory!=null) {
-						mav.addObject("manufactory", factory);
-						mav.setViewName("manufactory");
-						return mav;
-					}
-				}catch (Exception e) {
-					e.printStackTrace();
-				}
-				
-				//정말아무것도 없다면 다음처럼된다. 비슷한 검색어를 권해보자
-				List<String> similarList=searchService.getSimilars(name);
-				mav.addObject("similarList", similarList);
-				mav.addObject("message", name);
-				mav.setViewName("notfounding");
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
+		
+		//앞뒤 공백을 없앰
+		searchBoxInput=searchBoxInput.trim();
+		searchBoxInput=searchBoxInput.replace(" ", "");
+		String name=searchBoxInput;
+		
+		
+		try {
+			RamyunVO vo=ramyunService.getRamyunData(name);
+			if(vo!=null) {
+				//만약에 널이 아니면 라면을 반환
+				mav.addObject("ramyun", vo);
+				mav.setViewName("ramyun");
 				return mav;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			IngredientVO ingredient=ingredientService.selectIngredientByName(name);
+
+			if(ingredient!=null) {
+				mav.addObject("ingredient", ingredient);
+				mav.setViewName("nutrient");
+				return mav;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			ManufactoryVO factory=manufactoryService.selectFactoryByName(name);
+			if(factory!=null) {
+				mav.addObject("manufactory", factory);
+				mav.setViewName("manufactory");
+				return mav;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//정말아무것도 없다면 다음처럼된다. 비슷한 검색어를 권해보자
+		List<String> similarList=searchService.getSimilars(name);
+		mav.addObject("similarList", similarList);
+		mav.addObject("message", name);
+		mav.setViewName("notfounding");
+		return mav;
 	}
 	@GetMapping("editramyun.do")
 	public ModelAndView getEditRamyun(ModelAndView mav,String name) {
-		
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
 		
 		try {
 			RamyunVO vo=ramyunService.getRamyunData(name);
@@ -355,10 +393,7 @@ public class HomeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
+		
 		
 		return mav;
 		
@@ -477,6 +512,10 @@ public class HomeController {
 	@PostMapping("editingredient.do")
 	public ModelAndView afterEditIngredient(IngredientVO vo, ModelAndView mav) {
 		//성분 수정뒤에 이 컨트롤러로 온다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
 		
 		ingredientService.updateIngredient(vo);
 		mav.addObject("ingredient",ingredientService.selectIngredientByName(vo.getName()));

@@ -263,8 +263,8 @@ a{
 }
 
 #manufactory_information{
-    width: 840px;
-    height: 800px;
+    width: 100%;
+    height: auto;
     text-align: left;
 }
 #manufactory_description{
