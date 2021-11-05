@@ -53,53 +53,53 @@
                             분류 : 영양 성분 | ${ingredient.name}
                         </div>
                         
+                    </div>
 
+                    <div style="width: 100%; height: 40px;">
 
-                        <div style="width: 100%; height: 40px;">
+                    </div>
+                    <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
+                    <form action="./editingredient.do" method="post"  >
+                        <div id="ingredient_info">
+                            <div id="ingredient_items">
+                            원재료명 : ${ingredient.name}<br>
+                            분류 : 
+                            <input type="text" name="name" value="${ingredient.name}" style="display: none;">
+                            <select name="type">
+                                <option value="${ingredient.type}">${ingredient.type}</option>
+                                <option value="동물성">동물성</option>
+                                <option value="식물성">식물성</option>
+                                <option value="조절제">조절제</option>
+                            </select><br>
+                            </div>
+                            
+                            
+                            
+                            
+                        </div>
+                        <div id="ingredient_information" style="margin-top: 10px;">
+                            
+                        </div>
+                        <div id="user_description">
+                            <textarea name="description" maxlength="8000" id="description" style="width: 99%; height: 1200px; resize: none;overflow-y: scroll;">${ingredient.description}</textarea>
+                            
+                        </div>
+                        
+                        <div style="width: 100%; height: 20px;">
 
                         </div>
-                        <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
-                        <form action="./editingredient.do" method="post"  >
-                            <div id="ingredient_info">
-                                <div id="ingredient_items">
-                                원재료명 : ${ingredient.name}<br>
-                                분류 : 
-                                <input type="text" name="name" value="${ingredient.name}" style="display: none;">
-                                <select name="type">
-                                    <option value="${ingredient.type}">${ingredient.type}</option>
-                                    <option value="동물성">동물성</option>
-                                    <option value="식물성">식물성</option>
-                                    <option value="조절제">조절제</option>
-                                </select><br>
-                                </div>
-                                
-                                
-                                
-                                
-                            </div>
-                            <div id="ingredient_information" style="margin-top: 10px;">
-                                
-                            </div>
-                            <div id="user_description">
-                                <textarea name="description" maxlength="4000" id="description" style="width: 99%; height: 1200px; resize: none;overflow-y: scroll;">${ingredient.description}</textarea>
-                                
-                            </div>
-                            
-                            <div style="width: 100%; height: 20px;">
-
-                            </div>
-                            <div style="width: 99%; height: 30px;">
-                                <input type="submit" value="등록" style="width: 100%;height: 100%;">
-                            </div>
-                            
-                            <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
-                        </form>
-                        <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
+                        <div style="width: 99%; height: 30px;">
+                            <input type="submit" value="등록" style="width: 100%;height: 100%;">
+                        </div>
                         
-                        
-                        
-                        
-                    </div>
+                        <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
+                    </form>
+                    <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
+                    
+                    
+                    
+                    
+                    
                        
 
 

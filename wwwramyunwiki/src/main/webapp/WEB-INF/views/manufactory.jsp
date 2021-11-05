@@ -56,43 +56,43 @@
                             분류 : 제조 공장 | ${manufactory.factoryName} (최근 업데이트)
                         </div>
                         
+                    </div>
 
+                    <div style="width: 100%; height: 200px;">
 
-                        <div style="width: 100%; height: 40px;">
-
-                        </div>
-                        <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
-                        <div id="manufactory_info">
-                            <div id="manufactory_items">
-                            공장이름 : ${manufactory.factoryName}<br>
-                            회사명 : ${manufactory.corporateName}<br>
-                            주소 : ${manufactory.adress}<br>
-                            공장 식별 문자 : ${manufactory.identifyLetter}<br>
-                            관련 품목 보고 번호 : ${manufactory.itemReportNumber}<br>
-                            
-                            </div>
-                            
-                            
-                            
-                            
-                        </div>
-                        <div id="manufactory_description" style="margin-top: 10px;">
-                            ${manufactory.description}
-                        </div>
+                    </div>
+                    <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
+                    <div id="manufactory_info">
+                        <div id="manufactory_items">
+                        공장이름 : ${manufactory.factoryName}<br>
+                        회사명 : ${manufactory.corporateName}<br>
+                        주소 : ${manufactory.adress}<br>
+                        공장 식별 문자 : ${manufactory.identifyLetter}<br>
+                        관련 품목 보고 번호 : ${manufactory.itemReportNumber}<br>
                         
-                        <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
-                        <div style="width: 100%; height: 20px;">
-
                         </div>
-
-                        <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
-
-
                         
                         
                         
                         
                     </div>
+                    <div id="manufactory_description" style="margin-top: 10px;">
+                        ${manufactory.description}
+                    </div>
+                    
+                    <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
+                    <div style="width: 100%; height: 20px;">
+
+                    </div>
+
+                    <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
+
+
+                        
+                        
+                        
+                        
+                    
                        
 
 

@@ -78,21 +78,8 @@
                     </div>
 
                     <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
-
-
-                        
-                        
-                        
-                        
-                    
-                       
-
-
                 <!-- 여기서 끝나야한다 -->
                 </div>
-
-                
-                
             </div>   
             <!-- 우측 탭 시작 -->
             <%@ include file="./sidetab.jsp" %>
