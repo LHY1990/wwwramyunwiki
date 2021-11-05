@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class RamyunVO {
 	private String brandNameKor;          //라면 브랜드 명
 	private String brandNameEng;          //라면 브랜드 영어 이름
+	@DateTimeFormat(pattern ="yyyy-MM-dd'T'HH:mm:ss")
 	private LocalDateTime updatedDate;    //정보갱신 날짜 
 	private String corporateName;         //업체명
 	private String developedDate;         //개발년도

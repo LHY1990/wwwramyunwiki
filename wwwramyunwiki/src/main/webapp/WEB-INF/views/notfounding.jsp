@@ -43,7 +43,7 @@
                             
                         </div>
                         <div id="edited_time">
-                            관리자에게 데이터 요청이 필요합니다.
+                            <a href="./registration" style="text-decoration: none; color: blue;">찾는 문서가 없다면? 문서 등록하러 가기</a>
                         </div>
                         <div style="height: 100px;">
 
