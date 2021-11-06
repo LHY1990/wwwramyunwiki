@@ -83,4 +83,11 @@ public class MemberDAO {
 		return mapper.getMemberById(memberId);
 	}
 
+	public void changeNicknameByMemberNumber(String nickname, String memberNumber) {
+		mapper.updateNicknameByMemberNumber(nickname, memberNumber);
+		
+	}
+
+	
+
 }

@@ -93,7 +93,7 @@
                             }
                             else{
                                 %>
-                                <a style="color: black;"><%=session.getAttribute("memberId")%> 님,</a>
+                                <a style="color: black;"><%=session.getAttribute("memberNickname")%> 님,</a>
                                 <%
                             }
                         %>

@@ -14,7 +14,7 @@
     <script type="text/javascript" src="../../resources/javascript/login.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <title>라면위키:유저정보 -라면위키</title>
+    <title>라면위키:정보변경 -라면위키</title>
 
 </head>
 <body>
@@ -30,7 +30,7 @@
                 <!-- 모든컨텐츠는 여기서 시작해서 -->
                     <div id="information_tab">
                         <div id="section">
-                            라면위키 : 사용자 설정
+                            라면위키 : 사용자 정보변경
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
@@ -47,13 +47,14 @@
                         </div>
                         
                         <div id="sorting_category">
-                            분류 : 계정 설정
+                            분류 : 계정 정보 변경
                         </div>
                         <!-- 로그인 시작 -->
 
                         <div id="login_div">
                             
                             <div>
+                                <form action="changinguser.do" method="post">
                                 <br>
                                 <div>가입번호 : ${memberNumber}</div>
                                 <br>
@@ -63,10 +64,10 @@
                                 <br>
                                 <div>가입일 : ${memberJoinDate}</div>
                                 <br>
-                                <div>닉네임 : ${memberNickname}</div> 
+                                <div>닉네임 : <input type="text" maxlength="12" placeholder="닉네임변경" name="nickname" value="${memberNickname}"></div> 
                                 <br>
                                 <br>
-                                <form action="changeuserinfo.do" method="get">
+                                
                                     <button>회원정보변경</button>
                                 </form>                                
                             </div>

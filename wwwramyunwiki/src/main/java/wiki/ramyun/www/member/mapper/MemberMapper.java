@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import wiki.ramyun.www.member.MemberVO;
 
@@ -32,6 +33,11 @@ public interface MemberMapper {
 
 	@Select("select * from member where member_id=#{memberId}")
 	public MemberVO getMemberById(@Param("memberId")String memberId);
+
+	@Update("update member set nickname=#{nickname} where member_number =#{memberNumber}")
+	public void updateNicknameByMemberNumber(@Param("nickname")String nickname,@Param("memberNumber") String memberNumber);
+
+	
 	
 	
 }

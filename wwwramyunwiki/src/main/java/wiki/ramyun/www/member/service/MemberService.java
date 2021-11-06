@@ -117,7 +117,15 @@ public class MemberService {
 	}
 
 	public MemberVO getMemberById(String memberId) {
-		// TODO Auto-generated method stub
+		// 아이디로 멤버 선택
 		return dao.getMemberById(memberId);
 	}
+
+	public void changeNickname(String nickname, String memberNumber) {
+		dao.changeNicknameByMemberNumber(nickname,memberNumber);
+		
+	}
+
+	
+
 }

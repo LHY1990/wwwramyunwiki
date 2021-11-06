@@ -134,6 +134,11 @@ public class HomeController {
 		
 		return "redirect:home";
 	}
+	
+	
+	
+	
+	
 	//이용약관
 	@PostMapping("rules")
 	public String rulesPost() {
@@ -152,6 +157,36 @@ public class HomeController {
 		System.out.println(session.getAttribute("memberId"));
 		System.out.println(session.getAttribute("memberEmail"));
 		
+		mav.setViewName("userinfo");
+		return mav;
+	}
+	//유저정보 변경
+	@GetMapping("changeuserinfo.do")
+	public ModelAndView changeuserinfo(ModelAndView mav) {
+		
+		mav.setViewName("changeuserinfo");
+		
+		
+		
+		
+		return mav;
+	}
+	@PostMapping("changinguser.do")
+	public ModelAndView changinguser(ModelAndView mav, MemberVO vo,HttpSession session) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
+		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//여기까지가 우측탭 정보
+		
+		System.out.println("닉네임변경후 들어옴");
+		System.out.println(vo.getNickname());
+		
+		//변경할 닉네임과 멤버 넘버를 받아서 값을 변경한다.
+		String memberNumber=session.getAttribute("memberNumber").toString();
+		memberService.changeNickname(vo.getNickname(), memberNumber);
+		
+		
+		session.setAttribute("memberNickname", vo.getNickname());
 		mav.setViewName("userinfo");
 		return mav;
 	}

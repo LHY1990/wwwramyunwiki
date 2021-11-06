@@ -10,6 +10,11 @@ function popup(){
 
     
 }
+
+function login_needed() {
+    alert("로그인이 필요한 서비스 입니다.")
+}
+
 // propertychange change keyup paste input
 window.addEventListener('DOMContentLoaded', function(){
     //이거 제대로 작동함change는 다시넣어보자

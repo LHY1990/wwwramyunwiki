@@ -14,6 +14,7 @@ public class MemberVO {
 	private String nickname;
 	private String memberEmail;
 
+
 	public MemberVO() {
 		super();
 	}

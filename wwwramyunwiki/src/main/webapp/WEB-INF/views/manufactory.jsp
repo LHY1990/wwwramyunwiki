@@ -37,8 +37,17 @@
                             <div id="section_linkings_frame">
                                 <div class="sections_link">역사</div>
                                 <div class="sections_link">추천수</div>
-                                <div class="sections_link"><a href="./editmanufactory.do?findname=${manufactory.factoryName}" style="vertical-align: unset;" >편집</a></div>
                                 
+                                <%if(session.getAttribute("isMember")=="true"){%>
+                                    <div class="sections_link"><a href="./editmanufactory.do?findname=${manufactory.factoryName}" style="vertical-align: unset;" >편집</a></div>
+                                <%}else{%>
+                                    <div class="sections_link"><a href="./login" style="vertical-align: unset;" onclick="login_needed()">편집</a></div>  
+                                <%}%>
+
+
+
+
+
                             </div>
                             
                         </div>
