@@ -219,8 +219,9 @@ a{
     
 }
 #section_linkings_frame{
-    width: 40%;
+    /* width: 40%; */
     /* 얘가 넓으면넘어감 */
+    width: 400px;
     height: 80%;
     float: right;
     

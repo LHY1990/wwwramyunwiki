@@ -12,7 +12,7 @@ function popup(){
 }
 
 function login_needed() {
-    alert("로그인이 필요한 서비스 입니다.")
+    alert("로그인이 필요한 서비스 입니다.");
 }
 
 // propertychange change keyup paste input

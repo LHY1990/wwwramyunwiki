@@ -214,7 +214,8 @@ a{
     
 }
 #section_linkings_frame{
-    width: 60%;
+    /* width: 60%; */
+    width: 400px;
     height: 80%;
     float: right;
     

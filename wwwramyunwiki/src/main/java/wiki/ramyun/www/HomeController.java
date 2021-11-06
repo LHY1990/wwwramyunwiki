@@ -42,6 +42,7 @@ import wiki.ramyun.www.manufactory.service.ManufactoryService;
 import wiki.ramyun.www.member.MemberVO;
 import wiki.ramyun.www.member.dao.MemberDAO;
 import wiki.ramyun.www.member.service.MemberService;
+import wiki.ramyun.www.metadata.service.MetadataService;
 import wiki.ramyun.www.ramyun.RamyunVO;
 import wiki.ramyun.www.ramyun.service.RamyunService;
 import wiki.ramyun.www.search.SearchVO;
@@ -79,6 +80,11 @@ public class HomeController {
 	@Autowired
 	@Qualifier("searchService")
 	private SearchService searchService;
+	
+	@Autowired
+	@Qualifier("metadataService")
+	private MetadataService metadataService;
+	
 	
 	
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -709,6 +715,12 @@ public class HomeController {
 		}
 		return searchList;
 		
+		
+	}
+	
+	//좋아요 신고 구현
+	@PostMapping("likeramyun.do")
+	public ModelAndView postLikeRamyun(HttpSession session, ModelAndView mav, ) {
 		
 	}
 	

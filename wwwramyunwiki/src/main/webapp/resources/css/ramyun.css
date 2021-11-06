@@ -4,6 +4,8 @@
     outline-color: rgb(76, 68, 87);outline-style: dotted; outline-width: 1px;
     
 }
+
+
 a:visited{text-decoration: none;}
 a:link{text-decoration: none;}
 .sections_link:link{
@@ -14,6 +16,12 @@ a:link{text-decoration: none;}
 }
 .sections_link:hover{
     color: rgb(102, 27, 27);
+}
+
+.section_linkings>button{
+    outline:none;
+    border: none;
+    background-color:rgba(255, 255, 255, 0);
 }
 
 /* 몸통 색 */
@@ -231,15 +239,16 @@ a{
     
 }
 #section_linkings_frame{
-    width: 40%;
+    /* width: 40%; */
+    width: 400px;
     height: 80%;
     float: right;
     
 }
 .sections_link{
     width: 70px;
-    height: 95%;
-
+    /* height: 95%; */
+    height: 100%;
     text-align: center;
     font-size: 14px;
     float: right;
@@ -248,6 +257,15 @@ a{
     line-height: 200%;
     vertical-align: center;
 }
+form>button{
+    outline:none;
+    border: none;
+    /* height: 100%; */
+    background-color:rgba(255, 255, 255, 0);
+}
+
+
+
 #edited_time{
     font-size: 13px;
     text-align: right;

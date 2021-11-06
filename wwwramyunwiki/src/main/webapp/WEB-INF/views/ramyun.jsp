@@ -34,10 +34,18 @@
                         <div id="section">
                             라면위키 : ${ramyun.brandNameKor}
                         </div>
+                        
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
                                 <div class="sections_link">역사</div>
-                                <div class="sections_link">추천수</div>
+
+                                <form action="reportramyun.do" method="post" name="${ramyun.brandNameKor}">
+                                    <button class="sections_link" type="submit"><i class="fas fa-thumbs-down"></i> 신고</button>
+                                </form>
+                                <form action="likeramyun.do" method="post" name="${ramyun.brandNameKor}">
+                                    <button class="sections_link" type="submit"><i class="far fa-thumbs-up"></i> 추천</button>
+                                </form>
+                                
                                 <%if(session.getAttribute("isMember")=="true"){%>
                                 <div class="sections_link"><a href="./editramyun.do?name=${ramyun.brandNameKor}" style="vertical-align: unset; color:black">편집</a></div>
                                 <%}else{%>

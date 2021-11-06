@@ -36,7 +36,7 @@
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
                                 <div class="sections_link" style="color: rgb(155, 155, 155);">역사</div>
-                                <div class="sections_link" style="color: rgb(155, 155, 155);">추천수</div>
+                                <div class="sections_link" style="color: rgb(155, 155, 155);"><i class="far fa-thumbs-up"></i> 추천</div>
                                 <div class="sections_link" style="color: rgb(155, 155, 155);">편집</div>
                                 
                             </div>

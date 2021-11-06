@@ -20,7 +20,7 @@
         </div>
         <div class="inner_top_pannel_link" >
             <div class="tab_linking">
-                <a href="./recentupdating" style="color: white;">최근변경</a>
+                <a href="./recentupdating" style="color: white;" >최근변경</a>
             </div>
         </div>
         <div class="inner_top_pannel_link">
