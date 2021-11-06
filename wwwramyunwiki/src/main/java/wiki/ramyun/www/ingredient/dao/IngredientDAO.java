@@ -51,6 +51,11 @@ public class IngredientDAO {
 		// 등록
 		mapper.insertIngredient(register);
 	}
+
+	public IngredientVO getRandomOne() {
+		// TODO Auto-generated method stub
+		return mapper.selectRandomOne();
+	}
 	
 	
 }

@@ -57,4 +57,9 @@ public class ManufactoryDAO {
 		mapper.insertManufactory(register);
 		
 	}
+
+	public ManufactoryVO getRandomOne() {
+		// TODO Auto-generated method stub
+		return mapper.selectRandomOne();
+	}
 }

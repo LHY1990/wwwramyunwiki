@@ -101,10 +101,21 @@ public class HomeController {
 	@PostMapping("home")
 	public String home(MemberVO vo, HttpSession session) {
 		
-		
+		//멤버인지 체크하고 
 		boolean loginOK=memberService.checkMember(vo);
+		//멤버면 정보를 보낸다.
+		
+		
 		if(loginOK) {
+			vo=memberService.getMemberById(vo.getMemberId());
+			
+			
+			session.setAttribute("memberNumber", vo.getMemberNumber());
 			session.setAttribute("memberId", vo.getMemberId());
+			session.setAttribute("memberEmail", vo.getMemberEmail());
+			session.setAttribute("memberJoinDate", vo.getJoinDate());
+			session.setAttribute("memberNickname", vo.getNickname());
+			
 			session.setAttribute("isMember", "true");
 			return "redirect:home";
 			
@@ -134,6 +145,18 @@ public class HomeController {
 	}
 	
 	
+	//유저가 설정창을 눌렀을때
+	@GetMapping("userinfo")
+	public ModelAndView getUserInfo(ModelAndView mav, HttpSession session) {
+		System.out.println("유저 설정 접근중");
+		System.out.println(session.getAttribute("memberId"));
+		System.out.println(session.getAttribute("memberEmail"));
+		
+		mav.setViewName("userinfo");
+		return mav;
+	}
+	
+	
 	
 	@GetMapping("login")
 	public ModelAndView login(ModelAndView mav) {
@@ -160,8 +183,8 @@ public class HomeController {
 	
 	@GetMapping("join")
 	public String join(ModelAndView mav) {
-		
-		
+//		처음창은 이쪽으로 보내서 값을 넣게한다.
+		System.out.println("조인 겟에 접근중");
 		mailCode = String.valueOf((int)(Math.random()*1000000));
 		
 		return "join";
@@ -171,7 +194,7 @@ public class HomeController {
 	@PostMapping("join")
 	public ModelAndView joinFirst(MemberVO vo,ModelAndView mav,@RequestParam(defaultValue = "") String memberEmailCode) {
 		
-		
+		System.out.println("joinFirst에 접근중");
 		
 		
 		if(memberEmailCode.equals("")) {		
@@ -244,7 +267,6 @@ public class HomeController {
 		name=name.trim();
 		name=name.replace(" ","");
 		
-		System.out.println(name);
 		
 		try {
 			RamyunVO vo=ramyunService.getRamyunData(name);
@@ -308,7 +330,6 @@ public class HomeController {
 		register=register.replace(" ","");		
 		//검색어 처분
 		
-		System.out.println(register+" "+type);
 		if(type.equals("ramyun")) {
 			System.out.println("라면등록중");
 			String outPrint=ramyunService.insertRamyunToDB(register);
@@ -497,7 +518,8 @@ public class HomeController {
 		IngredientVO ingredient;
 		
 		//임의로 한개의 영양정보를 가져온다.ingredient는 데이터베이스 이름,nutrient는 페이지이름
-		ingredient=ingredientService.getRecentOne();
+//		ingredient=ingredientService.getRecentOne();
+		ingredient=ingredientService.getRandomOne();
 		mav.addObject("ingredient", ingredient);
 		mav.setViewName("nutrient");
 		
@@ -539,9 +561,10 @@ public class HomeController {
 		mav.addObject("ramyunList", ramyunRecentUpdatedList);
 		//여기까지가 우측탭 정보
 		
-		vo=manufactoryService.getRecentOne();
-		
-		
+		//최근거 하나 가져오기
+//		vo=manufactoryService.getRecentOne();
+		//랜덤으로 하나 가져오기
+		vo=manufactoryService.getRandomOne();
 		
 		
 		
@@ -560,14 +583,6 @@ public class HomeController {
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
 		mav.addObject("ramyunList", ramyunRecentUpdatedList);
 		//여기까지가 우측탭 정보
-		
-		System.out.println(vo.getDescription());
-		System.out.println(vo.getAdress());
-		System.out.println(vo.getCorporateName());
-		System.out.println(vo.getIdentifyLetter());
-		System.out.println(vo.getItemReportNumber());
-		System.out.println(vo.getDescription());
-		
 //		받은 vo이름으로 업데이트
 		manufactoryService.updateManufactory(vo);
 		
@@ -642,7 +657,6 @@ public class HomeController {
 	//리스폰스 바디로 받아 비동기로 처리
 	@PostMapping("searchintime.do")
 	public @ResponseBody Object searchInTime(HttpServletRequest request){
-//		System.out.println(request.getParameter("msg"));//잘들어 오나 확인
 		List<String> searchList=new ArrayList<String>();
 		String noSpaceString=request.getParameter("msg").replace(" ","");
 		

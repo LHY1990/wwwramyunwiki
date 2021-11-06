@@ -78,4 +78,9 @@ public class MemberDAO {
 		return mapper.getMemberCount();
 	}
 
+	public MemberVO getMemberById(String memberId) {
+		// TODO Auto-generated method stub
+		return mapper.getMemberById(memberId);
+	}
+
 }

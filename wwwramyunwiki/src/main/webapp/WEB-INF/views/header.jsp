@@ -98,38 +98,38 @@
                             }
                         %>
                         
-                        
+                        <!-- 위에 아이디 아니고 닉네임으로 변경할것 -->
                     </div>
                     <%
                         if(session.getAttribute("isMember")=="true"){
                             %>
-                            <div style="height: 10%; width: 80%; margin-left: 10%;">
-                                <a id="user_info_linking" href="./userinfo" >설정</a>
+                            <div style="height: 10%; width: 80%; margin-left: 10%;color: black;">
+                                <a id="user_info_linking" href="./userinfo" style="color: black;" >설정</a>
                             </div>
                             <!-- 분할 -->
                             <div style="width: 84%;margin-left: 7%; outline: rgb(89, 63, 114, 0.5) dotted 1px;"></div>
-                            <div style="height: 10%; width: 80%; margin-left: 10%; margin-top: 10px;">
+                            <div style="height: 10%; width: 80%; margin-left: 10%; margin-top: 10px;color: black;">
                                 내가 기여한 라면
                             </div>
                             
-                            <div style="height: 10%; width: 80%; margin-left: 10%; text-align: right;">
+                            <div style="height: 10%; width: 80%; margin-left: 10%; text-align: right;color: black;">
                                 0000 개
                             </div>
                             <!-- 분할 -->
                             <div style="width: 84%; margin-left: 7%;outline: rgb(89, 63, 114, 0.5) dotted 1px;"></div>
-                            <div style="height: 10%; width: 80%; margin-left: 10%; margin-top: 10px;">
+                            <div style="height: 10%; width: 80%; margin-left: 10%; margin-top: 10px;color: black;">
                                 받은 추천 수
                             </div>
-                            <div style="height: 10%; width: 80%; margin-left: 10%; text-align: right;">
+                            <div style="height: 10%; width: 80%; margin-left: 10%; text-align: right;color: black;">
                                 0000 개
                             </div>
-                            <div style="height: 10%; width: 80%; margin-left: 10%; text-align: left;">
+                            <div style="height: 10%; width: 80%; margin-left: 10%; text-align: left;color: black;">
                                 <a href="/logout.do" style="color: black;">로그아웃</a>
                             </div>
                             <%
                         }
                         else{%>
-                            <div style="height: 10%; width: 80%; margin-left: 10%;color: rgba(0, 0, 0, 0.075);">
+                            <div style="height: 10%; width: 80%; margin-left: 10%;color: rgba(0, 0, 0, 0.075); ">
                                 설정
                             </div>
                             <!-- 분할 -->

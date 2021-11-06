@@ -13,10 +13,7 @@ public class IngredientService {
 	@Autowired
 	private IngredientDAO dao;
 
-	public IngredientVO getRecentOne() {
-		// 가장 최근에 수정된 영양성분을 가져온다.
-		return dao.getRecentsOne();
-	}
+	
 
 	public IngredientVO selectIngredientByName(String findname) {
 		// 이름으로 하나 선택해서 가져온다
@@ -36,6 +33,14 @@ public class IngredientService {
 			return "success";
 		}
 		return "fail";
+	}
+	public IngredientVO getRecentOne() {
+		// 가장 최근에 수정된 영양성분을 가져온다.
+		return dao.getRecentsOne();
+	}
+	public IngredientVO getRandomOne() {
+		// TODO Auto-generated method stub
+		return dao.getRandomOne();
 	}
 	
 	

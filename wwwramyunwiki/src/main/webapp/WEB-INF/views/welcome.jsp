@@ -35,7 +35,7 @@
                     <br>
                     ${newMember} 님, <br>
                     회원가입을 축하합니다.<br>
-                    <button id="go_to_home" type="button"><a href="./home" style="text-decoration: none;">홈으로 가기</a></button>
+                    <button id="go_to_home" type="button"><a href="./home" style="text-decoration: none; color: white; font:bold;">홈으로 가기</a></button>
                     
                     <br>
                     

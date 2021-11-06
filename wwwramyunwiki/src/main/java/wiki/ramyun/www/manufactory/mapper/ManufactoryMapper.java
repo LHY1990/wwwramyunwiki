@@ -11,9 +11,7 @@ import wiki.ramyun.www.manufactory.ManufactoryVO;
 @Mapper
 public interface ManufactoryMapper {
 
-	//최근것 값 가져와서 첫 화면에 뿌리기
-	@Select("select factory_name, item_report_number, adress, identify_letter, corporate_name, description, updated_date from manufactory order by updated_date limit 1")
-	ManufactoryVO selectRecentOne();
+
 
 	//이름으로 데이터 가져오기
 	@Select("select factory_name, item_report_number, adress, identify_letter, corporate_name, description, updated_date from manufactory where factory_name=#{name}")
@@ -38,6 +36,15 @@ public interface ManufactoryMapper {
 	//공장 등록하기
 	@Insert("insert into manufactory(factory_name) values(#{register})")
 	void insertManufactory(String register);
+
+	
+	//최근것 값 가져와서 첫 화면에 뿌리기
+	@Select("select factory_name, item_report_number, adress, identify_letter, corporate_name, description, updated_date from manufactory order by updated_date limit 1")
+	ManufactoryVO selectRecentOne();
+	
+	//랜덤으로 가져오기
+	@Select("select factory_name, item_report_number, adress, identify_letter, corporate_name, description, updated_date from manufactory order by rand() limit 1")
+	ManufactoryVO selectRandomOne();
 	
 	
 	

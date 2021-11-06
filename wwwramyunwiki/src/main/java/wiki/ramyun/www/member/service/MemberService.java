@@ -115,4 +115,9 @@ public class MemberService {
 		// 총 회원수를 가져온다
 		return dao.getMemberCount();
 	}
+
+	public MemberVO getMemberById(String memberId) {
+		// TODO Auto-generated method stub
+		return dao.getMemberById(memberId);
+	}
 }

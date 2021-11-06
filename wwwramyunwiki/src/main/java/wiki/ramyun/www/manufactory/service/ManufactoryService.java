@@ -12,10 +12,7 @@ public class ManufactoryService {
 	@Autowired
 	private ManufactoryDAO dao;
 
-	public ManufactoryVO getRecentOne() {
-		// 최근 업데이트 분 가져오기
-		return dao.selectRecentOne();
-	}
+	
 
 	public ManufactoryVO selectFactoryByName(String name) {
 		// 이름으로 하나 선택하기
@@ -35,5 +32,13 @@ public class ManufactoryService {
 			return "success";
 		}
 		return "fail";
+	}
+	public ManufactoryVO getRecentOne() {
+		// 최근 업데이트 분 가져오기
+		return dao.selectRecentOne();
+	}
+	public ManufactoryVO getRandomOne() {
+		// TODO Auto-generated method stub
+		return dao.getRandomOne();
 	}
 }
