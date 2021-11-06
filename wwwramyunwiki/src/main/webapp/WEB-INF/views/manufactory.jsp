@@ -62,7 +62,7 @@
                         </div>
                         
                         <div id="sorting_category">
-                            분류 : 제조 공장 | 무작위 선택 | ${manufactory.factoryName} 
+                            분류 : 제조 공장 | ${manufactory.factoryName} 
                         </div>
                         
                     </div>

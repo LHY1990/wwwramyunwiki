@@ -58,12 +58,12 @@
                         </div>
                         
                         <div id="sorting_category">
-                            분류 : 영양 성분 | 무작위 선택 | ${ingredient.name}
+                            분류 : 영양 성분 | ${ingredient.name}
                         </div>
                         
                     </div>
 
-                    <div style="width: 100%; height: 40px;"></div>
+                    <div style="width: 100%; height: 170px;"></div>
                     <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
                     <div id="ingredient_info">
                         <div id="ingredient_items">
