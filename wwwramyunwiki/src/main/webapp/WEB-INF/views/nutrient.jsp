@@ -35,14 +35,45 @@
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
+                                <!-- 역사 -->
                                 <div class="sections_link">역사</div>
-                                <div class="sections_link"><i class="fas fa-thumbs-down"></i> 신고</div>
-                                <div class="sections_link"><i class="far fa-thumbs-up"></i> 추천</div>
+
+                                 <!-- 신고 -->
+                                 <%if(session.getAttribute("isMember")=="true"){%>
+                                    <button class="sections_link linking_button" id="ingredientreporting" name="ingredientName" type="button">
+                                        <i class="fas fa-thumbs-down"></i>
+                                        <div id="reporting_thumb" style="float: right;">신고</div>
+                                    </button>
+                                    <%}else{%>
+                                    <button class="sections_link linking_button" id="ingredientreporting" name="ingredientName" type="submit">
+                                        <a href="./login"  style="vertical-align: unset; color:black" onclick="login_needed()">
+                                            <i class="fas fa-thumbs-down"></i> 신고</button>   
+                                        </a>
+                                    </button>
+                                    <%}%>
+                                    <!-- 추천  -->
+                                    <%if(session.getAttribute("isMember")=="true"){%>
+                                    <button class="sections_link linking_button" id="ingredientlikes" name="ingredientName" type="button">
+                                        <i class="far fa-thumbs-up" ></i>
+                                        <div id="recommand_thumb" style="float: right;">추천</div>
+                                    </button>
+                                    <%}else{%>
+                                    <button class="sections_link linking_button" id="ingredientlikes" name="ingredientName" type="submit" >
+                                        <a href="./login"  style="vertical-align: unset; color:black" onclick="login_needed()">
+                                            <i class="far fa-thumbs-up"></i> 추천</button>   
+                                        </a>
+                                    <%}%>
+
+                                <!-- 편집 -->
                                 <%if(session.getAttribute("isMember")=="true"){%>
-                                    <div class="sections_link"><a href="./editingredient.do?findname=${ingredient.name}" style="vertical-align: unset; color: black;" >편집</a></div>
+                                    <div class="sections_link">
+                                        <a href="./editingredient.do?findname=${ingredient.name}" style="vertical-align: unset; color: black;" >편집</a>
+                                    </div>
                                 <%}else{%>
                                     
-                                    <div class="sections_link"><a href="./login" style="vertical-align: unset; color: black;" onclick="login_needed()" >편집</a></div> 
+                                    <div class="sections_link">
+                                        <a href="./login" style="vertical-align: unset; color: black;" onclick="login_needed()" >편집</a>
+                                    </div> 
                                 <%}%>
 
                             </div>
@@ -72,6 +103,8 @@
                         분류 : ${ingredient.type}<br>
                         </div>
                     </div>
+                    <!-- 안보여주고 값만보낼것 ajax포함 -->
+                    <input id="ingredientID" type="text" style="display: none;" value="${ingredient.name}">
                     <div id="ingredient_information" style="margin-top: 10px;">
                         
                     </div>

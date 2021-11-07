@@ -5,10 +5,6 @@ function popup(){
     }else{
         $('#login_popup').css('display','none');
     }
-
-
-
-    
 }
 
 function login_needed() {
@@ -19,15 +15,7 @@ function login_needed() {
 window.addEventListener('DOMContentLoaded', function(){
     //검색창 ajax
     $('#search_box_textarea').on("change keyup pastechange keyup paste", function(){
-        //let inputtext= document.getElementById("search_box_textarea").value;
-        //console.log(inputtext);
-        //기능하는지확인
         //$('#auto0').val("");
-        //$('#auto1').val("");
-        //$('#auto2').val("");
-        //$('#auto3').val("");
-        //$('#auto4').val("");
-        
         $.ajax({
             type : "POST",
             url : "./searchintime.do",
@@ -57,13 +45,7 @@ window.addEventListener('DOMContentLoaded', function(){
         })
         $('#recommand').css('display','block');
     });
-    //이건 이전기능
-    // $('#search_box_textarea').on("blur focusout", function() {
-    //     $('#recommand').css('display','none');
-        
-    // });
-
-
+    // 라면 추천버튼 클릭시 AJAX
     $("#ramyunlikes").on("click", function() {
         $.ajax({
             type : "POST",
@@ -71,32 +53,56 @@ window.addEventListener('DOMContentLoaded', function(){
             dataType : "json",
             data : {
                 "ramyunName" : $('#ramyunID').val()
-
             },
-            
             success : function(items) {
                 console.log("successAjax");
                 console.log(items[0]);
                 
                 $('#recommand_thumb').text(items[0]);
-                // console.log(items[0]);
-                
-                // $('#auto0').val(items[0]);
-                
-                
-                
-                
             },
             error : function(error) {
                 console.log("errorAjax");
             }
-    
         })
     })
-
-
-
-
+    // 라면 신고버튼 클릭시 AJAX
+    $("#ramyunreporting").on("click", function() {
+        $.ajax({
+            type : "POST",
+            url : "./reportramyun.do",
+            dataType : "json",
+            data : {
+                "ramyunName" : $('#ramyunID').val()
+            },
+            success : function(items) {
+                console.log("successAjax");
+                console.log(items[0]);
+                $('#reporting_thumb').text(items[0]);
+            },
+            error : function(error) {
+                console.log("errorAjax");
+            }
+        })
+    })
+    // 영양성분 추천버튼 클릭시 AJAX
+    $("#ingredientlikes").on("click", function() {
+        $.ajax({
+            type : "POST",
+            url : "./likeingredient.do",
+            dataType : "json",
+            data : {
+                "ingredientName" : $('#ingredientID').val()
+            },
+            success : function(items) {
+                console.log("successAjax");
+                console.log(items[0]);
+                $('#recommand_thumb').text(items[0]);
+            },
+            error : function(error) {
+                console.log("errorAjax");
+            }
+        })
+    })
 })
 
 

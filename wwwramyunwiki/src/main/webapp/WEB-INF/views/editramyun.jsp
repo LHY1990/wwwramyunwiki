@@ -33,14 +33,13 @@
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
-                                <div class="sections_link">역사</div>
-                                <div class="sections_link"><i class="far fa-thumbs-up"></i> 추천</div>
+                                <!-- <div class="sections_link">역사</div> -->
                                 
                             </div>
                             
                         </div>
                         <div id="edited_time">
-                            최근 수정 시각 : ${ramyun.updatedDate}
+                            <!-- 최근 수정 시각 : ${ramyun.updatedDate} -->
                         </div>
                         <div style="height: 100px;">
 

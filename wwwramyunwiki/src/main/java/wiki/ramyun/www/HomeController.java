@@ -719,20 +719,20 @@ public class HomeController {
 		
 	}
 	
-	//	좋아요 신고 구현
+	//라면 좋아요  구현
 	//리스폰스 바디로 받아 비동기로 처리
 	@PostMapping("likeramyun.do")
 	public @ResponseBody Object postLikeRamyun(HttpSession session, String ramyunName) {
 		
 		//회원의 이름을 가져온다.
-		String memeberId=(String) session.getAttribute("memberId");
+		String memberId=(String) session.getAttribute("memberId");
 		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
 		
 		
 		
 		//여기위는 테스트
 		
-		int likesCounts=metadataService.addLike(memeberId, ramyunName);
+		int likesCounts=metadataService.addLike(memberId, ramyunName);
 		
 		
 		List<String> likeList=new ArrayList<String>();
@@ -743,6 +743,30 @@ public class HomeController {
 		
 		
 		return likeList;
+	}
+	//라면 신고 구현
+	@PostMapping("reportramyun.do")
+	public @ResponseBody Object postReportRamyun(HttpSession session, String ramyunName) {
+		
+		//회원의 이름을 가져온다.
+		String memberId=(String) session.getAttribute("memberId");
+		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
+		
+		
+		
+		//여기위는 테스트
+		
+		int reportCounts=metadataService.addReport(memberId, ramyunName);
+		
+		
+		List<String> reportList=new ArrayList<String>();
+		
+		reportList.add(String.valueOf(reportCounts));
+		
+		
+		
+		
+		return reportList;
 	}
 	
 	

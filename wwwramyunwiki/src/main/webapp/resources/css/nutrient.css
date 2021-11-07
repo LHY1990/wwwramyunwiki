@@ -275,7 +275,12 @@ a{
 
 
 
-
+.linking_button{
+    /* 버튼의 색만뺀다. */
+        height: 31px;
+        background-color:rgba(255, 255, 255, 0);
+    }
+    
 
 
 
