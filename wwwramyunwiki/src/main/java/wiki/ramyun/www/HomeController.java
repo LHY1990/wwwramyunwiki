@@ -683,9 +683,6 @@ public class HomeController {
 		boolean hasNext=searchService.hasNext(page);
 		int currentPageRange=((page-1)/10)*10;	
 		//위는 프레임 레인지를 정한다.
-		
-		
-		
 		mav.addObject("totalPageCount",totalPageCount);
 		mav.addObject("searchList", voList);
 		//프리뷰 버튼 넣을지 말지 정함
@@ -703,7 +700,6 @@ public class HomeController {
 		String noSpaceString=request.getParameter("msg").replace(" ","");
 		
 		searchList=searchService.searchInTime(noSpaceString);
-
 		//아래는 실시간으로 출력해보기
 		if(noSpaceString.equals("")) {
 			List<String> noValues=new ArrayList<String>();
@@ -716,7 +712,6 @@ public class HomeController {
 		}
 		return searchList;
 		
-		
 	}
 	
 	//라면 좋아요  구현
@@ -728,48 +723,46 @@ public class HomeController {
 		String memberId=(String) session.getAttribute("memberId");
 		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
 		
-		
-		
-		//여기위는 테스트
-		
-		int likesCounts=metadataService.addLike(memberId, ramyunName);
-		
+		int likesCounts=metadataService.addLikeRamyun(memberId, ramyunName);
 		
 		List<String> likeList=new ArrayList<String>();
 		
 		likeList.add(String.valueOf(likesCounts));
-		
-		
-		
 		
 		return likeList;
 	}
 	//라면 신고 구현
 	@PostMapping("reportramyun.do")
 	public @ResponseBody Object postReportRamyun(HttpSession session, String ramyunName) {
-		
 		//회원의 이름을 가져온다.
 		String memberId=(String) session.getAttribute("memberId");
 		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
-		
-		
-		
-		//여기위는 테스트
-		
-		int reportCounts=metadataService.addReport(memberId, ramyunName);
-		
+		int reportCounts=metadataService.addReportRamyun(memberId, ramyunName);
 		
 		List<String> reportList=new ArrayList<String>();
 		
 		reportList.add(String.valueOf(reportCounts));
 		
-		
-		
-		
 		return reportList;
 	}
 	
-	
+	//라면 좋아요  구현
+	//리스폰스 바디로 받아 비동기로 처리
+	@PostMapping("likeingredient.do")
+	public @ResponseBody Object postLikeIngredient(HttpSession session, String ingredientName) {
+		
+		//회원의 이름을 가져온다.
+		String memberId=(String) session.getAttribute("memberId");
+		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
+		
+		int likesCounts=metadataService.addLikeIngredient(memberId, ingredientName);
+		
+		List<String> likeList=new ArrayList<String>();
+		
+		likeList.add(String.valueOf(likesCounts));
+		
+		return likeList;
+	}
 	
 	
 	
