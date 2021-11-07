@@ -746,14 +746,13 @@ public class HomeController {
 		return reportList;
 	}
 	
-	//라면 좋아요  구현
+	//영양성분 좋아요  구현
 	//리스폰스 바디로 받아 비동기로 처리
 	@PostMapping("likeingredient.do")
 	public @ResponseBody Object postLikeIngredient(HttpSession session, String ingredientName) {
 		
 		//회원의 이름을 가져온다.
 		String memberId=(String) session.getAttribute("memberId");
-		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
 		
 		int likesCounts=metadataService.addLikeIngredient(memberId, ingredientName);
 		
@@ -762,6 +761,20 @@ public class HomeController {
 		likeList.add(String.valueOf(likesCounts));
 		
 		return likeList;
+	}
+	//영양성분 신고버튼 ajax처리
+	@PostMapping("reportingredient.do")
+	public @ResponseBody Object postReportIngredient(HttpSession session, String ingredientName) {
+		//회원의 이름을 가져온다.
+		String memberId=(String) session.getAttribute("memberId");
+		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
+		int reportCounts=metadataService.addReportRamyun(memberId, ingredientName);
+		
+		List<String> reportList=new ArrayList<String>();
+		
+		reportList.add(String.valueOf(reportCounts));
+		
+		return reportList;
 	}
 	
 	

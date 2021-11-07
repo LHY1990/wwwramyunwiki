@@ -103,6 +103,25 @@ window.addEventListener('DOMContentLoaded', function(){
             }
         })
     })
+    // 영양성분 신고버튼 클릭시 AJAX
+    $("#ingredientreporting").on("click", function() {
+        $.ajax({
+            type : "POST",
+            url : "./reportingredient.do",
+            dataType : "json",
+            data : {
+                "ingredientName" : $('#ingredientID').val()
+            },
+            success : function(items) {
+                console.log("successAjax");
+                console.log(items[0]);
+                $('#reporting_thumb').text(items[0]);
+            },
+            error : function(error) {
+                console.log("errorAjax");
+            }
+        })
+    })
 })
 
 
