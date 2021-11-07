@@ -17,7 +17,7 @@ function login_needed() {
 
 // propertychange change keyup paste input
 window.addEventListener('DOMContentLoaded', function(){
-    //이거 제대로 작동함change는 다시넣어보자
+    //검색창 ajax
     $('#search_box_textarea').on("change keyup pastechange keyup paste", function(){
         //let inputtext= document.getElementById("search_box_textarea").value;
         //console.log(inputtext);
@@ -57,10 +57,45 @@ window.addEventListener('DOMContentLoaded', function(){
         })
         $('#recommand').css('display','block');
     });
-    $('#search_box_textarea').on("blur focusout", function() {
-        $('#recommand').css('display','none');
+    //이건 이전기능
+    // $('#search_box_textarea').on("blur focusout", function() {
+    //     $('#recommand').css('display','none');
         
-    });
+    // });
+
+
+    $("#ramyunlikes").on("click", function() {
+        $.ajax({
+            type : "POST",
+            url : "./likeramyun.do",
+            dataType : "json",
+            data : {
+                "ramyunName" : $('#ramyunID').val()
+
+            },
+            
+            success : function(items) {
+                console.log("successAjax");
+                console.log(items[0]);
+                
+                $('#recommand_thumb').text(items[0]);
+                // console.log(items[0]);
+                
+                // $('#auto0').val(items[0]);
+                
+                
+                
+                
+            },
+            error : function(error) {
+                console.log("errorAjax");
+            }
+    
+        })
+    })
+
+
+
 
 })
 

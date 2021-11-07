@@ -12,9 +12,15 @@ import wiki.ramyun.www.member.MemberVO;
 @Mapper
 public interface MemberMapper {
 	
-	//회원가입시 멤버의 정보를 넣는다.	
+		
+//	@Insert("insert into member(member_number, member_id, member_password, join_date, nickname, member_email) values(0,#{memberId},#{memberPassword},now(),#{memberId},#{memberEmail})")
+//	public void insertMember(@Param("memberId")String memberId,@Param("memberPassword") String memberPassword,@Param("memberEmail") String memberEmail);
+	
+	
+	//회원가입시 멤버의 정보를 넣는다.
 	@Insert("insert into member(member_number, member_id, member_password, join_date, nickname, member_email) values(#{memberNumber},#{memberId},#{memberPassword},#{joinDate},#{nickname},#{memberEmail})")
 	public void insertMember(MemberVO member);
+	
 	
 	//멤버의 넘버로 회원을 지운다. 이걸로만 접근가능
 	@Delete("delete from member where member_number =${memberNumber}")

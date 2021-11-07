@@ -56,7 +56,7 @@
                             <form action="./home" method="post">
                                 <div style="margin-top : 50px;"></div>
                                 <div id="type_id">아이디</div>
-                                <input id="type_id" type="text" name="memberId"><br><br>
+                                <input id="type_id" type="text" name="memberId" autofocus><br><br>
                                 <div id="type_password">비밀번호</div>
                                 <input id="type_password" type="password" name="memberPassword">
                                 <div id="finding_id_password">아이디/비밀번호 찾기</div><br>

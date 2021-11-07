@@ -38,6 +38,7 @@ public class MemberService {
 		vo.setMemberPassword(joinVO.getMemberPassword());
 		vo.setJoinDate(LocalDateTime.now());
 		vo.setNickname(joinVO.getMemberId());
+		vo.setMemberEmail(joinVO.getMemberEmail());
 		dao.insertMember(vo);
 		
 		

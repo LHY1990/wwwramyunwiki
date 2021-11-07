@@ -44,6 +44,8 @@
                     <br>
                     본인 확인 이메일<br>
                     <input id="memberEmail" type="text" name="memberEmail" placeholder="email@gmail.com"  value="${memberEmail}"><br>
+                        
+                    
                     <button id="send_mail" type="submit" onclick="sendingMailCode()" >인증번호 보내기</button>
                     
                     <br>

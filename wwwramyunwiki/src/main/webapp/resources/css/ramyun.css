@@ -224,6 +224,8 @@ a{
 
 
 #section{
+    /* 이 부분이 날짜공간을 만든다. */
+    width: 500px;
     font-size: 30px;
     font-family: "SBAggroB";
     float: left;
@@ -232,7 +234,7 @@ a{
     height: 100%;
 }
 #section_linkings{
-    width: 80%;
+    width: 40%;
     height: 100%;
     float: right;
     
@@ -247,8 +249,8 @@ a{
 }
 .sections_link{
     width: 70px;
-    /* height: 95%; */
-    height: 100%;
+    height: 95%;
+    /* height: 100%; */
     text-align: center;
     font-size: 14px;
     float: right;
@@ -257,10 +259,8 @@ a{
     line-height: 200%;
     vertical-align: center;
 }
-form>button{
-    outline:none;
-    border: none;
-    /* height: 100%; */
+.linking_button{
+/* 버튼의 색만뺀다. */
     background-color:rgba(255, 255, 255, 0);
 }
 

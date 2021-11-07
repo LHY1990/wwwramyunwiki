@@ -267,6 +267,7 @@ public class HomeController {
 		if(memberEmailCode!=null) {
 			//인증코드가 있는 상태로 넘어온경우
 			System.out.println("인증번호 가지고 방문");
+			System.out.println(vo.getMemberEmail());
 			
 			if(memberEmailCode.equals(mailCode)) {
 				
@@ -718,10 +719,30 @@ public class HomeController {
 		
 	}
 	
-	//좋아요 신고 구현
+	//	좋아요 신고 구현
+	//리스폰스 바디로 받아 비동기로 처리
 	@PostMapping("likeramyun.do")
-	public ModelAndView postLikeRamyun(HttpSession session, ModelAndView mav, ) {
+	public @ResponseBody Object postLikeRamyun(HttpSession session, String ramyunName) {
 		
+		//회원의 이름을 가져온다.
+		String memeberId=(String) session.getAttribute("memberId");
+		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
+		
+		
+		
+		//여기위는 테스트
+		
+		int likesCounts=metadataService.addLike(memeberId, ramyunName);
+		
+		
+		List<String> likeList=new ArrayList<String>();
+		
+		likeList.add(String.valueOf(likesCounts));
+		
+		
+		
+		
+		return likeList;
 	}
 	
 	

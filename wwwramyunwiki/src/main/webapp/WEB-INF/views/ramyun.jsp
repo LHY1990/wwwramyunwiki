@@ -37,20 +37,34 @@
                         
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
-                                <div class="sections_link">역사</div>
 
-                                <form action="reportramyun.do" method="post" name="${ramyun.brandNameKor}">
-                                    <button class="sections_link" type="submit"><i class="fas fa-thumbs-down"></i> 신고</button>
-                                </form>
-                                <form action="likeramyun.do" method="post" name="${ramyun.brandNameKor}">
-                                    <button class="sections_link" type="submit"><i class="far fa-thumbs-up"></i> 추천</button>
-                                </form>
+                                <!-- 역사 -->
+                                <div class="sections_link">역사</div>
                                 
+                                
+                                <!-- 신고 -->
+                                <form action="reportramyun.do" method="post" name="${ramyun.brandNameKor}">
+                                    <button class="sections_link linking_button" type="submit"><i class="fas fa-thumbs-down"> 신고</i></button>
+                                </form>
+                                <!-- 회원이 아니면 클릭할수없다. -->
+                                <%if(session.getAttribute("isMember")=="true"){%>
+                                <button class="sections_link linking_button" id="ramyunlikes" name="ramyunName" type="button" style="text-align: center;">
+                                    <i class="far fa-thumbs-up" ></i>
+                                    <div id="recommand_thumb" style="float: right;">추천</div>
+                                </button>
+                                <%}else{%>
+                                <button class="sections_link linking_button" id="ramyunlikes" type="submit" name="ramyunName">
+                                    <a href="./login"  style="vertical-align: unset; color:black" onclick="login_needed()">
+                                        <i class="far fa-thumbs-up"></i>추천</button>   
+                                    </a>
+                                <%}%>
+                                <!-- 편집 -->
                                 <%if(session.getAttribute("isMember")=="true"){%>
                                 <div class="sections_link"><a href="./editramyun.do?name=${ramyun.brandNameKor}" style="vertical-align: unset; color:black">편집</a></div>
                                 <%}else{%>
                                 <div class="sections_link"><a href="./login" style="vertical-align: unset; color:black" onclick="login_needed()">편집</a></div>   
                                 <%}%>
+                                
                             </div>
                             
                         </div>
@@ -79,7 +93,8 @@
                                 <div id="brand_name_kr">
                                     <div style="width: 100%;height: 60%; line-height: 200%; font-size: 25px;">${ramyun.brandNameKor}</div>
                                     <div style="width: 100%;height: 40%; line-height: 100%;">(${ramyun.brandNameEng})</div>
-                                    
+                                    <!-- 안보여주고 값만보낼것 -->
+                                    <input id="ramyunID" type="text" style="display: none;" value="${ramyun.brandNameKor}">
                                     
                                 </div>
                                 <div id="image">
