@@ -60,7 +60,7 @@ public class MetadataService {
 		return nowReport;
 	}
 
-
+	//영양성분 추천 구현
 	public int addLikeIngredient(String memberId, String ingredientName) {
 		int nowLikes=0;
 		
@@ -98,6 +98,51 @@ public class MetadataService {
 			//신고가 좋아요보다 10개 많다면 지워진다.여기만 서비스를 다르게 쓰면된다.
 			if((reportsCount-likesCount)>=10) {
 				mapper.removeIngredient(ingredientName);
+				mapper.removeAllMetadata(ingredientName);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return nowReport;
+	}
+	//영양성분 추천 구현
+	public int addLikeManufactory(String memberId, String ingredientName) {
+		int nowLikes=0;
+		
+		try {
+	
+			// 이전에 같은 라면이름 같은 아이디 등록한적이 없다면, 라이크를 추가할것
+			if ((mapper.hasPrevLikes(memberId, ingredientName) == 0)) {
+				// 라면이 있다면 추가할것
+				mapper.addLike(ingredientName,memberId);//순서를 확인하자
+			}
+
+			nowLikes = mapper.getLikesByName(ingredientName);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return nowLikes;
+	}
+
+	//영양성분 신고구현
+	public int addReportManufactory(String memberId, String ingredientName) {
+		int nowReport=0;
+		try {
+			
+			// 이전에 같은 라면이름 같은 아이디 등록한적이 없다면, 라이크를 추가할것
+			if ((mapper.hasPrevReport(memberId, ingredientName) == 0)) {
+				// 라면이 있다면 추가할것
+				mapper.addReport(ingredientName,memberId);//순서를 확인하자
+			}
+
+			nowReport = mapper.getReportByName(ingredientName);
+			
+			int likesCount=mapper.likesCount(ingredientName);
+			int reportsCount=mapper.reportingCount(ingredientName);
+
+			//신고가 좋아요보다 10개 많다면 지워진다.여기만 서비스를 다르게 쓰면된다.
+			if((reportsCount-likesCount)>=10) {
+				mapper.removeManufactory(ingredientName);
 				mapper.removeAllMetadata(ingredientName);
 			}
 		}catch (Exception e) {

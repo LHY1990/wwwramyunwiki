@@ -40,29 +40,29 @@
 
                                  <!-- 신고 -->
                                  <%if(session.getAttribute("isMember")=="true"){%>
-                                    <button class="sections_link linking_button" id="ingredientreporting" name="ingredientName" type="button">
-                                        <i class="fas fa-thumbs-down"></i>
-                                        <div id="reporting_thumb" style="float: right;">신고</div>
-                                    </button>
-                                    <%}else{%>
-                                    <button class="sections_link linking_button" id="ingredientreporting" name="ingredientName" type="submit">
-                                        <a href="./login"  style="vertical-align: unset; color:black" onclick="login_needed()">
-                                            <i class="fas fa-thumbs-down"></i> 신고</button>   
-                                        </a>
-                                    </button>
-                                    <%}%>
-                                    <!-- 추천  -->
-                                    <%if(session.getAttribute("isMember")=="true"){%>
-                                    <button class="sections_link linking_button" id="ingredientlikes" name="ingredientName" type="button">
-                                        <i class="far fa-thumbs-up" ></i>
-                                        <div id="recommand_thumb" style="float: right;">추천</div>
-                                    </button>
-                                    <%}else{%>
-                                    <button class="sections_link linking_button" id="ingredientlikes" name="ingredientName" type="submit" >
-                                        <a href="./login"  style="vertical-align: unset; color:black" onclick="login_needed()">
-                                            <i class="far fa-thumbs-up"></i> 추천</button>   
-                                        </a>
-                                    <%}%>
+                                <button class="sections_link linking_button" id="ingredientreporting" name="ingredientName" type="button">
+                                    <i class="fas fa-thumbs-down"></i>
+                                    <div id="reporting_thumb" style="float: right;">신고</div>
+                                </button>
+                                <%}else{%>
+                                <button class="sections_link linking_button" id="ingredientreporting" name="ingredientName" type="submit">
+                                    <a href="./login"  style="vertical-align: unset; color:black" onclick="login_needed()">
+                                        <i class="fas fa-thumbs-down"></i> 신고</button>   
+                                    </a>
+                                </button>
+                                <%}%>
+                                <!-- 추천  -->
+                                <%if(session.getAttribute("isMember")=="true"){%>
+                                <button class="sections_link linking_button" id="ingredientlikes" name="ingredientName" type="button">
+                                    <i class="far fa-thumbs-up" ></i>
+                                    <div id="recommand_thumb" style="float: right;">추천</div>
+                                </button>
+                                <%}else{%>
+                                <button class="sections_link linking_button" id="ingredientlikes" name="ingredientName" type="submit" >
+                                    <a href="./login"  style="vertical-align: unset; color:black" onclick="login_needed()">
+                                        <i class="far fa-thumbs-up"></i> 추천</button>   
+                                    </a>
+                                <%}%>
 
                                 <!-- 편집 -->
                                 <%if(session.getAttribute("isMember")=="true"){%>

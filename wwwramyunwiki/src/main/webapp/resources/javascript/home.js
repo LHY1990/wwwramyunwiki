@@ -122,6 +122,44 @@ window.addEventListener('DOMContentLoaded', function(){
             }
         })
     })
+    // 제조공장 추천버튼 클릭시 AJAX
+    $("#manufactorylikes").on("click", function() {
+        $.ajax({
+            type : "POST",
+            url : "./likemanufactory.do",
+            dataType : "json",
+            data : {
+                "manufactoryName" : $('#manufactoryID').val()
+            },
+            success : function(items) {
+                console.log("successAjax");
+                console.log(items[0]);
+                $('#recommand_thumb').text(items[0]);
+            },
+            error : function(error) {
+                console.log("errorAjax");
+            }
+        })
+    })
+    // 제조공장 신고버튼 클릭시 AJAX
+    $("#manufactoryreporting").on("click", function() {
+        $.ajax({
+            type : "POST",
+            url : "./reportmanufactory.do",
+            dataType : "json",
+            data : {
+                "manufactoryName" : $('#manufactoryID').val()
+            },
+            success : function(items) {
+                console.log("successAjax");
+                console.log(items[0]);
+                $('#reporting_thumb').text(items[0]);
+            },
+            error : function(error) {
+                console.log("errorAjax");
+            }
+        })
+    })
 })
 
 

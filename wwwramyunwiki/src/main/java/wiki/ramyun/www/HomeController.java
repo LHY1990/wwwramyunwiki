@@ -768,7 +768,7 @@ public class HomeController {
 		//회원의 이름을 가져온다.
 		String memberId=(String) session.getAttribute("memberId");
 		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
-		int reportCounts=metadataService.addReportRamyun(memberId, ingredientName);
+		int reportCounts=metadataService.addReportIngredient(memberId, ingredientName);
 		
 		List<String> reportList=new ArrayList<String>();
 		
@@ -777,6 +777,35 @@ public class HomeController {
 		return reportList;
 	}
 	
-	
+	//공장정보 좋아요  구현
+	//리스폰스 바디로 받아 비동기로 처리
+	@PostMapping("likemanufactory.do")
+	public @ResponseBody Object postLikeManufactory(HttpSession session, String manufactoryName) {
+		
+		//회원의 이름을 가져온다.
+		String memberId=(String) session.getAttribute("memberId");
+		
+		int likesCounts=metadataService.addLikeManufactory(memberId, manufactoryName);
+		
+		List<String> likeList=new ArrayList<String>();
+		
+		likeList.add(String.valueOf(likesCounts));
+		
+		return likeList;
+	}
+	//공장정보 신고버튼 ajax처리
+	@PostMapping("reportmanufactory.do")
+	public @ResponseBody Object postReportManufactory(HttpSession session, String manufactoryName) {
+		//회원의 이름을 가져온다.
+		String memberId=(String) session.getAttribute("memberId");
+		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
+		int reportCounts=metadataService.addReportManufactory(memberId, manufactoryName);
+		
+		List<String> reportList=new ArrayList<String>();
+		
+		reportList.add(String.valueOf(reportCounts));
+		
+		return reportList;
+	}
 	
 }

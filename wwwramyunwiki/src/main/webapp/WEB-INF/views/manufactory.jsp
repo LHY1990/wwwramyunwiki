@@ -35,10 +35,35 @@
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
+                                <!-- 역사 -->
                                 <div class="sections_link">역사</div>
-                                <div class="sections_link"><i class="fas fa-thumbs-down"></i> 신고</div>
-                                <div class="sections_link"><i class="far fa-thumbs-up"></i> 추천</i></div>
-                                
+                                <!-- 신고 -->
+                                <%if(session.getAttribute("isMember")=="true"){%>
+                                <button class="sections_link linking_button" id="manufactoryreporting" name="manufactoryName" type="button">
+                                    <i class="fas fa-thumbs-down"></i>
+                                    <div id="reporting_thumb" style="float: right;">신고</div>
+                                </button>
+                                <%}else{%>
+                                <button class="sections_link linking_button" id="manufactoryreporting" name="manufactoryName" type="submit">
+                                    <a href="./login"  style="vertical-align: unset; color:black" onclick="login_needed()">
+                                        <i class="fas fa-thumbs-down"></i> 신고</button>   
+                                    </a>
+                                </button>
+                                <%}%>
+                                <!-- 추천  -->
+                                <%if(session.getAttribute("isMember")=="true"){%>
+                                <button class="sections_link linking_button" id="manufactorylikes" name="manufactoryName" type="button">
+                                    <i class="far fa-thumbs-up" ></i>
+                                    <div id="recommand_thumb" style="float: right;">추천</div>
+                                </button>
+                                <%}else{%>
+                                <button class="sections_link linking_button" id="manufactorylikes" name="manufactoryName" type="submit" >
+                                    <a href="./login"  style="vertical-align: unset; color:black" onclick="login_needed()">
+                                        <i class="far fa-thumbs-up"></i> 추천</button>   
+                                    </a>
+                                <%}%>
+
+                                <!-- 편집 -->
                                 <%if(session.getAttribute("isMember")=="true"){%>
                                     <div class="sections_link"><a href="./editmanufactory.do?findname=${manufactory.factoryName}" style="vertical-align: unset;" >편집</a></div>
                                 <%}else{%>
@@ -81,7 +106,8 @@
                         관련 품목 보고 번호 : ${manufactory.itemReportNumber}<br>
                         
                         </div>
-                        
+                        <!-- 안보여주고 값만보낼것 ajax포함 -->
+                        <input id="manufactoryID" type="text" style="display: none;" value="${manufactory.factoryName}">
                         
                         
                         
