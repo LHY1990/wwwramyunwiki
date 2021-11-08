@@ -808,4 +808,18 @@ public class HomeController {
 		return reportList;
 	}
 	
+	
+	
+	//	역사버튼 구현
+	@GetMapping("ramyunhistory.do")
+	public ModelAndView getRamyunHistory(ModelAndView mav, name) {
+		
+		여기서 부터 구현할것 ramyunhistoryVO 상속으로 구현할것
+		List<ramyunHistoryVO> vo=ramyunHistoryService(name);
+		
+		mav.addObject("ramyun", vo);
+		mav.setViewName("ramyunhisotry");
+		return mav;
+	}
+	
 }
