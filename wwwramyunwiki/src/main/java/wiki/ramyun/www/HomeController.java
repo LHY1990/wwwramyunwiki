@@ -45,6 +45,8 @@ import wiki.ramyun.www.member.service.MemberService;
 import wiki.ramyun.www.metadata.service.MetadataService;
 import wiki.ramyun.www.ramyun.RamyunVO;
 import wiki.ramyun.www.ramyun.service.RamyunService;
+import wiki.ramyun.www.ramyunhistory.RamyunHistoryVO;
+import wiki.ramyun.www.ramyunhistory.service.RamyunHistoryService;
 import wiki.ramyun.www.search.SearchVO;
 import wiki.ramyun.www.search.service.SearchService;
 
@@ -70,6 +72,10 @@ public class HomeController {
 	private RamyunService ramyunService;
 	
 	@Autowired
+	@Qualifier("ramyunHistoryService")
+	private RamyunHistoryService ramyunHistoryService;
+	
+	@Autowired
 	@Qualifier("ingredientService")
 	private IngredientService ingredientService;
 	
@@ -84,6 +90,8 @@ public class HomeController {
 	@Autowired
 	@Qualifier("metadataService")
 	private MetadataService metadataService;
+	
+	
 	
 	
 	
@@ -472,7 +480,11 @@ public class HomeController {
 		
 	}
 	@PostMapping("edit.do")
-	public ModelAndView afterRamyunEdited(ModelAndView mav, RamyunVO vo,@RequestParam("uploadedimage") MultipartFile uploadedimage, HttpServletRequest request) {
+	public ModelAndView afterRamyunEdited(ModelAndView mav, 
+										RamyunVO vo,
+										@RequestParam("uploadedimage") MultipartFile uploadedimage, 
+										HttpServletRequest request, 
+										HttpSession session) {
 		
 		
 		if(!uploadedimage.isEmpty()) {
@@ -520,8 +532,13 @@ public class HomeController {
 		
 		
 		
-		
-		ramyunService.updateRamyunFromDB(vo);
+		//여기가 실제로 라면을 업데이트하는곳
+		ramyunService.updateRamyunToDB(vo);
+		//라면 히스토리도 같이 업데이트한다. 세션에서 작성자의 이름을 받아온다.
+		String writer = (String) session.getAttribute("memberId");
+		System.out.println("작성자이름"+writer);
+		System.out.println(vo.getbrandNameKor());
+		ramyunHistoryService.updateRamyunHistoryToDB(vo, writer);
 		
 		
 		RamyunVO ramyun=ramyunService.getRamyunData(vo.getbrandNameKor());
@@ -812,13 +829,13 @@ public class HomeController {
 	
 	//	역사버튼 구현
 	@GetMapping("ramyunhistory.do")
-	public ModelAndView getRamyunHistory(ModelAndView mav, name) {
+	public ModelAndView getRamyunHistory(ModelAndView mav,String name) {
 		
-		여기서 부터 구현할것 ramyunhistoryVO 상속으로 구현할것
-		List<ramyunHistoryVO> vo=ramyunHistoryService(name);
+//		일단 이것들은 입력이 되어야 출력이 되니까 입력부터 구현하고 돌아온다. 입력은 라면 업데이트부터
+		List<RamyunHistoryVO> voList=ramyunHistoryService.getHistoryByName(name);
 		
-		mav.addObject("ramyun", vo);
-		mav.setViewName("ramyunhisotry");
+		mav.addObject("ramyunHistoryList", voList);
+		mav.setViewName("ramyunhistory");
 		return mav;
 	}
 	

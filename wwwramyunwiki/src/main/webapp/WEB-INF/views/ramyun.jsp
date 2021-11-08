@@ -39,7 +39,9 @@
                             <div id="section_linkings_frame">
 
                                 <!-- 역사 -->
-                                <div class="sections_link"><a href="./ramyunhistory.do?name=${ramyun.brandNameKor}">역사</a></div>
+                                <div class="sections_link">
+                                    <a href="./ramyunhistory.do?name=${ramyun.brandNameKor}" style="vertical-align: unset; color:black">역사</a>
+                                </div>
                                 
                                 
                                 <!-- 신고 -->

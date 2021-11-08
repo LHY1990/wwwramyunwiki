@@ -31,7 +31,7 @@ public class RamyunService {
 	}
 	
 	//기본적인 회원이 라면 정보를 업데이트 하는경우
-	public void updateRamyunFromDB(RamyunVO vo) {
+	public void updateRamyunToDB(RamyunVO vo) {
 		dao.updateRamyun(vo);
 	}
 

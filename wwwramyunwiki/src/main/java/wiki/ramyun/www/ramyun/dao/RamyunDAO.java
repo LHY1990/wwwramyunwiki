@@ -15,7 +15,7 @@ public class RamyunDAO {
 	
 	@Autowired
 	@Qualifier("ramyunMapper")
-	RamyunMapper mapper;
+	private RamyunMapper mapper;
 	
 	
 	//새로운 라면넣기 5레벨이상
