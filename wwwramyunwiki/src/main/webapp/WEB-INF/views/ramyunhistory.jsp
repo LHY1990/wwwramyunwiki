@@ -77,7 +77,7 @@
                                     <fmt:formatDate pattern="yyyy.MM.dd hh:mm:ss" value="${parsedDateTime}"/>
                                     |  <strong id="writer"> 작성자 : ${ramyun_history.writer}</strong> 
                                     |   log : ${ramyun_history.id}  |  
-                                    <a href="">(보기)</a>
+                                    <a href="./ramyunlog.do?id=${ramyun_history.id}">(이 버전으로 보기)</a>
                                     
                                 </p>
 

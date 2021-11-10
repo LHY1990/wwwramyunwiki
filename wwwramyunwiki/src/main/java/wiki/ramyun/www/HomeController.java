@@ -91,10 +91,6 @@ public class HomeController {
 	@Qualifier("metadataService")
 	private MetadataService metadataService;
 	
-	
-	
-	
-	
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
 	@GetMapping("home")
 	public String home(Locale locale, Model model) {
@@ -104,42 +100,35 @@ public class HomeController {
 		int ramyunCount=ramyunService.getRamyunCount();
 		int memberCount=memberService.getMemberCount();
 		
-		
 		model.addAttribute("ramyunCount", ramyunCount);
 		model.addAttribute("memberCount", memberCount);
 		model.addAttribute("ramyunList", ramyunRecentUpdatedList);
 		
-		
 		return "home";
 	}
+	
+	
 	@PostMapping("home")
 	public String home(MemberVO vo, HttpSession session) {
 		
-		//멤버인지 체크하고 
+		//멤버인지 체크하고 멤버면 정보를 보낸다.
 		boolean loginOK=memberService.checkMember(vo);
-		//멤버면 정보를 보낸다.
-		
-		
 		if(loginOK) {
 			vo=memberService.getMemberById(vo.getMemberId());
-			
 			
 			session.setAttribute("memberNumber", vo.getMemberNumber());
 			session.setAttribute("memberId", vo.getMemberId());
 			session.setAttribute("memberEmail", vo.getMemberEmail());
 			session.setAttribute("memberJoinDate", vo.getJoinDate());
 			session.setAttribute("memberNickname", vo.getNickname());
-			
 			session.setAttribute("isMember", "true");
 			return "redirect:home";
-			
 		}
-		
-		
-		
 		return "login";
 	
 	}
+	
+	
 	@GetMapping("logout.do")
 	public String logout(HttpSession session) {
 		
@@ -149,62 +138,53 @@ public class HomeController {
 		return "redirect:home";
 	}
 	
-	
-	
-	
-	
+
 	//이용약관
 	@PostMapping("rules")
 	public String rulesPost() {
 		return "rules";
 	}
+	
+	
 	@GetMapping("rules")
 	public String rulesGet() {
 		return "rules";
 	}
-	
+
 	
 	//유저가 설정창을 눌렀을때
 	@GetMapping("userinfo")
 	public ModelAndView getUserInfo(ModelAndView mav, HttpSession session) {
-		System.out.println("유저 설정 접근중");
-		System.out.println(session.getAttribute("memberId"));
-		System.out.println(session.getAttribute("memberEmail"));
-		
 		mav.setViewName("userinfo");
 		return mav;
 	}
+	
+	
 	//유저정보 변경
 	@GetMapping("changeuserinfo.do")
 	public ModelAndView changeuserinfo(ModelAndView mav) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
 		mav.setViewName("changeuserinfo");
-		
-		
-		
-		
 		return mav;
 	}
+	
+	
 	@PostMapping("changinguser.do")
 	public ModelAndView changinguser(ModelAndView mav, MemberVO vo,HttpSession session) {
-		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		//여기까지가 우측탭 정보
-		
-		System.out.println("닉네임변경후 들어옴");
-		System.out.println(vo.getNickname());
 		
 		//변경할 닉네임과 멤버 넘버를 받아서 값을 변경한다.
 		String memberNumber=session.getAttribute("memberNumber").toString();
 		memberService.changeNickname(vo.getNickname(), memberNumber);
 		
-		
 		session.setAttribute("memberNickname", vo.getNickname());
 		mav.setViewName("userinfo");
 		return mav;
 	}
-	
 	
 	
 	@GetMapping("login")
@@ -218,6 +198,8 @@ public class HomeController {
 		mav.setViewName("login");
 		return mav;
 	}
+	
+	
 	@PostMapping("login")
 	public ModelAndView login(ModelAndView mav, MemberVO vo) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
@@ -229,6 +211,7 @@ public class HomeController {
 		
 		return mav;
 	}
+	
 	
 	@GetMapping("join")
 	public String join(ModelAndView mav) {
@@ -243,17 +226,11 @@ public class HomeController {
 	@PostMapping("join")
 	public ModelAndView joinFirst(MemberVO vo,ModelAndView mav,@RequestParam(defaultValue = "") String memberEmailCode) {
 		
-		System.out.println("joinFirst에 접근중");
-		
-		
 		if(memberEmailCode.equals("")) {		
 			//인증코드가 없는 상태로 넘어온 경우
-
-			
 			System.out.println("인증번호없이 방문");
 			System.out.println(vo.getMemberId()+" "+vo.getMemberEmail()+" "+vo.getMemberPassword()+" "+memberEmailCode);
 			mav.setViewName("join");
-			
 			
 			//아이디가 고유한가
 			if( memberService.isUnique(vo)) {
@@ -270,37 +247,25 @@ public class HomeController {
 				return mav;
 			}
 			
-			
 		}
 		if(memberEmailCode!=null) {
 			//인증코드가 있는 상태로 넘어온경우
 			System.out.println("인증번호 가지고 방문");
-			System.out.println(vo.getMemberEmail());
 			
 			if(memberEmailCode.equals(mailCode)) {
-				
 				memberService.inserMemberToDB(vo);
 				mav.addObject("newMember", vo.getMemberId());
 				mav.setViewName("welcome");
 				//가입 환영 페이지 만들고 데이터 베이스에 등록하자
 			}else{
-				
-				
 				mav.addObject("memberId",vo.getMemberId());
 				mav.addObject("memberPassword",vo.getMemberPassword());
 				mav.addObject("memberEmail",vo.getMemberEmail());
-				
-				
 				mav.setViewName("join");
-				
 				mav.addObject("memberAlert", "codeIsNotSame");
 				return mav;
 			}
 		}
-		
-		
-		
-		
 		
 		return mav;
 	}
@@ -309,14 +274,11 @@ public class HomeController {
 	@GetMapping("findramyun.do")
 	public ModelAndView getSearchKeyword(ModelAndView mav, String name) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
 		//앞뒤 공백을 없앰
 		name=name.trim();
 		name=name.replace(" ","");
-		
 		
 		try {
 			RamyunVO vo=ramyunService.getRamyunData(name);
@@ -362,8 +324,7 @@ public class HomeController {
 	@GetMapping("registration")
 	public ModelAndView registration(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		//여기까지가 우측탭 정보
 		mav.setViewName("registration");
 		return mav;
@@ -371,20 +332,17 @@ public class HomeController {
 	@PostMapping("regist.do")
 	public ModelAndView registNew(ModelAndView mav, String register, String type) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		//여기까지가 우측탭 정보
 		
 		//빈공간을 없앤다.		
 		register=register.trim();
 		register=register.replace(" ","");		
-		//검색어 처분
 		
 		if(type.equals("ramyun")) {
 			System.out.println("라면등록중");
 			String outPrint=ramyunService.insertRamyunToDB(register);
 			System.out.println(outPrint);
-			
 		}else if(type.equals("ingredient")) {
 			System.out.println("원재료명등록중");
 			String outPrint=ingredientService.insertIngredientToDB(register);
@@ -395,29 +353,20 @@ public class HomeController {
 			System.out.println(outPrint);
 		}
 		
-		
-		
-		
 		mav.setViewName("home");
 		return mav;
 	}
 	
 	
-	
-	
-	
 	@PostMapping("findramyun.do")
 	public ModelAndView postSearchKeyword(ModelAndView mav, String searchBoxInput) {
-		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
 		//앞뒤 공백을 없앰
 		searchBoxInput=searchBoxInput.trim();
 		searchBoxInput=searchBoxInput.replace(" ", "");
 		String name=searchBoxInput;
-		
 		
 		try {
 			RamyunVO vo=ramyunService.getRamyunData(name);
@@ -457,15 +406,15 @@ public class HomeController {
 		mav.addObject("similarList", similarList);
 		mav.addObject("message", name);
 		mav.setViewName("notfounding");
+		
 		return mav;
 	}
+	
+	
 	@GetMapping("editramyun.do")
 	public ModelAndView getEditRamyun(ModelAndView mav,String name) {
-		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
-		
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		try {
 			RamyunVO vo=ramyunService.getRamyunData(name);
 			mav.addObject("ramyun", vo);
@@ -473,19 +422,16 @@ public class HomeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 		return mav;
-		
-		
 	}
+	
+	
 	@PostMapping("edit.do")
 	public ModelAndView afterRamyunEdited(ModelAndView mav, 
 										RamyunVO vo,
 										@RequestParam("uploadedimage") MultipartFile uploadedimage, 
 										HttpServletRequest request, 
 										HttpSession session) {
-		
 		
 		if(!uploadedimage.isEmpty()) {
 			System.out.println("~~~~업로드된파일이있음~~~~~");
@@ -506,8 +452,6 @@ public class HomeController {
 			System.out.println(file.getAbsolutePath());
 			if(!file.exists()) {
 				file.mkdirs();
-				
-				
 			}else {
 				System.out.println("파일위치 이미있음");
 			}
@@ -523,14 +467,8 @@ public class HomeController {
 		}
 		
 		
-		
-		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
-		
-		
-		
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
 		//여기가 실제로 라면을 업데이트하는곳
 		ramyunService.updateRamyunToDB(vo);
@@ -540,155 +478,125 @@ public class HomeController {
 		System.out.println(vo.getbrandNameKor());
 		ramyunHistoryService.updateRamyunHistoryToDB(vo, writer);
 		
-		
 		RamyunVO ramyun=ramyunService.getRamyunData(vo.getbrandNameKor());
 		mav.addObject("ramyun", ramyun);
 		mav.setViewName("ramyun");
 		
-		
 		return mav;
 	}
+	
 	
 	@GetMapping("recentupdating")
 	public ModelAndView getRecentupdating(ModelAndView mav) {
 		
-		//이건 10개만 가져와서 오른쪽에 뿌리는것
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
 		//일단 라면만 다 뿌리자 28개
 		List<RamyunVO> ramyunUpdatedList = ramyunService.getRecentsUpdateListFromDBWhole();
 		mav.addObject("ramyunListWhole", ramyunUpdatedList);
 		
-		
-		
 		mav.setViewName("recentupdating");
+		
 		return mav;
 	}
 	
+	
 	@GetMapping("nutrient")
 	public ModelAndView getNutrient(ModelAndView mav) {
-		//이건 10개만 가져와서 오른쪽에 뿌리는것
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
 		IngredientVO ingredient;
 		
 		//임의로 한개의 영양정보를 가져온다.ingredient는 데이터베이스 이름,nutrient는 페이지이름
-//		ingredient=ingredientService.getRecentOne();
 		ingredient=ingredientService.getRandomOne();
 		mav.addObject("ingredient", ingredient);
 		mav.setViewName("nutrient");
 		
-		
 		return mav;
 	}
 	
+	
 	@GetMapping("editingredient.do")
 	public ModelAndView editIngredient(IngredientVO ingredient, String findname, ModelAndView mav) {//얘만 findname을 인자로 받는다. 변수명이 겹쳐서
-		//이건 10개만 가져와서 오른쪽에 뿌리는것
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
 		//아래는 편집탭으로 넘어가면서 같은 이름으로 가져오기
 		ingredient=ingredientService.selectIngredientByName(findname);
 		mav.addObject("ingredient", ingredient);
 		mav.setViewName("editnutrient");
+		
 		return mav;
 	}
+	
+	
 	@PostMapping("editingredient.do")
 	public ModelAndView afterEditIngredient(IngredientVO vo, ModelAndView mav) {
 		//성분 수정뒤에 이 컨트롤러로 온다.
-		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
 		ingredientService.updateIngredient(vo);
 		mav.addObject("ingredient",ingredientService.selectIngredientByName(vo.getName()));
 		mav.setViewName("nutrient");
-		return mav;
-	}
-//	랜덤으로 하나뿌림
-	@GetMapping("manufactory")
-	public ModelAndView getManufactory(ModelAndView mav,ManufactoryVO vo) {
-		//이건 10개만 가져와서 오른쪽에 뿌리는것
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
 		
-		//최근거 하나 가져오기
-//		vo=manufactoryService.getRecentOne();
-		//랜덤으로 하나 가져오기
-		vo=manufactoryService.getRandomOne();
-		
-		
-		
-		mav.addObject("manufactory", vo);
-		
-		mav.setViewName("manufactory");
 		return mav;
 	}
 	
+	
+	//랜덤으로 하나뿌림
+	@GetMapping("manufactory")
+	public ModelAndView getManufactory(ModelAndView mav,ManufactoryVO vo) {
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		
+		//랜덤으로 하나 가져오기
+		vo=manufactoryService.getRandomOne();
+		
+		mav.addObject("manufactory", vo);
+		mav.setViewName("manufactory");
+		
+		return mav;
+	}
 	
 	
 	//	공장 작성후 post로 보내면 여기서 받는다.
 	@PostMapping("updatemanufactory.do")
 	public ModelAndView updateManufactory(ModelAndView mav, ManufactoryVO vo) {
-		//이건 10개만 가져와서 오른쪽에 뿌리는것
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
-//		받은 vo이름으로 업데이트
-		manufactoryService.updateManufactory(vo);
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
+		//받은 vo이름으로 업데이트
+		manufactoryService.updateManufactory(vo);
 		vo=manufactoryService.selectFactoryByName(vo.getFactoryName());
 		
 		mav.addObject("manufactory", vo);
-		
 		//일단 홈으로 보냄
 		mav.setViewName("home");
-
-		
-		
 		
 		return mav;
 	}
-	
-	
-	
 	
 	
 	@GetMapping("editmanufactory.do")
 	public ModelAndView getEditManufactory(ModelAndView mav,String findname) {
-		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
-		ManufactoryVO vo=manufactoryService.selectFactoryByName(findname);
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
+		ManufactoryVO vo=manufactoryService.selectFactoryByName(findname);
 		mav.addObject("manufactory", vo);
 		mav.setViewName("editmanufactory");
+		
 		return mav;
 	}
 	
 	
-	
-	
-	
-	
 	@GetMapping("tag")
 	public ModelAndView getTag(ModelAndView mav, int page) {
-		//이건 10개만 가져와서 오른쪽에 뿌리는것
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
-		
-		//이건 기존방법
-		//List<SearchVO> voList=searchService.searchRecentUpdated();
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
 		//페이지 넘버를 받아서 해당 vo를 가져온다.
 		List<SearchVO> voList=searchService.searchTagPage(page);
@@ -707,8 +615,41 @@ public class HomeController {
 		mav.addObject("hasPrev", hasPrev);
 		mav.addObject("hasNext", hasNext);
 		mav.setViewName("tag");
+		
 		return mav;
 	}
+	
+	
+	//역사버튼 구현
+	@GetMapping("ramyunhistory.do")
+	public ModelAndView getRamyunHistoryByName(ModelAndView mav,String name) {
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		
+		//일단 이것들은 입력이 되어야 출력이 되니까 입력부터 구현하고 돌아온다. 입력은 라면 업데이트부터
+		List<RamyunHistoryVO> voList=ramyunHistoryService.getHistoryByName(name);
+		
+		mav.addObject("ramyunHistoryList", voList);
+		mav.setViewName("ramyunhistory");
+		return mav;
+	}
+	
+	
+	// 역사탭에서 보기구현
+	@GetMapping("ramyunlog.do")
+	public ModelAndView getRamyunHistoryById(ModelAndView mav, String id) {
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		
+		RamyunHistoryVO vo=ramyunHistoryService.getHistoryById(id);
+		mav.addObject("ramyun", vo);
+		mav.setViewName("ramyunlogview");
+		return mav;
+	}
+	
+	
+	//아래는 AJAX탭
+	
 	
 	//리스폰스 바디로 받아 비동기로 처리
 	@PostMapping("searchintime.do")
@@ -727,9 +668,11 @@ public class HomeController {
 			noValues.add("");
 			return noValues;
 		}
+		
 		return searchList;
 		
 	}
+	
 	
 	//라면 좋아요  구현
 	//리스폰스 바디로 받아 비동기로 처리
@@ -748,6 +691,8 @@ public class HomeController {
 		
 		return likeList;
 	}
+	
+	
 	//라면 신고 구현
 	@PostMapping("reportramyun.do")
 	public @ResponseBody Object postReportRamyun(HttpSession session, String ramyunName) {
@@ -762,6 +707,7 @@ public class HomeController {
 		
 		return reportList;
 	}
+	
 	
 	//영양성분 좋아요  구현
 	//리스폰스 바디로 받아 비동기로 처리
@@ -779,6 +725,8 @@ public class HomeController {
 		
 		return likeList;
 	}
+	
+	
 	//영양성분 신고버튼 ajax처리
 	@PostMapping("reportingredient.do")
 	public @ResponseBody Object postReportIngredient(HttpSession session, String ingredientName) {
@@ -793,6 +741,8 @@ public class HomeController {
 		
 		return reportList;
 	}
+	
+	
 	
 	//공장정보 좋아요  구현
 	//리스폰스 바디로 받아 비동기로 처리
@@ -810,6 +760,8 @@ public class HomeController {
 		
 		return likeList;
 	}
+	
+	
 	//공장정보 신고버튼 ajax처리
 	@PostMapping("reportmanufactory.do")
 	public @ResponseBody Object postReportManufactory(HttpSession session, String manufactoryName) {
@@ -823,20 +775,6 @@ public class HomeController {
 		reportList.add(String.valueOf(reportCounts));
 		
 		return reportList;
-	}
-	
-	
-	
-	//	역사버튼 구현
-	@GetMapping("ramyunhistory.do")
-	public ModelAndView getRamyunHistory(ModelAndView mav,String name) {
-		
-//		일단 이것들은 입력이 되어야 출력이 되니까 입력부터 구현하고 돌아온다. 입력은 라면 업데이트부터
-		List<RamyunHistoryVO> voList=ramyunHistoryService.getHistoryByName(name);
-		
-		mav.addObject("ramyunHistoryList", voList);
-		mav.setViewName("ramyunhistory");
-		return mav;
 	}
 	
 }

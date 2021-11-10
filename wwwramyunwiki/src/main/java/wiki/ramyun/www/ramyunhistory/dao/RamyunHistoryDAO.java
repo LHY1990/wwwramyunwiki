@@ -66,5 +66,11 @@ public class RamyunHistoryDAO {
 		
 		
 	}
+
+
+	public RamyunHistoryVO getRamyunHistoryById(String id) {
+		//아이디로 히스토리를 선택해서 가져온다
+		return mapper.selectHistoryById(id);
+	}
 	
 }

@@ -24,6 +24,11 @@ public class RamyunHistoryService {
 		dao.updateRamyunHistory(vo, writer);
 		
 	}
+
+	public RamyunHistoryVO getHistoryById(String id) {
+		//아이디로 라면을 검색해서 반환한다.
+		return dao.getRamyunHistoryById(id);
+	}
 	
 	
 

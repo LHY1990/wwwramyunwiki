@@ -36,7 +36,7 @@
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
                                 <!-- 역사 -->
-                                <div class="sections_link">역사</div>
+                                <div class="sections_link" style="display: none;">역사</div>
                                 <!-- 신고 -->
                                 <%if(session.getAttribute("isMember")=="true"){%>
                                 <button class="sections_link linking_button" id="manufactoryreporting" name="manufactoryName" type="button">

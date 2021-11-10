@@ -37,6 +37,9 @@ public interface RamyunHistoryMapper {
 			@Param("transfat") String transfat, @Param("saturatedfat") String saturatedfat, @Param("cholesterol") String cholesterol, @Param("protein") String protein,
 			@Param("calcium") String calcium, @Param("image") String image, @Param("userEditedContents") String userEditedContents,@Param("writer") String writer
 			);
+
+	@Select("select * from ramyun_history where id=#{id}")
+	public RamyunHistoryVO selectHistoryById(@Param("id") String id);
 	
 
 }
