@@ -8,8 +8,6 @@ public class IngredientVO {
 	private String description;
 	private LocalDateTime updatedDate;
 	
-	
-	
 	public IngredientVO() {
 		super();
 	}
@@ -38,6 +36,7 @@ public class IngredientVO {
 	public void setUpdatedDate(LocalDateTime updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+	
 	@Override
 	public String toString() {
 		return "IngredientVO [name=" + name + ", type=" + type + ", description=" + description + ", updatedDate="

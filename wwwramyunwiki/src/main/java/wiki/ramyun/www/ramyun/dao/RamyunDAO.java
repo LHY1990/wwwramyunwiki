@@ -21,7 +21,7 @@ public class RamyunDAO {
 	//새로운 라면넣기 5레벨이상
 	public void insertRamyun(String newRamyun) {
 		System.out.println("라면 디비에 넣기");
-//		중복라면있으면 에러나니까 있는지 확인할것
+		//중복라면있으면 에러나니까 있는지 확인할것
 		mapper.insertRamyun(newRamyun);
 	}
 	
@@ -74,8 +74,6 @@ public class RamyunDAO {
 		}
 		
 		return vo;
-		
-		
 	}
 
 
@@ -92,7 +90,6 @@ public class RamyunDAO {
 
 
 	public int getRamyunCount() {
-		// TODO Auto-generated method stub
 		return mapper.getRamyunCount();
 	}
 

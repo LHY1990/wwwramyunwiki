@@ -2,34 +2,20 @@ package wiki.ramyun.www;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.text.DateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import javax.inject.Inject;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.sql.DataSource;
 
-import org.apache.ibatis.session.SqlSession;
-import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -40,7 +26,6 @@ import wiki.ramyun.www.ingredient.service.IngredientService;
 import wiki.ramyun.www.manufactory.ManufactoryVO;
 import wiki.ramyun.www.manufactory.service.ManufactoryService;
 import wiki.ramyun.www.member.MemberVO;
-import wiki.ramyun.www.member.dao.MemberDAO;
 import wiki.ramyun.www.member.service.MemberService;
 import wiki.ramyun.www.metadata.service.MetadataService;
 import wiki.ramyun.www.ramyun.RamyunVO;
@@ -50,14 +35,11 @@ import wiki.ramyun.www.ramyunhistory.service.RamyunHistoryService;
 import wiki.ramyun.www.search.SearchVO;
 import wiki.ramyun.www.search.service.SearchService;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 @RequestMapping("/")
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+//	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	String mailCode="";
 	List<RamyunVO> ramyunRecentUpdatedList;
 	File file;
@@ -91,6 +73,7 @@ public class HomeController {
 	@Qualifier("metadataService")
 	private MetadataService metadataService;
 	
+	
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
 	@GetMapping("home")
 	public String home(Locale locale, Model model) {
@@ -123,8 +106,11 @@ public class HomeController {
 			session.setAttribute("memberNickname", vo.getNickname());
 			session.setAttribute("isMember", "true");
 			return "redirect:home";
+		}else {
+			session.setAttribute("isMember", "false");
+			return "login";
 		}
-		return "login";
+		
 	
 	}
 	
@@ -177,9 +163,11 @@ public class HomeController {
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		//여기까지가 우측탭 정보
 		
-		//변경할 닉네임과 멤버 넘버를 받아서 값을 변경한다.
+		
+		//변경할 닉네임, 이메일과 멤버 넘버를 받아서 값을 변경한다.
 		String memberNumber=session.getAttribute("memberNumber").toString();
 		memberService.changeNickname(vo.getNickname(), memberNumber);
+		memberService.changeMemberEmail(vo.getMemberEmail(), memberNumber);
 		
 		session.setAttribute("memberNickname", vo.getNickname());
 		mav.setViewName("userinfo");
@@ -215,7 +203,7 @@ public class HomeController {
 	
 	@GetMapping("join")
 	public String join(ModelAndView mav) {
-//		처음창은 이쪽으로 보내서 값을 넣게한다.
+		//처음창은 이쪽으로 보내서 값을 넣게한다.
 		System.out.println("조인 겟에 접근중");
 		mailCode = String.valueOf((int)(Math.random()*1000000));
 		

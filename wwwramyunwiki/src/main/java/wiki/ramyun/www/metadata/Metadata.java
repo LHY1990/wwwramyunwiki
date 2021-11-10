@@ -8,7 +8,6 @@ public class Metadata {
 	private String username;
 	
 	
-	
 	public Metadata() {
 		super();
 	}
@@ -43,6 +42,11 @@ public class Metadata {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Metadata [name=" + name + ", visited=" + visited + ", likes=" + likes + ", reporting=" + reporting
+				+ ", username=" + username + "]";
+	}
 	
 }

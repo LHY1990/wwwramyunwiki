@@ -19,6 +19,7 @@ public interface RamyunHistoryMapper {
 	@Select("Select * from ramyun_history where brand_name_kor=#{name} order by id desc")
 	List<RamyunHistoryVO> selectHistoryByName(@Param("name")String name);
 
+	
 	//주의 테이블 이름은 ramyun_history이다
 	@Insert("insert into ramyun_history(brand_name_kor, brand_name_eng, updated_date, corporate_name, developed_date, weight, calorie, scoville_unit, food_category, recipe, barcode, noodle_shape, soup_composition, discontinuance,"
 			+ " related_ramyun, water_capacity_by_number, material_list, item_report_number, expiration_date, soup_position, natrium, carbohydrate, sugars, fat, transfat, saturatedfat, cholesterol, protein, calcium, image, user_edited_contents,"
@@ -38,6 +39,7 @@ public interface RamyunHistoryMapper {
 			@Param("calcium") String calcium, @Param("image") String image, @Param("userEditedContents") String userEditedContents,@Param("writer") String writer
 			);
 
+	
 	@Select("select * from ramyun_history where id=#{id}")
 	public RamyunHistoryVO selectHistoryById(@Param("id") String id);
 	

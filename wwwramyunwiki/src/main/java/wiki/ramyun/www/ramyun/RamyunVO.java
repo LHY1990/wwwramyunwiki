@@ -1,7 +1,6 @@
 package wiki.ramyun.www.ramyun;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,9 +37,6 @@ public class RamyunVO {
 	private String calcium;               //칼슘
 	private String image;                 //이미지 위치
 	private String userEditedContents;    //유저 작성 내용
-	
-	
-	
 	
 	
 	
@@ -235,6 +231,8 @@ public class RamyunVO {
 	public void setUserEditedContents(String userEditedContents) {
 		this.userEditedContents = userEditedContents;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "RamyunVO [brandNameKor=" + brandNameKor + ", brandNameEng=" + brandNameEng + ", updatedDate="

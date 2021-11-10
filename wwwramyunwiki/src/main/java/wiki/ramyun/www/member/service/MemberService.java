@@ -1,14 +1,12 @@
 package wiki.ramyun.www.member.service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import wiki.ramyun.www.member.MemberVO;
@@ -24,13 +22,7 @@ public class MemberService {
 	private JavaMailSender mailSender;
 	
 	
-	
-	
-	
 	public void inserMemberToDB(MemberVO joinVO) {
-		System.out.println("서비스 시작");
-		
-		
 		MemberVO vo = new MemberVO();
 		
 		vo.setMemberNumber(0);
@@ -40,22 +32,15 @@ public class MemberService {
 		vo.setNickname(joinVO.getMemberId());
 		vo.setMemberEmail(joinVO.getMemberEmail());
 		dao.insertMember(vo);
-		
-		
-		/*
-		MemberVO vo=new MemberVO();
-		vo.setMemberNumber(2);
-		dao.deleteMember(vo);
-		*/
 	}
 
+	
+	// 로그인 정보로 들어온 아이디와 패스워드로 회원인지 확인
 	public boolean checkMember(MemberVO vo) {
-		// 로그인 정보로 들어온 아이디와 패스워드로 회원인지 확인
 		boolean result=false;
 		
 		System.out.println("내부확인"+vo.getMemberId()+" "+vo.getMemberPassword());
 		result=dao.memberValidationCheck(vo.getMemberId(), vo.getMemberPassword());
-		
 		
 		
 		if(result) {
@@ -65,22 +50,19 @@ public class MemberService {
 		}
 		
 		
-		
-		
 		return result;
 		
 	}
 	
+	
+	//보내는 메일작성 코드 메일은 여기서 수정한다.
 	public void sendMailCode(MemberVO vo, String mailCodeInput) {
 		String setfrom = "ramyunwiki@gmail.com";
 		String tomail=vo.getMemberEmail();
 		String title ="라면위키 회원가입 인증 메일입니다.";
 		String mailCode = mailCodeInput;
-				
 		
 		String content ="안녕하세요 라면위키를 찾아주셔서 감사합니다."+System.getProperty("line.separator")+"인증번호는 다음과 같습니다."+System.getProperty("line.separator")+mailCode;
-		
-		
 		
 		try {
 			MimeMessage message =mailSender.createMimeMessage();
@@ -97,33 +79,40 @@ public class MemberService {
 			e.printStackTrace();
 		}
 	}
+	
 
 	public boolean isUnique(MemberVO vo) {
 		int isUnique= dao.isUniqueMember(vo);
-		
 		
 		if(isUnique==0) {
 			return true;
 		}
 		
 		return false;
-		
-		
-		
 	}
 
+	
+	// 총 회원수를 가져온다
 	public int getMemberCount() {
-		// 총 회원수를 가져온다
 		return dao.getMemberCount();
 	}
 
+	
+	// 아이디로 멤버 선택
 	public MemberVO getMemberById(String memberId) {
-		// 아이디로 멤버 선택
 		return dao.getMemberById(memberId);
 	}
 
+	
 	public void changeNickname(String nickname, String memberNumber) {
-		dao.changeNicknameByMemberNumber(nickname,memberNumber);
+		dao.changeNicknameByMemberNumber(nickname, memberNumber);
+		
+	}
+	
+	
+	//유저의 이메일을 바꾼다.
+	public void changeMemberEmail(String memberEmail, String memberNumber) {
+		dao.changeEmailByMemberNumber(memberEmail, memberNumber);
 		
 	}
 

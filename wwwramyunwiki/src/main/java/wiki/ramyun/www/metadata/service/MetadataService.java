@@ -13,7 +13,6 @@ public class MetadataService {
 	MetadataMapper mapper;
 	
 	
-
 	// 메타데이터에 멤버이름과 라면이름을 확인하여 좋아요를 등록한다. 중복확인 필수
 	public int addLikeRamyun(String memberId, String ramyunName) {
 		int nowLikes=0;
@@ -25,7 +24,6 @@ public class MetadataService {
 				// 라면이 있다면 추가할것
 				mapper.addLike(ramyunName,memberId);//순서를 확인하자
 			}
-
 			nowLikes = mapper.getLikesByName(ramyunName);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -38,13 +36,11 @@ public class MetadataService {
 	public int addReportRamyun(String memberId, String ramyunName) {
 		int nowReport=0;
 		try {
-			
 			// 이전에 같은 라면이름 같은 아이디 등록한적이 없다면, 라이크를 추가할것
 			if ((mapper.hasPrevReport(memberId, ramyunName) == 0)) {
 				// 라면이 있다면 추가할것
 				mapper.addReport(ramyunName,memberId);//순서를 확인하자
 			}
-
 			nowReport = mapper.getReportByName(ramyunName);
 			
 			int likesCount=mapper.likesCount(ramyunName);
@@ -60,6 +56,7 @@ public class MetadataService {
 		return nowReport;
 	}
 
+	
 	//영양성분 추천 구현
 	public int addLikeIngredient(String memberId, String ingredientName) {
 		int nowLikes=0;
@@ -78,6 +75,7 @@ public class MetadataService {
 		}
 		return nowLikes;
 	}
+	
 
 	//영양성분 신고구현
 	public int addReportIngredient(String memberId, String ingredientName) {
@@ -105,6 +103,8 @@ public class MetadataService {
 		}
 		return nowReport;
 	}
+	
+	
 	//영양성분 추천 구현
 	public int addLikeManufactory(String memberId, String ingredientName) {
 		int nowLikes=0;
@@ -124,6 +124,7 @@ public class MetadataService {
 		return nowLikes;
 	}
 
+	
 	//영양성분 신고구현
 	public int addReportManufactory(String memberId, String ingredientName) {
 		int nowReport=0;

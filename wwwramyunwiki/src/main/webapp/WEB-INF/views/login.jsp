@@ -105,3 +105,10 @@
     
 </body>
 </html>
+
+<%if(session.getAttribute("isMember")=="false"){%>
+    <script>
+        alert("입력한 회원아이디와 비밀번호에 일치하는 회원이 없습니다.");
+
+    </script>
+<%}%>

@@ -14,19 +14,19 @@ import wiki.ramyun.www.ramyunhistory.mapper.RamyunHistoryMapper;
 @Component
 public class RamyunHistoryDAO {
 
-	
 	@Autowired
 	@Qualifier("ramyunHistoryMapper")
 	private RamyunHistoryMapper mapper;
 
+	
+	// 이름으로 라면 히스토리 리스트를 가져온다
 	public List<RamyunHistoryVO> getRamyunHistoryByName(String name) {
-		// 이름으로 라면 히스토리 리스트를 가져온다
 		return mapper.selectHistoryByName(name);
 	}
 
 	
+	// 라면업데이트와 동시에 라면히스토리에 같은내용+작성자 저장하기
 	public void updateRamyunHistory(RamyunVO vo, String writer) {
-		// 라면업데이트와 동시에 라면히스토리에 같은내용+작성자 저장하기
 		System.out.println("라면 히스토리 업데이트 시작함");
 		mapper.insertRamyunHistory(
 				vo.getbrandNameKor(),
@@ -63,13 +63,11 @@ public class RamyunHistoryDAO {
 				writer
 				);
 		System.out.println("라면 업데이트 끝남");
-		
-		
 	}
 
 
+	//아이디로 히스토리를 선택해서 가져온다
 	public RamyunHistoryVO getRamyunHistoryById(String id) {
-		//아이디로 히스토리를 선택해서 가져온다
 		return mapper.selectHistoryById(id);
 	}
 	

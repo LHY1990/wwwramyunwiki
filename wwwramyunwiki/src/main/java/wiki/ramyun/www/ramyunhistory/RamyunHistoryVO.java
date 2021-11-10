@@ -10,21 +10,19 @@ public class RamyunHistoryVO extends RamyunVO {
 	public RamyunHistoryVO() {
 		super();
 	}
-
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getWriter() {
 		return writer;
 	}
-
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
+	
+	
 
 }

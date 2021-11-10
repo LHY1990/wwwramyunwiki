@@ -21,6 +21,7 @@ public interface SearchMapper {
 			+ "order by name")
 	public List<SearchVO> searchRecentUpdated();
 	
+	
 	@Select("(select factory_name as name, updated_date as updated_date from manufactory) "
 			+ "union "
 			+ "(select brand_name_kor, updated_date from ramyun orber) "
@@ -29,7 +30,6 @@ public interface SearchMapper {
 			+ "order by name")
 	public List<SearchVO> searchUpdated();
 
-	
 	
 	@Select("select count(*) from (select brand_name_kor from ramyun union select name from search union select factory_name from manufactory union select name from ingredient) as totalcount;")
 	public int getTotalCountOfAll();

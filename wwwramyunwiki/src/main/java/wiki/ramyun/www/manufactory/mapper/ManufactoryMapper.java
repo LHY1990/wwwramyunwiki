@@ -12,7 +12,6 @@ import wiki.ramyun.www.manufactory.ManufactoryVO;
 public interface ManufactoryMapper {
 
 
-
 	//이름으로 데이터 가져오기
 	@Select("select factory_name, item_report_number, adress, identify_letter, corporate_name, description, updated_date from manufactory where factory_name=#{name}")
 	ManufactoryVO selectByName(@Param("name")String name);
@@ -27,10 +26,10 @@ public interface ManufactoryMapper {
 						  @Param("description") String description,
 						  @Param("factoryName") String factoryName);
 
+	
 	//이미 등록된 데이터의 갯수를 센다.
 	@Select("select count(*) from ingredient where name=#{register}")
 	int countOf(@Param("register")String register);
-
 	
 	
 	//공장 등록하기
@@ -41,6 +40,7 @@ public interface ManufactoryMapper {
 	//최근것 값 가져와서 첫 화면에 뿌리기
 	@Select("select factory_name, item_report_number, adress, identify_letter, corporate_name, description, updated_date from manufactory order by updated_date limit 1")
 	ManufactoryVO selectRecentOne();
+	
 	
 	//랜덤으로 가져오기
 	@Select("select factory_name, item_report_number, adress, identify_letter, corporate_name, description, updated_date from manufactory order by rand() limit 1")

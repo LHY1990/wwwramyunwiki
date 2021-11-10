@@ -13,10 +13,10 @@ public class ManufactoryVO {
 	private LocalDateTime updatedDate;
 	
 	
-	
 	public ManufactoryVO() {
 		super();
 	}
+	
 	
 	public String getFactoryId() {
 		return factoryId;
@@ -54,15 +54,12 @@ public class ManufactoryVO {
 	public void setCorporateName(String corporateName) {
 		this.corporateName = corporateName;
 	}
-	
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 	public LocalDateTime getUpdatedDate() {
 		return updatedDate;
 	}
@@ -70,6 +67,7 @@ public class ManufactoryVO {
 		this.updatedDate = updatedDate;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "ManufactoryVO [factoryId=" + factoryId + ", factoryName=" + factoryName + ", itemReportNumber="

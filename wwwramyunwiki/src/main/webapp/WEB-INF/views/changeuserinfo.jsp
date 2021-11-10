@@ -60,7 +60,7 @@
                                 <br>
                                 <div>아이디 : ${memberId}</div>
                                 <br>
-                                <div>이메일 : ${memberEmail}</div>
+                                <div>이메일 : <input type="text" maxlength="50" placeholder="이메일변경" name="memberEmail" value="${memberEmail}"></div> 
                                 <br>
                                 <div>가입일 : ${memberJoinDate}</div>
                                 <br>

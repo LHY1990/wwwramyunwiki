@@ -10,6 +10,7 @@ public class SearchVO {
 		super();
 	}
 	
+	
 	public String getName() {
 		return name;
 	}

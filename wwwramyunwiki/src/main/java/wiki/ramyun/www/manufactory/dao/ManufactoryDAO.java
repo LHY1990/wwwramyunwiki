@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import wiki.ramyun.www.manufactory.ManufactoryVO;
 import wiki.ramyun.www.manufactory.mapper.ManufactoryMapper;
-import wiki.ramyun.www.member.mapper.MemberMapper;
 
 @Component
 public class ManufactoryDAO {
@@ -15,19 +14,21 @@ public class ManufactoryDAO {
 	@Qualifier("manufactoryMapper")
 	ManufactoryMapper mapper;
 
+	
+	//최근 항목 1개를 가져온다.
 	public ManufactoryVO selectRecentOne() {
-		// TODO Auto-generated method stub
 		return mapper.selectRecentOne();
 	}
 
+	
+	//이름으로 하나 선택한다.
 	public ManufactoryVO selectByName(String name) {
-		// TODO Auto-generated method stub
 		return mapper.selectByName(name);
 	}
 
+	
+	//업데이트한다.
 	public void updateManufactory(ManufactoryVO vo) {
-		// TODO Auto-generated method stub
-		System.out.println("dao까지옴");
 		System.out.println(vo.getDescription());
 		System.out.println(vo.getAdress());
 		System.out.println(vo.getCorporateName());
@@ -38,8 +39,9 @@ public class ManufactoryDAO {
 		mapper.updateManufactory(vo.getCorporateName(), vo.getAdress(), vo.getIdentifyLetter(),vo.getItemReportNumber(), vo.getDescription(), vo.getFactoryName());
 	}
 
+	
+	// 중복 등록을 막는다.
 	public boolean isUnique(String register) {
-		// 중복 등록을 막는다.
 		int count=0;
 		count=mapper.countOf(register);
 		if(count==0) {
@@ -52,14 +54,16 @@ public class ManufactoryDAO {
 		}
 	}
 
+	
+	// 등록하기
 	public void insertManufactory(String register) {
-		// 등록하기
 		mapper.insertManufactory(register);
 		
 	}
 
+	
+	//무작위로 하나 가져오기
 	public ManufactoryVO getRandomOne() {
-		// TODO Auto-generated method stub
 		return mapper.selectRandomOne();
 	}
 }
