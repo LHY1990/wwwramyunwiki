@@ -1,26 +1,5 @@
 window.onload=function(){
     
-    
-    // document.getElementById('layoutInnerId').style.left=(400+'px');
-
-    // $(window).resize(function(){
-
-    //     var layoutInnerSizeWidth =  ((window.innerWidth/2)-201);
-    //     document.getElementById('layoutInnerId').style.left=(layoutInnerSizeWidth+'px');
-
-
-
-        
-    // })
-
-
-
-    
-
-
-
-
-
 
 
 }
@@ -39,7 +18,7 @@ function sendingMailCode(){
     //     alert('이메일 입력란이 비었습니다.')
         
     // }
-    alert("메일이 보내졌습니다.")
+    // alert("메일이 보내졌습니다.")
 
 
     

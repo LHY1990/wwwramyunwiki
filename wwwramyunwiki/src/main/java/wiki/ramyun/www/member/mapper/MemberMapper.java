@@ -23,8 +23,8 @@ public interface MemberMapper {
 	public void deleteMeber(@Param("memberNumber") int memberNumber);
 
 	
-	@Select("select count(*) from member where member_id=\"${memberId}\" and member_password=\"${memberPassword}\"")
-	public int validateMember(@Param("memberId")String memberId,@Param("memberPassword") String memberPassword);
+//	@Select("select count(*) from member where member_id=\"${memberId}\" and member_password=\"${memberPassword}\"")
+//	public int validateMember(@Param("memberId")String memberId,@Param("memberPassword") String memberPassword);
 	
 	
 	//아이디가 같은 명수를 구한다.
@@ -47,6 +47,9 @@ public interface MemberMapper {
 	
 	@Update("update member set member_email=#{memberEmail} where member_number =#{memberNumber}")
 	public void updateMemberEmailByMemberNumber(@Param("memberEmail")String memberEmail,@Param("memberNumber") String memberNumber);
+
+	@Select("select member_password from member where member_id=#{memberId}")
+	public String selectMemberPasswordById(@Param("memberId")String memberId);
 
 	
 	

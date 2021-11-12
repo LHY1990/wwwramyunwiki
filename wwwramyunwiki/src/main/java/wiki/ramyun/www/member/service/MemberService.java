@@ -41,7 +41,6 @@ public class MemberService {
 		
 		result=dao.memberValidationCheck(vo.getMemberId(), vo.getMemberPassword());
 		
-		
 		if(result) {
 			System.out.println(vo.getMemberId()+"는 회원입니다.");
 		}else {

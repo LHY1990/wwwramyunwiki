@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -72,6 +73,10 @@ public class HomeController {
 	@Autowired
 	@Qualifier("metadataService")
 	private MetadataService metadataService;
+	
+	@Autowired
+	@Qualifier("bcryptPasswordEncoder")
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -214,7 +219,7 @@ public class HomeController {
 		if(memberEmailCode.equals("")) {		
 			//인증코드가 없는 상태로 넘어온 경우
 			System.out.println("인증번호없이 방문");
-			System.out.println(vo.getMemberId()+" "+vo.getMemberEmail()+" "+vo.getMemberPassword()+" "+memberEmailCode);
+			
 			mav.setViewName("join");
 			
 			//아이디가 고유한가
@@ -238,6 +243,10 @@ public class HomeController {
 			System.out.println("인증번호 가지고 방문");
 			
 			if(memberEmailCode.equals(mailCode)) {
+				//비밀번호를 암호화한다.
+				String encodedPassword=passwordEncoder.encode(vo.getMemberPassword());
+				vo.setMemberPassword(encodedPassword);
+				
 				memberService.inserMemberToDB(vo);
 				mav.addObject("newMember", vo.getMemberId());
 				mav.setViewName("welcome");

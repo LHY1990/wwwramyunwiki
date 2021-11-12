@@ -2,6 +2,7 @@ package wiki.ramyun.www.member.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import wiki.ramyun.www.member.MemberVO;
@@ -14,18 +15,22 @@ public class MemberDAO {
 	@Qualifier("memberMapper")
 	MemberMapper mapper;
 	
+	@Autowired
+	@Qualifier("bcryptPasswordEncoder")
+	private BCryptPasswordEncoder passwordEncoder;
+	
 
+	//입력으로 들어온 비밀번호는 암호화 이전 비밀번호
 	public boolean memberValidationCheck(String memberId, String memberPassword) {
-		int memberCount=0;
-		boolean result=false;
+
 		
-		memberCount=mapper.validateMember(memberId, memberPassword);
-		if(memberCount==1) {
-			//나온게 한명이면 정상
-			result=true;
-		}else if(memberCount==0) {
-			result=false;
-		}
+		//기본적으로 실패
+		boolean result=false;
+		//암호화된 비밀번호와 입력된 비밀번호를 비교한다.
+		String encodedPassword=mapper.selectMemberPasswordById(memberId);
+		result=passwordEncoder.matches(memberPassword, encodedPassword);
+			
+		
 		return result;
 	}
 	

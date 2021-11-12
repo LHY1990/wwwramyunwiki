@@ -279,6 +279,7 @@ a{
 }
 #join_member>a{
     text-decoration: none;
+    vertical-align : unset;
 }
 #member_login{
     height: 30px;
