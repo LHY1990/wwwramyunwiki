@@ -31,8 +31,6 @@ public class MemberDAO {
 	
 
 	public void insertMember(MemberVO vo) {
-		System.out.println("dao 접근");
-		System.out.println(vo.getMemberEmail());
 		mapper.insertMember(vo);
 	}
 

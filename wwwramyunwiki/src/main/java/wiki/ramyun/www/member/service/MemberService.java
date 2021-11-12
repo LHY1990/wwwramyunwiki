@@ -39,7 +39,6 @@ public class MemberService {
 	public boolean checkMember(MemberVO vo) {
 		boolean result=false;
 		
-		System.out.println("내부확인"+vo.getMemberId()+" "+vo.getMemberPassword());
 		result=dao.memberValidationCheck(vo.getMemberId(), vo.getMemberPassword());
 		
 		

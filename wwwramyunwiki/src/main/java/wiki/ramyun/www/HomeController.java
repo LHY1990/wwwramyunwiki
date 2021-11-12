@@ -182,7 +182,6 @@ public class HomeController {
 		mav.addObject("ramyunList", ramyunRecentUpdatedList);
 		//여기까지가 우측탭 정보
 		
-		
 		mav.setViewName("login");
 		return mav;
 	}
@@ -196,7 +195,6 @@ public class HomeController {
 		//여기까지가 우측탭 정보
 		memberService.checkMember(vo);
 		
-		
 		return mav;
 	}
 	
@@ -208,7 +206,6 @@ public class HomeController {
 		mailCode = String.valueOf((int)(Math.random()*1000000));
 		
 		return "join";
-		
 	}
 	
 	@PostMapping("join")

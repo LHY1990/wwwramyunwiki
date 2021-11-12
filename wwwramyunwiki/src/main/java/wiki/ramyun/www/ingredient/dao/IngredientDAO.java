@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import wiki.ramyun.www.ingredient.IngredientVO;
 import wiki.ramyun.www.ingredient.mapper.IngredientMapper;
+import wiki.ramyun.www.seconderrorhandler.SecondErrorHandler;
 
 @Component
 public class IngredientDAO {
@@ -12,12 +13,18 @@ public class IngredientDAO {
 	@Autowired
 	@Qualifier("ingredientMapper")
 	IngredientMapper mapper;
+	
+	@Autowired
+	@Qualifier("secondErrorHandler")
+	SecondErrorHandler secondErrorHandler;
 
 	
 	//최근 영양성분 하나를 보낸다.
 	public IngredientVO getRecentsOne() {
 		IngredientVO vo=mapper.selectRecentOne();
 		
+		//만약에 00초로끝나면 1초를 더해준다.
+		vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
 		return vo;
 	}
 	
@@ -31,18 +38,20 @@ public class IngredientDAO {
 	// 무작위로 하나 가져온다
 	public IngredientVO getRandomOne() {
 		IngredientVO vo=mapper.selectRandomOne();
-		System.out.println(vo.getUpdatedDate());
-		//여기에 00초일때를 가정하면된다
-		여기서부터 이어서 작업
-		vo.setUpdatedDate(vo.getUpdatedDate().plusSeconds(1));
-		System.out.println(vo.getUpdatedDate().getSecond());
+		//만약에 00초로끝나면 1초를 더해준다.
+		vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+		
 		return vo;
 	}
 	
 	
 	//이름으로 선택한 영양성분을 보낸다.
 	public IngredientVO selectIngredientByName(String findname) {
-		return mapper.selectIngredientByName(findname);
+
+		IngredientVO vo=mapper.selectIngredientByName(findname);
+		//만약에 00초로끝나면 1초를 더해준다.
+		vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+		return vo;
 	}
 
 	

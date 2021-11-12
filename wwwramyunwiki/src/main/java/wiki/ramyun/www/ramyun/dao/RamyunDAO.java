@@ -1,6 +1,7 @@
 package wiki.ramyun.www.ramyun.dao;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import wiki.ramyun.www.ramyun.RamyunVO;
 import wiki.ramyun.www.ramyun.mapper.RamyunMapper;
+import wiki.ramyun.www.seconderrorhandler.SecondErrorHandler;
 
 @Component
 public class RamyunDAO {
@@ -17,10 +19,15 @@ public class RamyunDAO {
 	@Qualifier("ramyunMapper")
 	private RamyunMapper mapper;
 	
+	@Autowired
+	@Qualifier("secondErrorHandler")
+	SecondErrorHandler secondErrorHandler;
 	
-	//새로운 라면넣기 5레벨이상
+	
+	
+	
+	//새로운 라면넣기 
 	public void insertRamyun(String newRamyun) {
-		System.out.println("라면 디비에 넣기");
 		//중복라면있으면 에러나니까 있는지 확인할것
 		mapper.insertRamyun(newRamyun);
 	}
@@ -28,7 +35,6 @@ public class RamyunDAO {
 	
 	//기존 라면업데이트 하기
 	public void updateRamyun(RamyunVO vo) {
-		System.out.println("라면 업데이트 시작함");
 		mapper.updateRamyun(vo.getbrandNameEng(), 
 				LocalDateTime.now(), 
 				vo.getCorporateName(), 
@@ -60,7 +66,6 @@ public class RamyunDAO {
 				vo.getImage(), 
 				vo.getUserEditedContents(), 
 				vo.getbrandNameKor());
-		System.out.println("라면 업데이트 끝남");
 		//마지막에 한국이름 명을 넣어야 where절이 완성되는 구조
 	}
 
@@ -72,19 +77,34 @@ public class RamyunDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		//00초로 끝나는 경우 1초를 더해준다.
+		vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
 		
 		return vo;
 	}
 
 
+	//빈 리스트를 만들어서 00초로 끝나는 라면은 1초로 만들어준다.
 	public List<RamyunVO> getRecentsUpdateList() {
-		List<RamyunVO> list=mapper.getRecentsUpdateList();
+		List<RamyunVO> list=new ArrayList<RamyunVO>();
+		
+		for(RamyunVO vo : mapper.getRecentsUpdateList()) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
 		return list;
 	}
 
 
 	public List<RamyunVO> getRecentsUpdateListWhole() {
-		List<RamyunVO> list=mapper.getRecentsUpdateListWhole();
+		List<RamyunVO> list=new ArrayList<RamyunVO>();
+		
+		for(RamyunVO vo : mapper.getRecentsUpdateListWhole()) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
 		return list;
 	}
 

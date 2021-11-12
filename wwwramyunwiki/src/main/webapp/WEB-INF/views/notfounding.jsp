@@ -43,7 +43,11 @@
                             
                         </div>
                         <div id="edited_time">
-                            <a href="./registration" style="text-decoration: none; color: blue;">찾는 문서가 없다면? 문서 등록하러 가기</a>
+                            <%if(session.getAttribute("isMember")=="true"){%>
+                                <a href="./registration" style="text-decoration: none; color: blue;">찾는 문서가 없다면? 문서 등록하러 가기</a>
+                            <%}else{%>
+                                <a href="./login" style="text-decoration: none; color: blue;" onclick="login_needed()">찾는 문서가 없다면? 문서 등록하러 가기</a>
+                            <%}%>
                         </div>
                         <div style="height: 100px;">
 

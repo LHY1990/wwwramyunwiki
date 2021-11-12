@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import wiki.ramyun.www.manufactory.ManufactoryVO;
 import wiki.ramyun.www.manufactory.mapper.ManufactoryMapper;
+import wiki.ramyun.www.seconderrorhandler.SecondErrorHandler;
 
 @Component
 public class ManufactoryDAO {
@@ -14,27 +15,32 @@ public class ManufactoryDAO {
 	@Qualifier("manufactoryMapper")
 	ManufactoryMapper mapper;
 
+	@Autowired
+	@Qualifier("secondErrorHandler")
+	SecondErrorHandler secondErrorHandler;
 	
 	//최근 항목 1개를 가져온다.
 	public ManufactoryVO selectRecentOne() {
-		return mapper.selectRecentOne();
+		
+		ManufactoryVO vo=mapper.selectRecentOne();
+		vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+		
+		return vo;
 	}
 
 	
 	//이름으로 하나 선택한다.
 	public ManufactoryVO selectByName(String name) {
-		return mapper.selectByName(name);
+		
+		ManufactoryVO vo=mapper.selectByName(name);
+		vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+		
+		return vo;
 	}
 
 	
 	//업데이트한다.
 	public void updateManufactory(ManufactoryVO vo) {
-		System.out.println(vo.getDescription());
-		System.out.println(vo.getAdress());
-		System.out.println(vo.getCorporateName());
-		System.out.println(vo.getIdentifyLetter());
-		System.out.println(vo.getItemReportNumber());
-		System.out.println(vo.getFactoryName());
 		
 		mapper.updateManufactory(vo.getCorporateName(), vo.getAdress(), vo.getIdentifyLetter(),vo.getItemReportNumber(), vo.getDescription(), vo.getFactoryName());
 	}
@@ -64,6 +70,10 @@ public class ManufactoryDAO {
 	
 	//무작위로 하나 가져오기
 	public ManufactoryVO getRandomOne() {
-		return mapper.selectRandomOne();
+		
+		ManufactoryVO vo=mapper.selectRandomOne();
+		//00초로 끝나는 경우 1초를 더해준다.
+		vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+		return vo;
 	}
 }

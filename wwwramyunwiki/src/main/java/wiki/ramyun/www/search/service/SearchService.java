@@ -26,7 +26,6 @@ public class SearchService {
 	public List<SearchVO> searchTagPage(int page) {
 		//전체 게시글을 받는다.
 		int totalContentsCount=mapper.getTotalCountOfAll();
-		System.out.println(totalContentsCount);
 
 		//1페이지면 0부터 150까지 받고
 		//2페이지면 150부터 300까지 받는다.
@@ -61,7 +60,6 @@ public class SearchService {
 		
 		//전체 페이지 갯수를 가져온다.
 		int totalContentsCount=mapper.getTotalCountOfAll();
-		System.out.println(totalContentsCount);
 		//링크페이지를 몇개나 보낼지 정한다.
 		//한페이지에 150개를 보여주니 totalContentsCount/150 그리고 + 1이다.
 		int totalPageCount=(totalContentsCount/150)+1;

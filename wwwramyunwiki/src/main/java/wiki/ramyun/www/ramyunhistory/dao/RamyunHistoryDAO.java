@@ -1,6 +1,7 @@
 package wiki.ramyun.www.ramyunhistory.dao;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 import wiki.ramyun.www.ramyun.RamyunVO;
 import wiki.ramyun.www.ramyunhistory.RamyunHistoryVO;
 import wiki.ramyun.www.ramyunhistory.mapper.RamyunHistoryMapper;
+import wiki.ramyun.www.seconderrorhandler.SecondErrorHandler;
 
 @Component
 public class RamyunHistoryDAO {
@@ -18,16 +20,26 @@ public class RamyunHistoryDAO {
 	@Qualifier("ramyunHistoryMapper")
 	private RamyunHistoryMapper mapper;
 
+	@Autowired
+	@Qualifier("secondErrorHandler")
+	SecondErrorHandler secondErrorHandler;
 	
-	// 이름으로 라면 히스토리 리스트를 가져온다
+	// 이름으로 라면 히스토리 리스트를 가져온다. 00초로 끝나는 경우 1초를 더해준다.
 	public List<RamyunHistoryVO> getRamyunHistoryByName(String name) {
-		return mapper.selectHistoryByName(name);
+		
+		List<RamyunHistoryVO> list=new ArrayList<RamyunHistoryVO>();
+		
+		for(RamyunHistoryVO vo : mapper.selectHistoryByName(name)) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
+		return list;
 	}
 
 	
 	// 라면업데이트와 동시에 라면히스토리에 같은내용+작성자 저장하기
 	public void updateRamyunHistory(RamyunVO vo, String writer) {
-		System.out.println("라면 히스토리 업데이트 시작함");
 		mapper.insertRamyunHistory(
 				vo.getbrandNameKor(),
 				vo.getbrandNameEng(), 
@@ -62,13 +74,16 @@ public class RamyunHistoryDAO {
 				vo.getUserEditedContents(), 
 				writer
 				);
-		System.out.println("라면 업데이트 끝남");
 	}
 
 
 	//아이디로 히스토리를 선택해서 가져온다
 	public RamyunHistoryVO getRamyunHistoryById(String id) {
-		return mapper.selectHistoryById(id);
+		RamyunHistoryVO vo=mapper.selectHistoryById(id);
+		
+		vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+		
+		return vo;
 	}
 	
 }
