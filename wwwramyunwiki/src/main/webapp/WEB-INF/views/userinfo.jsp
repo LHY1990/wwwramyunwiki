@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../resources/css/sidetab.css">
 
     <script type="text/javascript" src="../../resources/javascript/login.js"></script>
+    <script type="text/javascript" src="../../resources/javascript/home.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <title>라면위키:유저정보 -라면위키</title>
@@ -61,20 +62,26 @@
                                 <br>
                                 <div>이메일 : ${memberEmail}</div>
                                 <br>
-                                <div>가입일 : ${memberJoinDate}</div>
+                                <div>가입일 :
+                                    <fmt:parseDate value="${memberJoinDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both"/>
+	                			    <fmt:formatDate pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" value="${parsedDateTime}"/>
+                                </div>
                                 <br>
                                 <div>닉네임 : ${memberNickname}</div> 
                                 <br>
                                 <br>
                                 <form action="changeuserinfo.do" method="get">
                                     <button>회원정보변경</button>
-                                </form>                                
+                                </form>          
+                                <form action="withdraw.do" method="get">
+                                    <button>회원탈퇴</button>
+                                </form>                        
                             </div>
 
 
                         </div>
                         <!-- 로그인끝 -->
-                        <div style="width: 100%; height: 5px;">
+                        <div style="width: 100%; height: 5px; ">
 
                         </div>
 

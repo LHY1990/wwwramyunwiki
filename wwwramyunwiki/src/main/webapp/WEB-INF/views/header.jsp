@@ -7,9 +7,9 @@
         
         
     <div class="top_pannel_link" >
-        <div class="inner_top_pannel_link" id="logo_icon">
+        <div class="inner_top_pannel_link"  id="logo_icon">
             <!-- 대표아이콘 -->
-            <i class="fas fa-book"></i>
+            <i class="fas fa-book" ></i>
         </div>
         <div class="inner_top_pannel_link" id="title">
             <!-- 대표 이름 -->

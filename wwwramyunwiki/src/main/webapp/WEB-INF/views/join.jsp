@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../../resources/css/join.css">
 
     <script type="text/javascript" src="../../resources/javascript/join.js"></script>
+    <script type="text/javascript" src="../../resources/javascript/home.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <title>라면위키:회원가입 -라면위키</title>

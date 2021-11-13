@@ -3,16 +3,20 @@ package wiki.ramyun.www.ramyun.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import wiki.ramyun.www.ramyun.RamyunVO;
 import wiki.ramyun.www.ramyun.dao.RamyunDAO;
+import wiki.ramyun.www.wikistringresolver.WikiStringResolver;
 
 @Service
 public class RamyunService {
 
 	@Autowired
 	private RamyunDAO dao;
+	
+	
 	
 	
 	//회원등급 5등급 이상일때 가능하다
@@ -34,6 +38,7 @@ public class RamyunService {
 	
 	public RamyunVO getRamyunData(String searchBoxInput){
 		RamyunVO vo=dao.selectRamyun(searchBoxInput);
+		
 		return vo;
 	}
 

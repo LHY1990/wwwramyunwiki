@@ -8,6 +8,26 @@
 
 a:visited{text-decoration: none;}
 a:link{text-decoration: none;}
+/* ////////////////////////////////////// */
+#userlinks:link{
+    /* 라면 탭에서 작성방법과 연동됌 */
+    text-decoration: none;
+    color: blue;
+}
+#userlinks:visited{
+    /* 라면 탭에서 작성방법과 연동됌 */
+    text-decoration: none;
+    color: blue;
+}
+#userlinks:hover{
+    /* 라면 탭에서 작성방법과 연동됌 */
+    text-decoration: none;
+    color: rgb(102, 27, 27);
+}
+/* ////////////////////////////////////// */
+
+
+
 .sections_link:link{
     color: black;
 }
@@ -621,3 +641,6 @@ a{
     font-style: normal;
 }
 /* 폰트 끝 */
+
+
+

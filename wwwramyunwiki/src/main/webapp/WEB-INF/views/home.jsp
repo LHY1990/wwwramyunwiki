@@ -81,7 +81,7 @@
                                 <div class="alert_right_section">
                                     <br>
                                     <strong style="font-size: larger;">작성방법</strong><br>
-                                    작성방법이 궁금하다면 <a href="howto.html">여기</a>를 클릭해주세요
+                                    작성방법이 궁금하다면 <a href="./howto.do">여기</a>를 클릭해주세요
                                 </div>
                             </div>
                             <div class="alert_section">

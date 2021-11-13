@@ -35,6 +35,7 @@ import wiki.ramyun.www.ramyunhistory.RamyunHistoryVO;
 import wiki.ramyun.www.ramyunhistory.service.RamyunHistoryService;
 import wiki.ramyun.www.search.SearchVO;
 import wiki.ramyun.www.search.service.SearchService;
+import wiki.ramyun.www.wikistringresolver.WikiStringResolver;
 
 @Controller
 @RequestMapping("/")
@@ -146,6 +147,9 @@ public class HomeController {
 	//유저가 설정창을 눌렀을때
 	@GetMapping("userinfo")
 	public ModelAndView getUserInfo(ModelAndView mav, HttpSession session) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		
 		mav.setViewName("userinfo");
 		return mav;
 	}
@@ -278,6 +282,8 @@ public class HomeController {
 			RamyunVO vo=ramyunService.getRamyunData(name);
 			if(vo!=null) {
 				//만약에 널이 아니면 라면을 반환
+				//서비스 위키스트링리졸버로 안의 컨텐츠를 변환한다
+				vo.setUserEditedContents(WikiStringResolver.encodeContents(vo.getUserEditedContents()));
 				mav.addObject("ramyun", vo);
 				mav.setViewName("ramyun");
 				return mav;
@@ -365,6 +371,8 @@ public class HomeController {
 		try {
 			RamyunVO vo=ramyunService.getRamyunData(name);
 			if(vo!=null) {
+				//서비스 위키스트링리졸버로 안의 컨텐츠를 변환한다
+				vo.setUserEditedContents(WikiStringResolver.encodeContents(vo.getUserEditedContents()));
 				//만약에 널이 아니면 라면을 반환
 				mav.addObject("ramyun", vo);
 				mav.setViewName("ramyun");
@@ -467,12 +475,14 @@ public class HomeController {
 		//여기가 실제로 라면을 업데이트하는곳
 		ramyunService.updateRamyunToDB(vo);
 		//라면 히스토리도 같이 업데이트한다. 세션에서 작성자의 이름을 받아온다.
-		String writer = (String) session.getAttribute("memberId");
+		String writer = (String) session.getAttribute("memberNickname");
 		System.out.println("작성자이름"+writer);
 		System.out.println(vo.getbrandNameKor());
 		ramyunHistoryService.updateRamyunHistoryToDB(vo, writer);
 		
 		RamyunVO ramyun=ramyunService.getRamyunData(vo.getbrandNameKor());
+		//서비스 위키스트링리졸버로 안의 컨텐츠를 변환한다
+		ramyun.setUserEditedContents(WikiStringResolver.encodeContents(ramyun.getUserEditedContents()));
 		mav.addObject("ramyun", ramyun);
 		mav.setViewName("ramyun");
 		
@@ -771,4 +781,10 @@ public class HomeController {
 		return reportList;
 	}
 	
+	
+	//여기는 home>작성방법
+	@GetMapping("howto.do")
+	public String howToMakeText() {
+		return "howto";
+	}
 }

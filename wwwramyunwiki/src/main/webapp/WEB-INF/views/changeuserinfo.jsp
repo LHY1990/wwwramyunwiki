@@ -62,7 +62,10 @@
                                 <br>
                                 <div>이메일 : <input type="text" maxlength="50" placeholder="이메일변경" name="memberEmail" value="${memberEmail}"></div> 
                                 <br>
-                                <div>가입일 : ${memberJoinDate}</div>
+                                <div>가입일 :
+                                    <fmt:parseDate value="${memberJoinDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both"/>
+	                			    <fmt:formatDate pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" value="${parsedDateTime}"/>
+                                </div>
                                 <br>
                                 <div>닉네임 : <input type="text" maxlength="12" placeholder="닉네임변경" name="nickname" value="${memberNickname}"></div> 
                                 <br>
