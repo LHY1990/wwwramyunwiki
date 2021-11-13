@@ -13,6 +13,7 @@ public class WikiStringResolver {
 		input=WikiStringResolver.encodeIncline(input);
 		input=WikiStringResolver.encodeLinks(input);
 		input=WikiStringResolver.encodeNextline(input);
+		input=WikiStringResolver.encodeChangeline(input);
 		input=WikiStringResolver.encodeTextColor(input);
 		input=WikiStringResolver.encodeBackgroundColor(input);
 		input=WikiStringResolver.encodeStrike(input);
@@ -184,6 +185,11 @@ public class WikiStringResolver {
       
       return input;
    }
+   public static String encodeChangeline(String input) {
+	      input=input.replace("(줄바꿈)", "<br>");
+	      
+	      return input;
+	   }
    
    
    //이걸한번에 처리하는 클래스가 있어야할듯

@@ -32,7 +32,7 @@
                 <!-- 모든컨텐츠는 여기서 시작해서 -->
                     <div id="information_tab">
                         <div id="section">
-                            라면위키 : 영양 성분
+                            라면위키 : 작성 방법
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
@@ -42,7 +42,7 @@
                             
                         </div>
                         <div id="edited_time">
-                            <c:set var="now" value="<%=new java.util.Date()%>" />
+                            <c:set var="now" value="<%=new java.util.Date()%>"/>
 							<c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy" /></c:set> 
                             최근 접속 시각 : <fmt:formatDate value="${now}" pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" />
                             
@@ -61,57 +61,65 @@
                     <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
                     <div id="howto_outer">
                         
-                        <div id="howto_left_top_top">작성방법</div>
+                        <div id="howto_left_top">작성방법</div>
                         <div id="howto_right_top"> 출력 </div>
                         <div id="description_howto_top">설명</div>
 
                         <div id="howto_left"> (줄넘김)</div>
                         <div id="howto_right"> 다음줄 </div>
-                        <div id="description_howto"> 입력 갯수만큼 다음줄로 넘어갑니다.</div>
+                        <div id="description_howto"> 입력 갯수만큼 줄바꿈을 합니다.</div>
+
+                        <div id="howto_left"> (줄바꿈)</div>
+                        <div id="howto_right"> 다음줄 </div>
+                        <div id="description_howto"> 입력 갯수만큼 줄바꿈을 합니다.</div>
 
                         <div id="howto_left">(글자색)[#ff1111]라면(/글자색)</div>
                         <div id="howto_right"><span style="color: #ff1111;">라면</span> </div>
-                        <div id="description_howto"></div>
+                        <div id="description_howto">글자색을 변경합니다.#RRGGBB 의 헥스코드를 따릅니다.</div>
 
                         <div id="howto_left">(배경색)[#11ff11]라면(/배경색)</div>
                         <div id="howto_right"><span style="background-color: #11ff11;">라면</span> </div>
-                        <div id="description_howto"></div>
+                        <div id="description_howto">배경색을 변경합니다.#RRGGBB 의 헥스코드를 따릅니다.</div>
 
                         <div id="howto_left">(굵은글자)라면(/굵은글자)</div>
                         <div id="howto_right"><strong>라면</strong></div>
-                        <div id="description_howto"></div>
+                        <div id="description_howto">글자를 두껍게 합니다.</div>
 
                         <div id="howto_left">(큰글자)라면(/큰글자)</div>
                         <div id="howto_right"> <b>라면</b></div>
-                        <div id="description_howto"></div>
+                        <div id="description_howto">글자를 크게 합니다. </div>
 
                         <div id="howto_left">(작은글자)라면(/작은글자)</div>
                         <div id="howto_right"><small>라면</small> </div>
-                        <div id="description_howto"></div>
+                        <div id="description_howto">글자를 작게 합니다.</div>
 
                         <div id="howto_left">(밑줄)라면(/밑줄)</div>
                         <div id="howto_right"><u>라면</u></div>
-                        <div id="description_howto"></div>
+                        <div id="description_howto">밑줄을 긋습니다.</div>
 
                         <div id="howto_left">(기울임)라면(/기울임)</div>
                         <div id="howto_right"><i>라면</i> </div>
-                        <div id="description_howto"></div>
+                        <div id="description_howto">글자를 기울입니다.</div>
 
                         <div id="howto_left">(취소선)라면(/취소선)</div>
                         <div id="howto_right"><strike>라면</strike></div>
-                        <div id="description_howto"></div>
+                        <div id="description_howto">취소선을 넣습니다.</div>
                         
                         <div id="howto_left">(윗글자)라면(/윗글자)</div>
                         <div id="howto_right"><sup>라면</sup></div>
-                        <div id="description_howto"></div>
+                        <div id="description_howto">작은 윗글자로 만듭니다.</div>
                         
                         <div id="howto_left">(아래글자)라면(/아래글자)</div>
                         <div id="howto_right"><sub>라면</sub></div>
-                        <div id="description_howto"></div>
+                        <div id="description_howto">작은 아래글자로 만듭니다.</div>
+
+                        <div id="howto_left">[각주]라면, 내용[각주]</div>
+                        <div id="howto_right"></div>
+                        <div id="description_howto">각주를 만듭니다.</div>
                         
                         <div id="howto_left">(링크)https://www.naver.com, 네이버(/링크)</div>
                         <div id="howto_right"><a href="https://www.naver.com">네이버</a></div>
-                        <div id="description_howto"></div>
+                        <div id="description_howto">링크를 연결합니다. 띄어쓰기와 경로명에 주의합니다.</div>
                         
                        
 
@@ -119,7 +127,7 @@
                     <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
                     
                     <!-- 여기서 끝나야한다 -->
->
+
                 </div>
             </div>   
             <!-- 우측 탭 시작 -->
