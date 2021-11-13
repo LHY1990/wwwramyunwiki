@@ -1,0 +1,83 @@
+#howto_outer{
+    width: 100%;
+    height: auto;
+    
+    background-color: white;
+}
+
+#howto_left_top{
+    /* 라인높이는 칸 높이와 맞출것 */
+    font-size: 14px;
+    color: white;
+    height: 60px;
+    width: 35%;
+    float: left;
+    outline: 1px dotted grey;
+    line-height: 60px;
+    background-color: rgba(117, 131, 151, 0.8);
+}
+#howto_right_top{
+    /* 라인높이는 칸 높이와 맞출것 */
+    color: white;
+    height: 60px;
+    width: 15%;
+    float: left;
+    line-height: 60px;
+    outline: 1px dotted grey;
+    background-color: rgba(117, 131, 151, 0.8);
+}
+#description_howto_top{
+    /* 라인높이는 칸 높이와 맞출것 */
+    color: white;
+    height: 60px;
+    width: 50%;
+    float: left;
+    line-height: 60px;
+    outline: 1px dotted grey;
+    background-color: rgba(117, 131, 151, 0.8);
+}
+
+
+
+
+
+
+#howto_left{
+    font-size: 14px;
+    
+    height: 60px;
+    width: 35%;
+    float: left;
+    outline: 1px dotted grey;
+    line-height: 60px;
+    /* 라인높이는 칸 높이와 맞출것 */
+    background-color: rgba(117, 131, 151, 0.2);
+}
+#howto_right{
+    height: 60px;
+    width: 15%;
+    float: left;
+    line-height: 60px;
+    outline: 1px dotted grey;
+    /* 라인높이는 칸 높이와 맞출것 */
+    background-color: rgba(128, 128, 128, 0.08);
+}
+#howto_right:link{
+    text-decoration: none;
+    color: blue;
+}
+#howto_right:visited{
+    text-decoration: none;
+    color: blue;
+}
+
+
+#description_howto{
+    height: 60px;
+    width: 50%;
+    float: left;
+    line-height: 60px;
+    outline: 1px dotted grey;
+    /* 라인높이는 칸 높이와 맞출것 */
+    background-color: rgba(128, 128, 128, 0.08);
+}

@@ -784,7 +784,10 @@ public class HomeController {
 	
 	//여기는 home>작성방법
 	@GetMapping("howto.do")
-	public String howToMakeText() {
-		return "howto";
+	public ModelAndView howToMakeText(ModelAndView mav) {
+		//화면에 10개를 뿌린다.
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.setViewName("howto");
+		return mav;
 	}
 }

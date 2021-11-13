@@ -29,7 +29,6 @@
     <div id="todays_random" class="dotted">
         <div id="random_list">
             <a href="./ramyun">오늘의 라면</a><br>
-            <a href="./userinfo.html">내 정보</a>
         </div>
     </div>
     
