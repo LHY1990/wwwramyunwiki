@@ -112,14 +112,27 @@
                         <div id="howto_left">(아래글자)라면(/아래글자)</div>
                         <div id="howto_right"><sub>라면</sub></div>
                         <div id="description_howto">작은 아래글자로 만듭니다.</div>
-
-                        <div id="howto_left">[각주]라면, 내용[각주]</div>
-                        <div id="howto_right"></div>
-                        <div id="description_howto">각주를 만듭니다.</div>
                         
                         <div id="howto_left">(링크)https://www.naver.com, 네이버(/링크)</div>
                         <div id="howto_right"><a href="https://www.naver.com">네이버</a></div>
                         <div id="description_howto">링크를 연결합니다. 띄어쓰기와 경로명에 주의합니다.</div>
+
+                        <div id="howto_left">라면(각주)[1](/각주)</div>
+                        <div id="howto_right">라면<a href="#comment1"><sup>[1]</sup></a></div>
+                        <div id="description_howto">각주를 만듭니다.</div>
+
+                        <div id="howto_left">(각주내용)[1]내용(/각주내용)</div>
+                        <div id="howto_right"><span id="comment1">[1]내용</span></div>
+                        <div id="description_howto">[]안의 값과 대응하는 각주를 연결합니다.</div>
+
+                        <div id="howto_left">(줄긋기)</div>
+                        <div id="howto_right"></div>
+                        <div id="description_howto">줄을 긋습니다.</div>
+
+                        <div id="howto_left">(인용글)</div>
+                        <div id="howto_right"></div>
+                        <div id="description_howto">인용박스를 만듭니다.</div>
+                        
                         
                        
 
