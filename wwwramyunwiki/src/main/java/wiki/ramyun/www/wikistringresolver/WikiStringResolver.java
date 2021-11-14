@@ -1,12 +1,83 @@
 package wiki.ramyun.www.wikistringresolver;
 
-import org.springframework.stereotype.Component;
-
 public class WikiStringResolver {
 	
 
 	
+	//목차를 찾아 변경한다.
+	public static String indexParser(String input) {
+		//목차 번호 자르기 위치
+		int restPositionComment = input.indexOf("[");
+		int endPositionComment = input.indexOf("]");
+		// 내용물은 띄어 쓰기를 그대로 가져온다
+		String indexNumber = (String) input.subSequence(restPositionComment + 1, endPositionComment);
 
+		
+		//목차는 빈칸이 있으면 안된다.
+		indexNumber=indexNumber.trim();
+		indexNumber=indexNumber.replace(" ", "");
+		
+
+		String output = "<a href=\"#index"+indexNumber+"\" style=\"vertical-align: unset;\">"+indexNumber+".</a>";
+		return output;
+		
+	}
+	
+	
+	//목차를 반복해서 적용한다.
+	public static String encodeIndex(String input) {
+		while (input.contains("(목차)")) {
+
+			int startIndex = input.indexOf("(목차)");
+			int endIndex = input.indexOf("(/목차)") + 5;
+
+			String singleLinkingString = (String) input.subSequence(startIndex, endIndex);
+			String afterParsingSingleString = WikiStringResolver.indexParser(singleLinkingString);
+			input = input.replace(singleLinkingString, afterParsingSingleString);
+		}
+
+		return input;
+	}
+	
+	
+	
+	// 목차내용을 찾아 변경한다.
+	public static String indexContentParser(String input) {
+		//목차 번호 자르기 위치
+		int startPositionComment = input.indexOf("[");
+		int endPositionComment = input.indexOf("]");
+		
+		//각주 내용 자르기 위치
+		int endPositionConents = input.indexOf("(/목차내용)");
+		// 내용물은 띄어 쓰기를 그대로 가져온다
+		String indexNumber = (String) input.subSequence(startPositionComment + 1, endPositionComment);
+
+		
+		//목차는 빈칸이 있으면 안된다.
+		indexNumber=indexNumber.trim();
+		indexNumber=indexNumber.replace(" ", "");
+		
+
+		String output = "<span id=\"index"+indexNumber+"\">"+indexNumber+".</span>";
+		return output;
+		
+	}
+	
+	// 목차내용을 반복해서 적용한다.
+	public static String encodeindexContents(String input) {
+		while (input.contains("(목차내용)")) {
+
+			int startIndex = input.indexOf("(목차내용)");
+			int endIndex = input.indexOf("(/목차내용)") + 7;
+
+			String singleLinkingString = (String) input.subSequence(startIndex, endIndex);
+			String afterParsingSingleString = WikiStringResolver.indexContentParser(singleLinkingString);
+			input = input.replace(singleLinkingString, afterParsingSingleString);
+		}
+
+		return input;
+	}
+	
 	
 	// 각주를 찾아 변경한다.
 	public static String commentParser(String input) {
@@ -200,6 +271,38 @@ public class WikiStringResolver {
 	}
 
 	
+	public static String encodeH1(String input) {
+		input = input.replace("(큰글자1)", "<h1>");
+		input = input.replace("(/큰글자1)", "</h1>");
+
+		return input;
+	}
+	
+	
+	public static String encodeH2(String input) {
+		input = input.replace("(큰글자2)", "<h2>");
+		input = input.replace("(/큰글자2)", "</h2>");
+
+		return input;
+	}
+	
+	
+	public static String encodeH3(String input) {
+		input = input.replace("(큰글자3)", "<h3>");
+		input = input.replace("(/큰글자3)", "</h3>");
+
+		return input;
+	}
+	
+	
+	public static String encodeH4(String input) {
+		input = input.replace("(큰글자4)", "<h4>");
+		input = input.replace("(/큰글자4)", "</h4>");
+
+		return input;
+	}
+	
+	
 	public static String encodeUnderline(String input) {
 		input = input.replace("(밑줄)", "<u>");
 		input = input.replace("(/밑줄)", "</u>");
@@ -252,13 +355,40 @@ public class WikiStringResolver {
 
 		return input;
 	}
+	
+	
+	//구분선을 넣는다
+	public static String encodeLine(String input) {
+		input =input.replace("(구분선)", "<div style=\"outline: 1px dotted rgba(128, 128, 128, 0.5);margin-top:5px; width: 98%; margin-left: 1%;\"></div>");
+		return input;
+	}
+	
+	
+	//인용구 처리
+	public static String encodeQuote(String input) {
+		여기서부터 이어서 한다.
+		return input;
+	}
 
+	
+	//외곽선을 넣는다.
+	public static String encodeOutLine(String input) {
+		input = input.replace("(외곽선)",  "<div style=\"outline: 1px dotted rgba(128, 128, 128,1); margin:5px; padding:5px;width:fit-content;\">");
+		input = input.replace("(/외곽선)", "</div>");
+
+		return input;
+	}
+	
 	
 	public static String encodeContents(String input) {
 		
 		//널체크를 해서 널이면 그냥 보낸다.DB를 바꾸는것보다 이게 안전하다.
 		if(input==null) {return input;}
 
+		input = WikiStringResolver.encodeH1(input);
+		input = WikiStringResolver.encodeH2(input);
+		input = WikiStringResolver.encodeH3(input);
+		input = WikiStringResolver.encodeH4(input);
 		input = WikiStringResolver.encodeSmall(input);
 		input = WikiStringResolver.encodeBig(input);
 		input = WikiStringResolver.encodeIncline(input);
@@ -274,6 +404,11 @@ public class WikiStringResolver {
 		input = WikiStringResolver.encodeUpperString(input);
 		input = WikiStringResolver.encodeComments(input);
 		input = WikiStringResolver.encodeCommentContents(input);
+		input = WikiStringResolver.encodeIndex(input);
+		input = WikiStringResolver.encodeindexContents(input);
+		input = WikiStringResolver.encodeLine(input);
+		
+		input = WikiStringResolver.encodeOutLine(input);
 
 		return input;
 	}

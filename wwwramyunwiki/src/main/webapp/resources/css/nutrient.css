@@ -269,6 +269,10 @@ a{
     text-align: left;
     margin-top: 20px;
     word-break: break-all;
+    white-space: pre-wrap;
+}
+#user_description>a{
+    vertical-align: baseline;
 }
 
 

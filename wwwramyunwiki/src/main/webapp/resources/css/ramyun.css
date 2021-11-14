@@ -430,7 +430,13 @@ a{
     text-align: left;
     word-break: break-all;
     font-size: 14px;
+    white-space: pre-wrap;
+    
 }
+#user_made_section>a{
+    vertical-align: baseline;
+}
+
 
 
 

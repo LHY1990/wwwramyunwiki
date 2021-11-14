@@ -241,7 +241,7 @@
 
                             <div id="user_made_section" style="margin-top: 10px;">
                                 내용작성<br>
-                                <!-- 여기에 작성된 글이 들어가면 끝난다. -->
+                                <!--작성된 글 -->
                                 <textarea name="userEditedContents" id="user_edited_contents" >${ramyun.userEditedContents}</textarea>
                             </div>
 

@@ -112,9 +112,7 @@
                         
                         
                     </div>
-                    <div id="manufactory_description" style="margin-top: 10px;">
-                        ${manufactory.description}
-                    </div>
+                    <div id="manufactory_description" style="margin-top: 10px;">${manufactory.description}</div>
                     
                     <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
                     <div style="width: 100%; height: 20px;">

@@ -108,9 +108,7 @@
                     <div id="ingredient_information" style="margin-top: 10px;">
                         
                     </div>
-                    <div id="user_description" >
-                        ${ingredient.description}
-                    </div>
+                    <div id="user_description" >${ingredient.description}</div>
                     <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
                     <div style="width: 100%; height: 70px;">
 

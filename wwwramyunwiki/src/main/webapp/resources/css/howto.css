@@ -2,7 +2,6 @@
     width: 100%;
     height: auto;
     
-    background-color: white;
 }
 
 #howto_left_top{
@@ -45,8 +44,8 @@
 
 
 #howto_left{
-    font-size: 14px;
-    font: bold;
+    font-size: 15px;
+    font: bolder;
     height: 60px;
     width: 35%;
     float: left;
@@ -55,6 +54,10 @@
     /* 라인높이는 칸 높이와 맞출것 */
     background-color: rgba(117, 131, 151, 0.2);
 }
+#howto_left>a{
+    vertical-align: super;
+}
+
 #howto_right{
     height: 60px;
     width: 15%;

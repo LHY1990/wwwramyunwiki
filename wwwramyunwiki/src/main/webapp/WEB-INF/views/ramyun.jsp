@@ -284,10 +284,7 @@
                         </div>
                         <!-- 추가 정보 끝 -->
 
-                        <div id="user_made_section">
-                            <!-- 여기에 작성된 글이 들어가면 끝난다. -->
-                            ${ramyun.userEditedContents}
-                        </div>
+                        <div id="user_made_section" >${ramyun.userEditedContents}</div>
                         
                     </div>
 

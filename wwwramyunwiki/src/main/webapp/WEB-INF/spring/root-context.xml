@@ -34,15 +34,7 @@
 		<property name="configLocation" value="/WEB-INF/config/mybatis_Config.xml"></property>
 		<property name="mapperLocations" value="/WEB-INF/config/mybatisMapper.xml"></property>
 	</bean>
-	
-	<!-- 여기까진 잘됌 아래부터 잘못되면 지울것  -->
-	<!-- SqlSessionTemplate인 mybatis랑 엮인다. -->
-	<!-- 아래 얘는 나중에 xml방식으로 마이바티스를 편집할때 쓸 녀석인데 일단 어노테이션으로 처리하기로 해서 얘는 잠재움, 책참고해야 기억날듯  
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactory"/>
-	</bean>
-	
-	-->
+
 	
 	<!-- 인증 이메일 빈 등록 -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -70,5 +62,6 @@
 	
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 	
-		
+	<!-- aop 작동시킬 빈 등록 -->
+	<bean id="recentUpdateSender" class="wiki.ramyun.www.ramyun.service.RecentUpdateRamyunSenderAop"></bean>
 </beans>

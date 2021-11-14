@@ -67,11 +67,11 @@
 
                         <div id="howto_left"> (줄넘김)</div>
                         <div id="howto_right"> 다음줄 </div>
-                        <div id="description_howto"> 입력 갯수만큼 줄바꿈을 합니다.</div>
+                        <div id="description_howto">줄바꿈을 합니다.기본적으로 엔터로 줄바꿈이 됩니다.</div>
 
                         <div id="howto_left"> (줄바꿈)</div>
                         <div id="howto_right"> 다음줄 </div>
-                        <div id="description_howto"> 입력 갯수만큼 줄바꿈을 합니다.</div>
+                        <div id="description_howto">줄바꿈을 합니다.기본적으로 엔터로 줄바꿈이 됩니다.</div>
 
                         <div id="howto_left">(글자색)[#ff1111]라면(/글자색)</div>
                         <div id="howto_right"><span style="color: #ff1111;">라면</span> </div>
@@ -87,6 +87,22 @@
 
                         <div id="howto_left">(큰글자)라면(/큰글자)</div>
                         <div id="howto_right"> <b>라면</b></div>
+                        <div id="description_howto">글자를 크게 합니다. </div>
+
+                        <div id="howto_left">(큰글자1)라면(/큰글자1)</div>
+                        <div id="howto_right"> <h1 style="line-height: 0px;">라면</h1></div>
+                        <div id="description_howto">글자를 크게 합니다. </div>
+
+                        <div id="howto_left">(큰글자2)라면(/큰글자2)</div>
+                        <div id="howto_right"> <h2 style="line-height: 0px;">라면</h2></div>
+                        <div id="description_howto">글자를 크게 합니다. </div>
+
+                        <div id="howto_left">(큰글자3)라면(/큰글자3)</div>
+                        <div id="howto_right"> <h3 style="line-height: 0px;">라면</h3></div>
+                        <div id="description_howto">글자를 크게 합니다. </div>
+
+                        <div id="howto_left">(큰글자4)라면(/큰글자4)</div>
+                        <div id="howto_right"> <h4 style="line-height: 0px;">라면</h4></div>
                         <div id="description_howto">글자를 크게 합니다. </div>
 
                         <div id="howto_left">(작은글자)라면(/작은글자)</div>
@@ -125,15 +141,22 @@
                         <div id="howto_right"><span id="comment1">[1]내용</span></div>
                         <div id="description_howto">[]안의 값과 대응하는 각주를 연결합니다.</div>
 
-                        <div id="howto_left">(줄긋기)</div>
-                        <div id="howto_right"></div>
+                        <div id="howto_left">(구분선)</div>
+                        <div id="howto_right"><div style="outline: 1px dotted rgba(128, 128, 128, 0.527); width: 70%; margin-left: 15%;margin-top: 22%;"></div></div>
                         <div id="description_howto">구분선을 긋습니다.</div>
 
                         <div id="howto_left">(인용글)(/인용글)</div>
                         <div id="howto_right"></div>
                         <div id="description_howto">인용박스를 만듭니다.</div>
-                        
-                        <div style="outline: 1px dotted grey; width: 80%;"></div>
+
+                        <br>
+                        <br>
+                        기본적으로 라면위키의 문법은 html5의 문법을 따릅니다. <br>
+                        오탈자나 띄어쓰기 문제가 있는경우 글은 등록되지 않습니다.
+                        <br>
+                        <br>
+
+                        <div style="outline: 1px dotted rgba(128, 128, 128, 0.466); width: 98%; margin-left: 1%;"></div>
                        
                         <div style="height: 120px;"></div>
                     </div>

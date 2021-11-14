@@ -123,9 +123,7 @@ public class HomeController {
 	@GetMapping("logout.do")
 	public String logout(HttpSession session) {
 		
-		
 		session.invalidate();
-		
 		return "redirect:home";
 	}
 	
@@ -169,8 +167,6 @@ public class HomeController {
 	public ModelAndView changinguser(ModelAndView mav, MemberVO vo,HttpSession session) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		//여기까지가 우측탭 정보
-		
 		
 		//변경할 닉네임, 이메일과 멤버 넘버를 받아서 값을 변경한다.
 		String memberNumber=session.getAttribute("memberNumber").toString();
@@ -188,7 +184,6 @@ public class HomeController {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
 		mav.addObject("ramyunList", ramyunRecentUpdatedList);
-		//여기까지가 우측탭 정보
 		
 		mav.setViewName("login");
 		return mav;
