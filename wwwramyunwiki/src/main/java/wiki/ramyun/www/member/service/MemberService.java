@@ -1,6 +1,7 @@
 package wiki.ramyun.www.member.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 
@@ -112,6 +113,16 @@ public class MemberService {
 	public void changeMemberEmail(String memberEmail, String memberNumber) {
 		dao.changeEmailByMemberNumber(memberEmail, memberNumber);
 		
+	}
+
+
+	public List<MemberVO> selectAllFromMember() {
+		return dao.selectAllFromMember();
+	}
+
+
+	public void deleteMemberByNumber(String number) {
+		dao.deleteMemberByNumber(number);
 	}
 
 	

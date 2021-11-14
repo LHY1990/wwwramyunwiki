@@ -3,6 +3,7 @@ package wiki.ramyun.www.ramyun.mapper;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -67,5 +68,11 @@ public interface RamyunMapper {
 	
 	@Select("select count(*) from ramyun where brand_name_kor=#{newRamyunName}")
 	public int countOf(@Param("newRamyunName")String newRamyunName);
+
+	@Select("select * from ramyun order by brand_name_kor")
+	public List<RamyunVO> selectAllFromRamyun();
+
+	@Delete("delete from ramyun where brand_name_kor=#{name} ")
+	public void deleteRamyunByName(@Param("name")String name);
 
 }

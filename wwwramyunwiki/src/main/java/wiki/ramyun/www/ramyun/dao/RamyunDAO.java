@@ -128,4 +128,24 @@ public class RamyunDAO {
 		}
 		
 	}
+
+
+	//모든 라면을 불러온다. 날짜문제도 해결한다. 
+	public List<RamyunVO> selectAllFromRamyun() {
+		List<RamyunVO> list=new ArrayList<RamyunVO>();
+		
+		for(RamyunVO vo : mapper.selectAllFromRamyun()) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
+		return list;
+		
+		
+	}
+
+
+	public void deleteRamyunByName(String name) {
+		mapper.deleteRamyunByName(name);
+	}
 }

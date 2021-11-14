@@ -1,5 +1,8 @@
 package wiki.ramyun.www.ingredient.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -33,6 +36,13 @@ public interface IngredientMapper {
 	
 	@Select("select name, type, description, updated_date from ingredient order by rand() limit 1 ")
 	public IngredientVO selectRandomOne();
+
+	
+	@Select("select * from ingredient order by name")
+	public List<IngredientVO> selectAllFromIngredient();
+
+	@Delete("delete from ingredient where name=#{name}")
+	public void deleteIngredientByName(@Param("name")String name);
 	
 	
 }

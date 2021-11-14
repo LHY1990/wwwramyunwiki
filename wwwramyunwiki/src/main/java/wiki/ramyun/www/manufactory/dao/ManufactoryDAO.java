@@ -1,9 +1,13 @@
 package wiki.ramyun.www.manufactory.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import wiki.ramyun.www.ingredient.IngredientVO;
 import wiki.ramyun.www.manufactory.ManufactoryVO;
 import wiki.ramyun.www.manufactory.mapper.ManufactoryMapper;
 import wiki.ramyun.www.seconderrorhandler.SecondErrorHandler;
@@ -75,5 +79,24 @@ public class ManufactoryDAO {
 		//00초로 끝나는 경우 1초를 더해준다.
 		vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
 		return vo;
+	}
+
+
+	//관리자 접근, 모두 불러온다.날짜도 수정해준다.
+	public List<ManufactoryVO> selectAllFromManufactory() {
+		List<ManufactoryVO> list=new ArrayList<ManufactoryVO>();
+		
+		for(ManufactoryVO vo : mapper.selectAllFromManufactory()) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
+		
+		return list;
+	}
+
+
+	public void deleteManufactoryByName(String name) {
+		mapper.deleteManufactoryByName(name);
 	}
 }

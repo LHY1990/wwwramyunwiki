@@ -1,5 +1,7 @@
 package wiki.ramyun.www.member.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -50,6 +52,13 @@ public interface MemberMapper {
 
 	@Select("select member_password from member where member_id=#{memberId}")
 	public String selectMemberPasswordById(@Param("memberId")String memberId);
+
+
+	@Select("select * from member order by member_number")
+	public List<MemberVO> selectAllFromMember();
+
+	@Delete("delete from member where member_number=#{number}")
+	public void deleteMemberByNumber(@Param("number")String number);
 
 	
 	

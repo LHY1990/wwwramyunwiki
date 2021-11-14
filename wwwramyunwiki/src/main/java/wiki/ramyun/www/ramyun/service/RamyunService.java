@@ -56,6 +56,17 @@ public class RamyunService {
 	public int getRamyunCount() {
 		return dao.getRamyunCount();
 	}
+	
+	
+	//관리자 창에서 보기위해 모두 가져온다
+	public List<RamyunVO> selectAllFromRamyunDB(){
+		return dao.selectAllFromRamyun();
+	}
+
+
+	public void deleteRamyunByName(String name) {
+		dao.deleteRamyunByName(name);
+	}
 
 
 	

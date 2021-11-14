@@ -48,7 +48,7 @@ public class WikiStringResolver {
 		int endPositionComment = input.indexOf("]");
 		
 		//각주 내용 자르기 위치
-		int endPositionConents = input.indexOf("(/목차내용)");
+//		int endPositionConents = input.indexOf("(/목차내용)");
 		// 내용물은 띄어 쓰기를 그대로 가져온다
 		String indexNumber = (String) input.subSequence(startPositionComment + 1, endPositionComment);
 
@@ -359,14 +359,14 @@ public class WikiStringResolver {
 	
 	//구분선을 넣는다
 	public static String encodeLine(String input) {
-		input =input.replace("(구분선)", "<div style=\"outline: 1px dotted rgba(128, 128, 128, 0.5);margin-top:5px; width: 98%; margin-left: 1%;\"></div>");
+		input =input.replace("(구분선)", "<div style=\"outline: 1px dotted rgba(128, 128, 128, 0.8);margin-top:5px; width: 98%; margin-left: 1%;\"></div>");
 		return input;
 	}
 	
 	
 	//인용구 처리
 	public static String encodeQuote(String input) {
-		여기서부터 이어서 한다.
+		//추후 작업시 여기서부터 이어서 한다.
 		return input;
 	}
 

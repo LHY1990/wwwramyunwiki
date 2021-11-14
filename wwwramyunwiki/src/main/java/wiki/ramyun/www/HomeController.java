@@ -109,6 +109,7 @@ public class HomeController {
 			session.setAttribute("memberEmail", vo.getMemberEmail());
 			session.setAttribute("memberJoinDate", vo.getJoinDate());
 			session.setAttribute("memberNickname", vo.getNickname());
+			session.setAttribute("memberLevel", vo.getLevel());
 			session.setAttribute("isMember", "true");
 			return "redirect:home";
 		}else {
@@ -779,7 +780,52 @@ public class HomeController {
 	public ModelAndView howToMakeText(ModelAndView mav) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		
 		mav.setViewName("howto");
 		return mav;
+	}
+	
+	
+	//관리자모드 입장
+	@GetMapping("admin.do")
+	public ModelAndView getAdmin(ModelAndView mav) {
+		//모든 라면,영양성분,공장, 회원 리스트를 넣는다.
+		mav.addObject("ramyunList", ramyunService.selectAllFromRamyunDB());
+		mav.addObject("ingredientList", ingredientService.selectAllFromIngredient());
+		mav.addObject("manufactoryList", manufactoryService.selectAllFromManufactory());
+		mav.addObject("memberList", memberService.selectAllFromMember());
+		mav.setViewName("admin");
+		return mav;
+	}
+	
+	
+	//관리자 모드에서 라면삭제
+	@GetMapping("deleteramyun.do")
+	public String deleteRamyunByName(ModelAndView mav, String name) {
+		ramyunService.deleteRamyunByName(name);
+		return "redirect:admin.do";
+	}
+	
+	
+	//관리자 모드에서 영양성분 삭제
+	@GetMapping("deleteingredient.do")
+	public String deleteIngredientByName(ModelAndView mav, String name) {
+		ingredientService.deleteIngredientByName(name);
+		return "redirect:admin.do";
+	}
+	
+	
+	//관리자 모드에서 공장삭제
+	@GetMapping("deletemanufactory.do")
+	public String deleteManufactoryByName(ModelAndView mav, String name) {
+		manufactoryService.deleteManufactoryByName(name);
+		return "redirect:admin.do";
+	}
+	
+	
+	@GetMapping("deletemember.do")
+	public String deleteMemberById(ModelAndView mav, String number) {
+		memberService.deleteMemberByNumber(number);
+		return "redirect:admin.do";
 	}
 }

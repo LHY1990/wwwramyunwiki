@@ -1,5 +1,8 @@
 package wiki.ramyun.www.manufactory.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -45,6 +48,12 @@ public interface ManufactoryMapper {
 	//랜덤으로 가져오기
 	@Select("select factory_name, item_report_number, adress, identify_letter, corporate_name, description, updated_date from manufactory order by rand() limit 1")
 	ManufactoryVO selectRandomOne();
+
+	@Select("select * from manufactory order by factory_name")
+	List<ManufactoryVO> selectAllFromManufactory();
+
+	@Delete("delete from manufactory where factory_name=#{name}")
+	void deleteManufactoryByName(@Param("name")String name);
 	
 	
 	

@@ -11,7 +11,7 @@ public class MemberVO {
 	private LocalDateTime joinDate;
 	private String nickname;
 	private String memberEmail;
-
+	private String level;
 
 	public MemberVO() {
 		super();
@@ -64,8 +64,14 @@ public class MemberVO {
 	public void setMemberEmail(String memberEmail) {
 		this.memberEmail = memberEmail;
 	}
+	public String getLevel() {
+		return level;
+	}
+	public void setLevel(String level) {
+		this.level = level;
+	}
 
-	
+
 	@Override
 	public String toString() {
 		return "MemberVO [memberNumber=" + memberNumber + ", memberId=" + memberId + ", memberPassword="

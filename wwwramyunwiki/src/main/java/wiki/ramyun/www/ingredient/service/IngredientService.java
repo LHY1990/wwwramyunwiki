@@ -1,5 +1,7 @@
 package wiki.ramyun.www.ingredient.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,6 +60,17 @@ public class IngredientService {
 		IngredientVO vo =dao.getRandomOne();
 		vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
 		return vo;
+	}
+
+
+	//관리자 접근 모든 리스트를 가져온다
+	public List<IngredientVO> selectAllFromIngredient() {
+		return dao.selectAllFromIngredient();
+	}
+
+	//관리자모드에서 이름으로 삭제
+	public void deleteIngredientByName(String name) {
+		dao.deleteIngredientByName(name);
 	}
 
 

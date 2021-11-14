@@ -1,5 +1,7 @@
 package wiki.ramyun.www.manufactory.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,5 +62,16 @@ public class ManufactoryService {
 		//서비스 레벨에서 조회할때 위키 내용을 변환한다.
 		vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
 		return vo;
+	}
+
+
+	public List<ManufactoryVO> selectAllFromManufactory() {
+		return dao.selectAllFromManufactory();
+	}
+
+	
+	//관리자 접근 이름으로 지운다
+	public void deleteManufactoryByName(String name) {
+		dao.deleteManufactoryByName(name);
 	}
 }

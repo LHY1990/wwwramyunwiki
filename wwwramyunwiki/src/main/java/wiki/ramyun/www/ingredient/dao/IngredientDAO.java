@@ -1,5 +1,8 @@
 package wiki.ramyun.www.ingredient.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -73,6 +76,30 @@ public class IngredientDAO {
 			System.out.println("0도 아니고 1도 아니다 에러찾기");
 			return false;
 		}
+	}
+
+
+	public List<IngredientVO> selectAllFromIngredient() {
+		List<IngredientVO> list=new ArrayList<IngredientVO>();
+		
+		for(IngredientVO vo : mapper.selectAllFromIngredient()) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
+		
+		return list;
+		
+		
+		
+		
+		
+		
+	}
+
+
+	public void deleteIngredientByName(String name) {
+		mapper.deleteIngredientByName(name);
 	}
 
 	
