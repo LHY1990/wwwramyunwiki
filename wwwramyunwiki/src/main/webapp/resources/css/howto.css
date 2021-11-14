@@ -46,7 +46,7 @@
 
 #howto_left{
     font-size: 14px;
-    
+    font: bold;
     height: 60px;
     width: 35%;
     float: left;
@@ -87,4 +87,8 @@
 #howto_right>a{
     text-decoration: none;
     color: blue;
+}
+
+.inner_frame{
+    height: auto;
 }

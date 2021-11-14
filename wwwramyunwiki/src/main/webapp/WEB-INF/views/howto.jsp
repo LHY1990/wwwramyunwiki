@@ -127,15 +127,15 @@
 
                         <div id="howto_left">(줄긋기)</div>
                         <div id="howto_right"></div>
-                        <div id="description_howto">줄을 긋습니다.</div>
+                        <div id="description_howto">구분선을 긋습니다.</div>
 
-                        <div id="howto_left">(인용글)</div>
+                        <div id="howto_left">(인용글)(/인용글)</div>
                         <div id="howto_right"></div>
                         <div id="description_howto">인용박스를 만듭니다.</div>
                         
-                        
+                        <div style="outline: 1px dotted grey; width: 80%;"></div>
                        
-
+                        <div style="height: 120px;"></div>
                     </div>
                     <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
                     

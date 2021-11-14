@@ -16,10 +16,6 @@ public class RamyunService {
 	@Autowired
 	private RamyunDAO dao;
 	
-	
-	
-	
-	//회원등급 5등급 이상일때 가능하다
 	public String insertRamyunToDB(String newRamyunName) {
 		//새라면을 만든다.기존 라면에 중복이 있는지 확인하자
 		if(dao.isUnique(newRamyunName)){
@@ -38,10 +34,15 @@ public class RamyunService {
 	
 	public RamyunVO getRamyunData(String searchBoxInput){
 		RamyunVO vo=dao.selectRamyun(searchBoxInput);
-		
+		vo.setUserEditedContents(WikiStringResolver.encodeContents(vo.getUserEditedContents()));
 		return vo;
 	}
-
+	
+	
+	public RamyunVO getRamyunDataForEdit(String name) {
+		return dao.selectRamyun(name);
+	}
+	
 	
 	public List<RamyunVO> getRecentsUpdateListFromDB() {
 		return dao.getRecentsUpdateList();
@@ -56,4 +57,7 @@ public class RamyunService {
 	public int getRamyunCount() {
 		return dao.getRamyunCount();
 	}
+
+
+	
 }

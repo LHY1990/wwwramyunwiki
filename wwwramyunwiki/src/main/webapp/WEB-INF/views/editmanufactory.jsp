@@ -67,10 +67,10 @@
                             <div id="manufactory_items">
                             <input type="text" name="factoryName" style="display: none;" value="${manufactory.factoryName}">
                             공장이름 : ${manufactory.factoryName}<br>
-                            회사명 : <input type="text" maxlength="100"  placeholder="ex)" name="corporateName" value="${manufactory.corporateName}" style="width: 110px;"><br>
-                            주소 : <input type="text" maxlength="100"  placeholder="ex)" name="adress" value="${manufactory.adress}" style="width: 790px;"><br>
-                            공장 식별 문자 : <input type="text" maxlength="30"  placeholder="ex)" name="identifyLetter" value="${manufactory.identifyLetter}" style="width: 715px;"><br>
-                            관련 품목 보고 번호 : <input type="text" maxlength="20"  placeholder="ex)" name="itemReportNumber" value="${manufactory.itemReportNumber}" style="width: 678px;"><br>
+                            회사명 : <input type="text" maxlength="100"  placeholder="ex)농심" name="corporateName" value="${manufactory.corporateName}" style="width: 110px;"><br>
+                            주소 : <input type="text" maxlength="100"  placeholder="ex)충북 음성" name="adress" value="${manufactory.adress}" style="width: 790px;"><br>
+                            공장 식별 문자 : <input type="text" maxlength="30"  placeholder="ex)안양1B11" name="identifyLetter" value="${manufactory.identifyLetter}" style="width: 715px;"><br>
+                            관련 품목 보고 번호 : <input type="text" maxlength="100"  placeholder="ex)19760342001163(안양)" name="itemReportNumber" value="${manufactory.itemReportNumber}" style="width: 678px;"><br>
                             
                             </div>
                             

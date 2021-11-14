@@ -35,7 +35,6 @@ import wiki.ramyun.www.ramyunhistory.RamyunHistoryVO;
 import wiki.ramyun.www.ramyunhistory.service.RamyunHistoryService;
 import wiki.ramyun.www.search.SearchVO;
 import wiki.ramyun.www.search.service.SearchService;
-import wiki.ramyun.www.wikistringresolver.WikiStringResolver;
 
 @Controller
 @RequestMapping("/")
@@ -282,8 +281,6 @@ public class HomeController {
 			RamyunVO vo=ramyunService.getRamyunData(name);
 			if(vo!=null) {
 				//만약에 널이 아니면 라면을 반환
-				//서비스 위키스트링리졸버로 안의 컨텐츠를 변환한다
-				vo.setUserEditedContents(WikiStringResolver.encodeContents(vo.getUserEditedContents()));
 				mav.addObject("ramyun", vo);
 				mav.setViewName("ramyun");
 				return mav;
@@ -295,6 +292,7 @@ public class HomeController {
 			IngredientVO ingredient=ingredientService.selectIngredientByName(name);
 
 			if(ingredient!=null) {
+				//서비스 위키스트링리졸버로 안의 컨텐츠를 변환한다
 				mav.addObject("ingredient", ingredient);
 				mav.setViewName("nutrient");
 				return mav;
@@ -305,6 +303,7 @@ public class HomeController {
 		try {
 			ManufactoryVO factory=manufactoryService.selectFactoryByName(name);
 			if(factory!=null) {
+				//서비스 위키스트링리졸버로 안의 컨텐츠를 변환한다
 				mav.addObject("manufactory", factory);
 				mav.setViewName("manufactory");
 				return mav;
@@ -371,8 +370,6 @@ public class HomeController {
 		try {
 			RamyunVO vo=ramyunService.getRamyunData(name);
 			if(vo!=null) {
-				//서비스 위키스트링리졸버로 안의 컨텐츠를 변환한다
-				vo.setUserEditedContents(WikiStringResolver.encodeContents(vo.getUserEditedContents()));
 				//만약에 널이 아니면 라면을 반환
 				mav.addObject("ramyun", vo);
 				mav.setViewName("ramyun");
@@ -383,7 +380,6 @@ public class HomeController {
 		}
 		try {
 			IngredientVO ingredient=ingredientService.selectIngredientByName(name);
-
 			if(ingredient!=null) {
 				mav.addObject("ingredient", ingredient);
 				mav.setViewName("nutrient");
@@ -417,8 +413,10 @@ public class HomeController {
 	public ModelAndView getEditRamyun(ModelAndView mav,String name) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		
+		//편집용 데이터를 가져온다.
 		try {
-			RamyunVO vo=ramyunService.getRamyunData(name);
+			RamyunVO vo=ramyunService.getRamyunDataForEdit(name);
 			mav.addObject("ramyun", vo);
 			mav.setViewName("editramyun");
 		} catch (Exception e) {
@@ -481,8 +479,6 @@ public class HomeController {
 		ramyunHistoryService.updateRamyunHistoryToDB(vo, writer);
 		
 		RamyunVO ramyun=ramyunService.getRamyunData(vo.getbrandNameKor());
-		//서비스 위키스트링리졸버로 안의 컨텐츠를 변환한다
-		ramyun.setUserEditedContents(WikiStringResolver.encodeContents(ramyun.getUserEditedContents()));
 		mav.addObject("ramyun", ramyun);
 		mav.setViewName("ramyun");
 		
@@ -528,7 +524,7 @@ public class HomeController {
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
 		//아래는 편집탭으로 넘어가면서 같은 이름으로 가져오기
-		ingredient=ingredientService.selectIngredientByName(findname);
+		ingredient=ingredientService.selectIngredientByNameForEdit(findname);
 		mav.addObject("ingredient", ingredient);
 		mav.setViewName("editnutrient");
 		
@@ -543,7 +539,8 @@ public class HomeController {
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
 		ingredientService.updateIngredient(vo);
-		mav.addObject("ingredient",ingredientService.selectIngredientByName(vo.getName()));
+		IngredientVO ingredient = ingredientService.selectIngredientByName(vo.getName());
+		mav.addObject("ingredient",ingredient);
 		mav.setViewName("nutrient");
 		
 		return mav;
@@ -578,7 +575,7 @@ public class HomeController {
 		
 		mav.addObject("manufactory", vo);
 		//일단 홈으로 보냄
-		mav.setViewName("home");
+		mav.setViewName("manufactory");
 		
 		return mav;
 	}
@@ -589,7 +586,7 @@ public class HomeController {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
-		ManufactoryVO vo=manufactoryService.selectFactoryByName(findname);
+		ManufactoryVO vo=manufactoryService.selectFactoryByNameForEdit(findname);
 		mav.addObject("manufactory", vo);
 		mav.setViewName("editmanufactory");
 		

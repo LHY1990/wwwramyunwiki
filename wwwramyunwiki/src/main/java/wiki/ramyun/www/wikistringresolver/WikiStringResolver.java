@@ -193,7 +193,7 @@ public class WikiStringResolver {
 	
 	public static String encodeSmall(String input) {
 
-		input = input.replace("(작은글자)", "<small");
+		input = input.replace("(작은글자)", "<small>");
 		input = input.replace("(/작은글자)", "</small>");
 
 		return input;
@@ -255,6 +255,9 @@ public class WikiStringResolver {
 
 	
 	public static String encodeContents(String input) {
+		
+		//널체크를 해서 널이면 그냥 보낸다.DB를 바꾸는것보다 이게 안전하다.
+		if(input==null) {return input;}
 
 		input = WikiStringResolver.encodeSmall(input);
 		input = WikiStringResolver.encodeBig(input);
