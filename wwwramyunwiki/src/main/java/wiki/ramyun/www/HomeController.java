@@ -37,7 +37,7 @@ import wiki.ramyun.www.search.SearchVO;
 import wiki.ramyun.www.search.service.SearchService;
 
 @Controller
-@RequestMapping("/")
+
 public class HomeController {
 	
 //	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -79,8 +79,12 @@ public class HomeController {
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	
-	//@RequestMapping(value = "/", method = RequestMethod.GET)
-	@GetMapping("home")
+	@RequestMapping("/")
+	public String ramyunwiki() {
+		return "redirect:/home";
+	}
+	
+	@GetMapping("/home")
 	public String home(Locale locale, Model model) {
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
 		//옆에 추가분 올라가는것
@@ -96,7 +100,7 @@ public class HomeController {
 	}
 	
 	
-	@PostMapping("home")
+	@PostMapping("/home")
 	public String home(MemberVO vo, HttpSession session) {
 		
 		//멤버인지 체크하고 멤버면 정보를 보낸다.
@@ -121,7 +125,7 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("logout.do")
+	@GetMapping("/logout.do")
 	public String logout(HttpSession session) {
 		
 		session.invalidate();
@@ -130,20 +134,20 @@ public class HomeController {
 	
 
 	//이용약관
-	@PostMapping("rules")
+	@PostMapping("/rules")
 	public String rulesPost() {
 		return "rules";
 	}
 	
 	
-	@GetMapping("rules")
+	@GetMapping("/rules")
 	public String rulesGet() {
 		return "rules";
 	}
 
 	
 	//유저가 설정창을 눌렀을때
-	@GetMapping("userinfo")
+	@GetMapping("/userinfo")
 	public ModelAndView getUserInfo(ModelAndView mav, HttpSession session) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -154,7 +158,7 @@ public class HomeController {
 	
 	
 	//유저정보 변경
-	@GetMapping("changeuserinfo.do")
+	@GetMapping("/changeuserinfo.do")
 	public ModelAndView changeuserinfo(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -164,7 +168,7 @@ public class HomeController {
 	}
 	
 	
-	@PostMapping("changinguser.do")
+	@PostMapping("/changinguser.do")
 	public ModelAndView changinguser(ModelAndView mav, MemberVO vo,HttpSession session) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -180,7 +184,7 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("login")
+	@GetMapping("/login")
 	public ModelAndView login(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
@@ -191,7 +195,7 @@ public class HomeController {
 	}
 	
 	
-	@PostMapping("login")
+	@PostMapping("/login")
 	public ModelAndView login(ModelAndView mav, MemberVO vo) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
@@ -203,7 +207,7 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("join")
+	@GetMapping("/join")
 	public String join(ModelAndView mav) {
 		//처음창은 이쪽으로 보내서 값을 넣게한다.
 		System.out.println("조인 겟에 접근중");
@@ -212,7 +216,7 @@ public class HomeController {
 		return "join";
 	}
 	
-	@PostMapping("join")
+	@PostMapping("/join")
 	public ModelAndView joinFirst(MemberVO vo,ModelAndView mav,@RequestParam(defaultValue = "") String memberEmailCode) {
 		
 		if(memberEmailCode.equals("")) {		
@@ -264,7 +268,7 @@ public class HomeController {
 	}
 	
 	//검색 값 받아오기. 일단 신라면으로 테스트
-	@GetMapping("findramyun.do")
+	@GetMapping("/findramyun.do")
 	public ModelAndView getSearchKeyword(ModelAndView mav, String name) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -316,7 +320,7 @@ public class HomeController {
 		return mav;
 	}
 	//검색어가 없다면 등록하러가기
-	@GetMapping("registration")
+	@GetMapping("/registration")
 	public ModelAndView registration(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -324,7 +328,7 @@ public class HomeController {
 		mav.setViewName("registration");
 		return mav;
 	}
-	@PostMapping("regist.do")
+	@PostMapping("/regist.do")
 	public ModelAndView registNew(ModelAndView mav, String register, String type) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -353,7 +357,7 @@ public class HomeController {
 	}
 	
 	
-	@PostMapping("findramyun.do")
+	@PostMapping("/findramyun.do")
 	public ModelAndView postSearchKeyword(ModelAndView mav, String searchBoxInput) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -405,7 +409,7 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("editramyun.do")
+	@GetMapping("/editramyun.do")
 	public ModelAndView getEditRamyun(ModelAndView mav,String name) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -422,7 +426,7 @@ public class HomeController {
 	}
 	
 	
-	@PostMapping("edit.do")
+	@PostMapping("/edit.do")
 	public ModelAndView afterRamyunEdited(ModelAndView mav, 
 										RamyunVO vo,
 										@RequestParam("uploadedimage") MultipartFile uploadedimage, 
@@ -482,7 +486,7 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("recentupdating")
+	@GetMapping("/recentupdating")
 	public ModelAndView getRecentupdating(ModelAndView mav) {
 		
 		//화면에 10개를 뿌린다.
@@ -498,7 +502,7 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("nutrient")
+	@GetMapping("/nutrient")
 	public ModelAndView getNutrient(ModelAndView mav) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -514,7 +518,7 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("editingredient.do")
+	@GetMapping("/editingredient.do")
 	public ModelAndView editIngredient(IngredientVO ingredient, String findname, ModelAndView mav) {//얘만 findname을 인자로 받는다. 변수명이 겹쳐서
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -528,7 +532,7 @@ public class HomeController {
 	}
 	
 	
-	@PostMapping("editingredient.do")
+	@PostMapping("/editingredient.do")
 	public ModelAndView afterEditIngredient(IngredientVO vo, ModelAndView mav) {
 		//성분 수정뒤에 이 컨트롤러로 온다.
 		//화면에 10개를 뿌린다.
@@ -544,7 +548,7 @@ public class HomeController {
 	
 	
 	//랜덤으로 하나뿌림
-	@GetMapping("manufactory")
+	@GetMapping("/manufactory")
 	public ModelAndView getManufactory(ModelAndView mav,ManufactoryVO vo) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -560,7 +564,7 @@ public class HomeController {
 	
 	
 	//	공장 작성후 post로 보내면 여기서 받는다.
-	@PostMapping("updatemanufactory.do")
+	@PostMapping("/updatemanufactory.do")
 	public ModelAndView updateManufactory(ModelAndView mav, ManufactoryVO vo) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -577,7 +581,7 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("editmanufactory.do")
+	@GetMapping("/editmanufactory.do")
 	public ModelAndView getEditManufactory(ModelAndView mav,String findname) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -590,7 +594,7 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("tag")
+	@GetMapping("/tag")
 	public ModelAndView getTag(ModelAndView mav, int page) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -618,7 +622,7 @@ public class HomeController {
 	
 	
 	//역사버튼 구현
-	@GetMapping("ramyunhistory.do")
+	@GetMapping("/ramyunhistory.do")
 	public ModelAndView getRamyunHistoryByName(ModelAndView mav,String name) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -633,7 +637,7 @@ public class HomeController {
 	
 	
 	// 역사탭에서 보기구현
-	@GetMapping("ramyunlog.do")
+	@GetMapping("/ramyunlog.do")
 	public ModelAndView getRamyunHistoryById(ModelAndView mav, String id) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -649,7 +653,7 @@ public class HomeController {
 	
 	
 	//리스폰스 바디로 받아 비동기로 처리
-	@PostMapping("searchintime.do")
+	@PostMapping("/searchintime.do")
 	public @ResponseBody Object searchInTime(HttpServletRequest request){
 		List<String> searchList=new ArrayList<String>();
 		String noSpaceString=request.getParameter("msg").replace(" ","");
@@ -673,7 +677,7 @@ public class HomeController {
 	
 	//라면 좋아요  구현
 	//리스폰스 바디로 받아 비동기로 처리
-	@PostMapping("likeramyun.do")
+	@PostMapping("/likeramyun.do")
 	public @ResponseBody Object postLikeRamyun(HttpSession session, String ramyunName) {
 		
 		//회원의 이름을 가져온다.
@@ -691,7 +695,7 @@ public class HomeController {
 	
 	
 	//라면 신고 구현
-	@PostMapping("reportramyun.do")
+	@PostMapping("/reportramyun.do")
 	public @ResponseBody Object postReportRamyun(HttpSession session, String ramyunName) {
 		//회원의 이름을 가져온다.
 		String memberId=(String) session.getAttribute("memberId");
@@ -708,7 +712,7 @@ public class HomeController {
 	
 	//영양성분 좋아요  구현
 	//리스폰스 바디로 받아 비동기로 처리
-	@PostMapping("likeingredient.do")
+	@PostMapping("/likeingredient.do")
 	public @ResponseBody Object postLikeIngredient(HttpSession session, String ingredientName) {
 		
 		//회원의 이름을 가져온다.
@@ -725,7 +729,7 @@ public class HomeController {
 	
 	
 	//영양성분 신고버튼 ajax처리
-	@PostMapping("reportingredient.do")
+	@PostMapping("/reportingredient.do")
 	public @ResponseBody Object postReportIngredient(HttpSession session, String ingredientName) {
 		//회원의 이름을 가져온다.
 		String memberId=(String) session.getAttribute("memberId");
@@ -743,7 +747,7 @@ public class HomeController {
 	
 	//공장정보 좋아요  구현
 	//리스폰스 바디로 받아 비동기로 처리
-	@PostMapping("likemanufactory.do")
+	@PostMapping("/likemanufactory.do")
 	public @ResponseBody Object postLikeManufactory(HttpSession session, String manufactoryName) {
 		
 		//회원의 이름을 가져온다.
@@ -760,7 +764,7 @@ public class HomeController {
 	
 	
 	//공장정보 신고버튼 ajax처리
-	@PostMapping("reportmanufactory.do")
+	@PostMapping("/reportmanufactory.do")
 	public @ResponseBody Object postReportManufactory(HttpSession session, String manufactoryName) {
 		//회원의 이름을 가져온다.
 		String memberId=(String) session.getAttribute("memberId");
@@ -776,7 +780,7 @@ public class HomeController {
 	
 	
 	//여기는 home>작성방법
-	@GetMapping("howto.do")
+	@GetMapping("/howto.do")
 	public ModelAndView howToMakeText(ModelAndView mav) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -787,7 +791,7 @@ public class HomeController {
 	
 	
 	//관리자모드 입장
-	@GetMapping("admin.do")
+	@GetMapping("/admin.do")
 	public ModelAndView getAdmin(ModelAndView mav) {
 		//모든 라면,영양성분,공장, 회원 리스트를 넣는다.
 		mav.addObject("ramyunList", ramyunService.selectAllFromRamyunDB());
@@ -800,7 +804,7 @@ public class HomeController {
 	
 	
 	//관리자 모드에서 라면삭제
-	@GetMapping("deleteramyun.do")
+	@GetMapping("/deleteramyun.do")
 	public String deleteRamyunByName(ModelAndView mav, String name) {
 		ramyunService.deleteRamyunByName(name);
 		return "redirect:admin.do";
@@ -808,7 +812,7 @@ public class HomeController {
 	
 	
 	//관리자 모드에서 영양성분 삭제
-	@GetMapping("deleteingredient.do")
+	@GetMapping("/deleteingredient.do")
 	public String deleteIngredientByName(ModelAndView mav, String name) {
 		ingredientService.deleteIngredientByName(name);
 		return "redirect:admin.do";
@@ -816,14 +820,14 @@ public class HomeController {
 	
 	
 	//관리자 모드에서 공장삭제
-	@GetMapping("deletemanufactory.do")
+	@GetMapping("/deletemanufactory.do")
 	public String deleteManufactoryByName(ModelAndView mav, String name) {
 		manufactoryService.deleteManufactoryByName(name);
 		return "redirect:admin.do";
 	}
 	
 	
-	@GetMapping("deletemember.do")
+	@GetMapping("/deletemember.do")
 	public String deleteMemberById(ModelAndView mav, String number) {
 		memberService.deleteMemberByNumber(number);
 		return "redirect:admin.do";
