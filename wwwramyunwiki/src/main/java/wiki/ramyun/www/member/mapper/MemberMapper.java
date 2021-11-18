@@ -66,6 +66,9 @@ public interface MemberMapper {
 	@Delete("delete from member where member_id=#{memberId}")
 	public void deleteMemberById(@Param("memberId")String memberId);
 
+	@Select("select count(member_email) from member where member_email=#{findbyemail}")
+	public int getMemberCountByEmail(@Param("findbyemail")String findbyemail);
+
 	
 	
 	

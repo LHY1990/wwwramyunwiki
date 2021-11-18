@@ -164,11 +164,22 @@ public class MemberService {
 	}
 
 	//멤버의 이메일인지 확인한다.
+	//해당 이메일로 가입된 멤버수를 찾는다 
+	//0이면 미가입이거나 오입력일것이고 
+	//1이면 1회가입에 올바른입력, 
+	//2이상인경우 다중가입일 것이다. 이경우 마지막 1개만 계정을 찾도록 돕는다
 	public boolean isMemberEmail(String findbyemail) {
 		
-		int number
+		여기서 부터 이어서 한다
+		int emailCount=dao.getCountByEmail(findbyemail);
 		
-		return ;
+		if(emailCount==0) {
+			return false;
+		}else if(emailCount>0){
+			return true;
+		}
+		
+		return false;
 	}
 
 	
