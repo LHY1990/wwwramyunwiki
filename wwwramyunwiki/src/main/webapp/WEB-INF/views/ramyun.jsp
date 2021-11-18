@@ -9,10 +9,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/css/sidetab.css">
-    <link rel="stylesheet" href="../../resources/css/ramyun.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ramyun.css">
 
-    <script type="text/javascript" src="../../resources/javascript/home.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/home.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <title>라면위키:라면정보 -라면위키</title>
@@ -258,7 +259,7 @@
                                 <div class="horizon_double_key">면 모양</div>
                                 <div class="horizon_double_value">${ramyun.noodleShape}</div>
                                 <div class="horizon_double_key">단종시기</div>
-                                <div class="horizon_double_value">${ramyun.barcode}</div>
+                                <div class="horizon_double_value">${ramyun.discontinuance}</div>
                             </div>
                             <!-- 여기서 가로 표 끝 -->
                             <!--세로위치 하나 추가  -->

@@ -184,6 +184,51 @@ public class HomeController {
 	}
 	
 	
+	//패스워드 변경시 이쪽으로 넘어온다.
+	@GetMapping("changeuserpassword.do")
+	public ModelAndView getChangeingPassword(ModelAndView mav, MemberVO vo, HttpSession session ) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		
+		mav.setViewName("changeuserpassword");
+		return mav;
+	}
+	
+	
+	//비밀번호 변경 화면
+	@PostMapping("changingPassword.do")
+	public ModelAndView postChangeingPassword(ModelAndView mav, MemberVO vo, HttpSession session, String oldPassword, String newPassword ) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		
+		
+		String userMemberId=(String) session.getAttribute("memberId");
+		//패스워드를 암호화해서 보낸다.
+		newPassword=passwordEncoder.encode(newPassword);
+		String result=memberService.changePassword(userMemberId,oldPassword, newPassword);
+		System.out.println("변경결과"+result);
+		
+		//아래 문자열을 바탕으로 변경 결과를 알린다.
+		mav.addObject("passwordChangingResult", result);
+		mav.setViewName("userinfo");
+		return mav;
+	}
+	
+	
+	//회원탈퇴 요청
+	@GetMapping("withdraw.do")
+	public ModelAndView getWithdraw(ModelAndView mav, MemberVO vo, HttpSession session) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		
+		mav.setViewName("stopmembership");
+		return mav;
+	}
+	
+	
+	//회원탈퇴 요청 처리 페이지
+	
+	
 	@GetMapping("/login")
 	public ModelAndView login(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
@@ -441,11 +486,11 @@ public class HomeController {
 			System.out.println(originalFiletype);
 		
 			//저장경로 이거 작동하는데 실제서버용
-			String savePath = request.getSession().getServletContext().getRealPath("/")+"resources\\images";
+			String savePath = request.getSession().getServletContext().getRealPath("/")+"resources/images";
 			//슬래시가 역슬래시로 변경되야해서
 			savePath.replace("\\", "/");
 			//아래는 이미지 경로 변경
-			vo.setImage(savePath+"\\"+vo.getbrandNameKor()+originalFiletype);
+			vo.setImage(savePath+"/"+vo.getbrandNameKor()+originalFiletype);
 			//vo.setImage(savePath);
 			
 			file=new File(savePath,vo.getbrandNameKor()+originalFiletype); 

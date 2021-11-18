@@ -8,11 +8,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/css/login.css">
-    <link rel="stylesheet" href="../../resources/css/sidetab.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
 
-    <script type="text/javascript" src="../../resources/javascript/login.js"></script>
-    <script type="text/javascript" src="../../resources/javascript/home.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/login.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/home.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <title>라면위키:로그인 -라면위키</title>
@@ -60,7 +61,7 @@
                                 <input id="type_id" type="text" name="memberId" autofocus><br><br>
                                 <div id="type_password">비밀번호</div>
                                 <input id="type_password" type="password" name="memberPassword">
-                                <div id="finding_id_password">아이디/비밀번호 찾기</div><br>
+                                <div id="finding_id_password"><a href="./findmyid">아이디/비밀번호 찾기</a></div><br>
                                 <div id="join_member"><a href="./rules">회원가입</a></div>
                                 <div id="member_login" ><input type="submit" value="로그인" id="member_login" style="background-color: rgb(113, 113, 223, 0.3);"></div>
 

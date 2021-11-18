@@ -12,11 +12,21 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
 
+
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/home.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/login.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <title>라면위키:정보변경 -라면위키</title>
-
+    <title>라면위키:계정정보변경 -라면위키</title>
+    <style>
+        /* 작은페이지여서 여기서 정의함 */
+        .password_form{
+            width: 90%; 
+            height: 25px; 
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
     <%@ include file="./header.jsp" %>
@@ -31,7 +41,7 @@
                 <!-- 모든컨텐츠는 여기서 시작해서 -->
                     <div id="information_tab">
                         <div id="section">
-                            라면위키 : 사용자 정보변경
+                            라면위키 : 비밀번호 변경
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
@@ -51,35 +61,36 @@
                             분류 : 계정 정보 변경
                         </div>
                         <!-- 로그인 시작 -->
-
                         <div id="login_div">
                             
                             <div>
-                                <form action="changinguser.do" method="post">
-                                <br>
-                                <div>가입번호 : ${memberNumber}</div>
-                                <br>
-                                <div>아이디 : ${memberId}</div>
-                                <br>
-                                <div>이메일 : <input type="text" maxlength="50" placeholder="이메일변경" name="memberEmail" value="${memberEmail}"></div> 
-                                <br>
-                                <div>가입일 :
-                                    <fmt:parseDate value="${memberJoinDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both"/>
-	                			    <fmt:formatDate pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" value="${parsedDateTime}"/>
-                                </div>
-                                <br>
-                                <div>닉네임 : <input type="text" maxlength="12" placeholder="닉네임변경" name="nickname" value="${memberNickname}"></div> 
-                                <br>
-                                <br>
                                 
-                                    <button>정보변경완료</button>
+                                <form action="changingPassword.do" method="post" onsubmit="return checkPasswordEqual()" >
+                                    <br>
+                                    <div>현재 비밀번호
+                                        <br>
+                                        <input type="password" class="password_form" id="oldPassword" name="oldPassword" maxlength="30" placeholder="기존 비밀번호 입력" autofocus >
+                                    </div>
+                                    <br>
+                                    <div>
+                                        새로운 비밀번호
+                                        <br>
+                                        <input type="password" class="password_form" id="newPassword" name="newPassword" maxlength="30" minlength="8" placeholder="새 비밀번호 입력 (8자 이상 입력해주세요)" >
+                                        <br>
+                                        <br>
+                                        비밀번호 확인
+                                        <br>
+                                        <input type="password" class="password_form" id="newPasswordCheck" name="newPasswordCheck" maxlength="30" minlength="8" placeholder="새 비밀번호 확인">
+                                    </div>
+                                        <br>
+                                    <button style="float: right;" >비밀번호 변경</button>
                                 </form>                                
                             </div>
 
 
                         </div>
                         <!-- 로그인끝 -->
-                        <div style="width: 100%; height: 5px;">
+                        <div style="width: 100%; height: 40px;">
 
                         </div>
 

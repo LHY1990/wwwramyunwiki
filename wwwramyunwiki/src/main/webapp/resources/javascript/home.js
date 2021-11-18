@@ -26,7 +26,6 @@ window.addEventListener('DOMContentLoaded', function(){
             },
             
             success : function(items) {
-                // console.log("성공해부럿다");
                 // console.log(items[0]);
                 
                 $('#auto0').val(items[0]);

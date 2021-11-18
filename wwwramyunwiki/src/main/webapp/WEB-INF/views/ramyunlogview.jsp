@@ -9,10 +9,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/css/ramyun.css">
-    <link rel="stylesheet" href="../../resources/css/sidetab.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ramyun.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
 
-    <script type="text/javascript" src="../../resources/javascript/home.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/home.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <title>라면위키:라면로그 -라면위키</title>

@@ -98,6 +98,12 @@ public class MemberDAO {
 		mapper.deleteMemberByNumber(number);
 	}
 
+
+	//변경된 비밀번호와 아이디로 비밀번호를 업데이트한다.
+	public void changeMemberPassword(String userMemberId, String newPassword) {
+		mapper.updateMemberPasswordByMemberId(userMemberId,newPassword);
+	}
+
 	
 
 }

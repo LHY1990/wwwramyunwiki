@@ -8,11 +8,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/css/login.css">
-    <link rel="stylesheet" href="../../resources/css/sidetab.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
 
-    <script type="text/javascript" src="../../resources/javascript/login.js"></script>
-    <script type="text/javascript" src="../../resources/javascript/home.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/login.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/home.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <title>라면위키:유저정보 -라면위키</title>
@@ -70,12 +71,23 @@
                                 <div>닉네임 : ${memberNickname}</div> 
                                 <br>
                                 <br>
-                                <form action="changeuserinfo.do" method="get">
-                                    <button>회원정보변경</button>
-                                </form>          
-                                <form action="withdraw.do" method="get">
-                                    <button>회원탈퇴</button>
-                                </form>                        
+                                <div style="float: left;">
+                                    <form action="changeuserinfo.do" method="get">
+                                        <button>회원정보변경</button>
+                                    </form>
+                                </div>
+                                <div style="float: left; margin-left: 5px;">
+                                    <form action="changeuserpassword.do" method="get">
+                                        <button>비밀번호 변경</button>
+                                    </form> 
+                                </div>
+                                <div style="float: left; margin-left: 5px;">
+                                    <form action="withdraw.do" method="get">
+                                        <button>회원탈퇴</button>
+                                    </form> 
+                                </div>
+                                 
+                                                       
                             </div>
 
 
@@ -85,10 +97,9 @@
 
                         </div>
 
-                        <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
+                        <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted; margin-top: 40px;"></div>
 
 
-                        
                         
                         
                         
@@ -113,8 +124,14 @@
     <!-- 푸터시작 -->
     <%@ include file="./footer.jsp" %>
     <!-- 푸터끝 -->
-    
+    <c:if test="${passwordChangingResult eq 'memberChangedSuccess'}">
+        <script type="text/javascript">alert('비밀번호가 변경되었습니다.');</script>
+    </c:if>
+    <c:if test="${passwordChangingResult eq 'memberChangingFaild'}">
+        <script type="text/javascript">alert('비밀번호가 변경 실패');</script>
+    </c:if>
 
     
 </body>
 </html>
+

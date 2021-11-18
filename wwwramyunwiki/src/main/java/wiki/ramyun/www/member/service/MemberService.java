@@ -125,6 +125,28 @@ public class MemberService {
 		dao.deleteMemberByNumber(number);
 	}
 
+
+	//패스워드를 바꾼다. 기존 멤버인지 확인한다.
+	public String changePassword(String userMemberId, String oldPassword, String newPassword) {
+		
+		boolean result=false;
+		
+		result=dao.memberValidationCheck(userMemberId, oldPassword);
+		
+		if(result) {
+			//기존 아이디와 비밀번호가 같다면 비밀번호를 변경한다.
+			dao.changeMemberPassword(userMemberId, newPassword);
+			return "memberChangedSuccess";
+		}else {
+			System.out.println(userMemberId+"는 회원이 아닙니다.");
+			return "memberChangingFaild";
+		}
+		
+		
+		
+		
+	}
+
 	
 
 }
