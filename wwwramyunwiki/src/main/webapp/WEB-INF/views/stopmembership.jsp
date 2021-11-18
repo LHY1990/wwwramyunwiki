@@ -41,7 +41,7 @@
                 <!-- 모든컨텐츠는 여기서 시작해서 -->
                     <div id="information_tab">
                         <div id="section">
-                            라면위키 : 비밀번호 변경
+                            라면위키 : 회원 탈퇴
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
@@ -58,28 +58,28 @@
                         </div>
                         
                         <div id="sorting_category">
-                            분류 : 회원탈퇴
+                            분류 : 회원 탈퇴 | 이용해 주셔서 진심으로 감사합니다. -라면위키 개발자 올림- 
                         </div>
                         <!-- 로그인 시작 -->
                         <div id="login_div">
                             
                             <div>
                                 
-                                <form action="changingPassword.do" method="post" onsubmit="return checkPasswordEqual()" >
+                                <form action="withdraw.do" method="post" onsubmit="return checkPasswordEqualForWithdraw()" >
                                     <br>
-                                    
+
                                     <div>
-                                        새로운 비밀번호
+                                        회원 탈퇴를 위한 비밀번호 입력
                                         <br>
-                                        <input type="password" class="password_form" id="newPassword" name="newPassword" maxlength="30" minlength="8" placeholder="새 비밀번호 입력 (8자 이상 입력해주세요)" >
+                                        <input type="password" class="password_form" id="withdrawPassword" name="withdrawPassword" maxlength="40" placeholder="비밀번호 입력" >
                                         <br>
                                         <br>
                                         비밀번호 확인
                                         <br>
-                                        <input type="password" class="password_form" id="newPasswordCheck" name="newPasswordCheck" maxlength="30" minlength="8" placeholder="새 비밀번호 확인">
+                                        <input type="password" class="password_form" id="withdrawPasswordCheck" name="withdrawPasswordCheck" maxlength="40"  placeholder="비밀번호 확인">
                                     </div>
                                         <br>
-                                    <button style="float: right;" >비밀번호 변경</button>
+                                    <button style="float: right;" >회원탈퇴요청</button>
                                 </form>                                
                             </div>
 
@@ -123,3 +123,9 @@
     
 </body>
 </html>
+<%if(session.getAttribute("isMemberWithdrawDone")=="withdrawMemberFaild"){%>
+    <script>
+        alert("회원님의 아이디와 입력한 비밀번호가 맞지 않습니다.");
+
+    </script>
+<%}%>

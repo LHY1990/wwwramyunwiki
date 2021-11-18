@@ -29,23 +29,18 @@
                 <div class="innerBox">
 
                     
-                    <br>i  i  i  i  i <br>
-                    회원가입이<br>
-                    완료되었습니다.<br>
+                    회원탈퇴가 완료되었습니다
                     <br>
-                    ${newMember} 님, <br>
-                    회원가입을 축하합니다.<br>
+                    라면위키를 찾아주셔서 
+                    <br>
+                    감사합니다.
+                    <br>
                     <form action="./home" method="get">
                         <button style="width: 300px; color: white;background-color: grey; font: bold;">홈으로 가기</button>
                     </form>
-                    
                     <br>
                     
-                    <div id="codenumber_check" style="display: none;">
-                        인증번호 확인<br>
-                        <input type="text" name="memberEmailCode" style="margin-top: 10px;"><br>
-                        <input id="joinSubmit" type="submit" value="가입하기">
-                    </div>
+                    
                 </div>
             </div>
         </div>

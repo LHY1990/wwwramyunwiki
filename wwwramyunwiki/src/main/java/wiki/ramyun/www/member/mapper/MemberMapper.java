@@ -63,6 +63,9 @@ public interface MemberMapper {
 	@Update("update member set member_password =#{newPassword} where member_id=#{userMemberId}")
 	public void updateMemberPasswordByMemberId(@Param("userMemberId")String userMemberId, @Param("newPassword")String newPassword);
 
+	@Delete("delete from member where member_id=#{memberId}")
+	public void deleteMemberById(@Param("memberId")String memberId);
+
 	
 	
 	

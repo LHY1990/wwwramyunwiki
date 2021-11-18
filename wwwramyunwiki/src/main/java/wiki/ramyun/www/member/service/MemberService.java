@@ -148,5 +148,29 @@ public class MemberService {
 	}
 
 	
+	//회원탈퇴 처리
+	public String withdrawMember(String memberId, String withdrawPassword) {
+		boolean result=false;
+		
+		result=dao.memberValidationCheck(memberId, withdrawPassword);
+		
+		if(result) {
+			//기존 아이디와 비밀번호가 같다면 비밀번호를 변경한다.
+			dao.withdrawMemberById(memberId);
+			return "withdrawMemberSuccess";
+		}else {
+			return "withdrawMemberFaild";
+		}
+	}
+
+	//멤버의 이메일인지 확인한다.
+	public boolean isMemberEmail(String findbyemail) {
+		
+		int number
+		
+		return ;
+	}
+
+	
 
 }

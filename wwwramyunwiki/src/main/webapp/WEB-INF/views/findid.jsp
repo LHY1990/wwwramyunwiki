@@ -12,12 +12,21 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
 
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/login.js"></script>
+
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/home.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/login.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <title>라면위키:로그인 -라면위키</title>
-
+    <title>라면위키:아이디 찾기 -라면위키</title>
+    <style>
+        /* 작은페이지여서 여기서 정의함 */
+        .password_form{
+            width: 90%; 
+            height: 25px; 
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
     <%@ include file="./header.jsp" %>
@@ -32,7 +41,7 @@
                 <!-- 모든컨텐츠는 여기서 시작해서 -->
                     <div id="information_tab">
                         <div id="section">
-                            라면위키 : 로그인
+                            라면위키 : 아이디 비밀번호 찾기
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
@@ -49,28 +58,33 @@
                         </div>
                         
                         <div id="sorting_category">
-                            분류 : LOG IN
+                            분류 : 계정 찾기
                         </div>
                         <!-- 로그인 시작 -->
-
                         <div id="login_div">
                             
-                            <form action="./home" method="post">
-                                <div style="margin-top : 50px;"></div>
-                                <div id="type_id">아이디</div>
-                                <input id="type_id" type="text" name="memberId" autofocus><br><br>
-                                <div id="type_password">비밀번호</div>
-                                <input id="type_password" type="password" name="memberPassword">
-                                <div id="finding_id_password"><a href="./findid.do">아이디/비밀번호 찾기</a></div><br>
-                                <div id="join_member"><a href="./rules">회원가입</a></div>
-                                <div id="member_login" ><input type="submit" value="로그인" id="member_login" style="background-color: rgb(113, 113, 223, 0.3);"></div>
+                            <div>
+                                
+                                <form action="findid.do" method="post" onsubmit="return checkPasswordEqualForWithdraw()" >
+                                    <br>
 
-                            </form>
+                                    <div>
+                                        계정확인을 위해 이메일 입력
+                                        <br>
+                                        <input type="email" class="password_form" id="findbyemail" name="findbyemail" minlength="1" placeholder="이메일 입력" >
+                                        <br>
+                                        <br>
+                                        
+                                    </div>
+                                        <br>
+                                    <button style="float: right;" >이메일 확인</button>
+                                </form>                                
+                            </div>
 
 
                         </div>
                         <!-- 로그인끝 -->
-                        <div style="width: 100%; height: 5px;">
+                        <div style="width: 100%; height: 40px;">
 
                         </div>
 
@@ -107,10 +121,9 @@
     
 </body>
 </html>
-
-<%if(session.getAttribute("isMember")=="false"){%>
+<%if(session.getAttribute("isMemberWithdrawDone")=="withdrawMemberFaild"){%>
     <script>
-        alert("입력한 회원아이디와 비밀번호에 일치하는 회원이 없습니다.");
+        alert("회원님의 아이디와 입력한 비밀번호가 맞지 않습니다.");
 
     </script>
 <%}%>

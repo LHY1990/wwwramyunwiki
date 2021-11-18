@@ -47,6 +47,7 @@
                     
                     <br>
                     본인 확인 이메일<br>
+                    
                     <input id="memberEmail" type="text" name="memberEmail" placeholder="email@gmail.com"  value="${memberEmail}"><br>
                         
                     
@@ -58,6 +59,11 @@
 	                        인증번호 확인<br>
 	                        <input type="text" name="memberEmailCode" style="margin-top: 10px;"><br>
 	                        <input id="joinSubmit" type="submit" value="가입하기">
+                            <span style="font-size: 12px; color: red; font: bolder;">
+                                ! 주의사항 :<br>
+                                 같은 이메일로 다중 회원가입하는 경우 <br>
+                                추후 계정정보를 찾을때 마지막으로 등록된 <br>
+                                아이디만 비밀번호 재발급이 가능합니다.</span>
 	                    </div>
                     </c:if>
                 </div>

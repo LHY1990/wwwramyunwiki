@@ -104,6 +104,13 @@ public class MemberDAO {
 		mapper.updateMemberPasswordByMemberId(userMemberId,newPassword);
 	}
 
+
+	//입력된 아이디로 회원을 삭제한다.
+	public void withdrawMemberById(String memberId) {
+		
+		mapper.deleteMemberById(memberId);
+	}
+
 	
 
 }

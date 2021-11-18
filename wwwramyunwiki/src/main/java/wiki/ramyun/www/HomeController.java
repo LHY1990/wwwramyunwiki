@@ -203,7 +203,7 @@ public class HomeController {
 		
 		
 		String userMemberId=(String) session.getAttribute("memberId");
-		//패스워드를 암호화해서 보낸다.
+		//패스워드를 암호화해서 보낸다. 서비스에서 하도록 옮길것
 		newPassword=passwordEncoder.encode(newPassword);
 		String result=memberService.changePassword(userMemberId,oldPassword, newPassword);
 		System.out.println("변경결과"+result);
@@ -226,7 +226,54 @@ public class HomeController {
 	}
 	
 	
-	//회원탈퇴 요청 처리 페이지
+	//회원탈퇴 처리 후 감사창으로 이동
+	@PostMapping("withdraw.do")
+	public ModelAndView postWithdraw(ModelAndView mav, HttpSession session, String withdrawPassword) {
+		
+		//세션으로 회원 아이디를 받는다.
+		String memberId=(String) session.getAttribute("memberId");
+		//결과를 받는다. 쓰지는 않는다.
+		String result = memberService.withdrawMember(memberId, withdrawPassword);
+		if(result=="withdrawMemberSuccess") {
+			session.invalidate();
+			mav.setViewName("thankyouforvisitus");
+		}else if(result=="withdrawMemberFaild") {
+			//세션으로 처리한다.
+			session.setAttribute("isMemberWithdrawDone", "withdrawMemberFaild");
+			mav.setViewName("stopmembership");
+		}
+		
+		return mav;
+	}
+	
+	
+	//계정정보 찾기 처음 접근
+	@GetMapping("findid.do")
+	public ModelAndView getFindId(ModelAndView mav) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		
+		
+		
+		mav.setViewName("findid");
+		return mav;
+		
+	}
+	
+	
+	//계정정보 찾기, 메일로 정보를 보내어 회원으로 하여금 비밀번호를 바꾸게한다.
+	@PostMapping("findid.do")
+	public ModelAndView postFindId(ModelAndView mav, String findbyemail) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		
+		System.out.println(findbyemail);
+		
+		mav.setViewName("findid");
+		return mav;
+		
+	}
+	
 	
 	
 	@GetMapping("/login")
@@ -312,6 +359,7 @@ public class HomeController {
 		return mav;
 	}
 	
+	
 	//검색 값 받아오기. 일단 신라면으로 테스트
 	@GetMapping("/findramyun.do")
 	public ModelAndView getSearchKeyword(ModelAndView mav, String name) {
@@ -364,6 +412,8 @@ public class HomeController {
 		mav.setViewName("notfounding");
 		return mav;
 	}
+	
+	
 	//검색어가 없다면 등록하러가기
 	@GetMapping("/registration")
 	public ModelAndView registration(ModelAndView mav) {
@@ -373,6 +423,8 @@ public class HomeController {
 		mav.setViewName("registration");
 		return mav;
 	}
+	
+	
 	@PostMapping("/regist.do")
 	public ModelAndView registNew(ModelAndView mav, String register, String type) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
