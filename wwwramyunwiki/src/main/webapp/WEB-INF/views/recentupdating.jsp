@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/body.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/recentupdating.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
 
@@ -69,13 +70,14 @@
                                 
 
                                 <!-- <p style=" text-align: left;  display: table-cell;vertical-align: middle; padding-top: 3px;padding-bottom: 3px; padding-left: 10px">   -->
-                                <div style="width: 20%;height: 100%; float: left; text-align: left; text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><a href="./findramyun.do?name=${aRamyun.brandNameKor}" style="text-decoration: none">${aRamyun.brandNameKor}</a></div>
-                                <div style="width: 20%;height: 100%; float: left; text-align: left; text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+                                <div style="width: 20%;" class="recents_updated_list"><a href="./findramyun.do?name=${aRamyun.brandNameKor}" style="text-decoration: none">${aRamyun.brandNameKor}</a></div>
+                                <div style="width: 20%;" class="recents_updated_list">
                                     <fmt:parseDate value="${aRamyun.updatedDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both"/>
 	              				   <fmt:formatDate pattern="yyyy.MM.dd HH:mm:ss" value="${parsedDateTime}"/>
                                 
                                 </div>
-                                <div style="width: 60%;height: 100%; float: left; text-align: left; text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">${aRamyun.userEditedContents}</div>
+                                <div style="width: 60%;" class="recents_updated_list">${aRamyun.userEditedContents}</div>
+                                <!-- 아래는 구분선 -->
                                 <div style="width: 100%;height: 0px; outline: 1px dotted rgba(0, 0, 0, 0.123); float: right;"></div>
                                 
                                 <!-- </p> -->

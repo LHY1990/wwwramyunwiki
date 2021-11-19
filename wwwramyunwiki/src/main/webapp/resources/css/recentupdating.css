@@ -1,9 +1,3 @@
-/* 전체 레이아웃 파악용 */
-/* *{outline-color: brown;outline-style: dotted; outline-width: 1px;} */
-.dotted{
-    outline-color: rgb(76, 68, 87);outline-style: dotted; outline-width: 1px;
-    
-}
 a{
     text-decoration: none;
     color: black;
@@ -30,7 +24,19 @@ body{
     
 }
 
+/* 최근변경탭 css시작 */
+.recents_updated_list{
+    /* 넓이는 해당 태그에서 구현 */
+    height: 100%;
+    float: left; 
+    text-align: left; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 34px;
+}
 
+/* 최근변경탭 css끝 */
 
 
 /* 바디 컨트롤 */
@@ -71,14 +77,7 @@ a{
 }
 
 
-#section{
-    font-size: 30px;
-    font-family: "SBAggroB";
-    float: left;
-    /* @Override */
-    text-align: left;
-    height: 100%;
-}
+
 #section_linkings{
     width: 100%;
     height: 100%;
@@ -107,16 +106,7 @@ a{
     font-size: 13px;
     text-align: right;
 }
-#sorting_category{
-    height: 22px;
-    border: 1px dotted rgb(122, 103, 129);
-    border-radius: 3px;
-    margin-left: 2px;
-    margin-right: 2px;
-    text-align: left;
-    font-size: 11px;
-    line-height: 200%;
-}
+
 
 
 #alert_info{

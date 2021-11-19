@@ -1,0 +1,28 @@
+/* 바디 태그 모음 */
+
+/* 분류태그  */
+#sorting_category{
+    height: 22px;
+    border: 1px dotted rgb(245, 77, 10);
+    border-radius: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
+    text-align: left;
+    font-size: 11px;
+    line-height: 200%;
+    
+}
+
+
+/* 큰제목 색은 다시마색 */
+#section{
+    font-size: 30px;
+    font-family: "SBAggroB";
+    float: left;
+    /* @Override */
+    text-align: left;
+    color: rgb(53, 37, 3);
+    height: 100%;
+    
+    /*이게 밀리면 위치가 변한다. */
+}

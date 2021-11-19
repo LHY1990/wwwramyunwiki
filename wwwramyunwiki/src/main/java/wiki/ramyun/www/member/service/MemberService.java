@@ -5,9 +5,13 @@ import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import wiki.ramyun.www.member.MemberVO;
@@ -21,6 +25,10 @@ public class MemberService {
 	
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	@Autowired
+	@Qualifier("bcryptPasswordEncoder")
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	
 	public void inserMemberToDB(MemberVO joinVO) {
@@ -168,18 +176,55 @@ public class MemberService {
 	//0이면 미가입이거나 오입력일것이고 
 	//1이면 1회가입에 올바른입력, 
 	//2이상인경우 다중가입일 것이다. 이경우 마지막 1개만 계정을 찾도록 돕는다
-	public boolean isMemberEmail(String findbyemail) {
+	public String isMemberEmail(String findbyemail) {
 		
-		여기서 부터 이어서 한다
+		
 		int emailCount=dao.getCountByEmail(findbyemail);
 		
 		if(emailCount==0) {
-			return false;
+			return "notFound";
 		}else if(emailCount>0){
-			return true;
+			//0개보다 크다면 1개라면 1개를 2개 이상이면 가장 최근의 것을 찾아 이메일을 보낸다.
+			String memeberId=dao.getLatestMemberByEmail(findbyemail);
+			
+			//임시비밀번호를 생성한다. 10글자. 원본은 메일로 보낸다. 
+			String tempPassword=RandomStringUtils.random(10, 65, 122, true, true);
+			
+			//임시 비밀번호를 암호화해서 디비에 저장한다.
+			String encodedTempPassword=passwordEncoder.encode(tempPassword);
+			dao.changeMemberPassword(memeberId, encodedTempPassword);
+			
+			//회원으로 등록된 이메일이 입력되면 해당 메일로 회원의 아이디와 비밀번호 설정창을 보낸다.
+			String setfrom = "ramyunwiki@gmail.com";
+			String tomail=findbyemail;
+			String title ="[라면위키]"+memeberId+"님의 아이디/비밀번호 찾기 메일 입니다.";
+			
+			
+			String content ="안녕하세요 라면위키입니다."+System.getProperty("line.separator")
+							+memeberId+"님의 아이디/비밀번호 찾기 메일입니다. "+System.getProperty("line.separator")
+							+"임시 비밀번호는 다음과 같습니다."+System.getProperty("line.separator")
+							+System.getProperty("line.separator")+tempPassword;
+			
+			try {
+				MimeMessage message =mailSender.createMimeMessage();
+				MimeMessageHelper messageHelper=new MimeMessageHelper(message, true, "UTF-8");
+				
+				messageHelper.setFrom(setfrom);
+				messageHelper.setTo(tomail);
+				messageHelper.setSubject(title);
+				messageHelper.setText(content);
+				
+				mailSender.send(message);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//메일보내기끝
+			
+			return "found";
 		}
 		
-		return false;
+		return "error!";
 	}
 
 	

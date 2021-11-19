@@ -267,17 +267,10 @@ public class HomeController {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		
-		System.out.println(findbyemail);
-		boolean result = memberService.isMemberEmail(findbyemail);
-		if(result) {
-			//1개이상의 메일을 가진 가입자이다.
-			여기서 부터 이어서한다.
-			
-		}else {
-			//0개여서 틀린경우 오입력일것이다.
-			mav.addObject("findByEmailResult", "fail");
-		}
 		
+		String result = memberService.isMemberEmail(findbyemail);
+		
+		mav.addObject("findIdResult", result);
 		mav.setViewName("findid");
 		return mav;
 		

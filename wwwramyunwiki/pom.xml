@@ -194,6 +194,18 @@
 		<!-- 비밀번호 암호화 끝-->
 		
 		
+		<!-- 임시문자열 생성 -->
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.12.0</version>
+		</dependency>
+		
+		
+		<!-- 임시문자열 생성 끝 -->
+		
+		
 		<!-- 여기위로 내가 추가한것 -->
 
 

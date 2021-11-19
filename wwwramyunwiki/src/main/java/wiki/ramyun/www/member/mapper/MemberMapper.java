@@ -69,6 +69,10 @@ public interface MemberMapper {
 	@Select("select count(member_email) from member where member_email=#{findbyemail}")
 	public int getMemberCountByEmail(@Param("findbyemail")String findbyemail);
 
+
+	@Select("select member_id from member where member_email=#{findbyemail} order by join_date desc limit 1")
+	public String selectLatestMemberByEmail(@Param("findbyemail")String findbyemail);
+
 	
 	
 	

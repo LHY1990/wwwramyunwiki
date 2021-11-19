@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/body.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
 
@@ -124,6 +125,17 @@
 <%if(session.getAttribute("isMemberWithdrawDone")=="withdrawMemberFaild"){%>
     <script>
         alert("회원님의 아이디와 입력한 비밀번호가 맞지 않습니다.");
-
     </script>
 <%}%>
+
+<%if(request.getAttribute("findIdResult")=="notFound"){%>
+    <script>
+        alert("입력한 메일로 등록된 회원이 없습니다.");
+    </script>
+<%}%>
+<%if(request.getAttribute("findIdResult")=="found"){%>
+    <script>
+        alert("입력한 메일로 회원정보가 전송되었습니다.");
+    </script>
+<%}%>
+

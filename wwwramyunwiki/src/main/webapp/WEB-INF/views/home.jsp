@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/body.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
 
@@ -131,7 +132,7 @@
 
                         </div>
 
-                        <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
+                        <div style="width: 100%; outline: rgb(245, 77, 10) 1px dotted;"></div>
 
 
                         

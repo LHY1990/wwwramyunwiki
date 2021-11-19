@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/body.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ramyun.css">
 
@@ -32,7 +33,7 @@
                 <div id="contents_margin">
                 <!-- 모든컨텐츠는 여기서 시작해서 -->
                     <div id="information_tab">
-                        <div id="section">
+                        <div id="section" style="width: 500px;">
                             라면위키 : ${ramyun.brandNameKor}
                         </div>
                         

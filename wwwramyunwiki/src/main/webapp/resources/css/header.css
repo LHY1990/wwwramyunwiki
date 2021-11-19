@@ -1,3 +1,10 @@
+/* 라인선 녹색으로 도트선 */
+.dotted{
+    outline-color: rgb(0, 168, 87);outline-style: dotted; outline-width: 1px;
+    
+}
+
+
 
 /* 탑 패널 컨트롤 시작 */
 .top_pannel{

@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/body.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
 
@@ -111,6 +112,9 @@
 <%if(session.getAttribute("isMember")=="false"){%>
     <script>
         alert("입력한 회원아이디와 비밀번호에 일치하는 회원이 없습니다.");
-
+        
     </script>
-<%}%>
+    
+<%}
+    session.setAttribute("isMember", "");
+%>

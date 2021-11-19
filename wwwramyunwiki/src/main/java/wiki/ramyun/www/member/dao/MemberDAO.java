@@ -120,6 +120,12 @@ public class MemberDAO {
 		return mapper.getMemberCountByEmail(findbyemail);
 	}
 
+
+	public String getLatestMemberByEmail(String findbyemail) {
+		
+		return mapper.selectLatestMemberByEmail(findbyemail);
+	}
+
 	
 
 }
