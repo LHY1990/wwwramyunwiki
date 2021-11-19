@@ -1,5 +1,6 @@
 package wiki.ramyun.www.ramyun.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,26 @@ public class RamyunService {
 
 	public void deleteRamyunByName(String name) {
 		dao.deleteRamyunByName(name);
+	}
+
+
+	//임의의 라면 이미지를 가져온다.
+	public String getTodaysRamyunImage() {
+		List<RamyunVO> list=new ArrayList<RamyunVO>();
+		
+		List<RamyunVO> voList =dao.getTodaysRamyunImage();
+		
+		for(RamyunVO tempVO : voList) {
+			if(tempVO.getImage()!=null) {
+				list.add(tempVO);
+			}
+		}
+		//3개면 크기는 3이 나올거고 인덱스는 0~2
+		//추출된 리스트의 사이즈의 사이즈로 랜덤을 만들어서 그중하나를 보낸다.
+		int output=(int)(Math.random()*list.size());
+		
+		return list.get(output).getbrandNameKor();
+		
 	}
 
 

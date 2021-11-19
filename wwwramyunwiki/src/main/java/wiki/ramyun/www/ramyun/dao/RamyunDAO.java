@@ -148,4 +148,17 @@ public class RamyunDAO {
 	public void deleteRamyunByName(String name) {
 		mapper.deleteRamyunByName(name);
 	}
+
+
+	public List<RamyunVO> getTodaysRamyunImage() {
+		List<RamyunVO> list=new ArrayList<RamyunVO>();
+		
+		for(RamyunVO vo : mapper.selectAllFromRamyun()) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
+		return list;
+
+	}
 }

@@ -87,7 +87,11 @@ public class HomeController {
 	@GetMapping("/home")
 	public String home(Locale locale, Model model) {
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		//옆에 추가분 올라가는것
+		//랜덤 라면 가져오기. 이미지로 넣는다. 
+		model.addAttribute("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		
+		//model.addAttribute("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		
 		//몇개의 라면 몇명의 회원인지 찾는것
 		int ramyunCount=ramyunService.getRamyunCount();
 		int memberCount=memberService.getMemberCount();
@@ -546,7 +550,7 @@ public class HomeController {
 			//슬래시가 역슬래시로 변경되야해서
 			savePath.replace("\\", "/");
 			
-			//임시로 이미지를 강제로 png로 바꿔본다.
+			//임시로 이미지를 강제로 png로 바꿔본다.->잘된다
 			originalFiletype=".png";
 			
 			//아래는 이미지 경로 변경

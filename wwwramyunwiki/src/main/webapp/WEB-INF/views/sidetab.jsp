@@ -28,7 +28,7 @@
     </div>
     <div id="todays_random" class="dotted">
         <div id="random_list">
-            <a href="./ramyun">오늘의 라면</a><br>
+            <a href="./findramyun.do?name=${randomRamyunImage}" ><img src="http://ramyun.wiki/resources/images/${randomRamyunImage}.png" alt="${randomRamyunImage}" style="width: 280px;height: 300px;"></a>
         </div>
     </div>
     
