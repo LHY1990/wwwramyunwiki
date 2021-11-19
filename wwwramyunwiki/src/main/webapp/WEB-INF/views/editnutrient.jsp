@@ -21,6 +21,7 @@
 </head>
 <body>
     <%@ include file="./header.jsp" %>
+    <%@ include file="./instruct.jsp" %>
     <!-- 상단패널 -->
     
 

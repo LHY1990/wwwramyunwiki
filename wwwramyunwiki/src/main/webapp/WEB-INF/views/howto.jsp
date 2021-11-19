@@ -11,6 +11,7 @@
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/body.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/howto.css">
 
@@ -146,9 +147,9 @@
                         <div id="howto_right"><div style="outline: 1px dotted rgba(128, 128, 128, 0.527); width: 70%; margin-left: 15%;margin-top: 22%;"></div></div>
                         <div id="description_howto">구분선을 긋습니다.</div>
 
-                        <div id="howto_left">(인용글)(/인용글)</div>
+                        <div id="howto_left">(외곽선)(/외곽선)</div>
                         <div id="howto_right"></div>
-                        <div id="description_howto">인용박스를 만듭니다.</div>
+                        <div id="description_howto">외곽선을 만듭니다.</div>
 
                         <br>
                         <br>

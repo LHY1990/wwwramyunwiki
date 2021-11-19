@@ -22,6 +22,7 @@
 </head>
 <body>
     <%@ include file="./header.jsp" %>
+    <%@ include file="./instruct.jsp" %>
     
 
     <!-- 홈 프레임 시작(컨텐츠 프레임 + 우측프레임) -->

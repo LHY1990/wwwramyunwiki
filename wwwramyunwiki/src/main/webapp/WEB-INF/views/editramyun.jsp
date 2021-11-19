@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/body.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/edit_ramyun.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
     
@@ -20,6 +21,7 @@
 </head>
 <body>
     <%@ include file="./header.jsp" %>
+    <%@ include file="./instruct.jsp" %>
     
 
     <!-- 홈 프레임 시작(컨텐츠 프레임 + 우측프레임) -->

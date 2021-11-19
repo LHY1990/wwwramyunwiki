@@ -115,7 +115,7 @@
                                     
                                 </div>
                                 <div id="image">
-                                    <img src="${ramyun.image}" alt="라면 이미지" style="width: 100%; height: 100%;">
+                                    <img src="http://ramyun.wiki/resources/images/${ramyun.brandNameKor}.png" alt="라면 이미지" style="width: 100%; height: 100%;">
                                 </div>
                                 <div >
                                     <div class="ramyun_info_div">

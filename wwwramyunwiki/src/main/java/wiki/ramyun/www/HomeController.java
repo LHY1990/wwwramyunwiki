@@ -541,8 +541,14 @@ public class HomeController {
 		
 			//저장경로 이거 작동하는데 실제서버용
 			String savePath = request.getSession().getServletContext().getRealPath("/")+"resources/images";
+			
+			
 			//슬래시가 역슬래시로 변경되야해서
 			savePath.replace("\\", "/");
+			
+			//임시로 이미지를 강제로 png로 바꿔본다.
+			originalFiletype=".png";
+			
 			//아래는 이미지 경로 변경
 			vo.setImage(savePath+"/"+vo.getbrandNameKor()+originalFiletype);
 			//vo.setImage(savePath);
