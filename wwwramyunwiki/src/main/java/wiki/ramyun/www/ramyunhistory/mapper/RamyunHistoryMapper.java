@@ -42,6 +42,12 @@ public interface RamyunHistoryMapper {
 	
 	@Select("select * from ramyun_history where id=#{id}")
 	public RamyunHistoryVO selectHistoryById(@Param("id") String id);
+
+	@Select("select brand_name_kor, id, writer from ramyun_history order by id")
+	List<RamyunHistoryVO> selectAllFromRamyunHistoryDB();
+
+	@Delete("delete from ramyun_history where id=#{id}")
+	void deleteRamyunHistoryById(@Param("id")String id);
 	
 
 }

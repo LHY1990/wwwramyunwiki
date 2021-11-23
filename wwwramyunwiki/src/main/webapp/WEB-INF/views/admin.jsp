@@ -46,6 +46,38 @@
         </p>
     </details>
     <details>
+        <summary>라면로그 데이터 베이스</summary>
+        <p>
+            <table>
+            <th>라면로그이름</th>
+            <th>로그번호</th>
+            <th>작성자</th>
+            <th>삭제</th>
+            <c:forEach var="ramyunHistory" items="${ramyunHistoryList}" >
+
+                <tr>
+                    <td>
+                        <span>${ramyunHistory.brandNameKor}</span>
+                    </td>
+                    <td>
+                        <span>${ramyunHistory.id}</span>
+                    </td>
+                    <td>
+                        <span>${ramyunHistory.writer}</span>
+                    </td>
+                    <td>
+                        <span><a href="./deleteramyunhistory.do?id=${ramyunHistory.id}">삭제</a></span>
+                    </td>
+                </tr>
+                
+            </c:forEach>
+
+
+
+            </table>
+        </p>
+    </details>
+    <details>
         <summary>영양성분 데이터 베이스</summary>
         <p>
             <table>

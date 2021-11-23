@@ -35,6 +35,7 @@ import wiki.ramyun.www.ramyunhistory.RamyunHistoryVO;
 import wiki.ramyun.www.ramyunhistory.service.RamyunHistoryService;
 import wiki.ramyun.www.search.SearchVO;
 import wiki.ramyun.www.search.service.SearchService;
+import wiki.ramyun.www.wikistringresolver.WikiStringResolver;
 
 @Controller
 
@@ -84,8 +85,16 @@ public class HomeController {
 		return "redirect:/home";
 	}
 	
+	
+	@GetMapping("/errorpage")
+	public String error404() {
+		return "errorpage";
+	}
+	
+	
 	@GetMapping("/home")
 	public String home(Locale locale, Model model) {
+		//우측에 뿌리는 10개 등록
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
 		//랜덤 라면 가져오기. 이미지로 넣는다. 
 		model.addAttribute("randomRamyunImage",ramyunService.getTodaysRamyunImage());
@@ -155,6 +164,7 @@ public class HomeController {
 	public ModelAndView getUserInfo(ModelAndView mav, HttpSession session) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		mav.setViewName("userinfo");
 		return mav;
@@ -166,6 +176,7 @@ public class HomeController {
 	public ModelAndView changeuserinfo(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		mav.setViewName("changeuserinfo");
 		return mav;
@@ -176,6 +187,7 @@ public class HomeController {
 	public ModelAndView changinguser(ModelAndView mav, MemberVO vo,HttpSession session) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		//변경할 닉네임, 이메일과 멤버 넘버를 받아서 값을 변경한다.
 		String memberNumber=session.getAttribute("memberNumber").toString();
@@ -193,6 +205,7 @@ public class HomeController {
 	public ModelAndView getChangeingPassword(ModelAndView mav, MemberVO vo, HttpSession session ) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		mav.setViewName("changeuserpassword");
 		return mav;
@@ -204,7 +217,7 @@ public class HomeController {
 	public ModelAndView postChangeingPassword(ModelAndView mav, MemberVO vo, HttpSession session, String oldPassword, String newPassword ) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		String userMemberId=(String) session.getAttribute("memberId");
 		//패스워드를 암호화해서 보낸다. 서비스에서 하도록 옮길것
@@ -224,6 +237,7 @@ public class HomeController {
 	public ModelAndView getWithdraw(ModelAndView mav, MemberVO vo, HttpSession session) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		mav.setViewName("stopmembership");
 		return mav;
@@ -256,6 +270,7 @@ public class HomeController {
 	public ModelAndView getFindId(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		
 		
@@ -270,6 +285,7 @@ public class HomeController {
 	public ModelAndView postFindId(ModelAndView mav, String findbyemail) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		
 		String result = memberService.isMemberEmail(findbyemail);
@@ -285,8 +301,8 @@ public class HomeController {
 	@GetMapping("/login")
 	public ModelAndView login(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		mav.setViewName("login");
 		return mav;
@@ -296,8 +312,8 @@ public class HomeController {
 	@PostMapping("/login")
 	public ModelAndView login(ModelAndView mav, MemberVO vo) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
-		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		mav.addObject("ramyunList", ramyunRecentUpdatedList);
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		//여기까지가 우측탭 정보
 		memberService.checkMember(vo);
 		
@@ -371,6 +387,7 @@ public class HomeController {
 	public ModelAndView getSearchKeyword(ModelAndView mav, String name) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		//앞뒤 공백을 없앰
 		name=name.trim();
@@ -425,6 +442,8 @@ public class HomeController {
 	public ModelAndView registration(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		
 		//여기까지가 우측탭 정보
 		mav.setViewName("registration");
 		return mav;
@@ -435,6 +454,7 @@ public class HomeController {
 	public ModelAndView registNew(ModelAndView mav, String register, String type) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		//여기까지가 우측탭 정보
 		
 		//빈공간을 없앤다.		
@@ -464,6 +484,7 @@ public class HomeController {
 	public ModelAndView postSearchKeyword(ModelAndView mav, String searchBoxInput) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		//앞뒤 공백을 없앰
 		searchBoxInput=searchBoxInput.trim();
@@ -516,6 +537,7 @@ public class HomeController {
 	public ModelAndView getEditRamyun(ModelAndView mav,String name) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		//편집용 데이터를 가져온다.
 		try {
@@ -578,6 +600,7 @@ public class HomeController {
 		
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		//여기가 실제로 라면을 업데이트하는곳
 		ramyunService.updateRamyunToDB(vo);
@@ -600,6 +623,7 @@ public class HomeController {
 		
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		//일단 라면만 다 뿌리자 28개
 		List<RamyunVO> ramyunUpdatedList = ramyunService.getRecentsUpdateListFromDBWhole();
@@ -615,6 +639,7 @@ public class HomeController {
 	public ModelAndView getNutrient(ModelAndView mav) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		IngredientVO ingredient;
 		
@@ -631,6 +656,7 @@ public class HomeController {
 	public ModelAndView editIngredient(IngredientVO ingredient, String findname, ModelAndView mav) {//얘만 findname을 인자로 받는다. 변수명이 겹쳐서
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		//아래는 편집탭으로 넘어가면서 같은 이름으로 가져오기
 		ingredient=ingredientService.selectIngredientByNameForEdit(findname);
@@ -646,6 +672,7 @@ public class HomeController {
 		//성분 수정뒤에 이 컨트롤러로 온다.
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		ingredientService.updateIngredient(vo);
 		IngredientVO ingredient = ingredientService.selectIngredientByName(vo.getName());
@@ -661,6 +688,7 @@ public class HomeController {
 	public ModelAndView getManufactory(ModelAndView mav,ManufactoryVO vo) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		//랜덤으로 하나 가져오기
 		vo=manufactoryService.getRandomOne();
@@ -677,6 +705,7 @@ public class HomeController {
 	public ModelAndView updateManufactory(ModelAndView mav, ManufactoryVO vo) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		//받은 vo이름으로 업데이트
 		manufactoryService.updateManufactory(vo);
@@ -694,6 +723,7 @@ public class HomeController {
 	public ModelAndView getEditManufactory(ModelAndView mav,String findname) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		ManufactoryVO vo=manufactoryService.selectFactoryByNameForEdit(findname);
 		mav.addObject("manufactory", vo);
@@ -707,6 +737,7 @@ public class HomeController {
 	public ModelAndView getTag(ModelAndView mav, int page) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		//페이지 넘버를 받아서 해당 vo를 가져온다.
 		List<SearchVO> voList=searchService.searchTagPage(page);
@@ -735,6 +766,7 @@ public class HomeController {
 	public ModelAndView getRamyunHistoryByName(ModelAndView mav,String name) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		//일단 이것들은 입력이 되어야 출력이 되니까 입력부터 구현하고 돌아온다. 입력은 라면 업데이트부터
 		List<RamyunHistoryVO> voList=ramyunHistoryService.getHistoryByName(name);
@@ -750,6 +782,7 @@ public class HomeController {
 	public ModelAndView getRamyunHistoryById(ModelAndView mav, String id) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		RamyunHistoryVO vo=ramyunHistoryService.getHistoryById(id);
 		mav.addObject("ramyun", vo);
@@ -893,6 +926,7 @@ public class HomeController {
 	public ModelAndView howToMakeText(ModelAndView mav) {
 		//화면에 10개를 뿌린다.
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
 		mav.setViewName("howto");
 		return mav;
@@ -904,6 +938,7 @@ public class HomeController {
 	public ModelAndView getAdmin(ModelAndView mav) {
 		//모든 라면,영양성분,공장, 회원 리스트를 넣는다.
 		mav.addObject("ramyunList", ramyunService.selectAllFromRamyunDB());
+		mav.addObject("ramyunHistoryList", ramyunHistoryService.selectAllFromRamyunHistoryDB());
 		mav.addObject("ingredientList", ingredientService.selectAllFromIngredient());
 		mav.addObject("manufactoryList", manufactoryService.selectAllFromManufactory());
 		mav.addObject("memberList", memberService.selectAllFromMember());
@@ -916,6 +951,14 @@ public class HomeController {
 	@GetMapping("/deleteramyun.do")
 	public String deleteRamyunByName(ModelAndView mav, String name) {
 		ramyunService.deleteRamyunByName(name);
+		return "redirect:admin.do";
+	}
+	
+
+	//관리자 모드에서 라면로그삭제
+	@GetMapping("/deleteramyunhistory.do")
+	public String deleteRamyunHistoryByName(ModelAndView mav, String id) {
+		ramyunHistoryService.deleteRamyunHistoryById(id);
 		return "redirect:admin.do";
 	}
 	

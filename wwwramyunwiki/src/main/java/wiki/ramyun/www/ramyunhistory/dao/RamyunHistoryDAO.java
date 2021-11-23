@@ -85,5 +85,16 @@ public class RamyunHistoryDAO {
 		
 		return vo;
 	}
+
+
+	public List<RamyunHistoryVO> selectAllFromRamyunHistoryDB() {
+		return mapper.selectAllFromRamyunHistoryDB();
+	}
+
+
+	public void deleteRamyunHistoryById(String id) {
+		mapper.deleteRamyunHistoryById(id);
+		
+	}
 	
 }

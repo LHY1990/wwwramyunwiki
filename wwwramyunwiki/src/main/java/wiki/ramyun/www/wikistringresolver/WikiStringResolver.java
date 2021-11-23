@@ -1,8 +1,36 @@
 package wiki.ramyun.www.wikistringresolver;
 
 public class WikiStringResolver {
-	
 
+
+	
+	//이미지 태그 한문장을 분석한다.
+	public static String imageParser(String input) {
+		int startIndex = input.indexOf("(이미지)");
+		int endIndex = input.indexOf("(/이미지)");
+		
+		String contents=(String) input.subSequence(startIndex+5, endIndex);
+		
+		String output= "<img src=\""+contents+"\" alt=\"image\">";
+		
+		return output;
+	}
+	
+	//이미지 태그를 반복해서 파싱한다.
+	public static String encodeImage(String input) {
+		while (input.contains("(이미지)")) {
+
+			int startIndex = input.indexOf("(이미지)");
+			int endIndex = input.indexOf("(/이미지)") + 6;
+
+			String singleLinkingString = (String) input.subSequence(startIndex, endIndex);
+			String afterParsingSingleString = WikiStringResolver.imageParser(singleLinkingString);
+			input = input.replace(singleLinkingString, afterParsingSingleString);
+		}
+
+		return input;
+	}
+	
 	
 	//목차를 찾아 변경한다.
 	public static String indexParser(String input) {
@@ -407,7 +435,7 @@ public class WikiStringResolver {
 		input = WikiStringResolver.encodeIndex(input);
 		input = WikiStringResolver.encodeindexContents(input);
 		input = WikiStringResolver.encodeLine(input);
-		
+		input = WikiStringResolver.encodeImage(input);
 		input = WikiStringResolver.encodeOutLine(input);
 
 		return input;

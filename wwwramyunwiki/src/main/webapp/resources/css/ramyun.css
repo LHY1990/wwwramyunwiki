@@ -1,4 +1,7 @@
-
+h1, h2, h3, h4, h5{
+    padding: 0px;
+    margin: 0px;
+}
 
 a:visited{text-decoration: none;}
 a:link{text-decoration: none;}
@@ -241,7 +244,7 @@ a{
     width: 100%;
     font-size: 13px;
     overflow-y: hidden;
-    outline:1px dotted  rgba(0, 24, 48, 0.8);
+    
     
 }
 

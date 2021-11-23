@@ -249,7 +249,7 @@
                             <!-- 여기까지가 늘어나는 가변성 리스트 끝 -->
                             
                             <!-- 여기서 부터 가로 표 시작 -->
-                            <div id="horizon_double_section">
+                            <div id="horizon_double_section" style="margin-top: 5px;">
                                 <div class="horizon_double_key">바코드</div>
                                 <div class="horizon_double_value">${ramyun.barcode}</div>
                                 <div class="horizon_double_key">품목보고번호</div>
@@ -273,7 +273,7 @@
                                     
                                     ${ramyun.soupComposition}
                                 </div>
-                                <div class="horizon_key" style="height: 30px;">
+                                <div class="horizon_key" style="height: 30px; margin-top: 5px;">
                                     스프 위치
                                 </div>
                                 <div class="horizon_value" >

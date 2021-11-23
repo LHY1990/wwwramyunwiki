@@ -52,6 +52,7 @@
                         <div id="sorting_category">
                             분류 : 라면 수정 | '${ramyun.brandNameKor}'
                         </div>
+                        <a href="#submit_button" style="float : right; text-decoration: none; font-size: 12px; color: black;">[수정 버튼으로 가기]</a>
                         
                     </div>
                     
@@ -73,7 +74,9 @@
     
                                     </div>
                                     <div id="image">
+                                        
                                         <input type="file" name="uploadedimage" style="margin-top:10px; height: 95%; width: 95%;"></input>
+                                        
                                     </div>
                                     <div>
                                         <div class="ramyun_info_div">
@@ -235,7 +238,7 @@
                                     </div>
                                     <div class="horizon_value" >
                                         <!-- 스프위치를 적는다.. -->
-                                        <input type="text"  maxlength="14" placeholder="ex) 면 위쪽(로고쪽) 또는 면 아래쪽(뒷면)" name="soupPosition" value="${ramyun.soupPosition}" style="width: 99%;">
+                                        <input type="text"  maxlength="60" placeholder="ex) 면 위쪽(로고쪽) 또는 면 아래쪽(뒷면)" name="soupPosition" value="${ramyun.soupPosition}" style="width: 99%;">
                                     </div>
                                     
                                 </div>
@@ -248,9 +251,9 @@
                                 <!--작성된 글 -->
                                 <textarea name="userEditedContents" id="user_edited_contents" >${ramyun.userEditedContents}</textarea>
                             </div>
-
+                            
                             <!-- 서브밋 버튼이다. -->
-                            <input type="submit" name="${ramyun.brandNameKor}" style="width: 100%;height: 30px;margin-top: 20px;color: white;background-color: rgba(0, 0, 0, 0.3);" value="수정 하기"></input>
+                            <input id="submit_button" type="submit" name="${ramyun.brandNameKor}" style="width: 100%;height: 30px;margin-top: 20px;color: white;background-color: rgba(0, 0, 0, 0.3);" value="수정 하기"></input>
                             
                         </div>
                     </form>

@@ -54,7 +54,7 @@
                         <div id="sorting_category">
                             분류 : 영양 성분 | ${ingredient.name}
                         </div>
-                        
+                        <a href="#submit_button" style="float : right; text-decoration: none; font-size: 12px; color: black;">[수정 버튼으로 가기]</a>
                     </div>
 
                     <div style="width: 100%; height: 170px;">
@@ -91,7 +91,7 @@
 
                         </div>
                         <div style="width: 99%; height: 30px;">
-                            <input type="submit" value="등록" style="width: 100%;height: 100%;">
+                            <input id="submit_button" type="submit" value="등록" style="width: 100%;height: 100%;">
                         </div>
                         
                         <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>

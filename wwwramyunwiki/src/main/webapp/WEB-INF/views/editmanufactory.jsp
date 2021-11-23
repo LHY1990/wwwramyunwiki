@@ -56,7 +56,7 @@
                         <div id="sorting_category">
                             분류 : 제조 공장 | ${manufactory.factoryName} (최근 업데이트)
                         </div>
-                        
+                        <a href="#submit_button" style="float : right; text-decoration: none; font-size: 12px; color: black;">[수정 버튼으로 가기]</a>
                     </div>
 
                     <div style="width: 100%; height: 200px;">
@@ -93,7 +93,7 @@
                         <div style="width: 100%; height: 5px;">
 
                         </div>
-                        <input type="submit" style="width: 850px;height: 30px;color: white;background-color: rgba(0, 0, 0, 0.3);" value="수정 하기"></input>
+                        <input id="submit_button" type="submit" style="width: 850px;height: 30px;color: white;background-color: rgba(0, 0, 0, 0.3);" value="수정 하기"></input>
 
                         
 

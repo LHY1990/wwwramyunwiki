@@ -9,9 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/body.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/howto.css">
 
@@ -150,6 +150,14 @@
                         <div id="howto_left">(외곽선)(/외곽선)</div>
                         <div id="howto_right"></div>
                         <div id="description_howto">외곽선을 만듭니다.</div>
+
+                        <div id="howto_left">(목차)[1](/목차)</div>
+                        <div id="howto_right"><a href="#index1" style="vertical-align: unset;">1.</a></div>
+                        <div id="description_howto">목차를 만듭니다.</div>
+
+                        <div id="howto_left">(목차내용)[1](/목차내용)</div>
+                        <div id="howto_right"><span id="index1">1.</span></div>
+                        <div id="description_howto">목차를 링크합니다.</div>
 
                         <br>
                         <br>

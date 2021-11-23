@@ -36,6 +36,17 @@ public class RamyunHistoryService {
 		
 		return vo;
 	}
+
+
+	public List<RamyunHistoryVO> selectAllFromRamyunHistoryDB() {
+		return dao.selectAllFromRamyunHistoryDB();
+	}
+
+
+	
+	public void deleteRamyunHistoryById(String id) {
+		dao.deleteRamyunHistoryById(id);
+	}
 	
 	
 
