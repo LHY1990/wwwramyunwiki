@@ -44,7 +44,7 @@
     });
 </script>
 <body>
-    <div style="background-color: rgb(255, 102, 0); height: 300px;width: 100%;"></div>
+    <div style="background-color: rgb(255, 102, 0); height: 200px;width: 100%;"></div>
 
     <br>
     <br>

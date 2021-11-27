@@ -14,8 +14,11 @@ function login_needed() {
 //change keyup pastechange paste 
 window.addEventListener('DOMContentLoaded', function(){
     // 검색창 ajax
-    $('#search_box_textarea').on("propertychange change keyup paste input", function(){
-        //$('#auto0').val("");
+    $('#search_box_textarea').on("input", (event)=>{
+        if(event.isCompositing){
+            console.log("합성중");
+            return;
+        }
         $.ajax({
             type : "POST",
             url : "./searchintime.do",
