@@ -20,7 +20,11 @@ public class ManufactoryService {
 	// 이름으로 하나 선택하기 서비스 레벨에서 조회할때 위키 내용을 변환한다.
 	public ManufactoryVO selectFactoryByName(String name) {
 		ManufactoryVO vo=dao.selectByName(name);
-		vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
+		try {
+			vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
+		} catch (Exception e) {
+			System.out.println("ManufactoryService의 selectFactoryByName에서 예외발생. 검색어 결과없음");
+		}
 		return vo;
 	}
 	

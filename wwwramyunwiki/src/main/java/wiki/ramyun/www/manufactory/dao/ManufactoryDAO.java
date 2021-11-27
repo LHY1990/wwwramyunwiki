@@ -37,7 +37,11 @@ public class ManufactoryDAO {
 	public ManufactoryVO selectByName(String name) {
 		
 		ManufactoryVO vo=mapper.selectByName(name);
-		vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+		try {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+		} catch (Exception e) {
+			System.out.println("ManufactoryDAO의 selectByName에서 예외발생. 검색어 결과 없음");
+		}
 		
 		return vo;
 	}

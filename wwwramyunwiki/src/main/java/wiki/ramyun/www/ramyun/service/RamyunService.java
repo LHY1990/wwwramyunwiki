@@ -34,7 +34,11 @@ public class RamyunService {
 	
 	public RamyunVO getRamyunData(String searchBoxInput){
 		RamyunVO vo=dao.selectRamyun(searchBoxInput);
-		vo.setUserEditedContents(WikiStringResolver.encodeContents(vo.getUserEditedContents()));
+		try {
+			vo.setUserEditedContents(WikiStringResolver.encodeContents(vo.getUserEditedContents()));
+		} catch (Exception e) {
+			System.out.println("RamyunService의 getRamyunData에서 예외생김. 검색어 결과없음");
+		}
 		return vo;
 	}
 	

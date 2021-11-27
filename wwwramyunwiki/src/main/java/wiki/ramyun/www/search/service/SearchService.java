@@ -45,8 +45,6 @@ public class SearchService {
 		
 		//입력한 글자로 시작하는 경우엔 startwith를 아니면 contains를 쓴다.
 		List<SearchVO> searchList= mapper.searchUpdated();
-		//가나다포함
-		//List<SearchVO> searchList= mapper.searchUpdated();
 		for(SearchVO vo : searchList) {
 			if(vo.getName().startsWith(searchKeyword)) {
 				stringList.add(vo.getName());

@@ -54,7 +54,10 @@ public class AjaxController {
 			noValues.add("");
 			return noValues;
 		}
-
+		System.out.println(searchList);
+		
+		
+		
 		return searchList;
 
 	}
@@ -68,11 +71,14 @@ public class AjaxController {
 		vo.setMemberId(request.getParameter("input"));
 		
 		//만약에 중복아이디가 없다면 초록글씨를 중복이라면 적색 글자를 내보낸다.
-		if(request.getParameter("input").length()<=3) {
-			list.add("사용가능한 아이디 입니다.");
+		if(request.getParameter("input").length()==0) {
+			list.add("아이디를 입력해 주세요.");
+			return list;
+		}else if(request.getParameter("input").length()<=3) {
+			list.add("네 글자 이상 입력해주세요");
 			return list;
 		}else if(memberService.isUnique(vo)) {
-			list.add("네 글자 이상 입력해주세요");
+			list.add("사용 가능한 아이디 입니다.");
 			return list;
 		}else {
 			list.add("이미 사용중인 아이디 입니다.");

@@ -99,6 +99,7 @@ public class HomeController {
 		//랜덤 라면 가져오기. 이미지로 넣는다. 
 		model.addAttribute("randomRamyunImage",ramyunService.getTodaysRamyunImage());
 		
+		
 		//몇개의 라면 몇명의 회원인지 찾는것
 		int ramyunCount=ramyunService.getRamyunCount();
 		int memberCount=memberService.getMemberCount();
@@ -111,7 +112,7 @@ public class HomeController {
 	}
 	
 	
-	@PostMapping("/home")
+	@PostMapping("/afterlogin")
 	public String home(MemberVO vo, HttpSession session) {
 		
 		//멤버인지 체크하고 멤버면 정보를 보낸다.
@@ -126,7 +127,9 @@ public class HomeController {
 			session.setAttribute("memberNickname", vo.getNickname());
 			session.setAttribute("memberLevel", vo.getLevel());
 			session.setAttribute("isMember", "true");
-			return "redirect:home";
+			
+			
+			return "redirect:"+((String) session.getAttribute("lastVisitedLocation"));
 		}else {
 			session.setAttribute("isMember", "false");
 			return "login";
@@ -138,10 +141,14 @@ public class HomeController {
 	
 	//로그아웃
 	@GetMapping("/logout.do")
-	public String logout(HttpSession session) {
-		
+	public String logout(HttpSession session, HttpServletRequest request) {
 		session.invalidate();
-		return "redirect:home";
+		
+		if(request.getHeader("referer")!=null) {
+			return "redirect:"+request.getHeader("referer");
+		}else {
+			return "home";
+		}
 	}
 	
 
@@ -297,10 +304,15 @@ public class HomeController {
 	
 	
 	@GetMapping("/login")
-	public ModelAndView login(ModelAndView mav) {
+	public ModelAndView login(ModelAndView mav, HttpServletRequest request, HttpSession session) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		
+		//이전페이지를 받는다. 로그인 버튼을 받았을때의 위치를 기억한다.
+		//System.out.println(request.getHeader("referer"));
+		
+		session.setAttribute("lastVisitedLocation", request.getHeader("referer"));
 		
 		mav.setViewName("login");
 		return mav;
@@ -323,7 +335,6 @@ public class HomeController {
 	@GetMapping("/join")
 	public String join(ModelAndView mav) {
 		//처음창은 이쪽으로 보내서 값을 넣게한다.
-		System.out.println("조인 겟에 접근중");
 		mailCode = String.valueOf((int)(Math.random()*1000000));
 		
 		return "join";

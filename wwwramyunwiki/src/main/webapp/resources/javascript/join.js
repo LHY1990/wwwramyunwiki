@@ -1,31 +1,21 @@
 window.addEventListener('DOMContentLoaded', function(){
-    // 회원가입창 ajax
+    // 회원가입창 ajax, 아이디 입력에 대해 반응한다.
     $('#memberId').on("change keyup pastechange paste", (event)=>{
-        
         $.ajax({
             type : "POST",
             url : "./isunique.do",
             dataType : "json",
             data : {
                 "input" : $('#memberId').val()
-
             },
-            
             success : function(items) {
-                console.log(items);
-                
-                //$('#auto0').val(items[0]);
+                //console.log(items);
                 $('#isUniqueAjax').text(items);
-                
-                
-                
             },
             error : function(error) {
                 console.log("에러난다이거");
             }
-    
         })
-        // $('#recommand').css('display','block');
     });
 });
 

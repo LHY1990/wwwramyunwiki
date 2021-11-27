@@ -160,7 +160,7 @@ public class SearchingController {
 				return mav;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("라면에서 검색안됌");
 		}
 		try {
 			IngredientVO ingredient = ingredientService.selectIngredientByName(name);
@@ -170,7 +170,7 @@ public class SearchingController {
 				return mav;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("영양성분에서 검색안됌");
 		}
 		try {
 			ManufactoryVO factory = manufactoryService.selectFactoryByName(name);
@@ -180,7 +180,7 @@ public class SearchingController {
 				return mav;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("공장에서 검색안됌");
 		}
 
 		// 정말아무것도 없다면 다음처럼된다. 비슷한 검색어를 권해보자

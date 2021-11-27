@@ -20,7 +20,11 @@ public class IngredientService {
 	// 이름으로 하나 선택해서 가져온다
 	public IngredientVO selectIngredientByName(String findname) {
 		IngredientVO vo =dao.selectIngredientByName(findname);
-		vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
+		try {
+			vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
+		} catch (Exception e) {
+			System.out.println("IngredientService의 selectIngredientByName에서 예외발생. 검색어 결과 없음");
+		}
 		return vo;
 	}
 	

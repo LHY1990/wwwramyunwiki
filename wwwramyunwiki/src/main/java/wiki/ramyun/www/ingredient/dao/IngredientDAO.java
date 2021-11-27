@@ -53,7 +53,11 @@ public class IngredientDAO {
 
 		IngredientVO vo=mapper.selectIngredientByName(findname);
 		//만약에 00초로끝나면 1초를 더해준다.
-		vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+		try {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+		} catch (Exception e) {
+			System.out.println("IngredientDAO의 selectIngredientByName에서 예외발생. 검색어 결과 없음");
+		}
 		return vo;
 	}
 

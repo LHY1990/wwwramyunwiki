@@ -14,11 +14,10 @@ function login_needed() {
 //change keyup pastechange paste 
 window.addEventListener('DOMContentLoaded', function(){
     // 검색창 ajax
-    $('#search_box_textarea').on("input", (event)=>{
-        // if(event.isCompositing){
-        //     console.log("합성중");
-        //     return;
-        // }
+
+    $('#search_box_textarea').on("keyup", (event)=>{
+    
+
         $.ajax({
             type : "POST",
             url : "./searchintime.do",
@@ -29,56 +28,19 @@ window.addEventListener('DOMContentLoaded', function(){
             },
             
             success : function(items) {
-                // console.log(items[0]);
-                
-                $('#auto0').val(items[0]);
-                $('#auto1').val(items[1]);
-                $('#auto2').val(items[2]);
-                $('#auto3').val(items[3]);
-                $('#auto4').val(items[4]);
-                
-                
-                
+                $('#auto0').val(items[1]);
+                $('#auto1').val(items[2]);
+                $('#auto2').val(items[3]);
+                $('#auto3').val(items[4]);
+                $('#auto4').val(items[5]);
             },
             error : function(error) {
-                console.log("에러난다이거");
+                console.log("에러난다");
             }
     
         })
         $('#recommand').css('display','block');
     });
-    // var searchAjax=document.getElementById('search_box_textarea');
-    // searchAjax.keyDown=function(){
-    //     //$('#auto0').val("");
-    //     $.ajax({
-    //         type : "POST",
-    //         url : "./searchintime.do",
-    //         dataType : "json",
-    //         data : {
-    //             "msg" : $('#search_box_textarea').val()
-
-    //         },
-            
-    //         success : function(items) {
-    //             // console.log(items[0]);
-                
-    //             $('#auto0').val(items[0]);
-    //             $('#auto1').val(items[1]);
-    //             $('#auto2').val(items[2]);
-    //             $('#auto3').val(items[3]);
-    //             $('#auto4').val(items[4]);
-                
-                
-                
-    //         },
-    //         error : function(error) {
-    //             console.log("에러난다이거");
-    //         }
-    
-    //     })
-    //     $('#recommand').css('display','block');
-    // }
-    
 
     // 라면 추천버튼 클릭시 AJAX
     $("#ramyunlikes").on("click", function() {

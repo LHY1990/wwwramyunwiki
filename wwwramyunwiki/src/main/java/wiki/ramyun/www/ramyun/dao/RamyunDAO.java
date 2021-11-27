@@ -78,7 +78,11 @@ public class RamyunDAO {
 			e.printStackTrace();
 		}
 		//00초로 끝나는 경우 1초를 더해준다.
-		vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+		try {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+		}catch(Exception e){
+			
+		}
 		
 		return vo;
 	}

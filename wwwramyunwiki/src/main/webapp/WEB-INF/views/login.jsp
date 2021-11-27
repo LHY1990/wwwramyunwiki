@@ -56,7 +56,7 @@
 
                         <div id="login_div">
                             
-                            <form action="./home" method="post">
+                            <form action="./afterlogin" method="post">
                                 <div style="margin-top : 50px;"></div>
                                 <div id="type_id">아이디</div>
                                 <input id="type_id" type="text" name="memberId" autofocus><br><br>
