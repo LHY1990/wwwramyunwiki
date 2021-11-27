@@ -37,11 +37,11 @@ import wiki.ramyun.www.search.SearchVO;
 import wiki.ramyun.www.search.service.SearchService;
 import wiki.ramyun.www.wikistringresolver.WikiStringResolver;
 
-@Controller
 
+//홈화면 접근 및 회원 정보 접근
+@Controller
 public class HomeController {
 	
-//	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	String mailCode="";
 	List<RamyunVO> ramyunRecentUpdatedList;
 	File file;
@@ -80,12 +80,14 @@ public class HomeController {
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	
+	//ramyun.wiki 로 접근해도 홈화면으로 보낸다.
 	@RequestMapping("/")
 	public String ramyunwiki() {
 		return "redirect:/home";
 	}
 	
 	
+	//에러페이지 접근
 	@GetMapping("/errorpage")
 	public String error404() {
 		return "errorpage";
@@ -98,8 +100,6 @@ public class HomeController {
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
 		//랜덤 라면 가져오기. 이미지로 넣는다. 
 		model.addAttribute("randomRamyunImage",ramyunService.getTodaysRamyunImage());
-		
-		//model.addAttribute("randomRamyunImage", ramyunService.getTodaysRamyunImage());
 		
 		//몇개의 라면 몇명의 회원인지 찾는것
 		int ramyunCount=ramyunService.getRamyunCount();
@@ -559,7 +559,6 @@ public class HomeController {
 										HttpSession session) {
 		
 		if(!uploadedimage.isEmpty()) {
-			System.out.println("~~~~업로드된파일이있음~~~~~");
 			String originalFileName= uploadedimage.getOriginalFilename();                          //업로드된 파일이미지의 이름
 			String originalFiletype= originalFileName.substring(originalFileName.lastIndexOf("."));//업로드된 파일이미지의 확장자
 			System.out.println(originalFileName);
@@ -791,134 +790,7 @@ public class HomeController {
 	}
 	
 	
-	//아래는 AJAX탭
 	
-	
-	//리스폰스 바디로 받아 비동기로 처리
-	@PostMapping("/searchintime.do")
-	public @ResponseBody Object searchInTime(HttpServletRequest request){
-		List<String> searchList=new ArrayList<String>();
-		String noSpaceString=request.getParameter("msg").replace(" ","");
-		
-		searchList=searchService.searchInTime(noSpaceString);
-		//아래는 실시간으로 출력해보기
-		if(noSpaceString.equals("")) {
-			List<String> noValues=new ArrayList<String>();
-			noValues.add("");
-			noValues.add("");
-			noValues.add("");
-			noValues.add("");
-			noValues.add("");
-			return noValues;
-		}
-		
-		return searchList;
-		
-	}
-	
-	
-	//라면 좋아요  구현
-	//리스폰스 바디로 받아 비동기로 처리
-	@PostMapping("/likeramyun.do")
-	public @ResponseBody Object postLikeRamyun(HttpSession session, String ramyunName) {
-		
-		//회원의 이름을 가져온다.
-		String memberId=(String) session.getAttribute("memberId");
-		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
-		
-		int likesCounts=metadataService.addLikeRamyun(memberId, ramyunName);
-		
-		List<String> likeList=new ArrayList<String>();
-		
-		likeList.add(String.valueOf(likesCounts));
-		
-		return likeList;
-	}
-	
-	
-	//라면 신고 구현
-	@PostMapping("/reportramyun.do")
-	public @ResponseBody Object postReportRamyun(HttpSession session, String ramyunName) {
-		//회원의 이름을 가져온다.
-		String memberId=(String) session.getAttribute("memberId");
-		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
-		int reportCounts=metadataService.addReportRamyun(memberId, ramyunName);
-		
-		List<String> reportList=new ArrayList<String>();
-		
-		reportList.add(String.valueOf(reportCounts));
-		
-		return reportList;
-	}
-	
-	
-	//영양성분 좋아요  구현
-	//리스폰스 바디로 받아 비동기로 처리
-	@PostMapping("/likeingredient.do")
-	public @ResponseBody Object postLikeIngredient(HttpSession session, String ingredientName) {
-		
-		//회원의 이름을 가져온다.
-		String memberId=(String) session.getAttribute("memberId");
-		
-		int likesCounts=metadataService.addLikeIngredient(memberId, ingredientName);
-		
-		List<String> likeList=new ArrayList<String>();
-		
-		likeList.add(String.valueOf(likesCounts));
-		
-		return likeList;
-	}
-	
-	
-	//영양성분 신고버튼 ajax처리
-	@PostMapping("/reportingredient.do")
-	public @ResponseBody Object postReportIngredient(HttpSession session, String ingredientName) {
-		//회원의 이름을 가져온다.
-		String memberId=(String) session.getAttribute("memberId");
-		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
-		int reportCounts=metadataService.addReportIngredient(memberId, ingredientName);
-		
-		List<String> reportList=new ArrayList<String>();
-		
-		reportList.add(String.valueOf(reportCounts));
-		
-		return reportList;
-	}
-	
-	
-	
-	//공장정보 좋아요  구현
-	//리스폰스 바디로 받아 비동기로 처리
-	@PostMapping("/likemanufactory.do")
-	public @ResponseBody Object postLikeManufactory(HttpSession session, String manufactoryName) {
-		
-		//회원의 이름을 가져온다.
-		String memberId=(String) session.getAttribute("memberId");
-		
-		int likesCounts=metadataService.addLikeManufactory(memberId, manufactoryName);
-		
-		List<String> likeList=new ArrayList<String>();
-		
-		likeList.add(String.valueOf(likesCounts));
-		
-		return likeList;
-	}
-	
-	
-	//공장정보 신고버튼 ajax처리
-	@PostMapping("/reportmanufactory.do")
-	public @ResponseBody Object postReportManufactory(HttpSession session, String manufactoryName) {
-		//회원의 이름을 가져온다.
-		String memberId=(String) session.getAttribute("memberId");
-		//회원아이디와 라면이름이 제대로 들어오나 확인한다.
-		int reportCounts=metadataService.addReportManufactory(memberId, manufactoryName);
-		
-		List<String> reportList=new ArrayList<String>();
-		
-		reportList.add(String.valueOf(reportCounts));
-		
-		return reportList;
-	}
 	
 	
 	//여기는 home>작성방법
@@ -933,55 +805,5 @@ public class HomeController {
 	}
 	
 	
-	//관리자모드 입장
-	@GetMapping("/admin.do")
-	public ModelAndView getAdmin(ModelAndView mav) {
-		//모든 라면,영양성분,공장, 회원 리스트를 넣는다.
-		mav.addObject("ramyunList", ramyunService.selectAllFromRamyunDB());
-		mav.addObject("ramyunHistoryList", ramyunHistoryService.selectAllFromRamyunHistoryDB());
-		mav.addObject("ingredientList", ingredientService.selectAllFromIngredient());
-		mav.addObject("manufactoryList", manufactoryService.selectAllFromManufactory());
-		mav.addObject("memberList", memberService.selectAllFromMember());
-		mav.setViewName("admin");
-		return mav;
-	}
 	
-	
-	//관리자 모드에서 라면삭제
-	@GetMapping("/deleteramyun.do")
-	public String deleteRamyunByName(ModelAndView mav, String name) {
-		ramyunService.deleteRamyunByName(name);
-		return "redirect:admin.do";
-	}
-	
-
-	//관리자 모드에서 라면로그삭제
-	@GetMapping("/deleteramyunhistory.do")
-	public String deleteRamyunHistoryByName(ModelAndView mav, String id) {
-		ramyunHistoryService.deleteRamyunHistoryById(id);
-		return "redirect:admin.do";
-	}
-	
-	
-	//관리자 모드에서 영양성분 삭제
-	@GetMapping("/deleteingredient.do")
-	public String deleteIngredientByName(ModelAndView mav, String name) {
-		ingredientService.deleteIngredientByName(name);
-		return "redirect:admin.do";
-	}
-	
-	
-	//관리자 모드에서 공장삭제
-	@GetMapping("/deletemanufactory.do")
-	public String deleteManufactoryByName(ModelAndView mav, String name) {
-		manufactoryService.deleteManufactoryByName(name);
-		return "redirect:admin.do";
-	}
-	
-	
-	@GetMapping("/deletemember.do")
-	public String deleteMemberById(ModelAndView mav, String number) {
-		memberService.deleteMemberByNumber(number);
-		return "redirect:admin.do";
-	}
 }
