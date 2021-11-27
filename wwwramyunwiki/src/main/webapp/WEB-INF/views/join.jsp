@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/join.css">
 
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/join.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/home.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <title>라면위키:회원가입 -라면위키</title>
@@ -35,8 +34,8 @@
                 
                 <div class="innerBox">
 
-                    아이디<br>
-                    <input type="text" minlength="4" maxlength="18"  name="memberId" placeholder="4자이상 15자 이하로 입력" value="${memberId}"><br>
+                    아이디 <span id="isUniqueAjax" style="color: red;font-size: 9px;"></span><br>
+                    <input type="text" minlength="4" maxlength="18" id="memberId" name="memberId" placeholder="4자이상 15자 이하로 입력" value="${memberId}"><br>
                     <br>
                     비밀번호<br>
                     <input type="password" minlength="8" maxlength="21" id="memberPassword" name="memberPassword" placeholder="8자이상 20자 이하로 입력" value="${memberPassword}"><br>

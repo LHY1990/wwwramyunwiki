@@ -15,10 +15,10 @@ function login_needed() {
 window.addEventListener('DOMContentLoaded', function(){
     // 검색창 ajax
     $('#search_box_textarea').on("input", (event)=>{
-        if(event.isCompositing){
-            console.log("합성중");
-            return;
-        }
+        // if(event.isCompositing){
+        //     console.log("합성중");
+        //     return;
+        // }
         $.ajax({
             type : "POST",
             url : "./searchintime.do",
@@ -195,19 +195,5 @@ window.addEventListener('DOMContentLoaded', function(){
             }
         })
     })
-    
-
-    
-    
+      
 })
-
-
-
-/*
-sessionStorage.getItem("member");
-if(sessionStorage!=null){
-    alert(sessionStorage.length);
-}
-
-$('#search_box_textarea').value
-*/

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import wiki.ramyun.www.ingredient.service.IngredientService;
 import wiki.ramyun.www.manufactory.service.ManufactoryService;
+import wiki.ramyun.www.member.MemberVO;
 import wiki.ramyun.www.member.service.MemberService;
 import wiki.ramyun.www.metadata.service.MetadataService;
 import wiki.ramyun.www.ramyun.service.RamyunService;
@@ -23,7 +24,10 @@ import wiki.ramyun.www.search.service.SearchService;
 @Controller
 public class AjaxController {
 	// AJAX 컨트롤러
-
+	@Autowired
+	@Qualifier("memberService")
+	private MemberService memberService;
+	
 	@Autowired
 	@Qualifier("searchService")
 	private SearchService searchService;
@@ -53,6 +57,28 @@ public class AjaxController {
 
 		return searchList;
 
+	}
+	
+	
+	// 회원가입시 아이디 중복확인
+	@PostMapping("/isunique.do")
+	public @ResponseBody Object isUniqueIdCheck(HttpServletRequest request) {
+		List<String> list=new ArrayList<String>();
+		MemberVO vo = new MemberVO();
+		vo.setMemberId(request.getParameter("input"));
+		
+		//만약에 중복아이디가 없다면 초록글씨를 중복이라면 적색 글자를 내보낸다.
+		if(request.getParameter("input").length()<=3) {
+			list.add("사용가능한 아이디 입니다.");
+			return list;
+		}else if(memberService.isUnique(vo)) {
+			list.add("네 글자 이상 입력해주세요");
+			return list;
+		}else {
+			list.add("이미 사용중인 아이디 입니다.");
+			return list;
+		}
+		
 	}
 
 	

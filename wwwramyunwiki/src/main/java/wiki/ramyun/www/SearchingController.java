@@ -2,7 +2,9 @@ package wiki.ramyun.www;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -121,20 +123,21 @@ public class SearchingController {
 	}
 
 	@PostMapping("/regist.do")
-	public String registNew(ModelAndView mav, String register, String type, HttpServletRequest request) {
+	public String registNew(ModelAndView mav, String register, String type) throws UnsupportedEncodingException {
 		// 빈공간을 없앤다.
 		register = register.trim();
 		register = register.replace(" ", "");
 
 		if (type.equals("ramyun")) {
-			String outPrint = ramyunService.insertRamyunToDB(register);
+			ramyunService.insertRamyunToDB(register);
 		} else if (type.equals("ingredient")) {
-			String outPrint = ingredientService.insertIngredientToDB(register);
+			ingredientService.insertIngredientToDB(register);
 		} else if (type.equals("manufactory")) {
-			String outPrint = manufactoryService.insertManufactoryToDB(register);
+			manufactoryService.insertManufactoryToDB(register);
 		}
 		
-		return "redirect:findramyun.do?name="+URLEncoder.encode(register);
+		//한글 인코딩을 해준다. 예외를 던진다.
+		return "redirect:findramyun.do?name="+URLEncoder.encode(register,StandardCharsets.UTF_8.toString());
 	}
 
 	@PostMapping("/findramyun.do")
