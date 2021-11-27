@@ -87,7 +87,7 @@ public class HomeController {
 	
 	//에러페이지 접근
 	@GetMapping("/errorpage")
-	public String error404() {
+	public String errorpage() {
 		return "errorpage";
 	}
 	
@@ -96,8 +96,8 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		//우측에 뿌리는 10개 등록
 		ramyunRecentUpdatedList=ramyunService.getRecentsUpdateListFromDB();
-		//랜덤 라면 가져오기. 이미지로 넣는다. 
-		model.addAttribute("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		model.addAttribute("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
 		
 		//몇개의 라면 몇명의 회원인지 찾는것
@@ -132,7 +132,7 @@ public class HomeController {
 			return "redirect:"+((String) session.getAttribute("lastVisitedLocation"));
 		}else {
 			session.setAttribute("isMember", "false");
-			return "login";
+			return "redirect:login";
 		}
 		
 	
@@ -170,7 +170,8 @@ public class HomeController {
 	public ModelAndView getUserInfo(ModelAndView mav, HttpSession session) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
 		mav.setViewName("userinfo");
 		return mav;
@@ -182,7 +183,8 @@ public class HomeController {
 	public ModelAndView changeuserinfo(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
 		mav.setViewName("changeuserinfo");
 		return mav;
@@ -193,7 +195,8 @@ public class HomeController {
 	public ModelAndView changinguser(ModelAndView mav, MemberVO vo,HttpSession session) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
 		//변경할 닉네임, 이메일과 멤버 넘버를 받아서 값을 변경한다.
 		String memberNumber=session.getAttribute("memberNumber").toString();
@@ -211,7 +214,8 @@ public class HomeController {
 	public ModelAndView getChangeingPassword(ModelAndView mav, MemberVO vo, HttpSession session ) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
 		mav.setViewName("changeuserpassword");
 		return mav;
@@ -223,7 +227,8 @@ public class HomeController {
 	public ModelAndView postChangeingPassword(ModelAndView mav, MemberVO vo, HttpSession session, String oldPassword, String newPassword ) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
 		String userMemberId=(String) session.getAttribute("memberId");
 		//패스워드를 암호화해서 보낸다. 서비스에서 하도록 옮길것
@@ -243,7 +248,8 @@ public class HomeController {
 	public ModelAndView getWithdraw(ModelAndView mav, MemberVO vo, HttpSession session) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
 		mav.setViewName("stopmembership");
 		return mav;
@@ -276,9 +282,8 @@ public class HomeController {
 	public ModelAndView getFindId(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
-		
-		
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
 		mav.setViewName("findid");
 		return mav;
@@ -291,7 +296,8 @@ public class HomeController {
 	public ModelAndView postFindId(ModelAndView mav, String findbyemail) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
 		
 		String result = memberService.isMemberEmail(findbyemail);
@@ -305,9 +311,10 @@ public class HomeController {
 	
 	@GetMapping("/login")
 	public ModelAndView login(ModelAndView mav, HttpServletRequest request, HttpSession session) {
-		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
 		//이전페이지를 받는다. 로그인 버튼을 받았을때의 위치를 기억한다.
 		//System.out.println(request.getHeader("referer"));
@@ -321,9 +328,10 @@ public class HomeController {
 	
 	@PostMapping("/login")
 	public ModelAndView login(ModelAndView mav, MemberVO vo) {
-		//이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		//여기까지가 우측탭 정보
 		memberService.checkMember(vo);
 		
@@ -396,9 +404,10 @@ public class HomeController {
 	//여기는 home>작성방법
 	@GetMapping("/howto.do")
 	public ModelAndView howToMakeText(ModelAndView mav) {
-		//화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage",ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
 		mav.setViewName("howto");
 		return mav;

@@ -3,7 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 
-
 <div class="right_info_tab">
     <div id="recent_update_list" class="dotted">
         <div id="update_list">
@@ -27,10 +26,17 @@
 
     </div>
     <div id="todays_random" class="dotted">
-        <div id="random_list">
-            <a href="./findramyun.do?name=${randomRamyunImage}" ><img src="http://ramyun.wiki/resources/images/${randomRamyunImage}.png" alt="${randomRamyunImage}" style="width: 280px;height: 300px;"></a>
-        </div>
+        <!-- 여기에  bxslider가 적용되어있다.-->
+        <ul id="random_list" class="bxslider" >
+            <c:forEach var="randomRamyunImage" items="${randomRamyunImageList}" >
+                <li>
+                    <a href="./findramyun.do?name=${randomRamyunImage.brandNameKor}" >
+                        <img src="http://ramyun.wiki/resources/images/${randomRamyunImage.brandNameKor}.png" alt="${randomRamyunImage.brandNameKor}" style="width: 280px;height: 300px;" title="${randomRamyunImage.brandNameKor}">
+                    </a>
+                </li>
+            </c:forEach>
+        </ul>
     </div>
     
-    
 </div> 
+

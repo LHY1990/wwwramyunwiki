@@ -18,7 +18,7 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	
 	<!-- 파비콘 등록 -->
-	<resources mapping="/favicon.ico"  location="/favicon.ico"/>
+	<resources mapping="/favicon.ico"  location="/resources/images/favicon.ico"/>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

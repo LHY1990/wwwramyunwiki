@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidetab.css">
 
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/login.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/home.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascript/login.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <%@ include file="./bxslider.jsp" %>
     <title>라면위키:로그인 -라면위키</title>
 
 </head>
@@ -59,9 +59,9 @@
                             <form action="./afterlogin" method="post">
                                 <div style="margin-top : 50px;"></div>
                                 <div id="type_id">아이디</div>
-                                <input id="type_id" type="text" name="memberId" autofocus><br><br>
+                                <input id="type_id" minlength="4" type="text" name="memberId" placeholder="아이디를 입력하세요" autofocus><br><br>
                                 <div id="type_password">비밀번호</div>
-                                <input id="type_password" type="password" name="memberPassword">
+                                <input id="type_password" minlength="4" type="password" placeholder="비밀번호를 입력하세요"  name="memberPassword">
                                 <div id="finding_id_password"><a href="./findid.do">아이디/비밀번호 찾기</a></div><br>
                                 <div id="join_member"><a href="./rules">회원가입</a></div>
                                 <div id="member_login" ><input type="submit" value="로그인" id="member_login" style="background-color: rgb(113, 113, 223, 0.3);"></div>

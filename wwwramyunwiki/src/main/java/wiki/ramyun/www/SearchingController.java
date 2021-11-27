@@ -59,9 +59,10 @@ public class SearchingController {
 	// 검색 값 받아오기. 일단 신라면으로 테스트
 	@GetMapping("/findramyun.do")
 	public ModelAndView getSearchKeyword(ModelAndView mav, String name) {
-		// 이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		// 앞뒤 공백을 없앰
 		name = name.trim();
@@ -113,9 +114,10 @@ public class SearchingController {
 	// 검색어가 없다면 등록하러가기
 	@GetMapping("/registration")
 	public ModelAndView registration(ModelAndView mav) {
-		// 이건 10개만 가져와서 오른쪽에 뿌리는것. 스프링으로 빼야할듯
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		// 여기까지가 우측탭 정보
 		mav.setViewName("registration");
@@ -142,9 +144,10 @@ public class SearchingController {
 
 	@PostMapping("/findramyun.do")
 	public ModelAndView postSearchKeyword(ModelAndView mav, String searchBoxInput) {
-		// 화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		// 앞뒤 공백을 없앰
 		searchBoxInput = searchBoxInput.trim();
@@ -194,9 +197,10 @@ public class SearchingController {
 
 	@GetMapping("/editramyun.do")
 	public ModelAndView getEditRamyun(ModelAndView mav, String name) {
-		// 화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		// 편집용 데이터를 가져온다.
 		try {
@@ -251,9 +255,10 @@ public class SearchingController {
 			System.out.println("~~~~업로드된파일이없음~~~~~");
 		}
 
-		// 화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		// 여기가 실제로 라면을 업데이트하는곳
 		ramyunService.updateRamyunToDB(vo);
@@ -272,10 +277,10 @@ public class SearchingController {
 
 	@GetMapping("/recentupdating")
 	public ModelAndView getRecentupdating(ModelAndView mav) {
-
-		// 화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		// 일단 라면만 다 뿌리자 28개
 		List<RamyunVO> ramyunUpdatedList = ramyunService.getRecentsUpdateListFromDBWhole();
@@ -288,9 +293,10 @@ public class SearchingController {
 
 	@GetMapping("/nutrient")
 	public ModelAndView getNutrient(ModelAndView mav) {
-		// 화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		IngredientVO ingredient;
 
@@ -305,9 +311,10 @@ public class SearchingController {
 	@GetMapping("/editingredient.do")
 	public ModelAndView editIngredient(IngredientVO ingredient, String findname, ModelAndView mav) {// 얘만 findname을 인자로
 																									// 받는다. 변수명이 겹쳐서
-		// 화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		// 아래는 편집탭으로 넘어가면서 같은 이름으로 가져오기
 		ingredient = ingredientService.selectIngredientByNameForEdit(findname);
@@ -320,9 +327,10 @@ public class SearchingController {
 	@PostMapping("/editingredient.do")
 	public ModelAndView afterEditIngredient(IngredientVO vo, ModelAndView mav) {
 		// 성분 수정뒤에 이 컨트롤러로 온다.
-		// 화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		ingredientService.updateIngredient(vo);
 		IngredientVO ingredient = ingredientService.selectIngredientByName(vo.getName());
@@ -335,9 +343,10 @@ public class SearchingController {
 	// 랜덤으로 하나뿌림
 	@GetMapping("/manufactory")
 	public ModelAndView getManufactory(ModelAndView mav, ManufactoryVO vo) {
-		// 화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		// 랜덤으로 하나 가져오기
 		vo = manufactoryService.getRandomOne();
@@ -351,9 +360,10 @@ public class SearchingController {
 	// 공장 작성후 post로 보내면 여기서 받는다.
 	@PostMapping("/updatemanufactory.do")
 	public ModelAndView updateManufactory(ModelAndView mav, ManufactoryVO vo) {
-		// 화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		// 받은 vo이름으로 업데이트
 		manufactoryService.updateManufactory(vo);
@@ -369,9 +379,10 @@ public class SearchingController {
 	// 공장 정보 편집
 	@GetMapping("/editmanufactory.do")
 	public ModelAndView getEditManufactory(ModelAndView mav, String findname) {
-		// 화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		ManufactoryVO vo = manufactoryService.selectFactoryByNameForEdit(findname);
 		mav.addObject("manufactory", vo);
@@ -383,9 +394,10 @@ public class SearchingController {
 	// 태그 탭에 접근
 	@GetMapping("/tag")
 	public ModelAndView getTag(ModelAndView mav, int page) {
-		// 화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		// 페이지 넘버를 받아서 해당 vo를 가져온다.
 		List<SearchVO> voList = searchService.searchTagPage(page);
@@ -411,9 +423,10 @@ public class SearchingController {
 	// 역사버튼 구현
 	@GetMapping("/ramyunhistory.do")
 	public ModelAndView getRamyunHistoryByName(ModelAndView mav, String name) {
-		// 화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		// 일단 이것들은 입력이 되어야 출력이 되니까 입력부터 구현하고 돌아온다. 입력은 라면 업데이트부터
 		List<RamyunHistoryVO> voList = ramyunHistoryService.getHistoryByName(name);
@@ -426,9 +439,10 @@ public class SearchingController {
 	// 역사탭에서 보기구현
 	@GetMapping("/ramyunlog.do")
 	public ModelAndView getRamyunHistoryById(ModelAndView mav, String id) {
-		// 화면에 10개를 뿌린다.
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		mav.addObject("randomRamyunImage", ramyunService.getTodaysRamyunImage());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		RamyunHistoryVO vo = ramyunHistoryService.getHistoryById(id);
 		mav.addObject("ramyun", vo);

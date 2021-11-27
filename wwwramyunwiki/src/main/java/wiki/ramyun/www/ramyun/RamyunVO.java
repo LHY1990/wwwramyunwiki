@@ -235,17 +235,7 @@ public class RamyunVO {
 	
 	@Override
 	public String toString() {
-		return "RamyunVO [brandNameKor=" + brandNameKor + ", brandNameEng=" + brandNameEng + ", updatedDate="
-				+ updatedDate + ", corporateName=" + corporateName + ", developedDate=" + developedDate + ", weight="
-				+ weight + ", calorie=" + calorie + ", scovilleUnit=" + scovilleUnit + ", foodCategory=" + foodCategory
-				+ ", recipe=" + recipe + ", barcode=" + barcode + ", noodleShape=" + noodleShape + ", soupComposition="
-				+ soupComposition + ", discontinuance=" + discontinuance + ", relatedRamyun=" + relatedRamyun
-				+ ", waterCapacityByNumber=" + waterCapacityByNumber + ", materialList=" + materialList
-				+ ", itemReportNumber=" + itemReportNumber + ", expirationDate=" + expirationDate + ", soupPosition="
-				+ soupPosition + ", natrium=" + natrium + ", carbohydrate=" + carbohydrate + ", sugars=" + sugars
-				+ ", fat=" + fat + ", transfat=" + transfat + ", saturatedfat=" + saturatedfat + ", cholesterol="
-				+ cholesterol + ", protein=" + protein + ", calcium=" + calcium + ", image=" + image
-				+ ", userEditedContents=" + userEditedContents + "]";
+		return "RamyunVO [brandNameKor=" + brandNameKor+"]";
 	}
 	
 	
