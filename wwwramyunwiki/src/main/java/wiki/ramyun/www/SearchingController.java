@@ -23,6 +23,7 @@ import wiki.ramyun.www.ingredient.IngredientVO;
 import wiki.ramyun.www.ingredient.service.IngredientService;
 import wiki.ramyun.www.manufactory.ManufactoryVO;
 import wiki.ramyun.www.manufactory.service.ManufactoryService;
+import wiki.ramyun.www.pagenation.Pagenation;
 import wiki.ramyun.www.ramyun.RamyunVO;
 import wiki.ramyun.www.ramyun.service.RamyunService;
 import wiki.ramyun.www.ramyunhistory.RamyunHistoryVO;
@@ -55,6 +56,10 @@ public class SearchingController {
 	@Autowired
 	@Qualifier("searchService")
 	private SearchService searchService;
+	
+	@Autowired
+	@Qualifier("pagenation")
+	private Pagenation pagenation;
 
 	// 검색 값 받아오기. 일단 신라면으로 테스트
 	@GetMapping("/findramyun.do")
@@ -446,15 +451,22 @@ public class SearchingController {
 
 	// 역사버튼 구현
 	@GetMapping("/ramyunhistory.do")
-	public ModelAndView getRamyunHistoryByName(ModelAndView mav, String name) {
+	public ModelAndView getRamyunHistoryByName(ModelAndView mav, String name,int page, int range) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		//우측탭 라면 이미지 리스트 가져오기
 		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
-		// 일단 이것들은 입력이 되어야 출력이 되니까 입력부터 구현하고 돌아온다. 입력은 라면 업데이트부터
-		List<RamyunHistoryVO> voList = ramyunHistoryService.getHistoryByName(name);
-
+		//처음엔 페이지1, 레인지 1로 가져온다.총 갯수도. 나중엔 그 값을 변경하고
+		pagenation.pageInfo(page, range, ramyunHistoryService.getRamyunHistroyCount());
+		
+		//제대로 작동한다.
+		List<RamyunHistoryVO> voList = ramyunHistoryService.getHistoryByName(name, pagenation.getStartList(), pagenation.getListSize());//시작번호부터 끝까지.
+		
+		System.out.println(pagenation.isPrev()+" "+pagenation.isNext());
+		
+		mav.addObject("ramyunName", name);//주소용으로 하나 추가한것
+		mav.addObject("pagenation", pagenation);
 		mav.addObject("ramyunHistoryList", voList);
 		mav.setViewName("ramyunhistory");
 		return mav;

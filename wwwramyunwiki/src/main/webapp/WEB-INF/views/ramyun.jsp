@@ -43,7 +43,7 @@
 
                                 <!-- 역사 -->
                                 <div class="sections_link">
-                                    <a href="./ramyunhistory.do?name=${ramyun.brandNameKor}" style="vertical-align: unset; color:black">역사</a>
+                                    <a href="./ramyunhistory.do?name=${ramyun.brandNameKor}&page=1&range=1" style="vertical-align: unset; color:black">역사</a>
                                 </div>
                                 
                                 

@@ -36,7 +36,21 @@ public class RamyunHistoryDAO {
 		
 		return list;
 	}
-
+	
+	
+	//getRamyunHistoryByName의 오버로딩. 범위를 정해서 가져온다.
+	public List<RamyunHistoryVO> getRamyunHistoryByName(String name, int startPage, int endPage) {
+		List<RamyunHistoryVO> list=new ArrayList<RamyunHistoryVO>();
+		
+		for(RamyunHistoryVO vo : mapper.selectPageOfHistoryByName(name, startPage, endPage)) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
+		
+		return list;
+	}
+	
 	
 	// 라면업데이트와 동시에 라면히스토리에 같은내용+작성자 저장하기
 	public void updateRamyunHistory(RamyunVO vo, String writer) {
@@ -96,5 +110,13 @@ public class RamyunHistoryDAO {
 		mapper.deleteRamyunHistoryById(id);
 		
 	}
+
+
+	public int getRamyunHistoryCount() {
+		return mapper.countAllRamyunHistory();
+	}
+
+
+	
 	
 }

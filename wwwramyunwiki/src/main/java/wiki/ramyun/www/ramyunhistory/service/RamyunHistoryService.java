@@ -21,6 +21,12 @@ public class RamyunHistoryService {
 	public List<RamyunHistoryVO> getHistoryByName(String name) {
 		return dao.getRamyunHistoryByName(name);
 	}
+	
+	
+	//오버로딩, 페이지네이션을 추가해서 가져온다.
+	public List<RamyunHistoryVO> getHistoryByName(String name, int startPage, int endPage) {
+		return dao.getRamyunHistoryByName(name,startPage,endPage);
+	}
 
 	
 	public void updateRamyunHistoryToDB(RamyunVO vo, String writer) {
@@ -59,6 +65,15 @@ public class RamyunHistoryService {
 	public void deleteRamyunHistoryById(String id) {
 		dao.deleteRamyunHistoryById(id);
 	}
+
+
+	public int getRamyunHistroyCount() {
+		// TODO Auto-generated method stub
+		return dao.getRamyunHistoryCount();
+	}
+
+
+	
 	
 	
 

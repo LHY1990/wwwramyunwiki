@@ -2,9 +2,9 @@ package wiki.ramyun.www.pagenation;
 
 import org.springframework.stereotype.Component;
 
-@Deprecated
+@Component
 public class Pagenation {
-	private int listSize=20;			//한 페이지당 보여질 리스트의 갯수
+	private int listSize=3;			//한 페이지당 보여질 리스트의 갯수
     private int rangeSize=10; 		//한 페이지 범위에 보여질 페이지 갯수
 	private int page; 				//현재 페이지 번호 
 	private int range;			    //각 페이지별 시작번호
@@ -95,10 +95,11 @@ public class Pagenation {
 		this.startList=(page-1)*listSize;
 		
 		//이전 버튼 상태. 첫페이지면 꺼지고 아니면 켜지고
-		this.prev=range==1?false : true;
+		this.prev=(range==1?false : true);
 		
 		//다음버튼 상태. 마지막 페이지가 페이지 갯수보다 작다면 없음
-		this.next =endPage>pageCnt?false:true;
+		this.next =(endPage>pageCnt?false:true);
+		
 		if(this.endPage>this.pageCnt) {
 			//만약에 마지막 페이지가 페이지 갯수랑 같다면 다음은 없다
 			this.endPage=this.pageCnt;

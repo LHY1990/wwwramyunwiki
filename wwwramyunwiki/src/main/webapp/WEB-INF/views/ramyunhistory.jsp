@@ -66,11 +66,22 @@
                     </div>
                     <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
                     <div action="./editingredient.do" method="post"  >
+                        <!-- 게시판 번호 -->
+
+                        <!-- [이전]버튼 -->
+                        <c:if test="${pagenation.prev}"><a href="./ramyunhistory.do?name=${ramyunName}&page=${(pagenation.range-2)*10+1}&range=${pagenation.range-1}">[이전]</a></c:if>
+                        <!-- [1]버튼 -->
+                        <c:forEach var="index" begin ="${pagenation.startPage}" end="${pagenation.endPage}">
+                            <a href="./ramyunhistory.do?name=${ramyunName}&page=${index}&range=${pagenation.range}">[${index}]</a>
+                        </c:forEach>
+                        <!-- [다음]버튼 -->
+                        <c:if test="${pagenation.next}"><a href="./ramyunhistory.do?name=${ramyunName}&page=${(pagenation.range*10)+1}&range=${pagenation.range+1}">[다음]</a></c:if>
+
+
                         <!-- 히스토리는 여기에 들어간다. -->
                         <div id="log_section" style="width: 100%;height: auto; text-align: left;">
-                        
+                            
                             <c:forEach var="ramyun_history" items="${ramyunHistoryList}" begin="0">
-                                    
                                 <p style="margin: 0%;padding: 0%; width: 100%;">
                                     <a id="ramyun_history_one" href="./findramyun.do?name=${ramyun_history.brandNameKor}" >
                                         <strong>${ramyun_history.brandNameKor}  </strong> 
@@ -82,14 +93,11 @@
                                     |   log : ${ramyun_history.id}  |  
                                     <a href="./ramyunlog.do?id=${ramyun_history.id}">(이 버전으로 보기)</a> | 
                                     <a href="./ramyunlograw.do?id=${ramyun_history.id}" style="color : brown">원문으로 보기</a>
-                                    
                                 </p>
-
                             </c:forEach>
-                        
-                        
                         </div>
                         <!-- 히스토리는 여기서 끝난다. -->
+
                     </div>
                     <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
                 <!-- 여기서 끝나야한다 -->
