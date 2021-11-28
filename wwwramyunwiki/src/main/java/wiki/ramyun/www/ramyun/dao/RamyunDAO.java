@@ -166,4 +166,20 @@ public class RamyunDAO {
 		return list;
 
 	}
+
+
+	//랜덤으로 라면 하나를 가져온다. 날짜 처리도한다.
+	public RamyunVO selectRandomRamyun() {
+		RamyunVO vo=null;
+		try {
+			vo=mapper.selectRandomRamyun();
+		} catch (Exception e) {e.printStackTrace();}
+		
+		//00초로 끝나는 경우 1초를 더해준다.
+		try {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+		}catch(Exception e){	e.printStackTrace();}
+		
+		return vo;
+	}
 }

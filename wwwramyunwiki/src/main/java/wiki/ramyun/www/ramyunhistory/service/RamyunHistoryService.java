@@ -41,6 +41,13 @@ public class RamyunHistoryService {
 		
 		return vo;
 	}
+	
+	//아이디로 라면을 검색해서 반환한다. RAW로 보기에 컨버팅은 없다
+	public RamyunHistoryVO getHistoryByIdAsRaw(String id) {
+		RamyunHistoryVO vo =dao.getRamyunHistoryById(id);
+		
+		return vo;
+	}
 
 
 	public List<RamyunHistoryVO> selectAllFromRamyunHistoryDB() {

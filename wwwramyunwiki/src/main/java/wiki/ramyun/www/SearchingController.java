@@ -110,6 +110,30 @@ public class SearchingController {
 		mav.setViewName("notfounding");
 		return mav;
 	}
+	
+	
+	//검색창 왼쪽의 셔플 버튼을 눌렀을때, 랜덤 라면으로 링크될것
+	@GetMapping("/getrandomramyun.do")
+	public ModelAndView getRandomRamyun(ModelAndView mav) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
+		try {
+			RamyunVO vo = ramyunService.getRandomRamyun();
+			if (vo != null) {
+				// 만약에 널이 아니면 라면을 반환
+				mav.addObject("ramyun", vo);
+				mav.setViewName("ramyun");
+				return mav;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return mav;
+	}
+	
 
 	// 검색어가 없다면 등록하러가기
 	@GetMapping("/registration")
@@ -445,6 +469,21 @@ public class SearchingController {
 		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		RamyunHistoryVO vo = ramyunHistoryService.getHistoryById(id);
+		mav.addObject("ramyun", vo);
+		mav.setViewName("ramyunlogview");
+		return mav;
+	}
+	
+	
+	// 역사탭에서 보기구현 원문으로 보기
+	@GetMapping("/ramyunlograw.do")
+	public ModelAndView getRamyunHistoryRawById(ModelAndView mav, String id) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
+
+		RamyunHistoryVO vo = ramyunHistoryService.getHistoryByIdAsRaw(id);
 		mav.addObject("ramyun", vo);
 		mav.setViewName("ramyunlogview");
 		return mav;

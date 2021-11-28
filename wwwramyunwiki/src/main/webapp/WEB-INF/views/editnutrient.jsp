@@ -76,14 +76,12 @@
                             </div>
                         </div>
                         <div id="ingredient_information" style="margin-top: 10px;"></div>
-                        <span id="error_alerting_span_A" style="color: red;"></span>
+                        <span id="error_alerting_span_A" style="color: red;"></span><br>
                         <div id="user_description" style="margin: 0px;"><textarea id="nutrition_description" name="description" maxlength="8000" id="description" style="width: 99%; height: 1200px; resize: none;overflow-y: scroll;">${ingredient.description}</textarea></div>
-                        <span id="error_alerting_span_B" style="color: red; line-height: 0px;"></span>
-                        <div style="width: 99%; height: 30px;">
-                            <input id="submit_button" type="submit" value="등록" style="width: 100%;height: 100%;">
+                        <span id="error_alerting_span_B" style="color: red; line-height: 24px;"> </span>
+                        <div style="width: 99%;">
+                            <input id="submit_button" type="submit" value="등록" style="width: 100%;">
                         </div>
-                        
-                        <div style="width: 100%; outline: rgb(122, 103, 129) 1px dotted;"></div>
                     </form>
                     <!-- //////////////////////////본문  끝 /////////////////////////////////////////////////-->
                     

@@ -222,17 +222,47 @@ window.addEventListener('DOMContentLoaded', function(){
             },
             
             success : function(items) {
-                console.log("정상작동");
-                console.log(items[0]);
                 if(items[0]===undefined){
                     $('#error_alerting_span_A').text("");
                     $('#error_alerting_span_B').text("");
-                    $('#user_edited_contents').css('backgroundColor','rgb(255,255,255,1)');
+                    $('#nutrition_description').css('backgroundColor','rgb(255,255,255,1)');
                     $('#submit_button').css('display','block');
                 }else{
                     $('#error_alerting_span_A').text(items[0]);
                     $('#error_alerting_span_B').text(items[0]);
-                    $('#user_edited_contents').css('backgroundColor','rgb(255,0,0,0.25)');
+                    $('#nutrition_description').css('backgroundColor','rgb(255,0,0,0.25)');
+                    $('#submit_button').css('display','none');
+                }
+            },
+            error : function(error) {
+                console.log("에러");
+            }
+    
+        })
+    });
+
+
+    //제조공장 게시글의 편집하는걸 실시간으로 보낸다.
+    $('#manufactory_description').on("keyup change", (event)=>{
+        $.ajax({
+            type : "POST",
+            url : "./grammercheck.do",
+            dataType : "json",
+            data : {
+                "contents" : $('#manufactory_description').val()
+
+            },
+            
+            success : function(items) {
+                if(items[0]===undefined){
+                    $('#error_alerting_span_A').text("");
+                    $('#error_alerting_span_B').text("");
+                    $('#manufactory_description').css('backgroundColor','rgb(255,255,255,1)');
+                    $('#submit_button').css('display','block');
+                }else{
+                    $('#error_alerting_span_A').text(items[0]);
+                    $('#error_alerting_span_B').text(items[0]);
+                    $('#manufactory_description').css('backgroundColor','rgb(255,0,0,0.25)');
                     $('#submit_button').css('display','none');
                 }
             },

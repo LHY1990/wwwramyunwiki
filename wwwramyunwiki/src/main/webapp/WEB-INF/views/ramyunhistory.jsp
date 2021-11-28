@@ -80,7 +80,8 @@
                                     <fmt:formatDate pattern="yyyy.MM.dd hh:mm:ss" value="${parsedDateTime}"/>
                                     |  <strong id="writer"> 작성자 : ${ramyun_history.writer}</strong> 
                                     |   log : ${ramyun_history.id}  |  
-                                    <a href="./ramyunlog.do?id=${ramyun_history.id}">(이 버전으로 보기)</a>
+                                    <a href="./ramyunlog.do?id=${ramyun_history.id}">(이 버전으로 보기)</a> | 
+                                    <a href="./ramyunlograw.do?id=${ramyun_history.id}" style="color : brown">원문으로 보기</a>
                                     
                                 </p>
 

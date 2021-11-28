@@ -5,7 +5,7 @@
 
 
 <!-- 상단 패널 시작 -->
-<div class="top_pannel" id="header" >
+<div class="top_pannel" id="header" style="z-index: 100;">
         
         
     <div class="top_pannel_link" >
@@ -16,7 +16,7 @@
         <div class="inner_top_pannel_link" id="title">
             <!-- 대표 이름 -->
             <div>
-                <a href="./home" >라면위키</a> 
+                <a href="./home" style="color:white">라면위키</a> 
             </div>
                
         </div>
@@ -48,8 +48,8 @@
 
         <div class="search_box">
             <div id="inner_search_box">
-                <div id="random_icon" >
-                    <i class="fas fa-random"></i>
+                <div id="random_icon">
+                    <a href="./getrandomramyun.do" style="color: white;"><i class="fas fa-random"></i></a>
                 </div>
                 <form action="./findramyun.do" method="post" style="font-family: FontAwesome;">
                     <input id="search_box_textarea" list="search_list_auto" name="searchBoxInput" placeholder="Search" autocomplete="off" >

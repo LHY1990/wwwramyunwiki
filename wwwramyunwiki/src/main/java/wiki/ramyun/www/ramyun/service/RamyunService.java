@@ -104,4 +104,16 @@ public class RamyunService {
 
 	}
 
+	
+	//랜덤으로 라면을 하나 가져온다.
+	public RamyunVO getRandomRamyun() {
+		RamyunVO vo = dao.selectRandomRamyun();
+		try {
+			vo.setUserEditedContents(WikiStringResolver.encodeContents(vo.getUserEditedContents()));
+		} catch (Exception e) {
+			System.out.println("RamyunService의 getRandomRamyun에서 예외생김. 검색어 결과없음");
+		}
+		return vo;
+	}
+
 }

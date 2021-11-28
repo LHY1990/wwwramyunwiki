@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import wiki.ramyun.www.ingredient.service.IngredientService;
 import wiki.ramyun.www.manufactory.service.ManufactoryService;
 import wiki.ramyun.www.member.service.MemberService;
+import wiki.ramyun.www.pagenation.Pagenation;
 import wiki.ramyun.www.ramyun.service.RamyunService;
 import wiki.ramyun.www.ramyunhistory.service.RamyunHistoryService;
 
@@ -36,6 +37,7 @@ public class AdminController {
 	@Qualifier("manufactoryService")
 	private ManufactoryService manufactoryService;
 	
+
 	
 	// 관리자모드 입장
 	@GetMapping("/admin.do")
@@ -50,6 +52,7 @@ public class AdminController {
 		return mav;
 	}
 
+	
 	// 관리자 모드에서 라면삭제
 	@GetMapping("/deleteramyun.do")
 	public String deleteRamyunByName(ModelAndView mav, String name) {

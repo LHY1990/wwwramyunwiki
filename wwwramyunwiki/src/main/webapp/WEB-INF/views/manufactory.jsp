@@ -57,11 +57,11 @@
                                 <%if(session.getAttribute("isMember")=="true"){%>
                                 <button class="sections_link linking_button" id="manufactorylikes" name="manufactoryName" type="button">
                                     <i class="far fa-thumbs-up" ></i>
-                                    <div id="recommand_thumb" style="float: right;">추천</div>
+                                    <div id="recommand_thumb" style="float: right; color: black;">추천</div>
                                 </button>
                                 <%}else{%>
                                 <button class="sections_link linking_button" id="manufactorylikes" name="manufactoryName" type="submit" >
-                                    <a href="./login"  style="vertical-align: unset;" onclick="login_needed()">
+                                    <a href="./login"  style="vertical-align: unset; color: black;" onclick="login_needed()">
                                         <i class="far fa-thumbs-up"></i> 추천</button>   
                                     </a>
                                 <%}%>

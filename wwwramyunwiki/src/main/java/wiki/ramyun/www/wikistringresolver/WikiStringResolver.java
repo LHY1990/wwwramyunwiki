@@ -1,5 +1,9 @@
 package wiki.ramyun.www.wikistringresolver;
 
+import java.util.regex.Pattern;
+
+import com.fasterxml.jackson.databind.deser.DataFormatReaders.Match;
+
 public class WikiStringResolver {
 	
 	//이미지 태그 한문장을 분석한다.
@@ -483,7 +487,9 @@ public class WikiStringResolver {
 	public static void checkHtmlEditingError(String input) throws Exception {
 		//금지할 태그는 여기에 남긴다. 모두 메세지 처리된다.
 		input=input.replace(" ", "");
-		
+		if(input.contains("<d") || input.contains("<di")|| input.contains("<div")||input.contains("div>")){
+			throw new Exception("div 태그를 직접 편집하면 안됩니다.");
+		}
 		if(input.contains("<div>") || input.contains("</div>")|| input.contains("<div")||input.contains("div>")){
 			throw new Exception("div 태그를 직접 편집하면 안됩니다.");
 		}
@@ -504,6 +510,9 @@ public class WikiStringResolver {
 		}
 		if(input.contains("<textarea>") || input.contains("</textarea>")||input.contains("<textarea") || input.contains("textarea>")){
 			throw new Exception("textarea 태그를 직접 편집하면 안됩니다.");
+		}
+		if(input.contains("<")) {
+			throw new Exception("라면위키에서는 임시적으로 < 문자 사용을 금합니다. 양해 부탁드립니다.");
 		}
 		
 	}
