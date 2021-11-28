@@ -55,16 +55,26 @@ public class ManufactoryService {
 	// 최근 업데이트 분 가져오기
 	public ManufactoryVO getRecentOne() {
 		ManufactoryVO vo=dao.selectRecentOne();
-		//서비스 레벨에서 조회할때 위키 내용을 변환한다.
-		vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
+		
+		try {
+			//서비스 레벨에서 조회할때 위키 내용을 변환한다.
+			vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
+		} catch (Exception e) {
+			System.out.println("ManufactoryService의 getRecentOne에서 WikiStringResolver에서 예외발생");
+		}
 		return vo;
 	}
 	
 	//랜덤으로 하나 불러온다. 홈탭에서 제조공장 선택시 작용
 	public ManufactoryVO getRandomOne() {
 		ManufactoryVO vo=dao.getRandomOne();
-		//서비스 레벨에서 조회할때 위키 내용을 변환한다.
-		vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
+
+		try {
+			//서비스 레벨에서 조회할때 위키 내용을 변환한다.
+			vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
+		} catch (Exception e) {
+			System.out.println("ManufactoryService의 getRandomOne에서 WikiStringResolver에서 예외발생");
+		}
 		return vo;
 	}
 

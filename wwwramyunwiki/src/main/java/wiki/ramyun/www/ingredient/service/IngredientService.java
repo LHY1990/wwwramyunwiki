@@ -54,7 +54,12 @@ public class IngredientService {
 	// 가장 최근에 수정된 영양성분을 가져온다.
 	public IngredientVO getRecentOne() {
 		IngredientVO vo =dao.getRecentsOne();
-		vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
+		try {
+			vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
+		} catch (Exception e) {
+			System.out.println("IngredientService의 getRecentOne에서 WikiStringResolver에서 예외발생");
+		}
+		
 		return vo;
 	}
 	
@@ -62,7 +67,11 @@ public class IngredientService {
 	//무작위로 하나 가져온다
 	public IngredientVO getRandomOne() {
 		IngredientVO vo =dao.getRandomOne();
-		vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
+		try {
+			vo.setDescription(WikiStringResolver.encodeContents(vo.getDescription()));
+		} catch (Exception e) {
+			System.out.println("IngredientService의 getRandomOne에서 WikiStringResolver에서 예외발생");
+		}
 		return vo;
 	}
 
@@ -72,13 +81,9 @@ public class IngredientService {
 		return dao.selectAllFromIngredient();
 	}
 
+	
 	//관리자모드에서 이름으로 삭제
 	public void deleteIngredientByName(String name) {
 		dao.deleteIngredientByName(name);
 	}
-
-
-	
-	
-	
 }

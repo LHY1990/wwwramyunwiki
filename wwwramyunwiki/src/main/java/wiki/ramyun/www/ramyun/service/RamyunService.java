@@ -84,6 +84,8 @@ public class RamyunService {
 
 	}
 
+	
+	//우측탭에 보여주는 이미지 리스트를 10개 추린다.
 	public List<RamyunVO> getTodaysRamyunImageList() {
 		
 		List<RamyunVO> list = new ArrayList<RamyunVO>();

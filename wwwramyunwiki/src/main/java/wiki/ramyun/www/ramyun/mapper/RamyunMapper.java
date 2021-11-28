@@ -71,6 +71,9 @@ public interface RamyunMapper {
 
 	@Select("select * from ramyun order by brand_name_kor")
 	public List<RamyunVO> selectAllFromRamyun();
+	
+	@Select("select * from ramyun order by rand()")
+	public List<RamyunVO> selectAllFromRamyunByRandom();
 
 	@Delete("delete from ramyun where brand_name_kor=#{name} ")
 	public void deleteRamyunByName(@Param("name")String name);

@@ -178,4 +178,70 @@ window.addEventListener('DOMContentLoaded', function(){
 
 
 
+    //라면 게시글의 편집하는걸 실시간으로 보낸다.
+    $('#user_made_section').on("keyup change", (event)=>{
+        $.ajax({
+            type : "POST",
+            url : "./grammercheck.do",
+            dataType : "json",
+            data : {
+                "contents" : $('#user_edited_contents').val()
+
+            },
+            
+            success : function(items) {
+                console.log(items[0]);
+                if(items[0]===undefined){
+                    $('#error_alerting_span_A').text("");
+                    $('#error_alerting_span_B').text("");
+                    $('#user_edited_contents').css('backgroundColor','rgb(255,255,255,1)');
+                    $('#submit_button').css('display','block');
+                }else{
+                    $('#error_alerting_span_A').text(items[0]);
+                    $('#error_alerting_span_B').text(items[0]);
+                    $('#user_edited_contents').css('backgroundColor','rgb(255,0,0,0.25)');
+                    $('#submit_button').css('display','none');
+                }
+            },
+            error : function(error) {
+                console.log("에러");
+            }
+    
+        })
+    });
+
+    //영양성분 게시글의 편집하는걸 실시간으로 보낸다.
+    $('#nutrition_description').on("keyup change", (event)=>{
+        $.ajax({
+            type : "POST",
+            url : "./grammercheck.do",
+            dataType : "json",
+            data : {
+                "contents" : $('#nutrition_description').val()
+
+            },
+            
+            success : function(items) {
+                console.log("정상작동");
+                console.log(items[0]);
+                if(items[0]===undefined){
+                    $('#error_alerting_span_A').text("");
+                    $('#error_alerting_span_B').text("");
+                    $('#user_edited_contents').css('backgroundColor','rgb(255,255,255,1)');
+                    $('#submit_button').css('display','block');
+                }else{
+                    $('#error_alerting_span_A').text(items[0]);
+                    $('#error_alerting_span_B').text(items[0]);
+                    $('#user_edited_contents').css('backgroundColor','rgb(255,0,0,0.25)');
+                    $('#submit_button').css('display','none');
+                }
+            },
+            error : function(error) {
+                console.log("에러");
+            }
+    
+        })
+    });
+
+
 })

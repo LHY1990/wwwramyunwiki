@@ -7,6 +7,7 @@
 <details style="position: fixed; margin-top: 50px; background-color: white; font-size: 11px;outline: rgb(0, 168, 87) dotted 1px ;">
     <summary> 라면 위키 작성법 </summary>
         <p>
+            <strong style="color: red;"># 각 게시물의 본문에만 적용됩니다.</strong>
             <table>
             <th  style="outline: rgb(0, 168, 87) dotted 1px ;">작성방법</th>
             <th  style="outline: rgb(0, 168, 87) dotted 1px ;">출력</th>

@@ -248,11 +248,11 @@
                             <!-- 추가 정보 끝 -->
 
                             <div id="user_made_section" style="margin-top: 10px;">
-                                내용작성<br>
+                                <span id="error_alerting_span_A" style="color: red;"></span><br>
                                 <!--작성된 글 -->
                                 <textarea name="userEditedContents" id="user_edited_contents" >${ramyun.userEditedContents}</textarea>
                             </div>
-                            
+                            <span id="error_alerting_span_B" style="color: red; line-height: 50px;"></span>
                             <!-- 서브밋 버튼이다. -->
                             <input id="submit_button" type="submit" name="${ramyun.brandNameKor}" style="width: 100%;height: 30px;margin-top: 20px;color: white;background-color: rgba(0, 0, 0, 0.3);" value="수정 하기"></input>
                             

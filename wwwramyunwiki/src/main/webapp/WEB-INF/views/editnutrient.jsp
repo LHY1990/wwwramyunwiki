@@ -37,24 +37,23 @@
                         <div id="section">
                             라면위키 : 영양 성분
                         </div>
+
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
                                 <!-- <div class="sections_link">역사</div> -->
-                                
-                                
                             </div>
-                            
                         </div>
+
                         <div id="edited_time">
                             <!-- 최근 수정 시각 : ${ingredient.updatedDate} -->
                         </div>
-                        <div style="height: 100px;">
 
-                        </div>
+                        <div style="height: 100px;"></div>
                         
                         <div id="sorting_category">
                             분류 : 영양 성분 | ${ingredient.name}
                         </div>
+
                         <a href="#submit_button" style="float : right; text-decoration: none; font-size: 12px; color: black;">[수정 버튼으로 가기]</a>
                     </div>
 
@@ -75,22 +74,11 @@
                                 <option value="조절제">조절제</option>
                             </select><br>
                             </div>
-                            
-                            
-                            
-                            
                         </div>
-                        <div id="ingredient_information" style="margin-top: 10px;">
-                            
-                        </div>
-                        <div id="user_description">
-                            <textarea name="description" maxlength="8000" id="description" style="width: 99%; height: 1200px; resize: none;overflow-y: scroll;">${ingredient.description}</textarea>
-                            
-                        </div>
-                        
-                        <div style="width: 100%; height: 20px;">
-
-                        </div>
+                        <div id="ingredient_information" style="margin-top: 10px;"></div>
+                        <span id="error_alerting_span_A" style="color: red;"></span>
+                        <div id="user_description" style="margin: 0px;"><textarea id="nutrition_description" name="description" maxlength="8000" id="description" style="width: 99%; height: 1200px; resize: none;overflow-y: scroll;">${ingredient.description}</textarea></div>
+                        <span id="error_alerting_span_B" style="color: red; line-height: 0px;"></span>
                         <div style="width: 99%; height: 30px;">
                             <input id="submit_button" type="submit" value="등록" style="width: 100%;height: 100%;">
                         </div>

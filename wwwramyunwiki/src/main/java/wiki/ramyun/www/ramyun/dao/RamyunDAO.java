@@ -154,10 +154,11 @@ public class RamyunDAO {
 	}
 
 
+	//우측 탭 아래 이미지에 뿌리는 이미지 랜덤으로 가져온다
 	public List<RamyunVO> getTodaysRamyunImage() {
 		List<RamyunVO> list=new ArrayList<RamyunVO>();
 		
-		for(RamyunVO vo : mapper.selectAllFromRamyun()) {
+		for(RamyunVO vo : mapper.selectAllFromRamyunByRandom()) {
 			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
 			list.add(vo);
 		}

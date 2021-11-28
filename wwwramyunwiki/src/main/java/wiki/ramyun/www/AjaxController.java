@@ -20,6 +20,7 @@ import wiki.ramyun.www.metadata.service.MetadataService;
 import wiki.ramyun.www.ramyun.service.RamyunService;
 import wiki.ramyun.www.ramyunhistory.service.RamyunHistoryService;
 import wiki.ramyun.www.search.service.SearchService;
+import wiki.ramyun.www.wikistringresolver.WikiStringResolver;
 
 @Controller
 public class AjaxController {
@@ -56,10 +57,7 @@ public class AjaxController {
 		}
 		System.out.println(searchList);
 		
-		
-		
 		return searchList;
-
 	}
 	
 	
@@ -92,15 +90,11 @@ public class AjaxController {
 	// 리스폰스 바디로 받아 비동기로 처리
 	@PostMapping("/likeramyun.do")
 	public @ResponseBody Object postLikeRamyun(HttpSession session, String ramyunName) {
-
 		// 회원의 이름을 가져온다.
 		String memberId = (String) session.getAttribute("memberId");
 		// 회원아이디와 라면이름이 제대로 들어오나 확인한다.
-
 		int likesCounts = metadataService.addLikeRamyun(memberId, ramyunName);
-
 		List<String> likeList = new ArrayList<String>();
-
 		likeList.add(String.valueOf(likesCounts));
 
 		return likeList;
@@ -187,5 +181,24 @@ public class AjaxController {
 
 		return reportList;
 	}
+	
+	
+	//라면,공장,영양성분 편집시에 문제가 있으면 실시간으로 보낸다.
+	@PostMapping("/grammercheck.do")
+	public @ResponseBody Object doEditingGoesRight(String contents) {
+		
+		List<String> result = new ArrayList<String>();
+		//예외 발생시 특수 문자열을 반환한다.
+		try {
+			WikiStringResolver.encodeContents(contents);
+		}catch(Exception e) {
+			//WikiStringResolver에서 던진 예외 메세지를 받아서 리스트로 view에 던진다.
+			result.add(e.getMessage());
+		}
+		
+		return result;
+	}
+	
+	
 	
 }

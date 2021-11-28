@@ -31,8 +31,13 @@ public class RamyunHistoryService {
 	//아이디로 라면을 검색해서 반환한다.
 	public RamyunHistoryVO getHistoryById(String id) {
 		RamyunHistoryVO vo =dao.getRamyunHistoryById(id);
-		//서비스레벨에서 조회할때 위키로 내용을 변환한다.
-		vo.setUserEditedContents(WikiStringResolver.encodeContents(vo.getUserEditedContents()));
+		
+		try {
+			//서비스레벨에서 조회할때 위키로 내용을 변환한다.
+			vo.setUserEditedContents(WikiStringResolver.encodeContents(vo.getUserEditedContents()));
+		} catch (Exception e) {
+			System.out.println("RamyunHistoryService의 getHistoryById에서 WikiStringResolver에서 예외발생");
+		}
 		
 		return vo;
 	}

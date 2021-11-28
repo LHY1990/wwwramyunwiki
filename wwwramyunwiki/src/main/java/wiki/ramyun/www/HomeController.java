@@ -128,14 +128,12 @@ public class HomeController {
 			session.setAttribute("memberLevel", vo.getLevel());
 			session.setAttribute("isMember", "true");
 			
-			
 			return "redirect:"+((String) session.getAttribute("lastVisitedLocation"));
 		}else {
 			session.setAttribute("isMember", "false");
+			
 			return "redirect:login";
 		}
-		
-	
 	}
 	
 	
