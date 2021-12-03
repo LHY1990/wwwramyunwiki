@@ -73,6 +73,9 @@ public interface MemberMapper {
 	@Select("select member_id from member where member_email=#{findbyemail} order by join_date desc limit 1")
 	public String selectLatestMemberByEmail(@Param("findbyemail")String findbyemail);
 
+	@Select("select * from member limit #{startList},#{listSize}")
+	public List<MemberVO> selectMemberByRange(@Param("startList")int startList,@Param("listSize") int listSize);
+
 	
 	
 	

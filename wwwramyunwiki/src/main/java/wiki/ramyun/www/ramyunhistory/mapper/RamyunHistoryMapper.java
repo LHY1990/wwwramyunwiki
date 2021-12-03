@@ -19,8 +19,8 @@ public interface RamyunHistoryMapper {
 	@Select("Select * from ramyun_history where brand_name_kor=#{name} order by id desc")
 	List<RamyunHistoryVO> selectHistoryByName(@Param("name")String name);
 	
-	@Select("Select * from ramyun_history where brand_name_kor=#{name} order by id desc limit #{startPage},#{endPage}")
-	List<RamyunHistoryVO> selectPageOfHistoryByName(@Param("name")String name, @Param("startPage")int startPage, @Param("endPage")int endPage);
+	@Select("Select * from ramyun_history where brand_name_kor=#{name} order by id desc limit #{startPage},#{listSize}")
+	List<RamyunHistoryVO> selectPageOfHistoryByName(@Param("name")String name, @Param("startPage")int startPage, @Param("listSize")int listSize);
 	
 	//주의 테이블 이름은 ramyun_history이다
 	@Insert("insert into ramyun_history(brand_name_kor, brand_name_eng, updated_date, corporate_name, developed_date, weight, calorie, scoville_unit, food_category, recipe, barcode, noodle_shape, soup_composition, discontinuance,"
@@ -51,8 +51,17 @@ public interface RamyunHistoryMapper {
 	@Delete("delete from ramyun_history where id=#{id}")
 	void deleteRamyunHistoryById(@Param("id")String id);
 
+	@Select("select count(*) from ramyun_history where brand_name_kor=#{name}")
+	int countAllRamyunHistory(@Param("name")String name);
+
+	@Select("select * from ramyun_history order by id limit #{startPage},#{listSize}")
+	List<RamyunHistoryVO> selectRamyunHistoryByRange(@Param("startPage") int startList, @Param("listSize") int listSize);
+
 	@Select("select count(*) from ramyun_history")
-	int countAllRamyunHistory();
+	int getRamyunHistoryCount();
+
+	@Select("select count(*) from ramyun_history where writer = #{nickname}")
+	int getContributionCountByNickname(@Param("nickname") String nickname);
 	
 	
 

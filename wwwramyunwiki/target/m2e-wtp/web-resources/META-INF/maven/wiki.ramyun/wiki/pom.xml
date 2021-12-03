@@ -171,41 +171,51 @@
 		<!-- 비밀번호 암호화 -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
 		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-core</artifactId>
-		    <version>5.3.12.RELEASE</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.3.12.RELEASE</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
 		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-web</artifactId>
-		    <version>5.3.12.RELEASE</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>5.3.12.RELEASE</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
 		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-config</artifactId>
-		    <version>5.3.12.RELEASE</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>5.3.12.RELEASE</version>
 		</dependency>
+		
+
+		
+		<!-- 비밀번호 암호화 끝 -->
+
+		<!-- 시큐리티 태그립-->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>5.3.12.RELEASE</version>
+		</dependency>
+		<!-- 시큐리티 끝 -->
 
 
-		<!-- 비밀번호 암호화 끝-->
-		
-		
 		<!-- 임시문자열 생성 -->
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>3.12.0</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.12.0</version>
 		</dependency>
-		
-		
+
+
 		<!-- 임시문자열 생성 끝 -->
-		
-		
+
+
 		<!-- 여기위로 내가 추가한것 -->
 
 
@@ -311,8 +321,8 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-		
-		
+
+
 	</dependencies>
 	<build>
 		<plugins>

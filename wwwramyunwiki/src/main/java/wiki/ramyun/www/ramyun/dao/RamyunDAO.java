@@ -182,4 +182,17 @@ public class RamyunDAO {
 		
 		return vo;
 	}
+
+
+	//범위로 가져온다.
+	public List<RamyunVO> selectRamyunByRange(int startList, int listSize) {
+		List<RamyunVO> list=new ArrayList<RamyunVO>();
+		
+		for(RamyunVO vo : mapper.selectRamyunByRange(startList, listSize)) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
+		return list;
+	}
 }

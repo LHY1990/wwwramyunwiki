@@ -511,9 +511,8 @@ public class WikiStringResolver {
 		if(input.contains("<textarea>") || input.contains("</textarea>")||input.contains("<textarea") || input.contains("textarea>")){
 			throw new Exception("textarea 태그를 직접 편집하면 안됩니다.");
 		}
-		if(input.contains("<")) {
-			throw new Exception("라면위키에서는 임시적으로 < 문자 사용을 금합니다. 양해 부탁드립니다.");
-		}
+		
+		
 		
 	}
 	

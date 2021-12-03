@@ -116,4 +116,8 @@ public class RamyunService {
 		return vo;
 	}
 
+	public List<RamyunVO> selectRamyunByRange(int startList, int listSize) {
+		return dao.selectRamyunByRange(startList, listSize);
+	}
+
 }

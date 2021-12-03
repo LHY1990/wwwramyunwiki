@@ -227,6 +227,11 @@ public class MemberService {
 		return "error!";
 	}
 
+
+	public List<MemberVO> selectMemberByRange(int startList, int listSize) {
+		return dao.selectMemberByRange(startList, listSize);
+	}
+
 	
 
 }

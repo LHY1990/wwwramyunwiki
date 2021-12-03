@@ -115,6 +115,7 @@ public class HomeController {
 	@PostMapping("/afterlogin")
 	public String home(MemberVO vo, HttpSession session) {
 		
+		
 		//멤버인지 체크하고 멤버면 정보를 보낸다.
 		boolean loginOK=memberService.checkMember(vo);
 		if(loginOK) {
@@ -127,6 +128,11 @@ public class HomeController {
 			session.setAttribute("memberNickname", vo.getNickname());
 			session.setAttribute("memberLevel", vo.getLevel());
 			session.setAttribute("isMember", "true");
+			session.setAttribute("memberContributionCount", ramyunHistoryService.getContributionCountByNickname(vo.getNickname()));
+
+			if(session.getAttribute("lastVisitedLocation").toString().contains("login")) {
+				return "redirect:home";
+			}
 			
 			return "redirect:"+((String) session.getAttribute("lastVisitedLocation"));
 		}else {
@@ -138,7 +144,7 @@ public class HomeController {
 	
 	
 	//로그아웃
-	@GetMapping("/logout.do")
+	@GetMapping("/logout")
 	public String logout(HttpSession session, HttpServletRequest request) {
 		session.invalidate();
 		
@@ -208,7 +214,7 @@ public class HomeController {
 	
 	
 	//패스워드 변경시 이쪽으로 넘어온다.
-	@GetMapping("changeuserpassword.do")
+	@GetMapping("/changeuserpassword.do")
 	public ModelAndView getChangeingPassword(ModelAndView mav, MemberVO vo, HttpSession session ) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -221,7 +227,7 @@ public class HomeController {
 	
 	
 	//비밀번호 변경 화면
-	@PostMapping("changingPassword.do")
+	@PostMapping("/changingPassword.do")
 	public ModelAndView postChangeingPassword(ModelAndView mav, MemberVO vo, HttpSession session, String oldPassword, String newPassword ) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -242,7 +248,7 @@ public class HomeController {
 	
 	
 	//회원탈퇴 요청
-	@GetMapping("withdraw.do")
+	@GetMapping("/withdraw.do")
 	public ModelAndView getWithdraw(ModelAndView mav, MemberVO vo, HttpSession session) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -255,7 +261,7 @@ public class HomeController {
 	
 	
 	//회원탈퇴 처리 후 감사창으로 이동
-	@PostMapping("withdraw.do")
+	@PostMapping("/withdraw.do")
 	public ModelAndView postWithdraw(ModelAndView mav, HttpSession session, String withdrawPassword) {
 		
 		//세션으로 회원 아이디를 받는다.
@@ -276,7 +282,7 @@ public class HomeController {
 	
 	
 	//계정정보 찾기 처음 접근
-	@GetMapping("findid.do")
+	@GetMapping("/findid.do")
 	public ModelAndView getFindId(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -290,7 +296,7 @@ public class HomeController {
 	
 	
 	//계정정보 찾기, 메일로 정보를 보내어 회원으로 하여금 비밀번호를 바꾸게한다.
-	@PostMapping("findid.do")
+	@PostMapping("/findid.do")
 	public ModelAndView postFindId(ModelAndView mav, String findbyemail) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -314,8 +320,6 @@ public class HomeController {
 		//우측탭 라면 이미지 리스트 가져오기
 		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
-		//이전페이지를 받는다. 로그인 버튼을 받았을때의 위치를 기억한다.
-		//System.out.println(request.getHeader("referer"));
 		
 		session.setAttribute("lastVisitedLocation", request.getHeader("referer"));
 		
@@ -324,17 +328,17 @@ public class HomeController {
 	}
 	
 	
-	@PostMapping("/login")
-	public ModelAndView login(ModelAndView mav, MemberVO vo) {
-		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
-		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-		//우측탭 라면 이미지 리스트 가져오기
-		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
-		//여기까지가 우측탭 정보
-		memberService.checkMember(vo);
-		
-		return mav;
-	}
+//	@PostMapping("/login")
+//	public ModelAndView login(ModelAndView mav, MemberVO vo) {
+//		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+//		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+//		//우측탭 라면 이미지 리스트 가져오기
+//		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
+//		//여기까지가 우측탭 정보
+//		memberService.checkMember(vo);
+//		
+//		return mav;
+//	}
 	
 	
 	
@@ -411,6 +415,17 @@ public class HomeController {
 		return mav;
 	}
 	
+	@GetMapping("/introduction.do")
+	public ModelAndView getIntroduction(ModelAndView mav) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
+		
+		mav.setViewName("introduction");
+		
+		return mav;
+	}
 	
 	
 }

@@ -67,5 +67,6 @@
 	<!-- aop 작동시킬 빈 등록 -->
 	<bean id="recentUpdateSender" class="wiki.ramyun.www.ramyun.service.RecentUpdateRamyunSenderAop"></bean>
 	
+
 	
 </beans>

@@ -126,6 +126,18 @@ public class MemberDAO {
 		return mapper.selectLatestMemberByEmail(findbyemail);
 	}
 
+
+	public List<MemberVO> selectMemberByRange(int startList, int listSize) {
+		List<MemberVO> list=new ArrayList<MemberVO>();
+		
+		for(MemberVO vo : mapper.selectMemberByRange(startList, listSize)) {
+			vo.setJoinDate(secondErrorHandler.checkSecond(vo.getJoinDate()));
+			list.add(vo);
+		}
+		
+		return list;
+	}
+
 	
 
 }

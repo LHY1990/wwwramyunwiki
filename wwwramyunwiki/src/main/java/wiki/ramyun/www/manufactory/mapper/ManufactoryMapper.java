@@ -54,6 +54,12 @@ public interface ManufactoryMapper {
 
 	@Delete("delete from manufactory where factory_name=#{name}")
 	void deleteManufactoryByName(@Param("name")String name);
+
+	@Select("select count(*) from manufactory")
+	int getManufactoryCount();
+
+	@Select("select * from manufactory order by factory_name limit #{startList},#{listSize}")
+	List<ManufactoryVO> selectManufactoryByRange(@Param("startList") int startList,@Param("listSize") int listSize);
 	
 	
 	

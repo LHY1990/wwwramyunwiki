@@ -69,7 +69,7 @@
                                     
                                     <br>
                                     <strong style="font-size: larger;">라면위키에 오신것을 환영합니다!</strong><br>
-                                    본 서비스가 무엇인지 궁금하다면, <a href="introduction.html">소개</a>를 읽어주세요.
+                                    본 서비스가 무엇인지 궁금하다면, <a href="./introduction.do">소개</a>를 읽어주세요.
                                     
                                 </div>
                             </div>

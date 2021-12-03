@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Pagenation {
-	private int listSize=3;			//한 페이지당 보여질 리스트의 갯수
+	private int listSize=60;			//한 페이지당 보여질 리스트의 갯수 10이 기본
     private int rangeSize=10; 		//한 페이지 범위에 보여질 페이지 갯수
 	private int page; 				//현재 페이지 번호 
 	private int range;			    //각 페이지별 시작번호
@@ -76,6 +76,12 @@ public class Pagenation {
 	public void setNext(boolean next) {
 		this.next = next;
 	}
+	public void setRangeSize(int rangeSize) {
+		this.rangeSize = rangeSize;
+	}
+	public void setPageCnt(int pageCnt) {
+		this.pageCnt = pageCnt;
+	}
 	
 	public void pageInfo(int page, int range, int listCnt) {
 		this.page=page;
@@ -83,7 +89,7 @@ public class Pagenation {
 		this.listCnt=listCnt;
 		
 		//전체 페이지 갯수. 123개면 각 페이지 별로 10개씩일때 12.3을 올림한다. 13페이지가 된다
-		this.pageCnt=(int)Math.ceil(listCnt/listSize);
+		this.pageCnt=(int) Math.ceil((double)listCnt/listSize);
 		
 		//시작페이지는 2번째장에서 첫번째라면 (2-1)*10+1 즉 21이다. 1~10이라면 (1-1)*10+1 즉 1
 		this.startPage=(range-1)*rangeSize+1;
@@ -98,7 +104,7 @@ public class Pagenation {
 		this.prev=(range==1?false : true);
 		
 		//다음버튼 상태. 마지막 페이지가 페이지 갯수보다 작다면 없음
-		this.next =(endPage>pageCnt?false:true);
+		this.next =(pageCnt>endPage?true:false);
 		
 		if(this.endPage>this.pageCnt) {
 			//만약에 마지막 페이지가 페이지 갯수랑 같다면 다음은 없다
@@ -106,6 +112,12 @@ public class Pagenation {
 			this.next=false;
 		}
 		
+	}
+	@Override
+	public String toString() {
+		return "Pagenation [listSize=" + listSize + ", rangeSize=" + rangeSize + ", page=" + page + ", range=" + range
+				+ ", listCnt=" + listCnt + ", pageCnt=" + pageCnt + ", startPage=" + startPage + ", startList="
+				+ startList + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next + "]";
 	}
 	
 }

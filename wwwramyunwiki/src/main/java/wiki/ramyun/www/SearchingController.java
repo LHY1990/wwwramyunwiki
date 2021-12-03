@@ -153,6 +153,7 @@ public class SearchingController {
 		return mav;
 	}
 
+	
 	@PostMapping("/regist.do")
 	public String registNew(ModelAndView mav, String register, String type) throws UnsupportedEncodingException {
 		// 빈공간을 없앤다.
@@ -449,6 +450,7 @@ public class SearchingController {
 		return mav;
 	}
 
+	
 	// 역사버튼 구현
 	@GetMapping("/ramyunhistory.do")
 	public ModelAndView getRamyunHistoryByName(ModelAndView mav, String name,int page, int range) {
@@ -458,12 +460,12 @@ public class SearchingController {
 		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 
 		//처음엔 페이지1, 레인지 1로 가져온다.총 갯수도. 나중엔 그 값을 변경하고
-		pagenation.pageInfo(page, range, ramyunHistoryService.getRamyunHistroyCount());
+		pagenation.setListSize(60);//페이지당 리스트 갯수를 정한다. 필요한 페이지마다 정해줄것
+		pagenation.pageInfo(page, range, ramyunHistoryService.getRamyunHistroyCount(name));
 		
-		//제대로 작동한다.
+		
+		//제대로 작동한다. 가져올 히스토리 갯수를 정확하게 해야 제대로 작동한다.
 		List<RamyunHistoryVO> voList = ramyunHistoryService.getHistoryByName(name, pagenation.getStartList(), pagenation.getListSize());//시작번호부터 끝까지.
-		
-		System.out.println(pagenation.isPrev()+" "+pagenation.isNext());
 		
 		mav.addObject("ramyunName", name);//주소용으로 하나 추가한것
 		mav.addObject("pagenation", pagenation);
@@ -472,6 +474,7 @@ public class SearchingController {
 		return mav;
 	}
 
+	
 	// 역사탭에서 보기구현
 	@GetMapping("/ramyunlog.do")
 	public ModelAndView getRamyunHistoryById(ModelAndView mav, String id) {

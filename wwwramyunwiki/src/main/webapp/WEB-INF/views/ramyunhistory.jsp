@@ -69,13 +69,13 @@
                         <!-- 게시판 번호 -->
 
                         <!-- [이전]버튼 -->
-                        <c:if test="${pagenation.prev}"><a href="./ramyunhistory.do?name=${ramyunName}&page=${(pagenation.range-2)*10+1}&range=${pagenation.range-1}">[이전]</a></c:if>
+                        <c:if test="${pagenation.prev}"><a href="./ramyunhistory.do?name=${ramyunName}&page=${(pagenation.range-2)*pagenation.rangeSize+1}&range=${pagenation.range-1}">[이전]</a></c:if>
                         <!-- [1]버튼 -->
                         <c:forEach var="index" begin ="${pagenation.startPage}" end="${pagenation.endPage}">
                             <a href="./ramyunhistory.do?name=${ramyunName}&page=${index}&range=${pagenation.range}">[${index}]</a>
                         </c:forEach>
                         <!-- [다음]버튼 -->
-                        <c:if test="${pagenation.next}"><a href="./ramyunhistory.do?name=${ramyunName}&page=${(pagenation.range*10)+1}&range=${pagenation.range+1}">[다음]</a></c:if>
+                        <c:if test="${pagenation.next}"><a href="./ramyunhistory.do?name=${ramyunName}&page=${(pagenation.range*pagenation.rangeSize)+1}&range=${pagenation.range+1}">[다음]</a></c:if>
 
 
                         <!-- 히스토리는 여기에 들어간다. -->

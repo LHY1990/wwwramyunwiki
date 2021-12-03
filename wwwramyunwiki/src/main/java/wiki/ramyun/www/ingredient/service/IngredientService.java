@@ -86,4 +86,14 @@ public class IngredientService {
 	public void deleteIngredientByName(String name) {
 		dao.deleteIngredientByName(name);
 	}
+
+
+	public int getIngredientCount() {
+		return dao.getIngredientCount();
+	}
+
+
+	public List<IngredientVO> selectIngredientByRange(int startList, int listSize) {
+		return dao.selectIngredientByRange(startList, listSize);
+	}
 }

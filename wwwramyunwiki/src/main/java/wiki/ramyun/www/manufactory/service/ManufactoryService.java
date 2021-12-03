@@ -88,4 +88,14 @@ public class ManufactoryService {
 	public void deleteManufactoryByName(String name) {
 		dao.deleteManufactoryByName(name);
 	}
+
+
+	public int getManufactoryCount() {
+		return dao.getManufactoryCount();
+	}
+
+
+	public List<ManufactoryVO> selectManufactoryByRange(int startList, int listSize) {
+		return dao.selectManufactoryByRange(startList, listSize);
+	}
 }

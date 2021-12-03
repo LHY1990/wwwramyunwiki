@@ -43,6 +43,12 @@ public interface IngredientMapper {
 
 	@Delete("delete from ingredient where name=#{name}")
 	public void deleteIngredientByName(@Param("name")String name);
+
+	@Select("select count(*) from ingredient")
+	public int getIngredientCount();
+
+	@Select("select * from ingredient limit #{startList},#{listSize}")
+	public List<IngredientVO> selectIngredientByRange(@Param("startList")int startList,@Param("listSize") int listSize);
 	
 	
 }

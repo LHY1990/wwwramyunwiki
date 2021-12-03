@@ -159,7 +159,7 @@
                         <span>${member.joinDate}</span>
                     </td>
                     <td>
-                        <span><a href="./deletemember.do?id=${member.memberNumber}">삭제</a></span>
+                        <span><a href="./deletemember.do?number=${member.memberNumber}">삭제</a></span>
                     </td>
                 </tr>
                 

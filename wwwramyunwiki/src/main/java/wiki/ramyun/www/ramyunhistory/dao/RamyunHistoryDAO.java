@@ -111,10 +111,28 @@ public class RamyunHistoryDAO {
 		
 	}
 
-
+	
 	public int getRamyunHistoryCount() {
-		return mapper.countAllRamyunHistory();
+		return mapper.getRamyunHistoryCount();
 	}
+	
+	//오버로딩
+	public int getRamyunHistoryCount(String name) {
+		return mapper.countAllRamyunHistory(name);
+	}
+
+
+	public List<RamyunHistoryVO> selectRamyunHistoryByRange(int startList, int listSize) {
+		return mapper.selectRamyunHistoryByRange(startList, listSize);
+	}
+
+
+	public int getContributionCountByNickname(String nickname) {
+		return mapper.getContributionCountByNickname(nickname);
+	}
+
+
+	
 
 
 	

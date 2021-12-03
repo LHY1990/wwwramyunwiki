@@ -67,9 +67,24 @@ public class RamyunHistoryService {
 	}
 
 
-	public int getRamyunHistroyCount() {
-		// TODO Auto-generated method stub
+	public int getRamyunHistroyCount(String name) {
+		return dao.getRamyunHistoryCount(name);
+	}
+
+
+	public List<RamyunHistoryVO> selectRamyunHistoryByRange(int startList, int listSize) {
+		return dao.selectRamyunHistoryByRange(startList, listSize);
+	}
+
+
+	public int getRamyunHistoryCount() {
 		return dao.getRamyunHistoryCount();
+	}
+
+
+	public int getContributionCountByNickname(String nickname) {
+		// TODO Auto-generated method stub
+		return dao.getContributionCountByNickname(nickname);
 	}
 
 

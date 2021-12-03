@@ -91,19 +91,30 @@ public class IngredientDAO {
 			list.add(vo);
 		}
 		
-		
 		return list;
-		
-		
-		
-		
-		
 		
 	}
 
 
 	public void deleteIngredientByName(String name) {
 		mapper.deleteIngredientByName(name);
+	}
+
+
+	public int getIngredientCount() {
+		return mapper.getIngredientCount();
+	}
+
+
+	public List<IngredientVO> selectIngredientByRange(int startList, int listSize) {
+		List<IngredientVO> list=new ArrayList<IngredientVO>();
+		
+		for(IngredientVO vo : mapper.selectIngredientByRange(startList, listSize)) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
+		return list;
 	}
 
 	

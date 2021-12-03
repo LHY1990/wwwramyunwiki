@@ -81,4 +81,7 @@ public interface RamyunMapper {
 	@Select("select * from ramyun order by rand() limit 1")
 	public RamyunVO selectRandomRamyun();
 
+	@Select("select * from ramyun order by brand_name_kor limit #{startPage},#{listSize}")
+	public List<RamyunVO> selectRamyunByRange(@Param("startPage")int startPage, @Param("listSize")int listSize);
+
 }

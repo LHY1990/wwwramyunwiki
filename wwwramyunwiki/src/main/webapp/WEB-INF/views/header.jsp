@@ -101,18 +101,13 @@
                         </div>
                         
                         <div style="height: 10%; width: 80%; margin-left: 10%; text-align: right;color: black;">
-                            0000 개
+                            ${memberContributionCount} 개
                         </div>
                         <!-- 분할 -->
                         <div style="width: 84%; margin-left: 7%;outline: rgb(89, 63, 114, 0.5) dotted 1px;"></div>
-                        <div style="height: 10%; width: 80%; margin-left: 10%; margin-top: 10px;color: black;">
-                            받은 추천 수
-                        </div>
-                        <div style="height: 10%; width: 80%; margin-left: 10%; text-align: right;color: black;">
-                            0000 개
-                        </div>
+                        
                         <div style="height: 10%; width: 80%; margin-left: 10%; text-align: left;color: black;">
-                            <a href="/logout.do" style="color: black;">로그아웃</a>
+                            <a href="/logout" style="color: black;">로그아웃</a>
                         </div>
                     <%}else{%>
                         <div style="height: 10%; width: 80%; margin-left: 10%;color: rgba(0, 0, 0, 0.075); ">
@@ -129,16 +124,11 @@
                         </div>
                         <!-- 분할 -->
                         <div style="width: 84%; margin-left: 7%;outline: rgb(89, 63, 114, 0.5) dotted 1px;"></div>
-                        <div style="height: 10%; width: 80%; margin-left: 10%; margin-top: 10px;color: rgba(0, 0, 0, 0.075);">
-                            받은 추천 수
-                        </div>
-                        <div style="height: 10%; width: 80%; margin-left: 10%; text-align: right;color: rgba(0, 0, 0, 0.075);">
-                            0 개
-                        </div>
+                        
                     <%}%>
                     <%if((session.getAttribute("memberLevel")!=null)&&(session.getAttribute("memberLevel").equals("9"))){%>
                     <div style="height: 10%; width: 80%; margin-left: 10%; text-align: left;">
-                        <a href="./admin.do" style="color: rgba(255, 0, 0, 1);">관리자모드</a>                
+                        <a href="./admin/management" style="color: rgba(255, 0, 0, 1);">관리자모드</a>                
                     </div>
                     <%}%>
                 </div>

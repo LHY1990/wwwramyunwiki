@@ -103,4 +103,23 @@ public class ManufactoryDAO {
 	public void deleteManufactoryByName(String name) {
 		mapper.deleteManufactoryByName(name);
 	}
+
+
+	public int getManufactoryCount() {
+		return mapper.getManufactoryCount();
+	}
+
+
+	//관리자 페이지를 위해 범위로 가져온다.
+	public List<ManufactoryVO> selectManufactoryByRange(int startList, int listSize) {
+		List<ManufactoryVO> list=new ArrayList<ManufactoryVO>();
+		
+		for(ManufactoryVO vo : mapper.selectManufactoryByRange(startList, listSize)) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
+		
+		return list;
+	}
 }
