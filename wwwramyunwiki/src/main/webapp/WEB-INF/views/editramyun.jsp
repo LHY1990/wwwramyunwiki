@@ -61,7 +61,7 @@
 
                     </div>
                     <!--/////////////// 본문편집 이 여기서 부터 시작된다 //////////////////onsubmit="return false"-->
-                    <form action="./edit.do" method="post" enctype="multipart/form-data" >
+                    <form action="/edit.do" method="post" enctype="multipart/form-data" >
                         <div id="ramyun_info_div">
                             <div id="summary_infomation">
                                 <!-- 이름 사진 회사가 들어가는 왼쪽 칸 -->

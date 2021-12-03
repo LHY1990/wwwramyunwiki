@@ -71,7 +71,7 @@
                                 
 
                                 <!-- <p style=" text-align: left;  display: table-cell;vertical-align: middle; padding-top: 3px;padding-bottom: 3px; padding-left: 10px">   -->
-                                <div style="width: 20%;" class="recents_updated_list"><a href="./findramyun.do?name=${aRamyun.brandNameKor}" style="text-decoration: none">${aRamyun.brandNameKor}</a></div>
+                                <div style="width: 20%;" class="recents_updated_list"><a href="/findramyun.do?name=${aRamyun.brandNameKor}" style="text-decoration: none">${aRamyun.brandNameKor}</a></div>
                                 <div style="width: 20%;" class="recents_updated_list">
                                     <fmt:parseDate value="${aRamyun.updatedDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both"/>
 	              				   <fmt:formatDate pattern="yyyy.MM.dd HH:mm:ss" value="${parsedDateTime}"/>

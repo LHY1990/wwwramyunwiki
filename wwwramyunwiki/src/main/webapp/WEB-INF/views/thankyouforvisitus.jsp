@@ -35,7 +35,7 @@
                     <br>
                     감사합니다.
                     <br>
-                    <form action="./home" method="get">
+                    <form action="/home" method="get">
                         <button style="width: 300px; color: white;background-color: grey; font: bold;">홈으로 가기</button>
                     </form>
                     <br>

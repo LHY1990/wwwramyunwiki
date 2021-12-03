@@ -43,7 +43,7 @@
 
                                 <!-- 역사 -->
                                 <div class="sections_link">
-                                    <a href="./ramyunhistory.do?name=${ramyun.brandNameKor}&page=1&range=1" style="vertical-align: unset; color:black">역사</a>
+                                    <a href="/ramyunhistory.do?name=${ramyun.brandNameKor}&page=1&range=1" style="vertical-align: unset; color:black">역사</a>
                                 </div>
                                 
                                 
@@ -55,7 +55,7 @@
                                 </button>
                                 <%}else{%>
                                 <button class="sections_link linking_button" id="ramyunreporting" name="ramyunName" type="submit">
-                                    <a href="./login"  style="vertical-align: unset; color:black" onclick="login_needed()">
+                                    <a href="/login"  style="vertical-align: unset; color:black" onclick="login_needed()">
                                         <i class="fas fa-thumbs-down"></i> 신고</button>   
                                     </a>
                                 </button>
@@ -68,18 +68,18 @@
                                 </button>
                                 <%}else{%>
                                 <button class="sections_link linking_button" id="ramyunlikes" name="ramyunName" type="submit" >
-                                    <a href="./login"  style="vertical-align: unset; color:black" onclick="login_needed()">
+                                    <a href="/login"  style="vertical-align: unset; color:black" onclick="login_needed()">
                                         <i class="far fa-thumbs-up"></i> 추천</button>   
                                     </a>
                                 <%}%>
                                 <!-- 편집 -->
                                 <%if(session.getAttribute("isMember")=="true"){%>
                                 <div class="sections_link">
-                                    <a href="./editramyun.do?name=${ramyun.brandNameKor}" style="vertical-align: unset; color:black">편집</a>
+                                    <a href="/editramyun.do?name=${ramyun.brandNameKor}" style="vertical-align: unset; color:black">편집</a>
                                 </div>
                                 <%}else{%>
                                 <div class="sections_link">
-                                    <a href="./login" style="vertical-align: unset; color:black" onclick="login_needed()">편집</a>
+                                    <a href="/login" style="vertical-align: unset; color:black" onclick="login_needed()">편집</a>
                                 </div>   
                                 <%}%>
                                 

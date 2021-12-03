@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -473,6 +474,29 @@ public class SearchingController {
 		mav.setViewName("ramyunhistory");
 		return mav;
 	}
+	
+	
+	//멤버가 기여한 리스트 가져오기, 닉네임으로 검색
+	@GetMapping("/member/contributions/{membernickname}")
+	public ModelAndView getContributionListByNickname(ModelAndView mav,int page, int range, @PathVariable("membernickname")String memberNickName, HttpSession session) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
+		
+		//처음엔 페이지1, 레인지 1로 가져온다.총 갯수도. 나중엔 그 값을 변경하고
+		pagenation.setListSize(60);//페이지당 리스트 갯수를 정한다. 필요한 페이지마다 정해줄것
+		pagenation.pageInfo(page, range, ramyunHistoryService.getContributionCountByNickname(memberNickName));
+		
+		List<RamyunHistoryVO> voList = ramyunHistoryService.getHistoryByNickname(memberNickName, pagenation.getStartList(), pagenation.getListSize());//시작번호부터 끝까지.
+		mav.addObject("memberNickname", session.getAttribute("memberNickname"));//주소용으로 추가
+		mav.addObject("pagenation", pagenation);
+		mav.addObject("ramyunHistoryList", voList);
+		mav.setViewName("contributionbynickname");
+		return mav;
+	}
+	
+	
 
 	
 	// 역사탭에서 보기구현

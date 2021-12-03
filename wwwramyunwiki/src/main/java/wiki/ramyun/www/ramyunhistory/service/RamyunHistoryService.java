@@ -3,11 +3,13 @@ package wiki.ramyun.www.ramyunhistory.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import wiki.ramyun.www.ramyun.RamyunVO;
 import wiki.ramyun.www.ramyunhistory.RamyunHistoryVO;
 import wiki.ramyun.www.ramyunhistory.dao.RamyunHistoryDAO;
+import wiki.ramyun.www.seconderrorhandler.SecondErrorHandler;
 import wiki.ramyun.www.wikistringresolver.WikiStringResolver;
 
 @Service
@@ -16,6 +18,9 @@ public class RamyunHistoryService {
 	@Autowired
 	private RamyunHistoryDAO dao;
 
+	@Autowired
+	@Qualifier("secondErrorHandler")
+	SecondErrorHandler secondErrorHandler;
 	
 	//이름으로 라면의 히스토리 가져오기
 	public List<RamyunHistoryVO> getHistoryByName(String name) {
@@ -83,8 +88,12 @@ public class RamyunHistoryService {
 
 
 	public int getContributionCountByNickname(String nickname) {
-		// TODO Auto-generated method stub
 		return dao.getContributionCountByNickname(nickname);
+	}
+
+
+	public List<RamyunHistoryVO> getHistoryByNickname(String memberNickName, int startList, int listSize) {
+		return dao.getHistoryByNickname(memberNickName,startList, listSize);
 	}
 
 

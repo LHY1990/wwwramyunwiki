@@ -35,7 +35,7 @@
                     <br>
                     ${newMember} 님, <br>
                     회원가입을 축하합니다.<br>
-                    <form action="./home" method="get">
+                    <form action="/home" method="get">
                         <button style="width: 300px; color: white;background-color: grey; font: bold;">홈으로 가기</button>
                     </form>
                     

@@ -63,6 +63,9 @@ public interface RamyunHistoryMapper {
 	@Select("select count(*) from ramyun_history where writer = #{nickname}")
 	int getContributionCountByNickname(@Param("nickname") String nickname);
 	
+	@Select("select * from ramyun_history where writer=#{memberNickName} order by id desc limit #{startPage},#{listSize}")
+	List<RamyunHistoryVO> getHistoryByNickname(@Param("memberNickName")String memberNickName, @Param("startPage")int startList, @Param("listSize")int listSize);
+	
 	
 
 }

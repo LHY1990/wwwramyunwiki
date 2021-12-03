@@ -47,9 +47,9 @@
                         </div>
                         <div id="edited_time">
                             <%if(session.getAttribute("isMember")=="true"){%>
-                                <a href="./registration" style="text-decoration: none; color: blue;">찾는 문서가 없다면? 문서 등록하러 가기</a>
+                                <a href="/registration" style="text-decoration: none; color: blue;">찾는 문서가 없다면? 문서 등록하러 가기</a>
                             <%}else{%>
-                                <a href="./login" style="text-decoration: none; color: blue;" onclick="login_needed()">찾는 문서가 없다면? 문서 등록하러 가기</a>
+                                <a href="/login" style="text-decoration: none; color: blue;" onclick="login_needed()">찾는 문서가 없다면? 문서 등록하러 가기</a>
                             <%}%>
                         </div>
                         <div style="height: 100px;">
@@ -67,7 +67,7 @@
                             ~~권장 검색어~~  <br><br>
                             
                             <c:forEach var="searchname" items="${similarList}" end="300">
-                                <a id="notFoundToSearch" href="./findramyun.do?name=${searchname}" >${searchname}</a>&nbsp;&nbsp;
+                                <a id="notFoundToSearch" href="/findramyun.do?name=${searchname}" >${searchname}</a>&nbsp;&nbsp;
                             </c:forEach>
                             
 

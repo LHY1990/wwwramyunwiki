@@ -123,12 +123,33 @@ public class RamyunHistoryDAO {
 
 
 	public List<RamyunHistoryVO> selectRamyunHistoryByRange(int startList, int listSize) {
-		return mapper.selectRamyunHistoryByRange(startList, listSize);
+		List<RamyunHistoryVO> list=new ArrayList<RamyunHistoryVO>();
+		
+		for(RamyunHistoryVO vo : mapper.selectRamyunHistoryByRange(startList, listSize)) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
+		return list;
 	}
 
 
 	public int getContributionCountByNickname(String nickname) {
 		return mapper.getContributionCountByNickname(nickname);
+	}
+
+
+	//닉네임으로 검색해서 가져오는데 이때 초단위가 0이면 1로 변경해서 문제를 없앤다.	
+	public List<RamyunHistoryVO> getHistoryByNickname(String memberNickName, int startList, int listSize) {
+		List<RamyunHistoryVO> list=new ArrayList<RamyunHistoryVO>();
+		
+		for(RamyunHistoryVO vo : mapper.getHistoryByNickname(memberNickName, startList, listSize)) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
+		return list;
+		
 	}
 
 

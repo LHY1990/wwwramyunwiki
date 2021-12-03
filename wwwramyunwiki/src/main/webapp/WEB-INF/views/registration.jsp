@@ -64,7 +64,7 @@
 
                         </div>
                         <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
-                        <form action="./regist.do" method="post"  >
+                        <form action="/regist.do" method="post"  >
                             <div id="regist_info">
                                 <div id="regist_items">
                                 등록명 : <input type="text" name="register" maxlength="39" style="height: 24px; margin-right: 30px;">

@@ -61,7 +61,7 @@
 
                     </div>
                     <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
-                    <form action="./editingredient.do" method="post"  >
+                    <form action="/editingredient.do" method="post"  >
                         <div id="ingredient_info">
                             <div id="ingredient_items">
                             원재료명 : ${ingredient.name}<br>

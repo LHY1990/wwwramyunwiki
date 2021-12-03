@@ -34,7 +34,7 @@
                         <span>${ramyun.updatedDate}</span>
                     </td>
                     <td>
-                        <span><a href="./deleteramyun.do?name=${ramyun.brandNameKor}">삭제</a></span>
+                        <span><a href="/deleteramyun.do?name=${ramyun.brandNameKor}">삭제</a></span>
                     </td>
                 </tr>
                 
@@ -66,7 +66,7 @@
                         <span>${ramyunHistory.writer}</span>
                     </td>
                     <td>
-                        <span><a href="./deleteramyunhistory.do?id=${ramyunHistory.id}">삭제</a></span>
+                        <span><a href="/deleteramyunhistory.do?id=${ramyunHistory.id}">삭제</a></span>
                     </td>
                 </tr>
                 
@@ -94,7 +94,7 @@
                         <span>${ingredient.updatedDate}</span>
                     </td>
                     <td>
-                        <span><a href="./deleteingredient.do?name=${ingredient.name}">삭제</a></span>
+                        <span><a href="/deleteingredient.do?name=${ingredient.name}">삭제</a></span>
                     </td>
                 </tr>
                 
@@ -123,7 +123,7 @@
                         <span>${manufactory.updatedDate}</span>
                     </td>
                     <td>
-                        <span><a href="./deletemanufactory.do?name=${manufactory.factoryName}">삭제</a></span>
+                        <span><a href="/deletemanufactory.do?name=${manufactory.factoryName}">삭제</a></span>
                     </td>
                 </tr>
                 

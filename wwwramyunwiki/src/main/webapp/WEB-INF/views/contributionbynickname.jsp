@@ -38,7 +38,7 @@
                 <!-- 모든컨텐츠는 여기서 시작해서 -->
                     <div id="information_tab">
                         <div id="section">
-                            라면위키 : 수정 히스토리
+                            라면위키 : 유저 기여 목록
                         </div>
                         <div id="section_linkings">
                             <div id="section_linkings_frame">
@@ -56,7 +56,7 @@
                         </div>
                         
                         <div id="sorting_category">
-                            분류 : 라면 수정 히스토리 | ${ramyun_history.brandNameKor}
+                            분류 : 유저 기여 목록 | <%=session.getAttribute("memberNickname")%>
                         </div>
                         
                     </div>
@@ -69,13 +69,13 @@
                         <!-- 게시판 번호 -->
 
                         <!-- [이전]버튼 -->
-                        <c:if test="${pagenation.prev}"><a href="/ramyunhistory.do?name=${ramyunName}&page=${(pagenation.range-2)*pagenation.rangeSize+1}&range=${pagenation.range-1}">[이전]</a></c:if>
+                        <c:if test="${pagenation.prev}"><a href="/member/contributions/${memberNickname}?page=${(pagenation.range-2)*pagenation.rangeSize+1}&range=${pagenation.range-1}">[이전]</a></c:if>
                         <!-- [1]버튼 -->
                         <c:forEach var="index" begin ="${pagenation.startPage}" end="${pagenation.endPage}">
-                            <a href="/ramyunhistory.do?name=${ramyunName}&page=${index}&range=${pagenation.range}">[${index}]</a>
+                            <a href="/member/contributions/${memberNickname}?page=${index}&range=${pagenation.range}">[${index}]</a>
                         </c:forEach>
                         <!-- [다음]버튼 -->
-                        <c:if test="${pagenation.next}"><a href="/ramyunhistory.do?name=${ramyunName}&page=${(pagenation.range*pagenation.rangeSize)+1}&range=${pagenation.range+1}">[다음]</a></c:if>
+                        <c:if test="${pagenation.next}"><a href="/member/contributions/${memberNickname}/?page=${(pagenation.range*pagenation.rangeSize)+1}&range=${pagenation.range+1}">[다음]</a></c:if>
 
 
                         <!-- 히스토리는 여기에 들어간다. -->

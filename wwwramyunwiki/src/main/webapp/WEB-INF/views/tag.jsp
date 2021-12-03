@@ -62,15 +62,15 @@
                         <br>
                         <!-- 페이지 지정 시작 [1][2]...-->
                         <div id="sorting_tag_div" >
-                            <c:if test="${hasPrev}"><a href="./tag?page=${currentPageRange-9}">[이전]</a></c:if>
+                            <c:if test="${hasPrev}"><a href="/tag?page=${currentPageRange-9}">[이전]</a></c:if>
                             <c:forEach var="iter" begin="${currentPageRange+1}" end="${currentPageRange+10}">
                                 
                             <c:if test="${iter<=totalPageCount}">
-                                [<a href="./tag?page=${iter}">${iter}</a>]
+                                [<a href="/tag?page=${iter}">${iter}</a>]
                             </c:if>
 
                             </c:forEach>
-                            <c:if test="${hasNext}"><a href="./tag?page=${currentPageRange+11}">[다음]</a></c:if>
+                            <c:if test="${hasNext}"><a href="/tag?page=${currentPageRange+11}">[다음]</a></c:if>
                         </div>
                         <!-- 페이지 지정 끝 -->
                         
@@ -85,7 +85,7 @@
                                 <c:forEach var="searching" items="${searchList}" begin="0" end="49">
                                     
                                     <p class="getLength" style="margin: 0%;padding: 0%; width: 100%;">
-                                        <a id="tagToSearch" href="./findramyun.do?name=${searching.name}" >${searching.name}</a>
+                                        <a id="tagToSearch" href="/findramyun.do?name=${searching.name}" >${searching.name}</a>
                                     </p>
 
                                 </c:forEach>
@@ -93,7 +93,7 @@
                             <div class="vertical_section">
                                 <c:forEach var="searching" items="${searchList}" begin="50" end="99">
                                     <p class="getLength" style="margin: 0%;padding: 0%; width: 100%;">
-                                        <a id="tagToSearch" href="./findramyun.do?name=${searching.name}" >${searching.name}</a>
+                                        <a id="tagToSearch" href="/findramyun.do?name=${searching.name}" >${searching.name}</a>
                                     </p>
 
                                 </c:forEach>
@@ -101,7 +101,7 @@
                             <div class="vertical_section">
                                 <c:forEach var="searching" items="${searchList}" begin="100" end="149">
                                     <p class="getLength" style="margin: 0%;padding: 0%; width: 100%;">
-                                        <a id="tagToSearch" href="./findramyun.do?name=${searching.name}" >${searching.name}</a>
+                                        <a id="tagToSearch" href="/findramyun.do?name=${searching.name}" >${searching.name}</a>
                                     </p>
                                     
                                 </c:forEach>

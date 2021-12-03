@@ -16,30 +16,30 @@
         <div class="inner_top_pannel_link" id="title">
             <!-- 대표 이름 -->
             <div>
-                <a href="./home" style="color:white">라면위키</a> 
+                <a href="/home" style="color:white">라면위키</a> 
             </div>
                
         </div>
         <div class="inner_top_pannel_link" >
             <div class="tab_linking">
-                <a href="./recentupdating" style="color: white;" >최근변경</a>
+                <a href="/recentupdating" style="color: white;" >최근변경</a>
             </div>
         </div>
         <div class="inner_top_pannel_link">
             <div class="tab_linking">
-                <a href="./nutrient" style="color: white;">영양성분</a>
-            </div>
-            
-        </div>
-        <div class="inner_top_pannel_link">
-            <div class="tab_linking">
-                <a href="./manufactory" style="color: white;">제조공장</a>
+                <a href="/nutrient" style="color: white;">영양성분</a>
             </div>
             
         </div>
         <div class="inner_top_pannel_link">
             <div class="tab_linking">
-                <a href="./tag?page=1" style="color: white;">태그검색</a>
+                <a href="/manufactory" style="color: white;">제조공장</a>
+            </div>
+            
+        </div>
+        <div class="inner_top_pannel_link">
+            <div class="tab_linking">
+                <a href="/tag?page=1" style="color: white;">태그검색</a>
             </div>
             
         </div>
@@ -49,9 +49,9 @@
         <div class="search_box">
             <div id="inner_search_box">
                 <div id="random_icon">
-                    <a href="./getrandomramyun.do" style="color: white;"><i class="fas fa-random"></i></a>
+                    <a href="/getrandomramyun.do" style="color: white;"><i class="fas fa-random"></i></a>
                 </div>
-                <form action="./findramyun.do" method="post" style="font-family: FontAwesome;">
+                <form action="/findramyun.do" method="post" style="font-family: FontAwesome;">
                     <input id="search_box_textarea" list="search_list_auto" name="searchBoxInput" placeholder="Search" autocomplete="off" >
                     <!-- 입력창 -->
                     <datalist id="search_list_auto">
@@ -78,7 +78,7 @@
                         <%
                             if(session.getAttribute("memberId")==null){ 
                                 %>
-                                <a href="./login" style="color: black;">로그인</a>
+                                <a href="/login" style="color: black;">로그인</a>
                                 <%
                             }
                             else{
@@ -92,7 +92,7 @@
                     </div>
                     <%if(session.getAttribute("isMember")=="true"){%>
                         <div style="height: 10%; width: 80%; margin-left: 10%;color: black;">
-                            <a id="user_info_linking" href="./userinfo" style="color: black;" >설정</a>
+                            <a id="user_info_linking" href="/userinfo" style="color: black;" >설정</a>
                         </div>
                         <!-- 분할 -->
                         <div style="width: 84%;margin-left: 7%; outline: rgb(89, 63, 114, 0.5) dotted 1px;"></div>
@@ -102,6 +102,11 @@
                         
                         <div style="height: 10%; width: 80%; margin-left: 10%; text-align: right;color: black;">
                             ${memberContributionCount} 개
+                        </div>
+                        <!-- 분할 -->
+                        <div style="width: 84%;margin-left: 7%; outline: rgb(89, 63, 114, 0.5) dotted 1px;"></div>
+                        <div style="height: 10%; width: 80%; margin-left: 10%; margin-top: 10px;color: rgba(0, 0, 0, 0.075);">
+                            <a href="/member/contributions/${memberNickname}?page=1&range=1" style="color:black;margin-bottom:10px;">기여한 리스트 보기</a> 
                         </div>
                         <!-- 분할 -->
                         <div style="width: 84%; margin-left: 7%;outline: rgb(89, 63, 114, 0.5) dotted 1px;"></div>
@@ -122,13 +127,14 @@
                         <div style="height: 10%; width: 80%; margin-left: 10%; text-align: right;color: rgba(0, 0, 0, 0.075);">
                             0 개
                         </div>
+                        
                         <!-- 분할 -->
                         <div style="width: 84%; margin-left: 7%;outline: rgb(89, 63, 114, 0.5) dotted 1px;"></div>
                         
                     <%}%>
                     <%if((session.getAttribute("memberLevel")!=null)&&(session.getAttribute("memberLevel").equals("9"))){%>
                     <div style="height: 10%; width: 80%; margin-left: 10%; text-align: left;">
-                        <a href="./admin/management" style="color: rgba(255, 0, 0, 1);">관리자모드</a>                
+                        <a href="/admin/management" style="color: rgba(255, 0, 0, 1);">관리자모드</a>                
                     </div>
                     <%}%>
                 </div>
