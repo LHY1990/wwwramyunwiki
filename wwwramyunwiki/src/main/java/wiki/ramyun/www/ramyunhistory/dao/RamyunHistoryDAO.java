@@ -24,6 +24,7 @@ public class RamyunHistoryDAO {
 	@Qualifier("secondErrorHandler")
 	SecondErrorHandler secondErrorHandler;
 	
+	
 	// 이름으로 라면 히스토리 리스트를 가져온다. 00초로 끝나는 경우 1초를 더해준다.
 	public List<RamyunHistoryVO> getRamyunHistoryByName(String name) {
 		
@@ -53,7 +54,7 @@ public class RamyunHistoryDAO {
 	
 	
 	// 라면업데이트와 동시에 라면히스토리에 같은내용+작성자 저장하기
-	public void updateRamyunHistory(RamyunVO vo, String writer) {
+	public void updateRamyunHistory(RamyunVO vo, String writer, String writerMemberNumber) {
 		mapper.insertRamyunHistory(
 				vo.getbrandNameKor(),
 				vo.getbrandNameEng(), 
@@ -86,7 +87,8 @@ public class RamyunHistoryDAO {
 				vo.getCalcium(), 
 				vo.getImage(), 
 				vo.getUserEditedContents(), 
-				writer
+				writer,
+				writerMemberNumber
 				);
 	}
 
@@ -138,6 +140,10 @@ public class RamyunHistoryDAO {
 		return mapper.getContributionCountByNickname(nickname);
 	}
 
+	public int getContributionCountByWriterMemberNumber(String writerMemberNumber) {
+		return mapper.getContributionCountByWriterMemberNumber(writerMemberNumber);
+	}
+
 
 	//닉네임으로 검색해서 가져오는데 이때 초단위가 0이면 1로 변경해서 문제를 없앤다.	
 	public List<RamyunHistoryVO> getHistoryByNickname(String memberNickName, int startList, int listSize) {
@@ -151,6 +157,20 @@ public class RamyunHistoryDAO {
 		return list;
 		
 	}
+
+
+	public List<RamyunHistoryVO> getHistoryByWriterMemberNumber(String writerMemberNumber, int startList,	int listSize) {
+		List<RamyunHistoryVO> list=new ArrayList<RamyunHistoryVO>();
+		
+		for(RamyunHistoryVO vo : mapper.getHistoryByWriterMemberNumber(writerMemberNumber, startList, listSize)) {
+			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
+			list.add(vo);
+		}
+		
+		return list;
+	}
+
+
 
 
 	

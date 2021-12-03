@@ -81,7 +81,7 @@ public class RamyunDAO {
 		try {
 			vo.setUpdatedDate(secondErrorHandler.checkSecond(vo.getUpdatedDate()));
 		}catch(Exception e){
-			
+			System.out.println("ramyundao의 selectRamyun에서 에러");
 		}
 		
 		return vo;

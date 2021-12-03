@@ -1,8 +1,6 @@
 package wiki.ramyun.www.wikistringresolver;
 
-import java.util.regex.Pattern;
 
-import com.fasterxml.jackson.databind.deser.DataFormatReaders.Match;
 
 public class WikiStringResolver {
 	

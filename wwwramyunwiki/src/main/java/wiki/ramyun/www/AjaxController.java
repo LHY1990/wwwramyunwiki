@@ -12,13 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import wiki.ramyun.www.ingredient.service.IngredientService;
-import wiki.ramyun.www.manufactory.service.ManufactoryService;
 import wiki.ramyun.www.member.MemberVO;
 import wiki.ramyun.www.member.service.MemberService;
 import wiki.ramyun.www.metadata.service.MetadataService;
-import wiki.ramyun.www.ramyun.service.RamyunService;
-import wiki.ramyun.www.ramyunhistory.service.RamyunHistoryService;
 import wiki.ramyun.www.search.service.SearchService;
 import wiki.ramyun.www.wikistringresolver.WikiStringResolver;
 

@@ -4,6 +4,7 @@
 <%request.setCharacterEncoding("UTF-8");%>
 
 
+
 <!-- 상단 패널 시작 -->
 <div class="top_pannel" id="header" style="z-index: 100;">
         
@@ -106,10 +107,10 @@
                         <!-- 분할 -->
                         <div style="width: 84%;margin-left: 7%; outline: rgb(89, 63, 114, 0.5) dotted 1px;"></div>
                         <div style="height: 10%; width: 80%; margin-left: 10%; margin-top: 10px;color: rgba(0, 0, 0, 0.075);">
-                            <a href="/member/contributions/${memberNickname}?page=1&range=1" style="color:black;margin-bottom:10px;">기여한 리스트 보기</a> 
+                            <a href="/member/contributions/${memberNumber}/${memberNickname}?page=1&range=1" style="color:black;margin-bottom:10px;">기여한 리스트 보기</a> 
                         </div>
                         <!-- 분할 -->
-                        <div style="width: 84%; margin-left: 7%;outline: rgb(89, 63, 114, 0.5) dotted 1px;"></div>
+                        <div style="width: 84%; margin-left: 7%;outline: rgb(89, 63, 114, 0.5) dotted 1px; margin-bottom:10px;"></div>
                         
                         <div style="height: 10%; width: 80%; margin-left: 10%; text-align: left;color: black;">
                             <a href="/logout" style="color: black;">로그아웃</a>

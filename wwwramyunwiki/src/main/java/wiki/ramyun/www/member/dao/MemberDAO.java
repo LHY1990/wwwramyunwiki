@@ -65,7 +65,9 @@ public class MemberDAO {
 
 	
 	public MemberVO getMemberById(String memberId) {
-		return mapper.getMemberById(memberId);
+		MemberVO vo=mapper.getMemberById(memberId);
+		vo.setJoinDate(secondErrorHandler.checkSecond(vo.getJoinDate()));
+		return vo;
 	}
 
 	

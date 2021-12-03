@@ -6,7 +6,14 @@ public class RamyunHistoryVO extends RamyunVO {
 	//추가된 부분
 	private String writer;
 	private int id;
+	private int writerMemberNumber;
 
+	public int getWriterMemberNumber() {
+		return writerMemberNumber;
+	}
+	public void setWriterMemberNumber(int writerMemberNumber) {
+		this.writerMemberNumber = writerMemberNumber;
+	}
 	public RamyunHistoryVO() {
 		super();
 	}

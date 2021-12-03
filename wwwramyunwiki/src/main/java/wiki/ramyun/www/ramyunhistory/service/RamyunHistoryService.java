@@ -34,8 +34,8 @@ public class RamyunHistoryService {
 	}
 
 	
-	public void updateRamyunHistoryToDB(RamyunVO vo, String writer) {
-		dao.updateRamyunHistory(vo, writer);
+	public void updateRamyunHistoryToDB(RamyunVO vo, String writer, String writerMemberNumber) {
+		dao.updateRamyunHistory(vo, writer, writerMemberNumber);
 	}
 
 	
@@ -86,15 +86,26 @@ public class RamyunHistoryService {
 		return dao.getRamyunHistoryCount();
 	}
 
-
+	//닉네임으로 기여횟수를 가져온다. 
 	public int getContributionCountByNickname(String nickname) {
 		return dao.getContributionCountByNickname(nickname);
 	}
 
+	//작성자 멤버 넘버로 기여횟수를 가져온다.
+	public int getContributionCountByWriterMemberNumber(String writerMemberNumber) {
+		return dao.getContributionCountByWriterMemberNumber(writerMemberNumber);
+	}
 
 	public List<RamyunHistoryVO> getHistoryByNickname(String memberNickName, int startList, int listSize) {
 		return dao.getHistoryByNickname(memberNickName,startList, listSize);
 	}
+
+
+	public List<RamyunHistoryVO> getHistoryByWriterMemberNumber(String writerMemberNumber, int startList,	int listSize) {
+		return dao.getHistoryByWriterMemberNumber(writerMemberNumber,startList, listSize);
+	}
+
+
 
 
 	

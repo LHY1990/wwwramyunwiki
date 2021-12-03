@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         $.ajax({
             type : "POST",
-            url : "./searchintime.do",
+            url : "/searchintime.do",
             dataType : "json",
             data : {
                 "msg" : $('#search_box_textarea').val()
@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded', function(){
     $("#ramyunlikes").on("click", function() {
         $.ajax({
             type : "POST",
-            url : "./likeramyun.do",
+            url : "/likeramyun.do",
             dataType : "json",
             data : {
                 "ramyunName" : $('#ramyunID').val()
@@ -72,7 +72,7 @@ window.addEventListener('DOMContentLoaded', function(){
     $("#ramyunreporting").on("click", function() {
         $.ajax({
             type : "POST",
-            url : "./reportramyun.do",
+            url : "/reportramyun.do",
             dataType : "json",
             data : {
                 "ramyunName" : $('#ramyunID').val()
@@ -91,7 +91,7 @@ window.addEventListener('DOMContentLoaded', function(){
     $("#ingredientlikes").on("click", function() {
         $.ajax({
             type : "POST",
-            url : "./likeingredient.do",
+            url : "/likeingredient.do",
             dataType : "json",
             data : {
                 "ingredientName" : $('#ingredientID').val()
@@ -110,7 +110,7 @@ window.addEventListener('DOMContentLoaded', function(){
     $("#ingredientreporting").on("click", function() {
         $.ajax({
             type : "POST",
-            url : "./reportingredient.do",
+            url : "/reportingredient.do",
             dataType : "json",
             data : {
                 "ingredientName" : $('#ingredientID').val()
@@ -129,7 +129,7 @@ window.addEventListener('DOMContentLoaded', function(){
     $("#manufactorylikes").on("click", function() {
         $.ajax({
             type : "POST",
-            url : "./likemanufactory.do",
+            url : "/likemanufactory.do",
             dataType : "json",
             data : {
                 "manufactoryName" : $('#manufactoryID').val()
@@ -148,7 +148,7 @@ window.addEventListener('DOMContentLoaded', function(){
     $("#manufactoryreporting").on("click", function() {
         $.ajax({
             type : "POST",
-            url : "./reportmanufactory.do",
+            url : "/reportmanufactory.do",
             dataType : "json",
             data : {
                 "manufactoryName" : $('#manufactoryID').val()
@@ -164,25 +164,15 @@ window.addEventListener('DOMContentLoaded', function(){
         })
     })
     
-    //애니메이션
-    $('.bxslider').bxSlider({ // 클래스명 주의!
-        auto: true, // 자동으로 애니메이션 시작
-        speed: 500,  // 애니메이션 속도
-        pause: 5000,  // 애니메이션 유지 시간 (1000은 1초)
-        mode: 'horizontal', // 슬라이드 모드 ('fade', 'horizontal', 'vertical' 이 있음)
-        autoControls: true, // 시작 및 중지버튼 보여짐
-        pager: true, // 페이지 표시 보여짐
-        captions: true, // 이미지 위에 텍스트를 넣을 수 있음
-        touchEnabled : (navigator.maxTouchPoints > 0), //링크접근 가능
-    });
+    
 
 
 
     //라면 게시글의 편집하는걸 실시간으로 보낸다.
-    $('#user_made_section').on("keyup change", (event)=>{
+    $('#user_made_section').on("keyup change keydown keypress input", function(){
         $.ajax({
             type : "POST",
-            url : "./grammercheck.do",
+            url : "/grammercheck.do",
             dataType : "json",
             data : {
                 "contents" : $('#user_edited_contents').val()
@@ -211,10 +201,10 @@ window.addEventListener('DOMContentLoaded', function(){
     });
 
     //영양성분 게시글의 편집하는걸 실시간으로 보낸다.
-    $('#nutrition_description').on("keyup change", (event)=>{
+    $('#nutrition_description').on("keyup change keydown keypress input",function(){
         $.ajax({
             type : "POST",
-            url : "./grammercheck.do",
+            url : "/grammercheck.do",
             dataType : "json",
             data : {
                 "contents" : $('#nutrition_description').val()
@@ -243,10 +233,10 @@ window.addEventListener('DOMContentLoaded', function(){
 
 
     //제조공장 게시글의 편집하는걸 실시간으로 보낸다.
-    $('#manufactory_description').on("keyup change", (event)=>{
+    $('#manufactory_description').on("keyup change keydown keypress input", function(){
         $.ajax({
             type : "POST",
-            url : "./grammercheck.do",
+            url : "/grammercheck.do",
             dataType : "json",
             data : {
                 "contents" : $('#manufactory_description').val()
@@ -271,6 +261,19 @@ window.addEventListener('DOMContentLoaded', function(){
             }
     
         })
+    });
+
+
+    //애니메이션
+    $('.bxslider').bxSlider({ // 클래스명 주의!
+        auto: true, // 자동으로 애니메이션 시작
+        speed: 500,  // 애니메이션 속도
+        pause: 5000,  // 애니메이션 유지 시간 (1000은 1초)
+        mode: 'horizontal', // 슬라이드 모드 ('fade', 'horizontal', 'vertical' 이 있음)
+        autoControls: true, // 시작 및 중지버튼 보여짐
+        pager: true, // 페이지 표시 보여짐
+        captions: true, // 이미지 위에 텍스트를 넣을 수 있음
+        touchEnabled : (navigator.maxTouchPoints > 0), //링크접근 가능
     });
 
 

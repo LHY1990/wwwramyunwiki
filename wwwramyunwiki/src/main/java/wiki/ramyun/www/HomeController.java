@@ -128,7 +128,7 @@ public class HomeController {
 			session.setAttribute("memberNickname", vo.getNickname());
 			session.setAttribute("memberLevel", vo.getLevel());
 			session.setAttribute("isMember", "true");
-			session.setAttribute("memberContributionCount", ramyunHistoryService.getContributionCountByNickname(vo.getNickname()));
+			session.setAttribute("memberContributionCount", ramyunHistoryService.getContributionCountByWriterMemberNumber(String.valueOf(vo.getMemberNumber())));
 
 			if(session.getAttribute("lastVisitedLocation").toString().contains("login")) {
 				return "redirect:home";
@@ -326,20 +326,6 @@ public class HomeController {
 		mav.setViewName("login");
 		return mav;
 	}
-	
-	
-//	@PostMapping("/login")
-//	public ModelAndView login(ModelAndView mav, MemberVO vo) {
-//		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
-//		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
-//		//우측탭 라면 이미지 리스트 가져오기
-//		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
-//		//여기까지가 우측탭 정보
-//		memberService.checkMember(vo);
-//		
-//		return mav;
-//	}
-	
 	
 	
 	@GetMapping("/join")
