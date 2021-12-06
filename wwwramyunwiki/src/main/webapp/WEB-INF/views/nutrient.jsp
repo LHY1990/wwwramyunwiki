@@ -69,7 +69,7 @@
                                 <!-- 편집 -->
                                 <%if(session.getAttribute("isMember")=="true"){%>
                                     <div class="sections_link">
-                                        <a href="/editingredient.do?findname=${ingredient.name}" style="vertical-align: unset; color: black;" >편집</a>
+                                        <a href="/editingredient?findname=${ingredient.name}" style="vertical-align: unset; color: black;" >편집</a>
                                     </div>
                                 <%}else{%>
                                     

@@ -67,7 +67,7 @@
                             
                             <div>
                                 
-                                <form action="changingPassword.do" method="post" onsubmit="return checkPasswordEqual()" >
+                                <form action="changingPassword" method="post" onsubmit="return checkPasswordEqual()" >
                                     <br>
                                     <div>현재 비밀번호
                                         <br>

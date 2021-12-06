@@ -71,7 +71,7 @@
                                     
                                     <br>
                                     <strong style="font-size: larger;">라면위키에 오신것을 환영합니다!</strong><br>
-                                    본 서비스가 무엇인지 궁금하다면, <a href="/introduction.do">소개</a>를 읽어주세요.
+                                    본 서비스가 무엇인지 궁금하다면, <a href="/introduction">소개</a>를 읽어주세요.
                                     
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                                 <div class="alert_right_section">
                                     <br>
                                     <strong style="font-size: larger;">작성방법</strong><br>
-                                    작성방법이 궁금하다면 <a href="/howto.do">여기</a>를 클릭해주세요
+                                    작성방법이 궁금하다면 <a href="/howto">여기</a>를 클릭해주세요
                                 </div>
                             </div>
                             <div class="alert_section">
@@ -96,7 +96,7 @@
                                 <div class="alert_right_section">
                                     <br>
                                     <strong style="font-size: larger;">다같이 만들어봐요 </strong><br>
-                                    라면위키에 오신것을 진심으로 환영합니다. 지켜야할 규칙들은 <a href="rules.html">여기</a>에서 확인 해 주세요.
+                                    라면위키에 오신것을 진심으로 환영합니다. 지켜야할 규칙들은 <a href="rules">여기</a>에서 확인 해 주세요.
                                 </div>
                             </div>
                             <div class="alert_section">
@@ -108,7 +108,7 @@
                                 <div class="alert_right_section">
                                     <br>
                                     <strong style="font-size: larger;">오늘 내가 먹는 라면은 어떻게 시작되었나?</strong><br>
-                                    간식으로도 식사로도 늘 우리곁에 있는 라면. <a href="history.html">어디서</a> 시작되었는가
+                                    간식으로도 식사로도 늘 우리곁에 있는 라면. <a href="history">어디서</a> 시작되었는가
                                 </div>
                             </div>
                             

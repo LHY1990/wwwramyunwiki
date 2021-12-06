@@ -63,7 +63,7 @@ public class SearchingController {
 	private Pagenation pagenation;
 
 	// 검색 값 받아오기. 일단 신라면으로 테스트
-	@GetMapping("/findramyun.do")
+	@GetMapping("/findramyun")
 	public ModelAndView getSearchKeyword(ModelAndView mav, String name) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -119,7 +119,7 @@ public class SearchingController {
 	
 	
 	//검색창 왼쪽의 셔플 버튼을 눌렀을때, 랜덤 라면으로 링크될것
-	@GetMapping("/getrandomramyun.do")
+	@GetMapping("/getrandomramyun")
 	public ModelAndView getRandomRamyun(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -155,7 +155,7 @@ public class SearchingController {
 	}
 
 	
-	@PostMapping("/regist.do")
+	@PostMapping("/regist")
 	public String registNew(ModelAndView mav, String register, String type) throws UnsupportedEncodingException {
 		// 빈공간을 없앤다.
 		register = register.trim();
@@ -170,10 +170,10 @@ public class SearchingController {
 		}
 		
 		//한글 인코딩을 해준다. 예외를 던진다.
-		return "redirect:findramyun.do?name="+URLEncoder.encode(register,StandardCharsets.UTF_8.toString());
+		return "redirect:findramyun?name="+URLEncoder.encode(register,StandardCharsets.UTF_8.toString());
 	}
 
-	@PostMapping("/findramyun.do")
+	@PostMapping("/findramyun")
 	public ModelAndView postSearchKeyword(ModelAndView mav, String searchBoxInput) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -226,7 +226,7 @@ public class SearchingController {
 		return mav;
 	}
 
-	@GetMapping("/editramyun.do")
+	@GetMapping("/editramyun")
 	public ModelAndView getEditRamyun(ModelAndView mav, String name) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -244,7 +244,7 @@ public class SearchingController {
 		return mav;
 	}
 
-	@PostMapping("/edit.do")
+	@PostMapping("/edit")
 	public ModelAndView afterRamyunEdited(ModelAndView mav, RamyunVO vo,
 			@RequestParam("uploadedimage") MultipartFile uploadedimage, HttpServletRequest request,
 			HttpSession session) {
@@ -337,7 +337,7 @@ public class SearchingController {
 		return mav;
 	}
 
-	@GetMapping("/editingredient.do")
+	@GetMapping("/editingredient")
 	public ModelAndView editIngredient(IngredientVO ingredient, String findname, ModelAndView mav) {// 얘만 findname을 인자로
 																									// 받는다. 변수명이 겹쳐서
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
@@ -353,7 +353,7 @@ public class SearchingController {
 		return mav;
 	}
 
-	@PostMapping("/editingredient.do")
+	@PostMapping("/editingredient")
 	public ModelAndView afterEditIngredient(IngredientVO vo, ModelAndView mav) {
 		// 성분 수정뒤에 이 컨트롤러로 온다.
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
@@ -387,7 +387,7 @@ public class SearchingController {
 	}
 
 	// 공장 작성후 post로 보내면 여기서 받는다.
-	@PostMapping("/updatemanufactory.do")
+	@PostMapping("/updatemanufactory")
 	public ModelAndView updateManufactory(ModelAndView mav, ManufactoryVO vo) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -406,7 +406,7 @@ public class SearchingController {
 	}
 
 	// 공장 정보 편집
-	@GetMapping("/editmanufactory.do")
+	@GetMapping("/editmanufactory")
 	public ModelAndView getEditManufactory(ModelAndView mav, String findname) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -451,7 +451,7 @@ public class SearchingController {
 
 	
 	// 역사버튼 구현
-	@GetMapping("/ramyunhistory.do")
+	@GetMapping("/ramyunhistory")
 	public ModelAndView getRamyunHistoryByName(ModelAndView mav, String name,int page, int range) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -500,7 +500,7 @@ public class SearchingController {
 
 	
 	// 역사탭에서 보기구현
-	@GetMapping("/ramyunlog.do")
+	@GetMapping("/ramyunlog")
 	public ModelAndView getRamyunHistoryById(ModelAndView mav, String id) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -515,7 +515,7 @@ public class SearchingController {
 	
 	
 	// 역사탭에서 보기구현 원문으로 보기
-	@GetMapping("/ramyunlograw.do")
+	@GetMapping("/ramyunlograw")
 	public ModelAndView getRamyunHistoryRawById(ModelAndView mav, String id) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());

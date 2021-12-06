@@ -50,9 +50,9 @@
         <div class="search_box">
             <div id="inner_search_box">
                 <div id="random_icon">
-                    <a href="/getrandomramyun.do" style="color: white;"><i class="fas fa-random"></i></a>
+                    <a href="/getrandomramyun" style="color: white;"><i class="fas fa-random"></i></a>
                 </div>
-                <form action="/findramyun.do" method="post" style="font-family: FontAwesome;">
+                <form action="/findramyun" method="post" style="font-family: FontAwesome;">
                     <input id="search_box_textarea" list="search_list_auto" name="searchBoxInput" placeholder="Search" autocomplete="off" >
                     <!-- 입력창 -->
                     <datalist id="search_list_auto">

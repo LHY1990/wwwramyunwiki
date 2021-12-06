@@ -67,7 +67,7 @@
                             
                             <div>
                                 
-                                <form action="withdraw.do" method="post" onsubmit="return checkPasswordEqualForWithdraw()" >
+                                <form action="withdraw" method="post" onsubmit="return checkPasswordEqualForWithdraw()" >
                                     <br>
 
                                     <div>

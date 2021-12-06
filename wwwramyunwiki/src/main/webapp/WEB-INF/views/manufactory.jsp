@@ -68,7 +68,7 @@
 
                                 <!-- 편집 -->
                                 <%if(session.getAttribute("isMember")=="true"){%>
-                                    <div class="sections_link"><a href="/editmanufactory.do?findname=${manufactory.factoryName}" style="vertical-align: unset; color:black" >편집</a></div>
+                                    <div class="sections_link"><a href="/editmanufactory?findname=${manufactory.factoryName}" style="vertical-align: unset; color:black" >편집</a></div>
                                 <%}else{%>
                                     <div class="sections_link"><a href="/login" style="vertical-align: unset;color: black;" onclick="login_needed()">편집</a></div>  
                                 <%}%>

@@ -67,7 +67,7 @@
                             ~~권장 검색어~~  <br><br>
                             
                             <c:forEach var="searchname" items="${similarList}" end="300">
-                                <a id="notFoundToSearch" href="/findramyun.do?name=${searchname}" >${searchname}</a>&nbsp;&nbsp;
+                                <a id="notFoundToSearch" href="/findramyun?name=${searchname}" >${searchname}</a>&nbsp;&nbsp;
                             </c:forEach>
                             
 

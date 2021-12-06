@@ -57,7 +57,7 @@
                         <div id="login_div">
                             
                             <div>
-                                <form action="changinguser.do" method="post">
+                                <form action="changinguser" method="post">
                                 <br>
                                 <div>가입번호 : ${memberNumber}</div>
                                 <br>

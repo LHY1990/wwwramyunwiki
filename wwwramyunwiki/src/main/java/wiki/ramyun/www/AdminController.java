@@ -53,7 +53,7 @@ public class AdminController {
 	
 	// 관리자모드 입장. 더 이상쓰지않고 급하게 찾을때 쓴다.
 	@Deprecated
-	@GetMapping("/admin.do")
+	@GetMapping("/admin")
 	public ModelAndView getAdmin(ModelAndView mav) {
 		// 모든 라면,영양성분,공장, 회원 리스트를 넣는다.
 		mav.addObject("ramyunList", ramyunService.selectAllFromRamyunDB());

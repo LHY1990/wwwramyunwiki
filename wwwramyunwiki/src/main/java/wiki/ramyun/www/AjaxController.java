@@ -35,7 +35,7 @@ public class AjaxController {
 
 	
 	// 리스폰스 바디로 받아 비동기로 처리
-	@PostMapping("/searchintime.do")
+	@PostMapping("/searchintime")
 	public @ResponseBody Object searchInTime(HttpServletRequest request) {
 		List<String> searchList = new ArrayList<String>();
 		String noSpaceString = request.getParameter("msg").replace(" ", "");
@@ -58,7 +58,7 @@ public class AjaxController {
 	
 	
 	// 회원가입시 아이디 중복확인
-	@PostMapping("/isunique.do")
+	@PostMapping("/isunique")
 	public @ResponseBody Object isUniqueIdCheck(HttpServletRequest request) {
 		List<String> list=new ArrayList<String>();
 		MemberVO vo = new MemberVO();
@@ -84,7 +84,7 @@ public class AjaxController {
 	
 	// 라면 좋아요 구현
 	// 리스폰스 바디로 받아 비동기로 처리
-	@PostMapping("/likeramyun.do")
+	@PostMapping("/likeramyun")
 	public @ResponseBody Object postLikeRamyun(HttpSession session, String ramyunName) {
 		// 회원의 이름을 가져온다.
 		String memberId = (String) session.getAttribute("memberId");
@@ -98,7 +98,7 @@ public class AjaxController {
 
 	
 	// 라면 신고 구현
-	@PostMapping("/reportramyun.do")
+	@PostMapping("/reportramyun")
 	public @ResponseBody Object postReportRamyun(HttpSession session, String ramyunName) {
 		// 회원의 이름을 가져온다.
 		String memberId = (String) session.getAttribute("memberId");
@@ -114,7 +114,7 @@ public class AjaxController {
 
 	
 	// 영양성분 좋아요 구현
-	@PostMapping("/likeingredient.do")
+	@PostMapping("/likeingredient")
 	public @ResponseBody Object postLikeIngredient(HttpSession session, String ingredientName) {
 
 		// 회원의 이름을 가져온다.
@@ -131,7 +131,7 @@ public class AjaxController {
 
 	
 	// 영양성분 신고버튼 ajax처리
-	@PostMapping("/reportingredient.do")
+	@PostMapping("/reportingredient")
 	public @ResponseBody Object postReportIngredient(HttpSession session, String ingredientName) {
 		// 회원의 이름을 가져온다.
 		String memberId = (String) session.getAttribute("memberId");
@@ -147,7 +147,7 @@ public class AjaxController {
 
 	
 	// 공장정보 좋아요 구현
-	@PostMapping("/likemanufactory.do")
+	@PostMapping("/likemanufactory")
 	public @ResponseBody Object postLikeManufactory(HttpSession session, String manufactoryName) {
 
 		// 회원의 이름을 가져온다.
@@ -164,7 +164,7 @@ public class AjaxController {
 
 	
 	// 공장정보 신고버튼 ajax처리
-	@PostMapping("/reportmanufactory.do")
+	@PostMapping("/reportmanufactory")
 	public @ResponseBody Object postReportManufactory(HttpSession session, String manufactoryName) {
 		// 회원의 이름을 가져온다.
 		String memberId = (String) session.getAttribute("memberId");
@@ -180,7 +180,7 @@ public class AjaxController {
 	
 	
 	//라면,공장,영양성분 편집시에 문제가 있으면 실시간으로 보낸다.
-	@PostMapping("/grammercheck.do")
+	@PostMapping("/grammercheck")
 	public @ResponseBody Object doEditingGoesRight(String contents) {
 		
 		List<String> result = new ArrayList<String>();

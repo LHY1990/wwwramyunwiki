@@ -43,7 +43,7 @@
 
                                 <!-- 역사 -->
                                 <div class="sections_link">
-                                    <a href="/ramyunhistory.do?name=${ramyun.brandNameKor}&page=1&range=1" style="vertical-align: unset; color:black">역사</a>
+                                    <a href="/ramyunhistory?name=${ramyun.brandNameKor}&page=1&range=1" style="vertical-align: unset; color:black">역사</a>
                                 </div>
                                 
                                 
@@ -75,7 +75,7 @@
                                 <!-- 편집 -->
                                 <%if(session.getAttribute("isMember")=="true"){%>
                                 <div class="sections_link">
-                                    <a href="/editramyun.do?name=${ramyun.brandNameKor}" style="vertical-align: unset; color:black">편집</a>
+                                    <a href="/editramyun?name=${ramyun.brandNameKor}" style="vertical-align: unset; color:black">편집</a>
                                 </div>
                                 <%}else{%>
                                 <div class="sections_link">

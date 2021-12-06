@@ -63,7 +63,7 @@
                                 <input id="type_id" minlength="4" type="text" name="memberId" placeholder="아이디를 입력하세요" autofocus><br><br>
                                 <div id="type_password">비밀번호</div>
                                 <input id="type_password" minlength="4" type="password" placeholder="비밀번호를 입력하세요"  name="memberPassword">
-                                <div id="finding_id_password"><a href="/findid.do" style="text-decoration: none;">아이디/비밀번호 찾기</a></div><br>
+                                <div id="finding_id_password"><a href="/findid" style="text-decoration: none;">아이디/비밀번호 찾기</a></div><br>
                                 <div id="join_member"><a href="/rules">회원가입</a></div>
                                 <div id="member_login" ><input type="submit" value="로그인" id="member_login" style="background-color: rgb(113, 113, 223, 0.3);"></div>
 

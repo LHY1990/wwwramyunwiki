@@ -58,7 +58,7 @@
 
                     </div>
                     <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
-                    <form action="updatemanufactory.do" method="post">
+                    <form action="updatemanufactory" method="post">
                         <div id="manufactory_info">
                             <div id="manufactory_items">
                             <input type="text" name="factoryName" style="display: none;" value="${manufactory.factoryName}">

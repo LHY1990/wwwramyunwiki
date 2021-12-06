@@ -74,17 +74,17 @@
                                 <br>
                                 <br>
                                 <div style="float: left;">
-                                    <form action="changeuserinfo.do" method="get">
+                                    <form action="changeuserinfo" method="get">
                                         <button>회원정보변경</button>
                                     </form>
                                 </div>
                                 <div style="float: left; margin-left: 5px;">
-                                    <form action="changeuserpassword.do" method="get">
+                                    <form action="changeuserpassword" method="get">
                                         <button>비밀번호 변경</button>
                                     </form> 
                                 </div>
                                 <div style="float: left; margin-left: 5px;">
-                                    <form action="withdraw.do" method="get">
+                                    <form action="withdraw" method="get">
                                         <button>회원탈퇴</button>
                                     </form> 
                                 </div>

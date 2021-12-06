@@ -67,7 +67,7 @@
                             
                             <div>
                                 
-                                <form action="findid.do" method="post" onsubmit="return checkPasswordEqualForWithdraw()" >
+                                <form action="findid" method="post" onsubmit="return checkPasswordEqualForWithdraw()" >
                                     <br>
 
                                     <div>

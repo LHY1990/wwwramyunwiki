@@ -65,17 +65,17 @@
 
                     </div>
                     <!-- /////////////////////////본문시작//////////////////////////////////////////////// -->
-                    <div action="/editingredient.do" method="post"  >
+                    <div action="/editingredient" method="post"  >
                         <!-- 게시판 번호 -->
 
                         <!-- [이전]버튼 -->
-                        <c:if test="${pagenation.prev}"><a href="/ramyunhistory.do?name=${ramyunName}&page=${(pagenation.range-2)*pagenation.rangeSize+1}&range=${pagenation.range-1}">[이전]</a></c:if>
+                        <c:if test="${pagenation.prev}"><a href="/ramyunhistory?name=${ramyunName}&page=${(pagenation.range-2)*pagenation.rangeSize+1}&range=${pagenation.range-1}">[이전]</a></c:if>
                         <!-- [1]버튼 -->
                         <c:forEach var="index" begin ="${pagenation.startPage}" end="${pagenation.endPage}">
-                            <a href="/ramyunhistory.do?name=${ramyunName}&page=${index}&range=${pagenation.range}">[${index}]</a>
+                            <a href="/ramyunhistory?name=${ramyunName}&page=${index}&range=${pagenation.range}">[${index}]</a>
                         </c:forEach>
                         <!-- [다음]버튼 -->
-                        <c:if test="${pagenation.next}"><a href="/ramyunhistory.do?name=${ramyunName}&page=${(pagenation.range*pagenation.rangeSize)+1}&range=${pagenation.range+1}">[다음]</a></c:if>
+                        <c:if test="${pagenation.next}"><a href="/ramyunhistory?name=${ramyunName}&page=${(pagenation.range*pagenation.rangeSize)+1}&range=${pagenation.range+1}">[다음]</a></c:if>
 
 
                         <!-- 히스토리는 여기에 들어간다. -->
@@ -83,7 +83,7 @@
                             
                             <c:forEach var="ramyun_history" items="${ramyunHistoryList}" begin="0">
                                 <p style="margin: 0%;padding: 0%; width: 100%;">
-                                    <a id="ramyun_history_one" href="/findramyun.do?name=${ramyun_history.brandNameKor}" >
+                                    <a id="ramyun_history_one" href="/findramyun?name=${ramyun_history.brandNameKor}" >
                                         <strong>${ramyun_history.brandNameKor}  </strong> 
                                     </a>
                                     |  수정 : 
@@ -91,8 +91,8 @@
                                     <fmt:formatDate pattern="yyyy.MM.dd hh:mm:ss" value="${parsedDateTime}"/>
                                     |  <strong id="writer"> 작성자 : ${ramyun_history.writer}</strong> 
                                     |   log : ${ramyun_history.id}  |  
-                                    <a href="/ramyunlog.do?id=${ramyun_history.id}">(이 버전으로 보기)</a> | 
-                                    <a href="/ramyunlograw.do?id=${ramyun_history.id}" style="color : brown">원문으로 보기</a>
+                                    <a href="/ramyunlog?id=${ramyun_history.id}">(이 버전으로 보기)</a> | 
+                                    <a href="/ramyunlograw?id=${ramyun_history.id}" style="color : brown">원문으로 보기</a>
                                 </p>
                             </c:forEach>
                         </div>

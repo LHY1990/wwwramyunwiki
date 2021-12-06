@@ -85,7 +85,7 @@
                                 <c:forEach var="searching" items="${searchList}" begin="0" end="49">
                                     
                                     <p class="getLength" style="margin: 0%;padding: 0%; width: 100%;">
-                                        <a id="tagToSearch" href="/findramyun.do?name=${searching.name}" >${searching.name}</a>
+                                        <a id="tagToSearch" href="/findramyun?name=${searching.name}" >${searching.name}</a>
                                     </p>
 
                                 </c:forEach>
@@ -93,7 +93,7 @@
                             <div class="vertical_section">
                                 <c:forEach var="searching" items="${searchList}" begin="50" end="99">
                                     <p class="getLength" style="margin: 0%;padding: 0%; width: 100%;">
-                                        <a id="tagToSearch" href="/findramyun.do?name=${searching.name}" >${searching.name}</a>
+                                        <a id="tagToSearch" href="/findramyun?name=${searching.name}" >${searching.name}</a>
                                     </p>
 
                                 </c:forEach>
@@ -101,7 +101,7 @@
                             <div class="vertical_section">
                                 <c:forEach var="searching" items="${searchList}" begin="100" end="149">
                                     <p class="getLength" style="margin: 0%;padding: 0%; width: 100%;">
-                                        <a id="tagToSearch" href="/findramyun.do?name=${searching.name}" >${searching.name}</a>
+                                        <a id="tagToSearch" href="/findramyun?name=${searching.name}" >${searching.name}</a>
                                     </p>
                                     
                                 </c:forEach>

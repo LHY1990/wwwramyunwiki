@@ -155,19 +155,6 @@ public class HomeController {
 		}
 	}
 	
-
-	//이용약관
-	@PostMapping("/rules")
-	public String rulesPost() {
-		return "rules";
-	}
-	
-	
-	@GetMapping("/rules")
-	public String rulesGet() {
-		return "rules";
-	}
-
 	
 	//유저가 설정창을 눌렀을때
 	@GetMapping("/userinfo")
@@ -183,7 +170,7 @@ public class HomeController {
 	
 	
 	//유저정보 변경
-	@GetMapping("/changeuserinfo.do")
+	@GetMapping("/changeuserinfo")
 	public ModelAndView changeuserinfo(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -195,7 +182,7 @@ public class HomeController {
 	}
 	
 	
-	@PostMapping("/changinguser.do")
+	@PostMapping("/changinguser")
 	public ModelAndView changinguser(ModelAndView mav, MemberVO vo,HttpSession session) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -214,7 +201,7 @@ public class HomeController {
 	
 	
 	//패스워드 변경시 이쪽으로 넘어온다.
-	@GetMapping("/changeuserpassword.do")
+	@GetMapping("/changeuserpassword")
 	public ModelAndView getChangeingPassword(ModelAndView mav, MemberVO vo, HttpSession session ) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -227,7 +214,7 @@ public class HomeController {
 	
 	
 	//비밀번호 변경 화면
-	@PostMapping("/changingPassword.do")
+	@PostMapping("/changingPassword")
 	public ModelAndView postChangeingPassword(ModelAndView mav, MemberVO vo, HttpSession session, String oldPassword, String newPassword ) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -248,7 +235,7 @@ public class HomeController {
 	
 	
 	//회원탈퇴 요청
-	@GetMapping("/withdraw.do")
+	@GetMapping("/withdraw")
 	public ModelAndView getWithdraw(ModelAndView mav, MemberVO vo, HttpSession session) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -261,7 +248,7 @@ public class HomeController {
 	
 	
 	//회원탈퇴 처리 후 감사창으로 이동
-	@PostMapping("/withdraw.do")
+	@PostMapping("/withdraw")
 	public ModelAndView postWithdraw(ModelAndView mav, HttpSession session, String withdrawPassword) {
 		
 		//세션으로 회원 아이디를 받는다.
@@ -282,7 +269,7 @@ public class HomeController {
 	
 	
 	//계정정보 찾기 처음 접근
-	@GetMapping("/findid.do")
+	@GetMapping("/findid")
 	public ModelAndView getFindId(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -296,7 +283,7 @@ public class HomeController {
 	
 	
 	//계정정보 찾기, 메일로 정보를 보내어 회원으로 하여금 비밀번호를 바꾸게한다.
-	@PostMapping("/findid.do")
+	@PostMapping("/findid")
 	public ModelAndView postFindId(ModelAndView mav, String findbyemail) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -390,7 +377,7 @@ public class HomeController {
 	
 
 	//여기는 home>작성방법
-	@GetMapping("/howto.do")
+	@GetMapping("/howto")
 	public ModelAndView howToMakeText(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
@@ -401,15 +388,46 @@ public class HomeController {
 		return mav;
 	}
 	
-	@GetMapping("/introduction.do")
+	
+	//이용약관
+	@PostMapping("/rules")
+	public String rulesPost() {
+		//return "rules";
+		//개정 전까지 임시
+		return "renewal";
+	}
+	
+	
+	@GetMapping("/rules")
+	public String rulesGet() {
+		//return "rules";
+		//개정 전까지 임시
+		return "renewal";
+	}
+	
+		
+	@GetMapping("/introduction")
 	public ModelAndView getIntroduction(ModelAndView mav) {
 		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
 		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
 		//우측탭 라면 이미지 리스트 가져오기
 		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
-		mav.setViewName("introduction");
+		//mav.setViewName("introduction");
+		//개정 전까지 임시
+		mav.setViewName("renewal");
+		return mav;
+	}
+	
+	@GetMapping("/history")
+	public ModelAndView getHistory(ModelAndView mav) {
+		//이건 10개만 가져와서 오른쪽에 뿌리는것. 
+		mav.addObject("ramyunList", ramyunService.getRecentsUpdateListFromDB());
+		//우측탭 라면 이미지 리스트 가져오기
+		mav.addObject("randomRamyunImageList",ramyunService.getTodaysRamyunImageList());
 		
+		//mav.setViewName("history");
+		mav.setViewName("renewal");
 		return mav;
 	}
 	
