@@ -1,7 +1,7 @@
-<img width="430" alt="캡처" src="https://user-images.githubusercontent.com/44134757/144950849-d17892e4-14cf-4734-95e0-aeb128486ea7.PNG">
-
 ### 라면위키 프로젝트
-http://ramyun.wiki  
+<img width="1005" alt="통합" src="https://user-images.githubusercontent.com/44134757/144951932-54231b1f-75d2-4efb-af79-406fab6291ff.PNG">
+
+ http://ramyun.wiki  
 국내에서 시판, 유통, 절판된 라면정보를 공유하는 웹 서비스입니다. 
 
 #### 개발자 연락처
