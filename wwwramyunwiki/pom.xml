@@ -214,8 +214,30 @@
 
 
 		<!-- 임시문자열 생성 끝 -->
-
-
+		
+		<!-- log4j 2설정 및 취약점 개선 시작-->
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-slf4j-impl</artifactId>
+		    <version>2.15.0</version>
+		</dependency>
+				
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-api</artifactId>
+		    <version>2.15.0</version>
+		</dependency>
+	
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-core</artifactId>
+		    <version>2.15.0</version>
+		</dependency>
+			<!-- log4j 2설정 및 취약점 개선 끝 -->
+				
 		<!-- 여기위로 내가 추가한것 -->
 
 
@@ -245,7 +267,7 @@
 			<version>${org.aspectj-version}</version>
 		</dependency>
 
-		<!-- Logging -->
+		<!-- Logging 기본 log4j 1버전이다. 2로 업그레이드 하면서 죽인다.
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -287,7 +309,8 @@
 			</exclusions>
 			<scope>runtime</scope>
 		</dependency>
-
+		-->
+		
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>

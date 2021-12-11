@@ -135,8 +135,11 @@
 
                         <div style="width: 100%; outline: rgb(245, 77, 10) 1px dotted;"></div>
 
-
-                        
+                        <span style="color: rgb(255, 115, 0); ">
+                            <br>
+                            # 알림 <br>
+                            라면위키의 log4j가 최신 버전으로 업데이트 되었습니다(12월 11일 24:00)
+                        </span>
                         
                         
                         
