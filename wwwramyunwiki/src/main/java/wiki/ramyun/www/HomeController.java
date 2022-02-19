@@ -39,6 +39,7 @@ import wiki.ramyun.www.wikistringresolver.WikiStringResolver;
 
 
 //홈화면 접근 및 회원 정보 접근
+//이클립스에서 가져왔다
 @Controller
 public class HomeController {
 	
